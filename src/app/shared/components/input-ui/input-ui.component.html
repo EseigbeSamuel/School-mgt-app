@@ -1,0 +1,71 @@
+<div
+  class="flex flex-col w-full lg:w-[440px]"
+  [class.opacity-60]="disabled || isDisabled"
+  [class.cursor-not-allowed]="disabled || isDisabled"
+>
+  <label
+    *ngIf="label"
+    [for]="inputId"
+    class="font-medium text-textColor capitalize text-[16px]"
+  >
+    {{ label }} <span *ngIf="required" class="text-red-500 ml-0.5">*</span>
+  </label>
+
+  <div class="relative flex items-center">
+    <div
+      *ngIf="iconLeft"
+      class="absolute left-0 flex items-center justify-center h-full w-9 text-gray-500 hover:text-gray-700 cursor-pointer"
+      (click)="onIconLeftClicked($event)"
+    >
+      <mat-icon>{{ iconLeft }}</mat-icon>
+    </div>
+
+    <input
+      [type]="inputType"
+      [id]="inputId"
+      [placeholder]="placeholder"
+      [disabled]="disabled || isDisabled"
+      [required]="required"
+      [value]="inputValue"
+      [pattern]="pattern !== null ? pattern : ''"
+      [autocomplete]="autocomplete"
+      (input)="onInputChange($event)"
+      (blur)="onInputBlur($event)"
+      (focus)="onInputFocus($event)"
+      [class]="variantClasses + ' ' + inputSizeClasses"
+      [class.pl-9]="iconLeft"
+      [class.pr-9]="iconRight || type === 'password'"
+    />
+
+    <!-- Right Icon (if provided manually) -->
+    <div
+      *ngIf="iconRight && type !== 'password'"
+      class="absolute right-10 flex items-center justify-center h-full w-9 hover:text-gray-700 cursor-pointer"
+      (click)="onIconRightClicked($event)"
+    >
+      <mat-icon svgIcon="{{ iconRight }}"></mat-icon>
+    </div>
+
+    <!-- Password Visibility Toggle -->
+    <div
+      *ngIf="type === 'password'"
+      class="absolute right-3 flex items-center justify-center h-full w-9 text-gray-500 hover:text-gray-700 cursor-pointer"
+      (click)="togglePasswordVisibility()"
+    >
+      <mat-icon>
+        {{ isPasswordVisible ? "visibility_off" : "visibility" }}
+      </mat-icon>
+    </div>
+  </div>
+
+  <div *ngIf="showErrorMessage" class="mt-1 text-xs text-red-500">
+    {{ errorMessage }}
+  </div>
+
+  <div
+    *ngIf="helperText && !showErrorMessage"
+    class="mt-1 text-xs text-gray-500"
+  >
+    {{ helperText }}
+  </div>
+</div>
