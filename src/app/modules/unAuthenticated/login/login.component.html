@@ -32,7 +32,10 @@
         <mat-checkbox color="#2C2A72" formControlName="acceptTerms">
           Save login</mat-checkbox
         >
-        <div class="text-sm md:text-[16px] text-textColor">
+        <div
+          (click)="resetPassword()"
+          class="text-sm md:text-[16px] text-textColor cursor-pointer"
+        >
           Forget password?
         </div>
       </div>

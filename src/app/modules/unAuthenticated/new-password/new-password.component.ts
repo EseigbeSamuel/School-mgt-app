@@ -28,8 +28,8 @@ import { Router } from '@angular/router';
     ReactiveFormsModule,
     MatIconModule,
   ],
-  templateUrl: './reset-password.component.html',
-  styleUrls: ['./reset-password.component.css'],
+  templateUrl: './new-password.component.html',
+  styleUrls: ['./new-password.component.css'],
   animations: [
     trigger('bounceIn', [
       transition(':enter', [
@@ -45,26 +45,46 @@ import { Router } from '@angular/router';
     ]),
   ],
 })
-export class ResetPasswordComponent {
+export class NewPasswordComponent {
   resetForm: FormGroup;
 
   constructor(private fb: FormBuilder, private router: Router) {
     this.resetForm = this.fb.group({
-      email: ['', Validators.required, Validators.email],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
+      verificationCode: ['', Validators.required],
     });
+  }
+  get verificationCode(): any {
+    return this.resetForm.get('verificationCode')?.value || '';
+  }
+
+  get password(): string {
+    return this.resetForm.get('password')?.value || '';
   }
 
   get isDisabled(): boolean {
-    const email = this.resetForm.get('email')?.value;
-    const emailControl = this.resetForm.get('email');
-    return !email || (emailControl?.invalid ?? false);
+    return (
+      this.resetForm.invalid ||
+      this.password !== this.resetForm.get('confirmPassword')?.value ||
+      this.verificationCode === null
+    );
   }
 
   isvisible = false;
 
   handleNavigate(event: Event) {
     event.preventDefault();
-    this.router.navigate(['/auth/new-password']);
+    this.router.navigate(['/auth/log-in']);
     console.log('Button clicked!', event);
+  }
+
+  get rules() {
+    return {
+      hasMinLength: this.password.length >= 8,
+      hasUpperCase: /[A-Z]/.test(this.password),
+      hasSpecialChar: /[!@#$%^&*(),.?":{}|<>]/.test(this.password),
+      hasNumber: /\d/.test(this.password),
+    };
   }
 }

@@ -24,4 +24,7 @@ export class LoginComponent {
   signUp() {
     this.router.navigate(['/auth/sign-up']);
   }
+  resetPassword() {
+    this.router.navigate(['/auth/reset-password']);
+  }
 }
