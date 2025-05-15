@@ -3,10 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 /* Add this for pull-to-refresh visibility */
 .splash-active body {
   background-color: #dce8ef;
@@ -25,16 +21,23 @@
   --table-header-color: #f0f1f3;
   --table-header-font-size: 14px;
   --dashboard-background: #e9e9e9;
+  --sidebar-width: 18rem;
+  --navbar-height: 6rem;
+  --bottom-navbar-height: 5.5rem;
+
+  --sch: calc(100svh - var(--navbar-height));
+}
+
+@media (max-width: 720px) {
+  :root {
+    --navbar-height: 4.5rem;
+    --sch: calc(100svh - var(--navbar-height));
+  }
 }
 
 html,
 body {
   height: 100%;
-}
-body {
-  margin: 0;
-  font-family: "Plus Jakarta Sans", "Gill Sans", "Gill Sans MT", Calibri,
-    "Trebuchet MS", sans-serif;
 }
 
 .iti__country-list {
@@ -139,10 +142,6 @@ body {
   background-color: transparent;
 }
 
-html,
-body {
-  height: 100%;
-}
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;

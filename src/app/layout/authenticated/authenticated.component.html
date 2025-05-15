@@ -1,9 +1,14 @@
-<div class="h-screen bg-dashboardBg w-full flex">
-  <nav></nav>
-  <main class="w-[30%]">
-    <header></header>
-    <div>
+<div class="flex h-svh w-full">
+  <app-sidebar />
+  <div class="content.wrapper flex flex-col w-full">
+    <app-dash-navbar />
+    <div
+      class="content-body size-full overflow-scroll max-[720px]:mb-[var(--bottom-navbar-height)]"
+    >
+      <!-- <div class="content size-full min-h-[var(--sch)] bg-gray-100"></div> -->
+      <!-- <div class="content size-full min-h-svh bg-gray-200"></div>  -->
+      <!--<div class="content size-full min-h-svh bg-gray-300"></div>  -->
       <router-outlet />
     </div>
-  </main>
+  </div>
 </div>
