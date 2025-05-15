@@ -1,18 +1,16 @@
-<nav
-  *ngIf="userType === 'student'"
-  class="sidebar flex flex-col gap-4 min-w-[var(--sidebar-width)] max-w-[var(--sidebar-width)] h-full border-r p-5 sm:p-6 max-[720px]:hidden"
->
-  <div class="logo px-2">
-    <img src="assets/images/Logo.png" width="190" alt="Logo" />
-  </div>
-  <div class="side-links mt-2">
-    <ul class="flex flex-col gap-3">
-      <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70 bg-[#2C2A72] text-white"
-        >
-          <svg
+export interface SidebarLink {
+  label: string;
+  icon: string; // SVG path or inline HTML string
+  route: string;
+  activeBg?: string;
+}
+
+export const SIDEBAR_LINKS_DASHBOARD_TOP: SidebarLink[] = [
+  {
+    label: 'Dashboard',
+    route: '/dashboard',
+    icon: `
+      <svg
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -34,16 +32,14 @@
               stroke-linejoin="round"
             />
           </svg>
-
-          <span> Dashboard </span>
-        </a>
-      </li>
-      <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
-        >
-          <svg
+      `,
+    activeBg: 'bg-[#2C2A72]',
+  },
+  {
+    label: 'My courses',
+    route: '/courses',
+    icon: `
+        <svg
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -62,16 +58,13 @@
               stroke-linecap="round"
             />
           </svg>
-
-          <span>My courses</span>
-        </a>
-      </li>
-      <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
-        >
-          <svg
+      `,
+  },
+  {
+    label: 'Assessments and quizzes',
+    route: '/assessments',
+    icon: `
+         <svg
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -83,16 +76,13 @@
               fill="currentColor"
             />
           </svg>
-
-          <span>Assesments and quizzes</span>
-        </a>
-      </li>
-      <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
-        >
-          <svg
+      `,
+  },
+  {
+    label: 'Mock Exams',
+    route: '/mock-exams',
+    icon: `
+       <svg
             width="24"
             height="18"
             viewBox="0 0 24 18"
@@ -104,16 +94,13 @@
               fill="currentColor"
             />
           </svg>
-
-          <span>Mock Exams</span>
-        </a>
-      </li>
-      <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
-        >
-          <svg
+      `,
+  },
+  {
+    label: 'Personal Sessions',
+    route: '/personal sessions',
+    icon: `
+         <svg
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -125,16 +112,13 @@
               fill="currentColor"
             />
           </svg>
-
-          <span>Personal Sessions</span>
-        </a>
-      </li>
-      <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
-        >
-          <svg
+      `,
+  },
+  {
+    label: 'Achievements',
+    route: '/achievements',
+    icon: `
+         <svg
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -154,15 +138,13 @@
               </clipPath>
             </defs>
           </svg>
-          <span>Achievements</span>
-        </a>
-      </li>
-      <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
-        >
-          <svg
+      `,
+  },
+  {
+    label: 'Messages',
+    route: '/messages',
+    icon: `
+             <svg
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -175,15 +157,13 @@
             />
           </svg>
 
-          <span>Messages</span>
-        </a>
-      </li>
-      <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
-        >
-          <svg
+      `,
+  },
+  {
+    label: 'profile',
+    route: '/profile',
+    icon: `
+               <svg
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -203,20 +183,15 @@
             />
           </svg>
 
-          <span>Profile</span>
-        </a>
-      </li>
-    </ul>
-  </div>
-
-  <div *ngIf="userType === 'student'" class="more flex h-full items-end gap-2">
-    <ul class="flex flex-col gap-3">
-      <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
-        >
-          <svg
+      `,
+  },
+];
+export const SIDEBAR_LINKS_DASHBOARD_BUTTON: SidebarLink[] = [
+  {
+    label: 'Settings',
+    route: '/Settings',
+    icon: `
+    <svg
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -240,16 +215,14 @@
               stroke-linejoin="round"
             />
           </svg>
-
-          <span>Settings</span>
-        </a>
-      </li>
-      <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
-        >
-          <svg
+      `,
+    activeBg: 'bg-[#2C2A72]',
+  },
+  {
+    label: 'Logout',
+    route: '/auth/log-in',
+    icon: `
+             <svg
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -278,225 +251,13 @@
               stroke-linejoin="round"
             />
           </svg>
-
-          <span>Logout</span>
-        </a>
-      </li>
-    </ul>
-  </div>
-</nav>
-
-<nav
-  *ngIf="userType === 'student'"
-  class="bottom-bar rounded-t-3xl w-full bg-white border-t p-4 fixed bottom-0 left-0 right-0 h-[var(--bottom-navbar-height)] max-[720px]:block hidden z-[9999]"
->
-  <ul class="flex gap-6 justify-evenly items-center">
-    <li>
-      <a
-        href="#"
-        class="flex flex-col gap-1.5 justify-center items-center font-medium text-[#2C2A72] active:text-[#2C2A72] text-sm max-[450px]:text-xs text-center"
-      >
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M9.02 2.84016L3.63 7.04016C2.73 7.74016 2 9.23016 2 10.3602V17.7702C2 20.0902 3.89 21.9902 6.21 21.9902H17.79C20.11 21.9902 22 20.0902 22 17.7802V10.5002C22 9.29016 21.19 7.74016 20.2 7.05016L14.02 2.72016C12.62 1.74016 10.37 1.79016 9.02 2.84016Z"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M12 17.9902V14.9902"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-        <span>Home</span>
-      </a>
-    </li>
-    <li>
-      <a
-        href="#"
-        class="flex flex-col gap-1.5 justify-center items-center font-medium text-[#7A8389] active:text-[#2C2A72] text-sm max-[450px]:text-xs text-center"
-      >
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M19.898 16H7.898C6.968 16 6.503 16 6.121 16.102C5.61231 16.2384 5.14849 16.5063 4.77618 16.8788C4.40386 17.2513 4.13616 17.7152 4 18.224"
-            stroke="currentColor"
-            stroke-width="1.5"
-          />
-          <path
-            d="M8 7H16M8 10.5H13M10 22C7.172 22 5.757 22 4.879 21.121C4 20.243 4 18.828 4 16V8C4 5.172 4 3.757 4.879 2.879C5.757 2 7.172 2 10 2H14C16.828 2 18.243 2 19.121 2.879C20 3.757 20 5.172 20 8M14 22C16.828 22 18.243 22 19.121 21.121C20 20.243 20 18.828 20 16V12"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-          />
-        </svg>
-        <span>Classes</span>
-      </a>
-    </li>
-    <li>
-      <a
-        href="#"
-        class="flex flex-col gap-1.5 justify-center items-center font-medium text-[#7A8389] active:text-[#2C2A72] text-sm max-[450px]:text-xs text-center"
-      >
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M11.992 20C12.0407 20.18 12.1077 20.356 12.193 20.528C12.2783 20.7007 12.3743 20.858 12.481 21H5.616C5.15533 21 4.771 20.846 4.463 20.538C4.155 20.23 4.00067 19.8457 4 19.385V4.615C4 4.155 4.15433 3.771 4.463 3.463C4.77167 3.155 5.156 3.00067 5.616 3H16.385C16.845 3 17.2293 3.15433 17.538 3.463C17.8467 3.77167 18.0007 4.156 18 4.616V11.735C17.8533 11.7143 17.6867 11.704 17.5 11.704C17.3133 11.704 17.1467 11.714 17 11.734V4.617C17 4.463 16.936 4.32167 16.808 4.193C16.68 4.06433 16.5387 4 16.384 4H11.5V10.192L9.5 9L7.5 10.192V4H5.616C5.462 4 5.32067 4.064 5.192 4.192C5.06333 4.32 4.99933 4.461 5 4.615V19.385C5 19.5383 5.064 19.6793 5.192 19.808C5.32 19.9367 5.461 20.0007 5.615 20H11.992ZM17.5 21.692C16.386 21.692 15.441 21.304 14.665 20.528C13.8883 19.752 13.5 18.8067 13.5 17.692C13.5 16.5787 13.8883 15.6337 14.665 14.857C15.441 14.0803 16.386 13.692 17.5 13.692C18.614 13.692 19.5593 14.0803 20.336 14.857C21.1127 15.6337 21.5007 16.5787 21.5 17.692C21.4993 18.8053 21.1113 19.7507 20.336 20.528C19.5607 21.3053 18.6153 21.6933 17.5 21.692ZM16.635 19.577L19.365 17.654L16.635 15.731V19.577ZM11.992 4H5H17H11.5H11.992Z"
-            fill="currentColor"
-          />
-        </svg>
-
-        <span>Assesments</span>
-      </a>
-    </li>
-    <li>
-      <a
-        href="#"
-        class="flex flex-col gap-1.5 justify-center items-center font-medium text-[#7A8389] active:text-[#2C2A72] text-sm max-[450px]:text-xs text-center"
-      >
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M20.25 7.5H17.25V4.5C17.25 4.10218 17.092 3.72064 16.8107 3.43934C16.5294 3.15804 16.1478 3 15.75 3H3.75C3.35218 3 2.97064 3.15804 2.68934 3.43934C2.40804 3.72064 2.25 4.10218 2.25 4.5V16.5C2.25044 16.6411 2.29068 16.7792 2.36608 16.8985C2.44149 17.0177 2.54901 17.1133 2.67629 17.1742C2.80358 17.2351 2.94546 17.2589 3.08564 17.2428C3.22581 17.2266 3.3586 17.1713 3.46875 17.0831L6.75 14.4375V17.25C6.75 17.6478 6.90804 18.0294 7.18934 18.3107C7.47064 18.592 7.85218 18.75 8.25 18.75H17.0241L20.5312 21.5831C20.664 21.6905 20.8293 21.7493 21 21.75C21.1989 21.75 21.3897 21.671 21.5303 21.5303C21.671 21.3897 21.75 21.1989 21.75 21V9C21.75 8.60218 21.592 8.22064 21.3107 7.93934C21.0294 7.65804 20.6478 7.5 20.25 7.5ZM6.23906 12.9169L3.75 14.9297V4.5H15.75V12.75H6.71063C6.53897 12.75 6.37252 12.8089 6.23906 12.9169ZM20.25 19.4297L17.7609 17.4169C17.6282 17.3095 17.4629 17.2507 17.2922 17.25H8.25V14.25H15.75C16.1478 14.25 16.5294 14.092 16.8107 13.8107C17.092 13.5294 17.25 13.1478 17.25 12.75V9H20.25V19.4297Z"
-            fill="currentColor"
-          />
-        </svg>
-
-        <span>Messages</span>
-      </a>
-    </li>
-    <li>
-      <a
-        href="#"
-        class="flex flex-col gap-1.5 justify-center items-center font-medium text-[#7A8389] active:text-[#2C2A72] text-sm max-[450px]:text-xs text-center"
-      >
-        <svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M4 18C4 16.9391 4.42143 15.9217 5.17157 15.1716C5.92172 14.4214 6.93913 14 8 14H16C17.0609 14 18.0783 14.4214 18.8284 15.1716C19.5786 15.9217 20 16.9391 20 18C20 18.5304 19.7893 19.0391 19.4142 19.4142C19.0391 19.7893 18.5304 20 18 20H6C5.46957 20 4.96086 19.7893 4.58579 19.4142C4.21071 19.0391 4 18.5304 4 18Z"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linejoin="round"
-          />
-          <path
-            d="M12 10C13.6569 10 15 8.65685 15 7C15 5.34315 13.6569 4 12 4C10.3431 4 9 5.34315 9 7C9 8.65685 10.3431 10 12 10Z"
-            stroke="currentColor"
-            stroke-width="1.5"
-          />
-        </svg>
-
-        <span>Profile</span>
-      </a>
-    </li>
-  </ul>
-</nav>
-
-<!-- tutor section  -->
-
-<nav
-  *ngIf="userType === 'tutor'"
-  class="sidebar flex flex-col gap-4 min-w-[var(--sidebar-width)] max-w-[var(--sidebar-width)] h-full border-r p-5 sm:p-6 max-[720px]:hidden"
->
-  <div class="logo px-2">
-    <img src="assets/images/Logo.png" width="190" alt="Logo" />
-  </div>
-  <div class="side-links mt-2">
-    <ul class="flex flex-col gap-3">
-      <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70 bg-[#2C2A72] text-white"
-        >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M9.02 2.84016L3.63 7.04016C2.73 7.74016 2 9.23016 2 10.3602V17.7702C2 20.0902 3.89 21.9902 6.21 21.9902H17.79C20.11 21.9902 22 20.0902 22 17.7802V10.5002C22 9.29016 21.19 7.74016 20.2 7.05016L14.02 2.72016C12.62 1.74016 10.37 1.79016 9.02 2.84016Z"
-              stroke="currentColor"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M12 17.9902V14.9902"
-              stroke="currentColor"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-
-          <span> Home </span>
-        </a>
-      </li>
-      <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
-        >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M19.898 16H7.898C6.968 16 6.503 16 6.121 16.102C5.61231 16.2384 5.14849 16.5063 4.77618 16.8788C4.40386 17.2513 4.13616 17.7152 4 18.224"
-              stroke="currentColor"
-              stroke-width="1.5"
-            />
-            <path
-              d="M8 7H16M8 10.5H13M10 22C7.172 22 5.757 22 4.879 21.121C4 20.243 4 18.828 4 16V8C4 5.172 4 3.757 4.879 2.879C5.757 2 7.172 2 10 2H14C16.828 2 18.243 2 19.121 2.879C20 3.757 20 5.172 20 8M14 22C16.828 22 18.243 22 19.121 21.121C20 20.243 20 18.828 20 16V12"
-              stroke="currentColor"
-              stroke-width="1.5"
-              stroke-linecap="round"
-            />
-          </svg>
-
-          <span>My session</span>
-        </a>
-      </li>
-      <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
-        >
-          <svg
+      `,
+  },
+  {
+    label: 'Assessments and quizzes',
+    route: '/assessments',
+    icon: `
+         <svg
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -508,16 +269,13 @@
               fill="currentColor"
             />
           </svg>
-
-          <span>My subjets</span>
-        </a>
-      </li>
-      <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
-        >
-          <svg
+      `,
+  },
+  {
+    label: 'Mock Exams',
+    route: '/mock-exams',
+    icon: `
+       <svg
             width="24"
             height="18"
             viewBox="0 0 24 18"
@@ -529,16 +287,13 @@
               fill="currentColor"
             />
           </svg>
-
-          <span>Students</span>
-        </a>
-      </li>
-      <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
-        >
-          <svg
+      `,
+  },
+  {
+    label: 'Personal Sessions',
+    route: '/personal sessions',
+    icon: `
+         <svg
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -550,16 +305,13 @@
               fill="currentColor"
             />
           </svg>
-
-          <span>Resources</span>
-        </a>
-      </li>
-      <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
-        >
-          <svg
+      `,
+  },
+  {
+    label: 'Achievements',
+    route: '/achievements',
+    icon: `
+         <svg
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -579,15 +331,13 @@
               </clipPath>
             </defs>
           </svg>
-          <span>One on one</span>
-        </a>
-      </li>
-      <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
-        >
-          <svg
+      `,
+  },
+  {
+    label: 'Messages',
+    route: '/messages',
+    icon: `
+             <svg
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -600,15 +350,13 @@
             />
           </svg>
 
-          <span>Earnings</span>
-        </a>
-      </li>
-      <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
-        >
-          <svg
+      `,
+  },
+  {
+    label: 'profile',
+    route: '/profile',
+    icon: `
+               <svg
             width="24"
             height="24"
             viewBox="0 0 24 24"
@@ -628,100 +376,16 @@
             />
           </svg>
 
-          <span>Messaging</span>
-        </a>
-      </li>
-    </ul>
-  </div>
+      `,
+  },
+];
 
-  <div *ngIf="userType === 'tutor'" class="more flex h-full items-end gap-2">
-    <ul class="flex flex-col gap-3">
-      <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
-        >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z"
-              stroke="currentColor"
-              stroke-width="1.5"
-              stroke-miterlimit="10"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M2 12.8794V11.1194C2 10.0794 2.85 9.21945 3.9 9.21945C5.71 9.21945 6.45 7.93945 5.54 6.36945C5.02 5.46945 5.33 4.29945 6.24 3.77945L7.97 2.78945C8.76 2.31945 9.78 2.59945 10.25 3.38945L10.36 3.57945C11.26 5.14945 12.74 5.14945 13.65 3.57945L13.76 3.38945C14.23 2.59945 15.25 2.31945 16.04 2.78945L17.77 3.77945C18.68 4.29945 18.99 5.46945 18.47 6.36945C17.56 7.93945 18.3 9.21945 20.11 9.21945C21.15 9.21945 22.01 10.0694 22.01 11.1194V12.8794C22.01 13.9194 21.16 14.7794 20.11 14.7794C18.3 14.7794 17.56 16.0594 18.47 17.6294C18.99 18.5394 18.68 19.6994 17.77 20.2194L16.04 21.2094C15.25 21.6794 14.23 21.3994 13.76 20.6094L13.65 20.4194C12.75 18.8494 11.27 18.8494 10.36 20.4194L10.25 20.6094C9.78 21.3994 8.76 21.6794 7.97 21.2094L6.24 20.2194C5.33 19.6994 5.02 18.5294 5.54 17.6294C6.45 16.0594 5.71 14.7794 3.9 14.7794C2.85 14.7794 2 13.9194 2 12.8794Z"
-              stroke="currentColor"
-              stroke-width="1.5"
-              stroke-miterlimit="10"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-
-          <span>Settings</span>
-        </a>
-      </li>
-      <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
-        >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M8.89844 7.56023C9.20844 3.96023 11.0584 2.49023 15.1084 2.49023H15.2384C19.7084 2.49023 21.4984 4.28023 21.4984 8.75023V15.2702C21.4984 19.7402 19.7084 21.5302 15.2384 21.5302H15.1084C11.0884 21.5302 9.23844 20.0802 8.90844 16.5402"
-              stroke="currentColor"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M2 12H14.88"
-              stroke="currentColor"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-            <path
-              d="M12.6484 8.65039L15.9984 12.0004L12.6484 15.3504"
-              stroke="currentColor"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-
-          <span>Logout</span>
-        </a>
-      </li>
-    </ul>
-  </div>
-</nav>
-
-<nav
-  *ngIf="userType === 'tutor'"
-  class="bottom-bar rounded-t-3xl w-full bg-white border-t p-4 fixed bottom-0 left-0 right-0 h-[var(--bottom-navbar-height)] max-[720px]:block hidden z-[9999]"
->
-  <ul class="flex gap-6 justify-evenly items-center">
-    <li>
-      <a
-        href="#"
-        class="flex flex-col gap-1.5 justify-center items-center font-medium text-[#2C2A72] active:text-[#2C2A72] text-sm max-[450px]:text-xs text-center"
-      >
-        <svg
+export const SIDEBAR_LINKS_MOBILE: SidebarLink[] = [
+  {
+    label: 'Home',
+    route: '/dashboard',
+    icon: `
+         <svg
           width="24"
           height="24"
           viewBox="0 0 24 24"
@@ -743,15 +407,14 @@
             stroke-linejoin="round"
           />
         </svg>
-        <span>Home</span>
-      </a>
-    </li>
-    <li>
-      <a
-        href="#"
-        class="flex flex-col gap-1.5 justify-center items-center font-medium text-[#7A8389] active:text-[#2C2A72] text-sm max-[450px]:text-xs text-center"
-      >
-        <svg
+      `,
+    activeBg: 'bg-[#2C2A72]',
+  },
+  {
+    label: 'Classes',
+    route: '/courses',
+    icon: `
+      <svg
           width="24"
           height="24"
           viewBox="0 0 24 24"
@@ -770,15 +433,13 @@
             stroke-linecap="round"
           />
         </svg>
-        <span>Classes</span>
-      </a>
-    </li>
-    <li>
-      <a
-        href="#"
-        class="flex flex-col gap-1.5 justify-center items-center font-medium text-[#7A8389] active:text-[#2C2A72] text-sm max-[450px]:text-xs text-center"
-      >
-        <svg
+      `,
+  },
+  {
+    label: 'Assessments',
+    route: '/assessments',
+    icon: `
+         <svg
           width="24"
           height="24"
           viewBox="0 0 24 24"
@@ -790,16 +451,13 @@
             fill="currentColor"
           />
         </svg>
-
-        <span>Assesments</span>
-      </a>
-    </li>
-    <li>
-      <a
-        href="#"
-        class="flex flex-col gap-1.5 justify-center items-center font-medium text-[#7A8389] active:text-[#2C2A72] text-sm max-[450px]:text-xs text-center"
-      >
-        <svg
+      `,
+  },
+  {
+    label: 'Messages',
+    route: '/messages',
+    icon: `
+           <svg
           width="24"
           height="24"
           viewBox="0 0 24 24"
@@ -812,15 +470,13 @@
           />
         </svg>
 
-        <span>Messages</span>
-      </a>
-    </li>
-    <li>
-      <a
-        href="#"
-        class="flex flex-col gap-1.5 justify-center items-center font-medium text-[#7A8389] active:text-[#2C2A72] text-sm max-[450px]:text-xs text-center"
-      >
-        <svg
+        `,
+  },
+  {
+    label: 'Profile',
+    route: '/assessments',
+    icon: `
+    <svg
           width="24"
           height="24"
           viewBox="0 0 24 24"
@@ -839,9 +495,6 @@
             stroke-width="1.5"
           />
         </svg>
-
-        <span>Profile</span>
-      </a>
-    </li>
-  </ul>
-</nav>
+      `,
+  },
+];

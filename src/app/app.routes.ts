@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { UnAthenticatedComponent } from './layout/un-athenticated/un-athenticated.component';
 import { SplashScreenComponent } from './modules/unAuthenticated/splash-screen/splash-screen.component';
-import { ResetPasswordComponent } from './modules/unAuthenticated/reset-password/reset-password.component';
+import { ResetPasswordComponent } from './modules/unAuthenticated/set-password/reset-password.component';
 import { PreRegisterComponent } from './modules/unAuthenticated/register/pre-register.component';
 import { LoginComponent } from './modules/unAuthenticated/login/login.component';
 import { SignUpComponent } from './modules/unAuthenticated/sign-up/sign-up.component';
@@ -39,6 +39,10 @@ export const routes: Routes = [
         path: 'sign-up',
         component: SignUpComponent,
       },
+      // {
+      //   path :'forgot-password',
+      //   component
+      // }
       {
         path: 'confirm',
         component: ConfirmationComponent,
