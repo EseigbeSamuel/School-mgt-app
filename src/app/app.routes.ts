@@ -10,6 +10,7 @@ import { ActivationUiComponent } from './shared/components/activation-ui/activat
 import { AuthenticatedComponent } from './layout/authenticated/authenticated.component';
 import { PorfileSetUpComponent } from './modules/authenticated/porfile-set-up/porfile-set-up.component';
 import { DashBoardComponent } from './modules/authenticated/dash-board/dash-board.component';
+import { NewPasswordComponent } from './modules/unAuthenticated/new-password/new-password.component';
 
 export const routes: Routes = [
   {
@@ -21,6 +22,11 @@ export const routes: Routes = [
         path: 'reset-password',
         component: ResetPasswordComponent,
       },
+      {
+        path: 'new-password',
+        component: NewPasswordComponent,
+      },
+
       {
         path: 'register',
         component: PreRegisterComponent,
