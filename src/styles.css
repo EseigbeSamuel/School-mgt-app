@@ -143,8 +143,3 @@ body {
 ::-webkit-scrollbar-track {
   background-color: transparent;
 }
-
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-}
