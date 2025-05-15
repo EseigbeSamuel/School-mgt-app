@@ -8,6 +8,11 @@
     <p class="text-[#667085] text-lg max-[720px]:hidden">Overview</p>
   </div>
 
+  <div class="flex w-[30%] items-center gap-6">
+    <app-button label="tutor" (btnClick)="tutorView()" />
+    <app-button label="students" (btnClick)="studentView()" />
+  </div>
+
   <div class="side-2-desktop lg:flex hidden items-center gap-6 sm:gap-8">
     <button type="button" class="search">
       <svg
@@ -119,7 +124,10 @@
       </svg>
     </button>
 
-    <button type="button" class="notification relative max-[720px]:block hidden bg-gray-100 p-1.5 rounded-full">
+    <button
+      type="button"
+      class="notification relative max-[720px]:block hidden bg-gray-100 p-1.5 rounded-full"
+    >
       <svg
         width="25"
         height="24"

@@ -38,6 +38,8 @@
 html,
 body {
   height: 100%;
+  font-family: "Plus Jakarta Sans", "Gill Sans", "Gill Sans MT", Calibri,
+    "Trebuchet MS", sans-serif;
 }
 
 .iti__country-list {
