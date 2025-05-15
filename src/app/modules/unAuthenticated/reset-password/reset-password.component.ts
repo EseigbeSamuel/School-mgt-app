@@ -67,4 +67,35 @@ export class ResetPasswordComponent {
     this.router.navigate(['/auth/new-password']);
     console.log('Button clicked!', event);
   }
+
+  isCoundownActive = false;
+  countdown = 120;
+  private countdownInterval: any;
+  get minutes(): number {
+    return Math.floor(this.countdown / 60);
+  }
+  get seconds(): number {
+    return this.countdown % 60;
+  }
+
+  resendCode() {
+    if (this.isCoundownActive) return;
+    this.isCoundownActive = true;
+    this.countdown = 120;
+    console.log('resending verification code');
+
+    this.countdownInterval = setInterval(() => {
+      this.countdown--;
+      if (this.countdown <= 0) {
+        this.stopCountdown();
+      }
+    }, 1000);
+  }
+  private stopCountdown() {
+    clearInterval(this.countdownInterval);
+    this.isCoundownActive = false;
+  }
+  ngOnDestroy() {
+    this.stopCountdown();
+  }
 }
