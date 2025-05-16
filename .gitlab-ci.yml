@@ -20,7 +20,7 @@ stages:
 build_development:
   stage: build_development
   only:
-    - dev
+    - elsoft
   script:
     - npm install --force --legacy-peer-deps
     #    - echo "${BASE_URL}dev"
