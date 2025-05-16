@@ -1,0 +1,70 @@
+# You can choose the appropriate Node.js version
+image: trion/ng-cli
+
+variables:
+  BASE_URL: "flexy-demy"
+
+stages:
+  - install
+  - build_development
+  - build_production
+  - deploy_production
+  - deploy_development
+
+#install:
+#  stage: install
+#  script:
+#    - npm install -g @angular/cli
+#    - npm install --force --legacy-peer-deps
+
+build_development:
+  stage: build_development
+  only:
+    - dev
+  script:
+    - npm install --force --legacy-peer-deps
+    #    - echo "${BASE_URL}dev"
+    #    - ng build --configuration=development --output-path "${BASE_URL}dev" --base-href='./'
+    - docker build --build-arg NODE_ENV=development --build-arg NODE_PORT=4200 -t flexy-demy-ui:development .
+    - |
+      $CONTAINER_NAMES = docker ps --format '{{.Names}}' | ForEach-Object { $_.Trim() }
+      if ($CONTAINER_NAMES -like "*flexy-demy-ui-dev*") {
+        docker stop flexy-demy-ui-dev
+        docker rm flexy-demy-ui-dev
+      }
+    - docker run -d -p 4200:80 --name flexy-demy-ui-dev flexy-demy-ui:development
+
+build_production:
+  stage: build_production
+  only:
+    - main
+  script:
+    - npm cache clean --force
+    - npm install --force --legacy-peer-deps
+    #    - echo "${BASE_URL}"
+    #    - ng build --configuration=production --base-href='./'
+    - docker build --build-arg NODE_ENV=production --build-arg NODE_PORT=80 -t flexy-demy-ui:production .
+    - |
+      $CONTAINER_NAMES = docker ps --format '{{.Names}}' | ForEach-Object { $_.Trim() }
+      if ($CONTAINER_NAMES -like "*flexy-demy-ui-prod*") {
+        docker stop flexy-demy-ui-prod
+        docker rm flexy-demy-ui-prod
+      }
+    - docker run -d -p 80:80 --name flexy-demy-ui-prod flexy-demy-ui:production
+#deploy_production:
+#  stage: deploy_production
+#  only:
+#    - main
+#  script:
+#    - rm -rf "C:/Program Files/Apache Software Foundation/Tomcat 9.0/webapps/${BASE_URL}"
+#    - xcopy /s /y "${BASE_URL}" "C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps\\${BASE_URL}"
+#    - rm -r "C:/Users/Administrator.ORNATE-TECH/AppData/Local/Jenkins/.jenkins/caches/*"
+#
+#deploy_development:
+#  stage: deploy_development
+#  only:
+#    - dev
+#  script:
+#    - rm -rf "C:/Program Files/Apache Software Foundation/Tomcat 9.0/webapps/${BASE_URL}dev"
+#    - xcopy /s /y "${BASE_URL}dev" "C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps\\${BASE_URL}dev"
+#    - rm -r "C:/Users/Administrator.ORNATE-TECH/AppData/Local/Jenkins/.jenkins/caches/*"
