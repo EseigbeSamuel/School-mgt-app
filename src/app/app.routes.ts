@@ -9,7 +9,7 @@ import { ConfirmationComponent } from './modules/unAuthenticated/confirmation/co
 import { ActivationUiComponent } from './shared/components/activation-ui/activation-ui.component';
 import { AuthenticatedComponent } from './layout/authenticated/authenticated.component';
 import { PorfileSetUpComponent } from './modules/authenticated/porfile-set-up/porfile-set-up.component';
-import { DashBoardComponent } from './modules/authenticated/dash-board/dash-board.component';
+import { DashBoardComponent } from './modules/authenticated/tutor/dash-board/dash-board.component';
 import { NewPasswordComponent } from './modules/unAuthenticated/new-password/new-password.component';
 
 export const routes: Routes = [
