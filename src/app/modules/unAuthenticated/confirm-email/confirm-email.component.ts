@@ -12,14 +12,13 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { SharedModule } from '../../../shared/shared.module';
 import { InputUiComponent } from '../../../shared/components/input-ui/input-ui.component';
-import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
-
 @Component({
-  selector: 'app-reset-password',
+  selector: 'app-confirm-email',
   standalone: true,
   imports: [
     CommonModule,
@@ -28,8 +27,8 @@ import { Router } from '@angular/router';
     ReactiveFormsModule,
     MatIconModule,
   ],
-  templateUrl: './reset-password.component.html',
-  styleUrls: ['./reset-password.component.css'],
+  templateUrl: './confirm-email.component.html',
+  styleUrl: './confirm-email.component.css',
   animations: [
     trigger('bounceIn', [
       transition(':enter', [
@@ -45,7 +44,7 @@ import { Router } from '@angular/router';
     ]),
   ],
 })
-export class ResetPasswordComponent {
+export class ConfirmEmailComponent {
   resetForm: FormGroup;
 
   constructor(private fb: FormBuilder, private router: Router) {
