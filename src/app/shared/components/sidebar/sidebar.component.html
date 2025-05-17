@@ -8,9 +8,8 @@
   <div class="side-links mt-2">
     <ul class="flex flex-col gap-3">
       <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70 bg-[#2C2A72] text-white"
+        <div
+          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70 cursor-pointer bg-[#2C2A72] text-white"
         >
           <svg
             width="24"
@@ -36,12 +35,11 @@
           </svg>
 
           <span> Dashboard </span>
-        </a>
+        </div>
       </li>
       <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
+        <div
+          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70 cursor-pointer"
         >
           <svg
             width="24"
@@ -64,12 +62,11 @@
           </svg>
 
           <span>My courses</span>
-        </a>
+        </div>
       </li>
       <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
+        <div
+          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70 cursor-pointer"
         >
           <svg
             width="24"
@@ -85,12 +82,11 @@
           </svg>
 
           <span>Assesments and quizzes</span>
-        </a>
+        </div>
       </li>
       <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
+        <div
+          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70 cursor-pointer"
         >
           <svg
             width="24"
@@ -106,12 +102,11 @@
           </svg>
 
           <span>Mock Exams</span>
-        </a>
+        </div>
       </li>
       <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
+        <div
+          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70 cursor-pointer"
         >
           <svg
             width="24"
@@ -127,12 +122,11 @@
           </svg>
 
           <span>Personal Sessions</span>
-        </a>
+        </div>
       </li>
       <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
+        <div
+          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70 cursor-pointer"
         >
           <svg
             width="24"
@@ -155,12 +149,11 @@
             </defs>
           </svg>
           <span>Achievements</span>
-        </a>
+        </div>
       </li>
       <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
+        <div
+          class="flex gap -3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70 cursor-pointer"
         >
           <svg
             width="24"
@@ -176,12 +169,11 @@
           </svg>
 
           <span>Messages</span>
-        </a>
+        </div>
       </li>
       <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
+        <div
+          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70 cursor-pointer"
         >
           <svg
             width="24"
@@ -204,7 +196,7 @@
           </svg>
 
           <span>Profile</span>
-        </a>
+        </div>
       </li>
     </ul>
   </div>
@@ -212,9 +204,8 @@
   <div *ngIf="userType === 'student'" class="more flex h-full items-end gap-2">
     <ul class="flex flex-col gap-3">
       <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
+        <div
+          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70 cursor-pointer"
         >
           <svg
             width="24"
@@ -242,12 +233,11 @@
           </svg>
 
           <span>Settings</span>
-        </a>
+        </div>
       </li>
       <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
+        <div
+          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70 cursor-pointer"
         >
           <svg
             width="24"
@@ -279,8 +269,8 @@
             />
           </svg>
 
-          <span>Logout</span>
-        </a>
+          <span (click)="logOut()">Logout</span>
+        </div>
       </li>
     </ul>
   </div>
@@ -292,9 +282,8 @@
 >
   <ul class="flex gap-6 justify-evenly items-center">
     <li>
-      <a
-        href="#"
-        class="flex flex-col gap-1.5 justify-center items-center font-medium text-[#2C2A72] active:text-[#2C2A72] text-sm max-[450px]:text-xs text-center"
+      <div
+        class="fle x flex-col gap-1.5 justify-center items-center font-medium text-[#2C2A72] active:text-[#2C2A72] text-sm max-[450px]:text-xs text-center"
       >
         <svg
           width="24"
@@ -319,12 +308,11 @@
           />
         </svg>
         <span>Home</span>
-      </a>
+      </div>
     </li>
     <li>
-      <a
-        href="#"
-        class="flex flex-col gap-1.5 justify-center items-center font-medium text-[#7A8389] active:text-[#2C2A72] text-sm max-[450px]:text-xs text-center"
+      <div
+        class="fl ex flex-col gap-1.5 justify-center items-center font-medium text-[#7A8389] active:text-[#2C2A72] text-sm max-[450px]:text-xs text-center"
       >
         <svg
           width="24"
@@ -346,11 +334,10 @@
           />
         </svg>
         <span>Classes</span>
-      </a>
+      </div>
     </li>
     <li>
-      <a
-        href="#"
+      <div
         class="flex flex-col gap-1.5 justify-center items-center font-medium text-[#7A8389] active:text-[#2C2A72] text-sm max-[450px]:text-xs text-center"
       >
         <svg
@@ -367,11 +354,10 @@
         </svg>
 
         <span>Assesments</span>
-      </a>
+      </div>
     </li>
     <li>
-      <a
-        href="#"
+      <div
         class="flex flex-col gap-1.5 justify-center items-center font-medium text-[#7A8389] active:text-[#2C2A72] text-sm max-[450px]:text-xs text-center"
       >
         <svg
@@ -388,11 +374,10 @@
         </svg>
 
         <span>Messages</span>
-      </a>
+      </div>
     </li>
     <li>
-      <a
-        href="#"
+      <div
         class="flex flex-col gap-1.5 justify-center items-center font-medium text-[#7A8389] active:text-[#2C2A72] text-sm max-[450px]:text-xs text-center"
       >
         <svg
@@ -416,7 +401,7 @@
         </svg>
 
         <span>Profile</span>
-      </a>
+      </div>
     </li>
   </ul>
 </nav>
@@ -433,9 +418,8 @@
   <div class="side-links mt-2">
     <ul class="flex flex-col gap-3">
       <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70 bg-[#2C2A72] text-white"
+        <div
+          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70 cursor-pointer bg-[#2C2A72] text-white"
         >
           <svg
             width="24"
@@ -461,12 +445,11 @@
           </svg>
 
           <span> Home </span>
-        </a>
+        </div>
       </li>
       <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
+        <div
+          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70 cursor-pointer"
         >
           <svg
             width="24"
@@ -489,12 +472,11 @@
           </svg>
 
           <span>My session</span>
-        </a>
+        </div>
       </li>
       <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
+        <div
+          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70 cursor-pointer"
         >
           <svg
             width="24"
@@ -514,12 +496,11 @@
           </svg>
 
           <span>My subjets</span>
-        </a>
+        </div>
       </li>
       <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
+        <div
+          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70 cursor-pointer"
         >
           <svg
             width="24"
@@ -545,12 +526,11 @@
           </svg>
 
           <span>Students</span>
-        </a>
+        </div>
       </li>
       <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
+        <div
+          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70 cursor-pointer"
         >
           <svg
             width="24"
@@ -610,12 +590,11 @@
           </svg>
 
           <span>Resources</span>
-        </a>
+        </div>
       </li>
       <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
+        <div
+          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70 cursor-pointer"
         >
           <svg
             width="24"
@@ -634,12 +613,11 @@
           </svg>
 
           <span>One on one</span>
-        </a>
+        </div>
       </li>
       <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
+        <div
+          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70 cursor-pointer"
         >
           <svg
             width="24"
@@ -649,21 +627,17 @@
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M21 9V6.4C21 5.075 20.12 4 19.036 4H2.964C1.879 4 1 5.075 1 6.4V17.6C1 18.925 1.88 20 2.964 20H19.036C20.121 20 21 18.925 21 17.6V15M20 12H20.01M16.6 9H21.4C21.8243 9 22.2313 9.16857 22.5314 9.46863C22.8314 9.76869 23 10.1757 23 10.6V13.4C23 13.8243 22.8314 14.2313 22.5314 14.5314C22.2313 14.8314 21.8243 15 21.4 15H16.6C16.1757 15 15.7687 14.8314 15.4686 14.5314C15.1686 14.2313 15 13.8243 15 13.4V10.6C15 10.1757 15.1686 9.76869 15.4686 9.46863C15.7687 9.16857 16.1757 9 16.6 9Z"
-              stroke="#667085"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              d="M2.76923 3.69238C1.24062 3.69238 0 4.933 0 6.46161V17.5385C0 19.0672 1.24062 20.3078 2.76923 20.3078H21.2308C22.7594 20.3078 24 19.0672 24 17.5385V6.46161C24 4.933 22.7594 3.69238 21.2308 3.69238H2.76923ZM2.76923 5.53854H21.2308C21.7394 5.53854 22.1538 5.953 22.1538 6.46161V6.92315L12 12.4044L1.84615 6.92315V6.46161C1.84615 5.953 2.26062 5.53854 2.76923 5.53854ZM1.84615 7.18254L7.87477 11.8847L1.96154 17.9428L9.17354 12.8078L12 14.6253L14.8274 12.8078L22.0385 17.9428L16.1252 11.8847L22.1538 7.18254V17.5385C22.1487 17.6807 22.1091 17.8194 22.0385 17.9428C21.8862 18.2428 21.5898 18.4616 21.2308 18.4616H2.76923C2.41015 18.4616 2.11385 18.2438 1.96154 17.9428C1.891 17.8197 1.85141 17.6804 1.84615 17.5385V7.18254Z"
+              fill="#667085"
             />
           </svg>
 
           <span>Earnings</span>
-        </a>
+        </div>
       </li>
       <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
+        <div
+          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70 cursor-pointer"
         >
           <svg
             width="24"
@@ -682,7 +656,7 @@
           </svg>
 
           <span>Messaging</span>
-        </a>
+        </div>
       </li>
     </ul>
   </div>
@@ -690,9 +664,8 @@
   <div *ngIf="userType === 'tutor'" class="more flex h-full items-end gap-2">
     <ul class="flex flex-col gap-3">
       <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
+        <div
+          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70 cursor-pointer"
         >
           <svg
             width="24"
@@ -720,12 +693,11 @@
           </svg>
 
           <span>Settings</span>
-        </a>
+        </div>
       </li>
       <li>
-        <a
-          href="#"
-          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70"
+        <div
+          class="flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70 cursor-pointer"
         >
           <svg
             width="24"
@@ -757,8 +729,8 @@
             />
           </svg>
 
-          <span>Logout</span>
-        </a>
+          <span (click)="logOut()">Logout</span>
+        </div>
       </li>
     </ul>
   </div>
@@ -770,9 +742,8 @@
 >
   <ul class="flex gap-6 justify-evenly items-center">
     <li>
-      <a
-        href="#"
-        class="flex flex-col gap-1.5 justify-center items-center font-medium text-[#2C2A72] active:text-[#2C2A72] text-sm max-[450px]:text-xs text-center"
+      <div
+        class="fle x flex-col gap-1.5 justify-center items-center font-medium text-[#2C2A72] active:text-[#2C2A72] text-sm max-[450px]:text-xs text-center"
       >
         <svg
           width="24"
@@ -797,12 +768,11 @@
           />
         </svg>
         <span>Home</span>
-      </a>
+      </div>
     </li>
     <li>
-      <a
-        href="#"
-        class="flex flex-col gap-1.5 justify-center items-center font-medium text-[#7A8389] active:text-[#2C2A72] text-sm max-[450px]:text-xs text-center"
+      <div
+        class="fl ex flex-col gap-1.5 justify-center items-center font-medium text-[#7A8389] active:text-[#2C2A72] text-sm max-[450px]:text-xs text-center"
       >
         <svg
           width="24"
@@ -824,11 +794,10 @@
           />
         </svg>
         <span>Classes</span>
-      </a>
+      </div>
     </li>
     <li>
-      <a
-        href="#"
+      <div
         class="flex flex-col gap-1.5 justify-center items-center font-medium text-[#7A8389] active:text-[#2C2A72] text-sm max-[450px]:text-xs text-center"
       >
         <svg
@@ -845,11 +814,10 @@
         </svg>
 
         <span>Assesments</span>
-      </a>
+      </div>
     </li>
     <li>
-      <a
-        href="#"
+      <div
         class="flex flex-col gap-1.5 justify-center items-center font-medium text-[#7A8389] active:text-[#2C2A72] text-sm max-[450px]:text-xs text-center"
       >
         <svg
@@ -866,11 +834,10 @@
         </svg>
 
         <span>Messages</span>
-      </a>
+      </div>
     </li>
     <li>
-      <a
-        href="#"
+      <div
         class="flex flex-col gap-1.5 justify-center items-center font-medium text-[#7A8389] active:text-[#2C2A72] text-sm max-[450px]:text-xs text-center"
       >
         <svg
@@ -894,7 +861,7 @@
         </svg>
 
         <span>Profile</span>
-      </a>
+      </div>
     </li>
   </ul>
 </nav>
