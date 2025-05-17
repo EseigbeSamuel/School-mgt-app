@@ -1,4 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import {
   trigger,
   transition,
@@ -6,18 +13,10 @@ import {
   animate,
   keyframes,
 } from '@angular/animations';
-import {
-  FormBuilder,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
 import { SharedModule } from '../../../shared/shared.module';
 import { InputUiComponent } from '../../../shared/components/input-ui/input-ui.component';
-import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
-// test
 @Component({
   selector: 'app-reset-password',
   standalone: true,
@@ -28,8 +27,8 @@ import { Router } from '@angular/router';
     ReactiveFormsModule,
     MatIconModule,
   ],
-  templateUrl: './new-password.component.html',
-  styleUrls: ['./new-password.component.css'],
+  templateUrl: './reset-password.component.html',
+  styleUrl: './reset-password.component.css',
   animations: [
     trigger('bounceIn', [
       transition(':enter', [
@@ -45,7 +44,7 @@ import { Router } from '@angular/router';
     ]),
   ],
 })
-export class NewPasswordComponent {
+export class ResetPasswordComponent {
   resetForm: FormGroup;
 
   constructor(private fb: FormBuilder, private router: Router) {
@@ -66,8 +65,7 @@ export class NewPasswordComponent {
   get isDisabled(): boolean {
     return (
       this.resetForm.invalid ||
-      this.password !== this.resetForm.get('confirmPassword')?.value ||
-      this.verificationCode === null
+      this.password !== this.resetForm.get('confirmPassword')?.value
     );
   }
 

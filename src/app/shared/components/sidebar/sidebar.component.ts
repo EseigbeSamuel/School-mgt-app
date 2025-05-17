@@ -23,7 +23,14 @@ export class SidebarComponent {
 
   userType: string = 'student';
 
-  constructor(private userTypeService: UserTypeService) {}
+  constructor(
+    private userTypeService: UserTypeService,
+    private router: Router
+  ) {}
+
+  logOut() {
+    this.router.navigate(['auth/log-in']);
+  }
 
   ngOnInit() {
     this.userTypeService.userType$.subscribe((type) => {

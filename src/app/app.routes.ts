@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { UnAthenticatedComponent } from './layout/un-athenticated/un-athenticated.component';
 import { SplashScreenComponent } from './modules/unAuthenticated/splash-screen/splash-screen.component';
-import { ResetPasswordComponent } from './modules/unAuthenticated/set-password/reset-password.component';
+
 import { PreRegisterComponent } from './modules/unAuthenticated/register/pre-register.component';
 import { LoginComponent } from './modules/unAuthenticated/login/login.component';
 import { SignUpComponent } from './modules/unAuthenticated/sign-up/sign-up.component';
@@ -9,8 +9,13 @@ import { ConfirmationComponent } from './modules/unAuthenticated/confirmation/co
 import { ActivationUiComponent } from './shared/components/activation-ui/activation-ui.component';
 import { AuthenticatedComponent } from './layout/authenticated/authenticated.component';
 import { PorfileSetUpComponent } from './modules/authenticated/porfile-set-up/porfile-set-up.component';
-import { DashBoardComponent } from './modules/authenticated/dash-board/dash-board.component';
+
 import { NewPasswordComponent } from './modules/unAuthenticated/new-password/new-password.component';
+
+import { ConfirmEmailComponent } from './modules/unAuthenticated/confirm-email/confirm-email.component';
+import { ResetPasswordComponent } from './modules/unAuthenticated/reset-password/reset-password.component';
+
+import { DashboardEntryComponent } from './modules/authenticated/dashboard-entry.component';
 
 export const routes: Routes = [
   {
@@ -20,7 +25,7 @@ export const routes: Routes = [
       { path: '', component: SplashScreenComponent },
       {
         path: 'reset-password',
-        component: ResetPasswordComponent,
+        component: ConfirmEmailComponent,
       },
       {
         path: 'new-password',
@@ -67,9 +72,20 @@ export const routes: Routes = [
     path: '',
     component: AuthenticatedComponent,
     children: [
+      { path: '', component: DashboardEntryComponent },
       {
-        path: '',
-        component: DashBoardComponent,
+        path: 'student',
+        loadChildren: () =>
+          import('./modules/authenticated/student/routes').then(
+            (m) => m.studentRoutes
+          ),
+      },
+      {
+        path: 'tutor',
+        loadChildren: () =>
+          import('./modules/authenticated/tutor/toutes').then(
+            (m) => m.tutorRoutes
+          ),
       },
     ],
   },
