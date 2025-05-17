@@ -5,6 +5,44 @@
     <div
       class="content-body size-full overflow-scroll max-[720px]:mb-[var(--bottom-navbar-height)]"
     >
+      <div class="fixed right-5 top-1/2 -translate-y-1/2 z-50">
+        <button
+          type="button"
+          class="mb-2 px-2 py-1 rounded bg-black text-white text-xs"
+          (click)="toggleSwitcher()"
+        >
+          {{ showSwitcher ? "Close" : "Switch" }}
+        </button>
+
+        @if (showSwitcher) {
+        <div
+          class="p-3 rounded-md shadow bg-white/90 backdrop-blur-sm space-y-2 text-sm"
+        >
+          <button
+            type="button"
+            class="block w-full px-3 py-1 text-left rounded hover:bg-gray-100"
+            (click)="tutorView()"
+          >
+            Tutor
+          </button>
+          <button
+            type="button"
+            class="block w-full px-3 py-1 text-left rounded hover:bg-gray-100"
+            (click)="studentView()"
+          >
+            Student
+          </button>
+          <button
+            type="button"
+            class="block w-full px-3 py-1 text-left rounded hover:bg-gray-100"
+            (click)="adminView()"
+          >
+            Admin
+          </button>
+        </div>
+        }
+      </div>
+
       <router-outlet />
     </div>
   </div>
