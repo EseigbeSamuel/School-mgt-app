@@ -1,14 +1,12 @@
-import { Component } from '@angular/core';
+// sidebar.component.ts
+import { Component, OnInit } from '@angular/core';
 import { SharedModule } from '../../shared.module';
-import {
-  SIDEBAR_LINKS_DASHBOARD_TOP,
-  SIDEBAR_LINKS_DASHBOARD_BUTTON,
-  SIDEBAR_LINKS_MOBILE,
-  SidebarLink,
-} from './data';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { UserTypeService } from '../../../services/user-type.service';
+import { navItems as NAV_LINKS } from './data';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { SvgIcons } from '../../../utils/icons';
 
 @Component({
   selector: 'app-sidebar',
@@ -16,16 +14,14 @@ import { UserTypeService } from '../../../services/user-type.service';
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css',
 })
-export class SidebarComponent {
-  sidebarLinksTop: SidebarLink[] = SIDEBAR_LINKS_DASHBOARD_TOP;
-  sidebarLinksButtom: SidebarLink[] = SIDEBAR_LINKS_DASHBOARD_BUTTON;
-  sidebarLinksMobile: SidebarLink[] = SIDEBAR_LINKS_MOBILE;
-
+export class SidebarComponent implements OnInit {
+  navItems: Array<any> = [];
   userType: string = 'student';
 
   constructor(
     private userTypeService: UserTypeService,
-    private router: Router
+    private router: Router,
+    private sanitizer: DomSanitizer
   ) {}
 
   logOut() {
@@ -33,6 +29,12 @@ export class SidebarComponent {
   }
 
   ngOnInit() {
+    // Initialize navItems here after DI is complete
+    this.navItems = NAV_LINKS.map((link) => ({
+      ...link,
+      safeSvg: this.sanitizer.bypassSecurityTrustHtml(SvgIcons[link.icon]),
+    }));
+
     this.userTypeService.userType$.subscribe((type) => {
       this.userType = type;
     });

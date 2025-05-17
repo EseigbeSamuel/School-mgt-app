@@ -21,7 +21,7 @@
   --table-header-color: #f0f1f3;
   --table-header-font-size: 14px;
   --dashboard-background: #e9e9e9;
-  --sidebar-width: 18rem;
+  --sidebar-width: 18.5rem;
   --navbar-height: 6rem;
   --bottom-navbar-height: 5.5rem;
 
@@ -129,6 +129,7 @@ body {
 
 ::-webkit-scrollbar {
   width: 5px;
+  height: 5px;
   border-radius: 3rem;
 
   background-color: transparent;
@@ -142,4 +143,21 @@ body {
 }
 ::-webkit-scrollbar-track {
   background-color: transparent;
+}
+
+/* // styles */
+
+a.nav-link,
+button.nav-link {
+  color: #161c2d;
+}
+
+a.nav-link .icon,
+button.nav-link .icon {
+  color: #667085;
+}
+
+a.nav-link.active .icon,
+button.nav-link.active .icon {
+  color: white;
 }
