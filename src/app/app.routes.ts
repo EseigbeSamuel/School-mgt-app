@@ -31,7 +31,7 @@ import { EarningsComponent } from './modules/authenticated/tutor/earnings/earnin
 import { MessagingComponent } from './modules/authenticated/tutor/messaging/messaging.component';
 import { MessagesComponent } from './modules/authenticated/student/messages/messages.component';
 import { ProfileComponent } from './modules/authenticated/student/profile/profile.component';
-// edit
+
 export const routes: Routes = [
   {
     path: 'auth',
