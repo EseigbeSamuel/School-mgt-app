@@ -14,9 +14,24 @@ import { NewPasswordComponent } from './modules/unAuthenticated/new-password/new
 
 import { ConfirmEmailComponent } from './modules/unAuthenticated/confirm-email/confirm-email.component';
 import { ResetPasswordComponent } from './modules/unAuthenticated/reset-password/reset-password.component';
-
 import { DashboardEntryComponent } from './modules/authenticated/dashboard-entry.component';
-
+import { RouteEntryComponent } from './modules/authenticated/route-entry/route-entry.component';
+import { StudentDashboardComponent } from './modules/authenticated/student/dashboard/dashboard.component';
+import { MyCoursesComponent } from './modules/authenticated/student/my-courses/my-courses.component';
+import { TutorDashboardComponent } from './modules/authenticated/tutor/dashboard/dashboard.component';
+import { MySessionsComponent } from './modules/authenticated/tutor/my-sessions/my-sessions.component';
+import { AssessmentAndQuizzesComponent } from './modules/authenticated/student/assessment-and-quizzes/assessment-and-quizzes.component';
+import { MockExamsComponent } from './modules/authenticated/student/mock-exams/mock-exams.component';
+import { StudentsComponent } from './modules/authenticated/tutor/students/students.component';
+import { PersonalSessionsComponent } from './modules/authenticated/student/personal-sessions/personal-sessions.component';
+import { AchievementsComponent } from './modules/authenticated/student/achievements/achievements.component';
+import { ResourcesComponent } from './modules/authenticated/tutor/resources/resources.component';
+import { OneOnOneComponent } from './modules/authenticated/tutor/one-on-one/one-on-one.component';
+import { EarningsComponent } from './modules/authenticated/tutor/earnings/earnings.component';
+import { MessagingComponent } from './modules/authenticated/tutor/messaging/messaging.component';
+import { MessagesComponent } from './modules/authenticated/student/messages/messages.component';
+import { ProfileComponent } from './modules/authenticated/student/profile/profile.component';
+// test
 export const routes: Routes = [
   {
     path: 'auth',
@@ -44,10 +59,7 @@ export const routes: Routes = [
         path: 'sign-up',
         component: SignUpComponent,
       },
-      // {
-      //   path :'forgot-password',
-      //   component
-      // }
+
       {
         path: 'confirm',
         component: ConfirmationComponent,
@@ -75,17 +87,79 @@ export const routes: Routes = [
       { path: '', component: DashboardEntryComponent },
       {
         path: 'student',
-        loadChildren: () =>
-          import('./modules/authenticated/student/routes').then(
-            (m) => m.studentRoutes
-          ),
+        component: RouteEntryComponent,
+        children: [
+          {
+            path: '',
+            component: StudentDashboardComponent,
+          },
+          {
+            path: 'courses',
+            component: MyCoursesComponent,
+          },
+          {
+            path: 'assessments',
+            component: AssessmentAndQuizzesComponent,
+          },
+          {
+            path: 'mock-exams',
+            component: MockExamsComponent,
+          },
+          {
+            path: 'personal-sessions',
+            component: PersonalSessionsComponent,
+          },
+          {
+            path: 'achievements',
+            component: AchievementsComponent,
+          },
+          {
+            path: 'messages',
+            component: MessagesComponent,
+          },
+          {
+            path: 'profile',
+            component: ProfileComponent,
+          },
+        ],
       },
       {
         path: 'tutor',
-        loadChildren: () =>
-          import('./modules/authenticated/tutor/toutes').then(
-            (m) => m.tutorRoutes
-          ),
+        component: RouteEntryComponent,
+        children: [
+          {
+            path: '',
+            component: TutorDashboardComponent,
+          },
+          {
+            path: 'my-sessions',
+            component: MySessionsComponent,
+          },
+          {
+            path: 'my-courses',
+            component: MyCoursesComponent,
+          },
+          {
+            path: 'students',
+            component: StudentsComponent,
+          },
+          {
+            path: 'resources',
+            component: ResourcesComponent,
+          },
+          {
+            path: 'one-on-one',
+            component: OneOnOneComponent,
+          },
+          {
+            path: 'earnings',
+            component: EarningsComponent,
+          },
+          {
+            path: 'messaging',
+            component: MessagingComponent,
+          },
+        ],
       },
     ],
   },
