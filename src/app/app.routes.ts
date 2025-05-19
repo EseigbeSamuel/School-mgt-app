@@ -33,6 +33,11 @@ import { MessagesComponent } from './modules/authenticated/student/messages/mess
 import { ProfileComponent } from './modules/authenticated/student/profile/profile.component';
 // test
 export const routes: Routes = [
+  // {
+  //   path: '',
+  //   redirectTo: '/auth',
+  //   pathMatch: 'full',
+  // },
   {
     path: 'auth',
     component: UnAthenticatedComponent,
@@ -46,7 +51,6 @@ export const routes: Routes = [
         path: 'new-password',
         component: NewPasswordComponent,
       },
-
       {
         path: 'register',
         component: PreRegisterComponent,
@@ -59,7 +63,6 @@ export const routes: Routes = [
         path: 'sign-up',
         component: SignUpComponent,
       },
-
       {
         path: 'confirm',
         component: ConfirmationComponent,
@@ -89,76 +92,28 @@ export const routes: Routes = [
         path: 'student',
         component: RouteEntryComponent,
         children: [
-          {
-            path: '',
-            component: StudentDashboardComponent,
-          },
-          {
-            path: 'courses',
-            component: MyCoursesComponent,
-          },
-          {
-            path: 'assessments',
-            component: AssessmentAndQuizzesComponent,
-          },
-          {
-            path: 'mock-exams',
-            component: MockExamsComponent,
-          },
-          {
-            path: 'personal-sessions',
-            component: PersonalSessionsComponent,
-          },
-          {
-            path: 'achievements',
-            component: AchievementsComponent,
-          },
-          {
-            path: 'messages',
-            component: MessagesComponent,
-          },
-          {
-            path: 'profile',
-            component: ProfileComponent,
-          },
+          { path: '', component: StudentDashboardComponent },
+          { path: 'courses', component: MyCoursesComponent },
+          { path: 'assessments', component: AssessmentAndQuizzesComponent },
+          { path: 'mock-exams', component: MockExamsComponent },
+          { path: 'personal-sessions', component: PersonalSessionsComponent },
+          { path: 'achievements', component: AchievementsComponent },
+          { path: 'messages', component: MessagesComponent },
+          { path: 'profile', component: ProfileComponent },
         ],
       },
       {
         path: 'tutor',
         component: RouteEntryComponent,
         children: [
-          {
-            path: '',
-            component: TutorDashboardComponent,
-          },
-          {
-            path: 'my-sessions',
-            component: MySessionsComponent,
-          },
-          {
-            path: 'my-courses',
-            component: MyCoursesComponent,
-          },
-          {
-            path: 'students',
-            component: StudentsComponent,
-          },
-          {
-            path: 'resources',
-            component: ResourcesComponent,
-          },
-          {
-            path: 'one-on-one',
-            component: OneOnOneComponent,
-          },
-          {
-            path: 'earnings',
-            component: EarningsComponent,
-          },
-          {
-            path: 'messaging',
-            component: MessagingComponent,
-          },
+          { path: '', component: TutorDashboardComponent },
+          { path: 'my-sessions', component: MySessionsComponent },
+          { path: 'my-courses', component: MyCoursesComponent },
+          { path: 'students', component: StudentsComponent },
+          { path: 'resources', component: ResourcesComponent },
+          { path: 'one-on-one', component: OneOnOneComponent },
+          { path: 'earnings', component: EarningsComponent },
+          { path: 'messaging', component: MessagingComponent },
         ],
       },
     ],

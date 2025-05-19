@@ -6,6 +6,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { IntlPhoneInputComponent } from './components/intl-phone-input/intl-phone-input.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DropSelectComponent } from './components/drop-select/drop-select.component';
+import { CardUiDashboaredComponent } from './components/card-ui-dashboared/card-ui-dashboared.component';
 
 @NgModule({
   declarations: [ButtonComponent, DropSelectComponent],
