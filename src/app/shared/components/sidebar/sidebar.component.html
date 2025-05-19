@@ -11,7 +11,12 @@
           <a
             [routerLink]="item.link"
             routerLinkActive="bg-[#2C2A72] text-white active"
-            [routerLinkActiveOptions]="{ exact: true }"
+            [routerLinkActiveOptions]="{
+              paths: 'exact',
+              fragment: 'exact',
+              matrixParams: 'exact',
+              queryParams: 'ignored'
+            }"
             class="nav-link flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70 cursor-pointer"
           >
             <span
@@ -144,7 +149,12 @@
         <a
           [routerLink]="item.link"
           routerLinkActive="text-[#2C2A72] active"
-          [routerLinkActiveOptions]="{ exact: true }"
+          [routerLinkActiveOptions]="{
+            paths: 'exact',
+            fragment: 'exact',
+            matrixParams: 'exact',
+            queryParams: 'ignored'
+          }"
           class="flex flex-col gap-1.5 justify-center items-center font-medium text-[#2C2A72] active:text-[#2C2A72] text-sm max-[450px]:text-xs text-center"
         >
           <span
