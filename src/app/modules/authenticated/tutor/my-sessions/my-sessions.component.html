@@ -1,1 +1,15 @@
-<p>my-sessions works!</p>
+<section class="flex flex-col gap-4">
+  <section class="flex justify-between">
+    <div class="flex gap-2">
+      <app-drop-select placeholder="sort-by-class" />
+      <app-input-ui placeholder="search by name" />
+    </div>
+    <div>
+      <app-button label="sessions" size="sm" />
+    </div>
+  </section>
+
+  <div>
+    <app-session-table [columns]="columns" [data]="data" />
+  </div>
+</section>

@@ -1,1 +1,16 @@
-<p>students works!</p>
+<div class="flex flex-col gap-3">
+  <section class="flex w-full justify-end">
+    <div class="flex justify-end w-[200px]">
+      <app-drop-select placeholder="sort-by-class" />
+    </div>
+  </section>
+  <section class="flex justify-between w-full border-[1px] p-4">
+    <app-students-card
+      *ngFor="let student of students"
+      [name]="student.name"
+      [subjects]="student.subject"
+      [type]="student.type"
+      [image]="student.image"
+    />
+  </section>
+</div>
