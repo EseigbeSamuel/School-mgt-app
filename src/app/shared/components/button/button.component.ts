@@ -66,11 +66,11 @@ export class ButtonComponent {
     }
 
     return [
+      this.class,
       baseClasses,
       variantClasses[this.variant],
       sizeClasses[this.size],
       ...stateClasses,
-      this.class,
     ]
       .filter(Boolean)
       .join(' ');
