@@ -25,11 +25,11 @@ export class ButtonComponent {
   @Input() leftIcon: string = '';
   @Input() rightIcon: string = '';
   @Input() isLoading: boolean = false;
+  @Input() class: string = '';
   @Output() btnClick = new EventEmitter<Event>();
 
   get classes(): string {
-    let baseClasses =
-      'flex items-center justify-center font-medium rounded transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 duration-300 hover:scale-102 mx-auto';
+    let baseClasses = `flex items-center justify-center font-medium rounded transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 duration-300 hover:scale-102 mx-auto`;
 
     const variantClasses = {
       primary: 'bg-button text-white focus:ring-button w-full mx-auto ',
@@ -46,8 +46,8 @@ export class ButtonComponent {
     };
 
     const sizeClasses = {
-      sm: 'py-2 px-4 text-sm w-full md:text-[22px] text-[18px]',
-      md: 'py-2 px-4 text-base w-full font-[600] md:text-[22px] text-[18px] ',
+      sm: 'py-2 px-4 text-sm w-full',
+      md: 'py-2 px-4 text-base w-full font-[600]',
       lg: 'py-3 px-6 text-lg',
     };
 
@@ -70,6 +70,7 @@ export class ButtonComponent {
       variantClasses[this.variant],
       sizeClasses[this.size],
       ...stateClasses,
+      this.class,
     ]
       .filter(Boolean)
       .join(' ');
