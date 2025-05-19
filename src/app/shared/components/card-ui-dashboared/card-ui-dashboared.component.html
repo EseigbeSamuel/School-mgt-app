@@ -1,3 +1,33 @@
 <div class="flex gap-3 w-full">
   <!-- left -->
+  <div class="bg-white p-4 rounded-lg shadow-sm w-full border border-[#E9E9E9]">
+    <div class="flex items-center justify-between">
+      <p class="text-sm text-[#667085]">{{ title }}</p>
+      <div
+        [innerHTML]="icon"
+        [ngClass]="icon"
+        class="rounded-md bg-gray-100"
+      ></div>
+    </div>
+    <h2 class="text-2xl font-semibold mt-2 text-textColor">
+      {{ formattedValue }}
+    </h2>
+    <p class="text-sm text-green-500 mt-1">
+      <span
+        ><svg
+          width="18"
+          height="11"
+          viewBox="0 0 18 11"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12.3334 0.5L14.2417 2.40833L10.1751 6.475L6.84175 3.14167L0.666748 9.325L1.84175 10.5L6.84175 5.5L10.1751 8.83333L15.4251 3.59167L17.3334 5.5V0.5H12.3334Z"
+            fill="#00B69B"
+          />
+        </svg>
+      </span>
+      {{ growthRate }}% {{ timeRange }}
+    </p>
+  </div>
 </div>

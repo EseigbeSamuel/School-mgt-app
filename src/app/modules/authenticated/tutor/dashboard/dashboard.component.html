@@ -1,10 +1,19 @@
 <div class="flex gap-3">
   <!-- left -->
-  <div class="border-red-500 border w-[70%]">
+  <div class="w-full md:w-[70%]">
     <!-- card section  -->
-    <app-card-ui-dashboared />
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <app-card-ui-dashboared
+        *ngFor="let stat of data"
+        [title]="stat.title"
+        [value]="stat.value"
+        [icon]="stat.safeSvg"
+        [growthRate]="stat.growthRate"
+        [type]="stat.type"
+      />
+    </div>
   </div>
 
   <!-- right -->
-  <div class="border border-blue-500 w-[30%]"></div>
+  <div class="border border-blue-500 w-[30%] hidden md:block"></div>
 </div>

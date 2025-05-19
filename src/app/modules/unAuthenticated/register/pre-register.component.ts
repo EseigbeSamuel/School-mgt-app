@@ -23,6 +23,11 @@ export class PreRegisterComponent {
     this.router.navigate(['auth/sign-up']);
   }
   login() {
+    if (this.activeTab === 'tutor') {
+      localStorage.setItem('userType', 'tutor');
+    } else {
+      localStorage.setItem('userType', 'student');
+    }
     this.router.navigate(['auth/log-in']);
   }
 

@@ -29,7 +29,6 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Initialize navItems here after DI is complete
     this.navItems = NAV_LINKS.map((link) => ({
       ...link,
       safeSvg: this.sanitizer.bypassSecurityTrustHtml(SvgIcons[link.icon]),
