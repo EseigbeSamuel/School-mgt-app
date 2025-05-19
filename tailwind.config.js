@@ -37,6 +37,8 @@ module.exports = {
         textColor: "var(--text-color)",
         textFade: "var(--text-fade)",
         tableHeader: "var(--table-header-color)",
+        accent: "var(--color-accent)",
+        "accent-2": "var(--color-accent-2)",
       },
       fontSize: {
         sidebar: "var(--side-bar-font-size)",
