@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { SharedModule } from '../../../../shared/shared.module';
-import { CurrencyFormatPipe } from '../../../../pipe/currency-format.pipe';
+
 import { DomSanitizer } from '@angular/platform-browser';
 import { stats as NAV_LINKS } from './data';
 import { CommonModule } from '@angular/common';
 import { DasboardCardSvgIcons } from '../../../../utils/icons';
+import { CardUiDashboaredComponent } from '../../../../shared/components/card-ui-dashboared/card-ui-dashboared.component';
 @Component({
   selector: 'app-dashboard',
-  imports: [SharedModule, CurrencyFormatPipe],
+  imports: [SharedModule, CardUiDashboaredComponent, CommonModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })

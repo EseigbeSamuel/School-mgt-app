@@ -15,6 +15,9 @@ export class CardUiDashboaredComponent {
   @Input() growthRate!: number;
   @Input() timeRange: string = 'in 24hours';
   @Input() type: 'currency' | 'number' = 'number';
+  @Input() count = 0;
+  @Input() subjects: string[] = [];
+  @Input() variant: 'student' | 'tutor' = 'tutor';
 
   get formattedValue(): string {
     return this.type === 'currency'
@@ -23,5 +26,19 @@ export class CardUiDashboaredComponent {
           currency: 'NGN',
         }).format(this.value)
       : this.value.toString();
+  }
+  subjectColors: Record<string, string> = {
+    Math: 'bg-[#A855F71A] text-[#A855F7]',
+    Bio: 'bg-[#5912391A] text-[#591239]',
+    Che: 'bg-[#007AFF1A] text-[#007AFF]',
+    Phy: 'bg-[#EAB3081A] text-[#F79E1B]',
+    Geography: 'bg-[#504E991A] text-[#504E99]',
+  };
+
+  subjectColor(subject: string): string {
+    const base = 'text-xs font-medium px-2 py-1 rounded-full';
+    return `${base} ${
+      this.subjectColors[subject] || 'bg-gray-100 text-gray-700'
+    }`;
   }
 }

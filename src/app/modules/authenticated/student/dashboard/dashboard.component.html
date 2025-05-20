@@ -1,11 +1,28 @@
-<div class="flex gap-3">
-  <!-- left -->
-  <div class="border-blue-500 border w-full md:w-[70%]">
-    <!-- card section  -->
-
-    <app-card-ui-dashboared />
+<div class="flex gap-3 flex-col">
+  <div
+    class="grid gap-5 grid-cols-2 md:grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))]"
+  >
+    <app-card-ui-dashboared
+      *ngFor="let card of data"
+      [title]="card.title"
+      [count]="card.count"
+      [icon]="card.safeSvg"
+      [subjects]="card.subjects"
+      [variant]="'student'"
+    />
   </div>
 
-  <!-- right -->
-  <div class="border border-red-500 w-[30%] hidden md:block"></div>
+  <div class="flex gap-3">
+    <div
+      class="r w-full md:w-[70%] border border-[#E9E9E9] rounded-lg h-[320px] flex justify-center items-center"
+    >
+      <p>Graph</p>
+    </div>
+
+    <div
+      class="border w-[30%] hidden border-[#E9E9E9] rounded-sm h-[320px] md:flex justify-center items-center"
+    >
+      <p>Graph</p>
+    </div>
+  </div>
 </div>
