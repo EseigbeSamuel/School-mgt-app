@@ -4,7 +4,13 @@ interface Stats {
   icon: string;
   subjects: string[];
 }
-
+interface ExamBoard {
+  logo: string;
+  name: string;
+  level: string;
+  school: string;
+  subjects: string[];
+}
 export const statCards: Stats[] = [
   {
     title: 'Class Completed',
@@ -29,5 +35,52 @@ export const statCards: Stats[] = [
     count: 3,
     icon: 'unfineshed',
     subjects: ['Math', 'Bio', 'Che'],
+  },
+];
+export const examBoards: ExamBoard[] = [
+  {
+    logo: 'assets/images/jamb.png',
+    name: 'JAMB',
+    level: 'Higher Learning',
+    school: 'Sciences',
+    subjects: [
+      'Use Of English',
+      'Physics',
+      'Chemistry',
+      'Mathematics',
+      'Biology',
+      'Agriculture',
+      'Literature',
+    ],
+  },
+  {
+    logo: 'assets/images/waec.png',
+    name: 'WAEC',
+    level: 'Secondary Level',
+    school: 'Sciences',
+    subjects: [
+      'Use Of English',
+      'Physics',
+      'Chemistry',
+      'Mathematics',
+      'Biology',
+      'Agriculture',
+      'Literature',
+    ],
+  },
+  {
+    logo: 'assets/images/neco.png',
+    name: 'NECO',
+    level: 'Secondary Level',
+    school: 'Sciences',
+    subjects: [
+      'Use Of English',
+      'Physics',
+      'Chemistry',
+      'Mathematics',
+      'Biology',
+      'Agriculture',
+      'Literature',
+    ],
   },
 ];

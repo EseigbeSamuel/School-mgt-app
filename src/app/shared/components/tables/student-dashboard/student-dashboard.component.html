@@ -1,0 +1,39 @@
+<table>
+  <thead>
+    <tr>
+      <th class="py-4">Name</th>
+      <th class="py-4">School</th>
+      <th class="py-4">Subjects</th>
+      <th class="py-4">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let board of data" class="border-b hover:bg-gray-50 transition">
+      <td class="flex items-center gap-2 py-4">
+        <img
+          [src]="board.logo"
+          alt="{{ board.name }}"
+          class="w-10 h-10 rounded-full"
+        />
+        <div>
+          <p class="font-semibold">{{ board.name }}</p>
+          <p class="text-xs text-gray-500">{{ board.level }}</p>
+        </div>
+      </td>
+      <td class="font-semibold py-4">{{ board.school }}</td>
+      <td class="py-4 whitespace-nowrap">
+        <ng-container *ngFor="let subject of board.subjects">
+          <span class="mr-2">{{ subject }}</span>
+        </ng-container>
+      </td>
+      <td class="py-4">
+        <button
+          class="text-xl text-gray-600 hover:text-gray-900"
+          title="More actions"
+        >
+          ⋯
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

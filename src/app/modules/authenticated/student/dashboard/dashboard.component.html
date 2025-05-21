@@ -25,4 +25,38 @@
       <p>Graph</p>
     </div>
   </div>
+
+  <div class="flex flex-col gap-4">
+    <div
+      class="border-t border-b border-[#E9E9E9] flex gap-3 items-center py-4"
+    >
+      <div
+        (click)="switchTabs('category')"
+        class="text-[16px] font-[600] pb-1 cursor-pointer"
+        [class.text-textColor]="activeTab === 'category'"
+        [class.text-gray-400]="activeTab !== 'category'"
+        [class.border-b-4]="activeTab === 'category'"
+        [class.border-textColor]="activeTab === 'category'"
+      >
+        Course categories
+      </div>
+      <div
+        (click)="switchTabs('lessons')"
+        class="text-[16px] font-[600] pb-1 cursor-pointer"
+        [class.text-textColor]="activeTab === 'lessons'"
+        [class.text-gray-400]="activeTab !== 'lessons'"
+        [class.border-b-4]="activeTab === 'lessons'"
+        [class.border-textColor]="activeTab === 'lessons'"
+      >
+        Saved lessons
+      </div>
+    </div>
+
+    <div *ngIf="activeTab === 'category'">
+      <div class="table-container">
+        <app-student-dashboard [data]="examBoardData" />
+      </div>
+    </div>
+    <div *ngIf="activeTab === 'lessons'">lesson content</div>
+  </div>
 </div>
