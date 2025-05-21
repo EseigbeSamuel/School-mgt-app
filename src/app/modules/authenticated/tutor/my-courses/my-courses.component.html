@@ -137,71 +137,7 @@
       <div class="performance p-4 border shadow-sm space-y-6 border-gray-100">
         <div class="flex justify-between items-center gap-5">
           <h4 class="text-xl">Subject Performance</h4>
-          <div class="relative">
-            <div
-              class="flex items-center justify-between w-40 h-10 px-3 bg-white border border-gray-300 rounded-md shadow-sm"
-            >
-              <div class="flex items-center">
-                <span class="icon mr-2 text-gray-500">
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M2 6L9.33333 6.00008"
-                      stroke="#667085"
-                      stroke-width="1.5"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M2 10H6.66667"
-                      stroke="#667085"
-                      stroke-width="1.5"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M2 2H12.6667"
-                      stroke="#667085"
-                      stroke-width="1.5"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M12 14V6M12 14L10 12M12 14L14 12"
-                      stroke="#667085"
-                      stroke-width="1.5"
-                    />
-                  </svg>
-                </span>
-                <select
-                  class="appearance-none bg-transparent w-full outline-none text-gray-700 text-sm"
-                >
-                  <option>Sort: By date</option>
-                  <option>Sort: By name</option>
-                  <option>Sort: By size</option>
-                  <option>Sort: By type</option>
-                </select>
-              </div>
-              <div class="pointer-events-none">
-                <svg
-                  width="10"
-                  height="6"
-                  viewBox="0 0 10 6"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M9.47132 0.52827C9.21097 0.267921 8.78886 0.267921 8.52851 0.52827L4.99992 4.05687L1.47132 0.52827C1.21097 0.267921 0.788864 0.267921 0.528514 0.52827C0.268164 0.788619 0.268164 1.21073 0.528514 1.47108L4.76422 5.70678C4.89439 5.83696 5.10545 5.83696 5.23562 5.70678L9.47132 1.47108C9.73167 1.21073 9.73167 0.788619 9.47132 0.52827Z"
-                    fill="#858D9D"
-                  />
-                </svg>
-              </div>
-            </div>
-          </div>
+          <app-sort-dropdown (selectionChange)="onSortChange($event)"/>
         </div>
         <div class="table-container">
           <table>

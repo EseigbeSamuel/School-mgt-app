@@ -6,8 +6,11 @@ import {
 } from '../../../../shared/components/paginator/paginator.component';
 import { CommonModule } from '@angular/common';
 import { TutorSesionComponentTable } from '../../../../shared/components/tables/tutor-sesion/tutor-sesion.component';
-import { SessionTableComponent } from '../../../../shared/components/tutor-components/session-table/session-table.component';
 import { students } from './data';
+import {
+  SortDropdownComponent,
+  SortOption,
+} from '../../../../shared/components/sort-dropdown/sort-dropdown.component';
 @Component({
   selector: 'app-my-sessions',
   imports: [
@@ -15,6 +18,7 @@ import { students } from './data';
     PaginatorComponent,
     CommonModule,
     TutorSesionComponentTable,
+    SortDropdownComponent,
   ],
   templateUrl: './my-sessions.component.html',
   styleUrl: './my-sessions.component.css',
@@ -28,4 +32,9 @@ export class MySessionsComponent {
     pageSize: 10,
     totalItems: 0,
   };
+
+  onSortChange(option: SortOption): void {
+    console.log('Selected sort option:', option);
+    // Handle the sort change logic here
+  }
 }
