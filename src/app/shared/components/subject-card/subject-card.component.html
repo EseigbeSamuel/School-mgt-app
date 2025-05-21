@@ -1,0 +1,19 @@
+<!-- src/app/subject-card/subject-card.component.html -->
+<div
+  class="border border-gray-200 rounded-lg p-4 mb-4 w-full max-w-xs shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between h-full"
+>
+  <div class="mb-3">
+    <h3 class="text-xl font-medium text-gray-800 mb-2">{{ subject.name }}</h3>
+
+    <div class="flex gap-3 text-sm text-gray-500">
+      <span>{{ subject.duration }}</span>
+    </div>
+
+    <div class="flex justify-between items-center text-sm text-gray-500">
+      <span>Progress</span>
+      <span class="{{ getProgressColorClass(subject.progress) }}">
+        {{ subject.progress || "Not started" }}
+      </span>
+    </div>
+  </div>
+</div>

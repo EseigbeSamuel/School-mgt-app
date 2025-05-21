@@ -39,6 +39,11 @@ module.exports = {
         tableHeader: "var(--table-header-color)",
         accent: "var(--color-accent)",
         "accent-2": "var(--color-accent-2)",
+        "subject-primary": "#2c3e50",
+        "subject-meta": "#7f8c8d",
+        "subject-not-started": "#e74c3c",
+        "subject-completed": "#2ecc71",
+        "subject-starflow": "#3498db",
       },
       fontSize: {
         sidebar: "var(--side-bar-font-size)",
@@ -49,6 +54,12 @@ module.exports = {
         dashboardBg: "var(--dashboard-background)",
       },
       display: ["table-row"],
+    },
+    variants: {
+      extend: {
+        translate: ["hover"],
+        shadow: ["hover"],
+      },
     },
   },
   plugins: [

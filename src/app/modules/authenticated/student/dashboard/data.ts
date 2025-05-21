@@ -11,6 +11,13 @@ interface ExamBoard {
   school: string;
   subjects: string[];
 }
+
+interface SubjectProgress {
+  subject: string;
+  category: string;
+  started: string;
+  progress: number;
+}
 export const statCards: Stats[] = [
   {
     title: 'Class Completed',
@@ -39,7 +46,7 @@ export const statCards: Stats[] = [
 ];
 export const examBoards: ExamBoard[] = [
   {
-    logo: 'assets/images/jamb.png',
+    logo: 'assets/icons/jamb.svg',
     name: 'JAMB',
     level: 'Higher Learning',
     school: 'Sciences',
@@ -54,7 +61,7 @@ export const examBoards: ExamBoard[] = [
     ],
   },
   {
-    logo: 'assets/images/waec.png',
+    logo: 'assets/icons/waec.svg',
     name: 'WAEC',
     level: 'Secondary Level',
     school: 'Sciences',
@@ -69,7 +76,7 @@ export const examBoards: ExamBoard[] = [
     ],
   },
   {
-    logo: 'assets/images/neco.png',
+    logo: 'assets/icons/neco.svg',
     name: 'NECO',
     level: 'Secondary Level',
     school: 'Sciences',
@@ -82,5 +89,26 @@ export const examBoards: ExamBoard[] = [
       'Agriculture',
       'Literature',
     ],
+  },
+];
+
+export const progressTableData: SubjectProgress[] = [
+  {
+    subject: 'BIOLOGY',
+    category: 'JAMB/JIMBE CATEGORY',
+    started: '02/10/2025',
+    progress: 80,
+  },
+  {
+    subject: 'PHYSICS',
+    category: 'WAEC/NECO CATEGORY',
+    started: '02/11/2025',
+    progress: 50,
+  },
+  {
+    subject: 'MATHEMATICS',
+    category: 'WAEC/NECO CATEGORY',
+    started: '03/04/2025',
+    progress: 10,
   },
 ];

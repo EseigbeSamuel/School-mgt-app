@@ -1,1 +1,90 @@
-<p>my-courses works!</p>
+<main>
+  <div class="md:hidden text-[16px] text-textColor block font-[600]">
+    Courses
+  </div>
+  <div class="md:border-b border-[#E9E9E9] overflow-x-auto">
+    <div
+      class="flex w-max md:w-full gap-2 md:gap-0 items-center pt-4 md:flex-nowrap flex-nowrap"
+    >
+      <!-- Sciences -->
+      <div
+        (click)="switchTabs('science')"
+        class="min-w-fit px-4 py-3 md:py-2 rounded-lg md:rounded-none text-sm font-semibold cursor-pointer transition-all duration-200"
+        [ngClass]="{
+          'bg-[#F4EDFF] text-[#8A2BE2]': activeTab === 'science',
+          'bg-gray-100 text-gray-500 md:bg-white': activeTab !== 'science',
+          'md:border-b-2 md:border-[#8A2BE2] md:bg-transparent md:text-textColor':
+            activeTab === 'science' && isDesktop,
+          'md:border-b-0': activeTab !== 'science' && isDesktop
+        }"
+      >
+        Sciences
+      </div>
+
+      <!-- Commercial -->
+      <div
+        (click)="switchTabs('commercial')"
+        class="min-w-fit px-4 py-2 rounded-lg md:rounded-none text-sm font-semibold cursor-pointer transition-all duration-200"
+        [ngClass]="{
+          'bg-[#F4EFF2] text-[#5C1A32]': activeTab === 'commercial',
+          'bg-gray-100 text-gray-500 md:bg-white': activeTab !== 'commercial',
+          'md:border-b-2 md:border-[#5C1A32] md:bg-transparent md:text-textColor':
+            activeTab === 'commercial' && isDesktop,
+          'md:border-b-0': activeTab !== 'commercial' && isDesktop
+        }"
+      >
+        Commercial
+      </div>
+
+      <!-- Arts -->
+      <div
+        (click)="switchTabs('art')"
+        class="min-w-fit px-4 py-2 rounded-lg md:rounded-none text-sm font-semibold cursor-pointer transition-all duration-200"
+        [ngClass]="{
+          'bg-[#E7F1FF] text-[#1D4ED8]': activeTab === 'art',
+          'bg-gray-100 text-gray-500 md:bg-white': activeTab !== 'art',
+          'md:border-b-2 md:border-[#1D4ED8] md:bg-transparent md:text-textColor':
+            activeTab === 'art' && isDesktop,
+          'md:border-b-0': activeTab !== 'art' && isDesktop
+        }"
+      >
+        Arts
+      </div>
+
+      <!-- Vocational -->
+      <div
+        (click)="switchTabs('vocational')"
+        class="min-w-fit px-4 py-2 rounded-lg md:rounded-none text-sm font-semibold cursor-pointer transition-all duration-200"
+        [ngClass]="{
+          'bg-[#FEF9E6] text-[#C0930A]': activeTab === 'vocational',
+          'bg-gray-100 text-gray-500 md:bg-white': activeTab !== 'vocational',
+          'md:border-b-2 md:border-[#C0930A] md:bg-transparent md:text-textColor':
+            activeTab === 'vocational' && isDesktop,
+          'md:border-b-0': activeTab !== 'vocational' && isDesktop
+        }"
+      >
+        Vocational
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="activeTab === 'science'">
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 p-5"
+    >
+      <app-subject-card
+        *ngFor="let subject of data"
+        [subject]="subject"
+      ></app-subject-card>
+    </div>
+  </div>
+  <div *ngIf="activeTab === 'commercial'">
+    <div>commercial</div>
+  </div>
+  <div *ngIf="activeTab === 'art'">
+    <div>art</div>
+  </div>
+  <div *ngIf="activeTab === 'vocational'">
+    <div>vocational</div>
+  </div>
+</main>

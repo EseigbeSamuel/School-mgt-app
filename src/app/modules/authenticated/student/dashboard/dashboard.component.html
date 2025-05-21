@@ -26,37 +26,47 @@
     </div>
   </div>
 
-  <div class="flex flex-col gap-4">
-    <div
-      class="border-t border-b border-[#E9E9E9] flex gap-3 items-center py-4"
-    >
+  <div class="flex flex-col gap-4 py-4">
+    <div class="border-b border-[#E9E9E9] flex gap-6 items-center">
       <div
         (click)="switchTabs('category')"
-        class="text-[16px] font-[600] pb-1 cursor-pointer"
+        class="text-[16px] font-[600] pb-1 cursor-pointer py-4"
         [class.text-textColor]="activeTab === 'category'"
         [class.text-gray-400]="activeTab !== 'category'"
-        [class.border-b-4]="activeTab === 'category'"
+        [class.border-b-2]="activeTab === 'category'"
         [class.border-textColor]="activeTab === 'category'"
       >
         Course categories
       </div>
       <div
         (click)="switchTabs('lessons')"
-        class="text-[16px] font-[600] pb-1 cursor-pointer"
+        class="text-[16px] font-[600] pb-1 cursor-pointer py-4"
         [class.text-textColor]="activeTab === 'lessons'"
         [class.text-gray-400]="activeTab !== 'lessons'"
-        [class.border-b-4]="activeTab === 'lessons'"
+        [class.border-b-2]="activeTab === 'lessons'"
         [class.border-textColor]="activeTab === 'lessons'"
       >
         Saved lessons
       </div>
     </div>
-
-    <div *ngIf="activeTab === 'category'">
-      <div class="table-container">
-        <app-student-dashboard [data]="examBoardData" />
+    <ng-container class="mt-4 table-box">
+      <div *ngIf="activeTab === 'category'">
+        <div class="table-container">
+          <app-student-dashboard [data]="examBoardData" />
+        </div>
       </div>
-    </div>
-    <div *ngIf="activeTab === 'lessons'">lesson content</div>
+      <div *ngIf="activeTab === 'lessons'">
+        <div>
+          <app-student-dashboard [variant]="'progress'" [data]="progressData" />
+        </div>
+      </div>
+
+      <div class="pagination-box border-t p-4 sm:p-6">
+        <app-paginator
+          [metadata]="paginationMetadata"
+          [showText]="true"
+        ></app-paginator>
+      </div>
+    </ng-container>
   </div>
 </div>

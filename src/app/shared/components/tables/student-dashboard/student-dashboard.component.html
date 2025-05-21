@@ -1,39 +1,86 @@
-<table>
-  <thead>
-    <tr>
-      <th class="py-4">Name</th>
-      <th class="py-4">School</th>
-      <th class="py-4">Subjects</th>
-      <th class="py-4">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let board of data" class="border-b hover:bg-gray-50 transition">
-      <td class="flex items-center gap-2 py-4">
-        <img
-          [src]="board.logo"
-          alt="{{ board.name }}"
-          class="w-10 h-10 rounded-full"
-        />
-        <div>
-          <p class="font-semibold">{{ board.name }}</p>
-          <p class="text-xs text-gray-500">{{ board.level }}</p>
-        </div>
-      </td>
-      <td class="font-semibold py-4">{{ board.school }}</td>
-      <td class="py-4 whitespace-nowrap">
-        <ng-container *ngFor="let subject of board.subjects">
-          <span class="mr-2">{{ subject }}</span>
-        </ng-container>
-      </td>
-      <td class="py-4">
-        <button
-          class="text-xl text-gray-600 hover:text-gray-900"
-          title="More actions"
-        >
-          ⋯
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<ng-container [ngSwitch]="variant">
+  <table *ngSwitchCase="'exam'">
+    <thead>
+      <tr class="text-textColor text-[14px]">
+        <th class="py-4">Name</th>
+        <th class="py-4">School</th>
+        <th class="py-4">Subjects</th>
+        <th class="py-4">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="let board of data"
+        class="border-b hover:bg-gray-50 transition"
+      >
+        <td class="flex items-center gap-2 py-4 w-[200px]">
+          <img
+            [src]="board.logo"
+            alt="{{ board.name }}"
+            class="w-10 h-10 rounded-full"
+          />
+          <div>
+            <p class="font-[500] text-[16px] text-textColor">
+              {{ board.name }}
+            </p>
+            <p class="text-xs text-gray-500">{{ board.level }}</p>
+          </div>
+        </td>
+        <td class="font-[500] text-[16px] text-textColor py-4">
+          {{ board.school }}
+        </td>
+        <td class="py-4 whitespace-nowrap">
+          <ng-container *ngFor="let subject of board.subjects">
+            <span class="text-[16px] font-[400] text-textColor mr-2">{{
+              subject
+            }}</span>
+          </ng-container>
+        </td>
+        <td class="py-4">
+          <button
+            class="text-xl text-gray-600 hover:text-gray-900"
+            title="More actions"
+          >
+            ⋯
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table *ngSwitchCase="'progress'">
+    <thead>
+      <tr class="text-textColor text-[14px]">
+        <th>SUBJECT</th>
+        <th>STARTED</th>
+        <th>PROGRESS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of data">
+        <td>
+          <div class="font-bold">{{ row.subject }}</div>
+          <div class="text-xs text-accent-2">{{ row.category }}</div>
+        </td>
+        <td>{{ row.started }}</td>
+        <td class="w-[600px]">
+          <div class="relative w-full h-2 bg-gray-200 rounded-full">
+            <div
+              class="h-full rounded-full"
+              [ngStyle]="{
+                width: row.progress + '%',
+                backgroundColor: getProgressColor(row.progress)
+              }"
+            ></div>
+          </div>
+          <div
+            class="text-xs font-bold mt-1"
+            [style.color]="getProgressColor(row.progress)"
+          >
+            {{ row.progress }}%
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>

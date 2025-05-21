@@ -9,9 +9,7 @@ import { ConfirmationComponent } from './modules/unAuthenticated/confirmation/co
 import { ActivationUiComponent } from './shared/components/activation-ui/activation-ui.component';
 import { AuthenticatedComponent } from './layout/authenticated/authenticated.component';
 import { PorfileSetUpComponent } from './modules/authenticated/porfile-set-up/porfile-set-up.component';
-
 import { NewPasswordComponent } from './modules/unAuthenticated/new-password/new-password.component';
-
 import { ConfirmEmailComponent } from './modules/unAuthenticated/confirm-email/confirm-email.component';
 import { ResetPasswordComponent } from './modules/unAuthenticated/reset-password/reset-password.component';
 import { DashboardEntryComponent } from './modules/authenticated/dashboard-entry.component';
@@ -31,6 +29,7 @@ import { EarningsComponent } from './modules/authenticated/tutor/earnings/earnin
 import { MessagingComponent } from './modules/authenticated/tutor/messaging/messaging.component';
 import { MessagesComponent } from './modules/authenticated/student/messages/messages.component';
 import { ProfileComponent } from './modules/authenticated/student/profile/profile.component';
+import { MyCoursesComponentTutor } from './modules/authenticated/tutor/my-courses/my-courses.component';
 // test
 export const routes: Routes = [
   // {
@@ -108,7 +107,7 @@ export const routes: Routes = [
         children: [
           { path: '', component: TutorDashboardComponent },
           { path: 'my-sessions', component: MySessionsComponent },
-          { path: 'my-courses', component: MyCoursesComponent },
+          { path: 'my-courses', component: MyCoursesComponentTutor },
           { path: 'students', component: StudentsComponent },
           { path: 'resources', component: ResourcesComponent },
           { path: 'one-on-one', component: OneOnOneComponent },
