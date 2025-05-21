@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SharedModule } from '../../shared.module';
+import { SidebarService } from '../../../services/sidebar.service';
 
 @Component({
   selector: 'app-dash-navbar',
@@ -7,4 +8,6 @@ import { SharedModule } from '../../shared.module';
   templateUrl: './dash-navbar.component.html',
   styleUrl: './dash-navbar.component.css',
 })
-export class DashNavbarComponent {}
+export class DashNavbarComponent {
+  constructor(public sidebarService: SidebarService) {}
+}

@@ -18,6 +18,7 @@ import { DashboardEntryComponent } from './modules/authenticated/dashboard-entry
 import { RouteEntryComponent } from './modules/authenticated/route-entry/route-entry.component';
 import { StudentDashboardComponent } from './modules/authenticated/student/dashboard/dashboard.component';
 import { MyCoursesComponent } from './modules/authenticated/student/my-courses/my-courses.component';
+import { MyCoursesComponent as MyCoursesComponentTutor } from './modules/authenticated/tutor/my-courses/my-courses.component';
 import { TutorDashboardComponent } from './modules/authenticated/tutor/dashboard/dashboard.component';
 import { MySessionsComponent } from './modules/authenticated/tutor/my-sessions/my-sessions.component';
 import { AssessmentAndQuizzesComponent } from './modules/authenticated/student/assessment-and-quizzes/assessment-and-quizzes.component';
@@ -108,7 +109,7 @@ export const routes: Routes = [
         children: [
           { path: '', component: TutorDashboardComponent },
           { path: 'my-sessions', component: MySessionsComponent },
-          { path: 'my-courses', component: MyCoursesComponent },
+          { path: 'my-courses', component: MyCoursesComponentTutor },
           { path: 'students', component: StudentsComponent },
           { path: 'resources', component: ResourcesComponent },
           { path: 'one-on-one', component: OneOnOneComponent },
