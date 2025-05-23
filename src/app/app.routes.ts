@@ -16,7 +16,6 @@ import { DashboardEntryComponent } from './modules/authenticated/dashboard-entry
 import { RouteEntryComponent } from './modules/authenticated/route-entry/route-entry.component';
 import { StudentDashboardComponent } from './modules/authenticated/student/dashboard/dashboard.component';
 import { MyCoursesComponent } from './modules/authenticated/student/my-courses/my-courses.component';
-import { MyCoursesComponent as MyCoursesComponentTutor } from './modules/authenticated/tutor/my-courses/my-courses.component';
 import { TutorDashboardComponent } from './modules/authenticated/tutor/dashboard/dashboard.component';
 import { MySessionsComponent } from './modules/authenticated/tutor/my-sessions/my-sessions.component';
 import { AssessmentAndQuizzesComponent } from './modules/authenticated/student/assessment-and-quizzes/assessment-and-quizzes.component';
@@ -30,7 +29,8 @@ import { EarningsComponent } from './modules/authenticated/tutor/earnings/earnin
 import { MessagingComponent } from './modules/authenticated/tutor/messaging/messaging.component';
 import { MessagesComponent } from './modules/authenticated/student/messages/messages.component';
 import { ProfileComponent } from './modules/authenticated/student/profile/profile.component';
-import { MyCoursesComponentTutor } from './modules/authenticated/tutor/my-courses/my-courses.component';
+import { MyCoursesComponent as MyCoursesComponentTutor } from './modules/authenticated/tutor/my-courses/my-courses.component';
+
 // test
 export const routes: Routes = [
   // {

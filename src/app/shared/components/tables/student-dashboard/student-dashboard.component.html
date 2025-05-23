@@ -13,7 +13,7 @@
         *ngFor="let board of data"
         class="border-b hover:bg-gray-50 transition"
       >
-        <td class="flex items-center gap-2 py-4 w-[200px]">
+        <td class="flex items-center gap-2 py-4">
           <img
             [src]="board.logo"
             alt="{{ board.name }}"
@@ -63,7 +63,7 @@
           <div class="text-xs text-accent-2">{{ row.category }}</div>
         </td>
         <td>{{ row.started }}</td>
-        <td class="w-[600px]">
+        <td class="w-0 md:w-[600px]">
           <div class="relative w-full h-2 bg-gray-200 rounded-full">
             <div
               class="h-full rounded-full"
