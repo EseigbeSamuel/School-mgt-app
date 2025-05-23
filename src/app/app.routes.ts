@@ -9,9 +9,7 @@ import { ConfirmationComponent } from './modules/unAuthenticated/confirmation/co
 import { ActivationUiComponent } from './shared/components/activation-ui/activation-ui.component';
 import { AuthenticatedComponent } from './layout/authenticated/authenticated.component';
 import { PorfileSetUpComponent } from './modules/authenticated/porfile-set-up/porfile-set-up.component';
-
 import { NewPasswordComponent } from './modules/unAuthenticated/new-password/new-password.component';
-
 import { ConfirmEmailComponent } from './modules/unAuthenticated/confirm-email/confirm-email.component';
 import { ResetPasswordComponent } from './modules/unAuthenticated/reset-password/reset-password.component';
 import { DashboardEntryComponent } from './modules/authenticated/dashboard-entry.component';
@@ -31,6 +29,12 @@ import { EarningsComponent } from './modules/authenticated/tutor/earnings/earnin
 import { MessagingComponent } from './modules/authenticated/tutor/messaging/messaging.component';
 import { MessagesComponent } from './modules/authenticated/student/messages/messages.component';
 import { ProfileComponent } from './modules/authenticated/student/profile/profile.component';
+import { QuizComponent } from './modules/authenticated/student/assessment-and-quizzes/quiz/quiz.component';
+import { AssessmentComponent } from './modules/authenticated/student/assessment-and-quizzes/assessment/assessment.component';
+import { TutorsComponent } from './modules/authenticated/student/personal-sessions/tutors/tutors.component';
+import { TutorsDescriptionComponent } from './modules/authenticated/student/personal-sessions/tutors-description/tutors-description.component';
+import { GetTutorsComponent } from './modules/authenticated/student/personal-sessions/get-tutors/get-tutors.component';
+import { MyCoursesComponentTutor } from './modules/authenticated/tutor/my-courses/my-courses.component';
 // test
 export const routes: Routes = [
   // {
@@ -94,9 +98,25 @@ export const routes: Routes = [
         children: [
           { path: '', component: StudentDashboardComponent },
           { path: 'courses', component: MyCoursesComponent },
-          { path: 'assessments', component: AssessmentAndQuizzesComponent },
+          {
+            path: 'assessments',
+            component: AssessmentAndQuizzesComponent,
+            children: [
+              { path: '', component: QuizComponent },
+              { path: 'quiz', component: QuizComponent },
+              { path: 'assessment', component: AssessmentComponent },
+            ],
+          },
           { path: 'mock-exams', component: MockExamsComponent },
-          { path: 'personal-sessions', component: PersonalSessionsComponent },
+          {
+            path: 'personal-sessions',
+            component: PersonalSessionsComponent,
+            children: [
+              { path: '', component: GetTutorsComponent },
+              { path: 'tutors', component: TutorsComponent },
+              { path: 'tutors/:id', component: TutorsDescriptionComponent },
+            ],
+          },
           { path: 'achievements', component: AchievementsComponent },
           { path: 'messages', component: MessagesComponent },
           { path: 'profile', component: ProfileComponent },
@@ -108,7 +128,7 @@ export const routes: Routes = [
         children: [
           { path: '', component: TutorDashboardComponent },
           { path: 'my-sessions', component: MySessionsComponent },
-          { path: 'my-courses', component: MyCoursesComponent },
+          { path: 'my-courses', component: MyCoursesComponentTutor },
           { path: 'students', component: StudentsComponent },
           { path: 'resources', component: ResourcesComponent },
           { path: 'one-on-one', component: OneOnOneComponent },

@@ -1,1 +1,37 @@
-<p>personal-sessions works!</p>
+<!-- <div class="px-10">
+  <div class="flex flex-col text-center gap-5 mb-5">
+    <h1 class="font-semibold text-3xl">
+      Schedule Your Lesson & Learn at <br />
+      Your Convenience!!
+    </h1>
+    <p class="text-red-600">
+      Book a one-on-one session with expert tutors at a time that suits you.
+      Flexible schedules,<br />
+      personalized lessons, and exam-focused coaching—learn smarter, anytime,
+      anywhere
+    </p>
+  </div>
+  <section class="border rounded-lg p-5">
+    <form class="grid grid-cols-2 gap-5">
+      <app-input-ui label="First Name" />
+      <app-input-ui label="Last Name" />
+      <app-input-ui label="Email" />
+      <app-input-ui label="Phone" type="Number" />
+      <app-drop-select label="Exam" />
+      <app-drop-select label="subject" />
+    </form>
+    <div class="w-full mb-5">
+      <app-input-ui label="message" class="w-full" />
+    </div>
+    <div>
+      <app-button
+        label="Get Tutor"
+        [fullWidth]="true"
+        (btnClick)="handleNavigate($event)"
+      />
+    </div>
+    <div routerLink="tutors">link</div>
+  </section>
+</div> -->
+
+<router-outlet />

@@ -1,0 +1,24 @@
+<div class="table-main">
+  <div class="table-container">
+    <table class="w-full caption-bottom">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Review</th>
+          <th>Ratings</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rating of data" class="text-accent-2">
+          <td>{{ rating.name }}</td>
+          <td>{{ rating.date }}</td>
+          <td class="max-w-xs whitespace-normal min-w-[200px]">
+            {{ rating.review }}
+          </td>
+          <td><span class="star">★</span> {{ rating.score }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

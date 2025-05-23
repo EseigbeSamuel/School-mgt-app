@@ -1,0 +1,32 @@
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+  <div
+    *ngFor="let subject of subjects"
+    [ngClass]="subject.color"
+    class="text-white rounded-xl p-4 shadow-md flex flex-col gap-2"
+  >
+    <div class="flex gap-4 mb-4">
+      <div class="text-2xl">{{ subject.icon }}</div>
+      <h2 class="text-xl font-semibold mb-1">{{ subject.name }}</h2>
+    </div>
+    <div class="flex items-center gap-4">
+      <div class="text-sm">{{ subject.lessons }} Lessons</div>
+      <div class="text-sm">{{ subject.time }}</div>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="flex flex-col w-full">
+      <div class="text-sm mb-3">Progress: {{ subject.progress }}</div>
+
+      <div class="w-full h-2 bg-white/30 rounded-full overflow-hidden">
+        <div
+          class="h-full bg-white rounded-full transition-all duration-500"
+          [style.width.%]="subject.progressPercent"
+        ></div>
+      </div>
+    </div>
+
+    <button class="bg-orange-500 px-3 py-2 my-3 rounded text-white text-sm">
+      Start Now
+    </button>
+  </div>
+</div>

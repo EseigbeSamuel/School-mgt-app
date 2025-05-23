@@ -1,8 +1,10 @@
-<nav
-  class="sidebar flex flex-col gap-4 min-w-[var(--sidebar-width)] max-w-[var(--sidebar-width)] h-full border-r p-5 sm:p-6 max-[720px]:hidden"
+<aside
+  class="sidebar flex flex-col gap-4 min-w-[var(--sidebar-width)] max-w-[var(--sidebar-width)] h-full border-r p-5 sm:p-6 md:translate-x-0 -translate-x-full md:relative absolute top-0 bottom-0 z-[999] transition-transform bg-white"
+  [class.translate-x-0]="sidebarService.isOpen$ | async"
+  [class.-translate-x-full]="!(sidebarService.isOpen$ | async)"
 >
-  <div class="logo px-2">
-    <img src="assets/images/Logo.png" width="190" alt="Logo" />
+  <div class="logo px-2 min-h-10">
+    <img src="/Logo.png" width="190" alt="Logo" />
   </div>
   <div class="side-links mt-2">
     <div class="flex flex-col gap-3">
@@ -11,7 +13,13 @@
           <a
             [routerLink]="item.link"
             routerLinkActive="bg-[#2C2A72] text-white active"
-            [routerLinkActiveOptions]="{ exact: true }"
+            [routerLinkActiveOptions]="{
+              paths: 'exact',
+              fragment: 'exact',
+              matrixParams: 'exact',
+              queryParams: 'ignored'
+            }"
+            (click)="sidebarService.toggle()"
             class="nav-link flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70 cursor-pointer"
           >
             <span
@@ -31,6 +39,7 @@
       <li *ngIf="userType !== 'tutor'">
         <a
           routerLink="/students/settings"
+          (click)="sidebarService.toggle()"
           class="flex gap-3 nav-link items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70 cursor-pointer"
         >
           <span class="icon">
@@ -65,6 +74,7 @@
       <li *ngIf="userType === 'tutor'">
         <a
           routerLink="/tutor/profile"
+          (click)="sidebarService.toggle()"
           class="flex gap-3 nav-link items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70 cursor-pointer"
         >
           <span class="icon">
@@ -133,18 +143,30 @@
       </li>
     </ul>
   </div>
-</nav>
+</aside>
 
-<nav
-  class="bottom-bar rounded-t-3xl w-full bg-white border-t p-4 fixed bottom-0 left-0 right-0 h-[var(--bottom-navbar-height)] max-[720px]:block hidden z-[9999]"
+<div
+  *ngIf="sidebarService.isOpen$ | async"
+  (click)="sidebarService.toggle()"
+  class="fixed inset-0 bg-black bg-opacity-50 z-[998] lg:hidden"
+></div>
+
+<!-- <nav
+  class="bottom-bar rounded-t-3xl w-full bg-white border-t p-4 fixed bottom-0 left-0 right-0 h-[var(--bottom-navbar-height)] max-[720px]:block hidden z-[997]"
 >
   <div class="flex gap-6 justify-evenly items-center">
     <ng-container *ngFor="let item of navItems">
       <div *ngIf="item.role.includes(userType) && !!item.mobile">
         <a
           [routerLink]="item.link"
+          (click)="sidebarService.toggle()"
           routerLinkActive="text-[#2C2A72] active"
-          [routerLinkActiveOptions]="{ exact: true }"
+          [routerLinkActiveOptions]="{
+            paths: 'exact',
+            fragment: 'exact',
+            matrixParams: 'exact',
+            queryParams: 'ignored'
+          }"
           class="flex flex-col gap-1.5 justify-center items-center font-medium text-[#2C2A72] active:text-[#2C2A72] text-sm max-[450px]:text-xs text-center"
         >
           <span
@@ -157,4 +179,4 @@
       </div>
     </ng-container>
   </div>
-</nav>
+</nav> -->

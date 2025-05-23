@@ -1,0 +1,82 @@
+<table>
+  <thead>
+    <tr>
+      <th>Student Name</th>
+      <th>Phone</th>
+      <th>Lesson Type</th>
+      <th>Duration</th>
+      <th>Status</th>
+      <th>Added</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="text-accent-2" *ngFor="let row of data">
+      <td>
+        <div class="flex gap-3 items-center">
+          <div class="avatar size-10 min-w-10 bg-gray-200 rounded-full"></div>
+          <div class="space-y-0">
+            <span class="block">{{ row.name }}</span>
+            <span class="block text-xs text-accent">{{ row.email }}</span>
+          </div>
+        </div>
+      </td>
+      <td>{{ row.phone }}</td>
+      <td>{{ row.lessonType }}</td>
+      <td>{{ row.duration }}</td>
+      <td>
+        <span
+          [ngClass]="{
+            'bg-green-100 text-green-700': row.status === 'Active',
+            'bg-blue-100 text-blue-700': row.status === 'Completed',
+            'bg-red-100 text-red-700': row.status === 'Canceled'
+          }"
+          class="px-3 py-2 rounded-lg text-xs font-medium"
+        >
+          {{ row.status }}
+        </span>
+      </td>
+      <td>{{ row.addedDate }}</td>
+      <td>
+        <div class="flex gap-2">
+          <button
+            type="button"
+            class="bg-primary text-white size-9 rounded-lg grid place-content-center place-items-center"
+          >
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 14 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M13.0937 10.6871C12.5974 10.1871 11.3956 9.45745 10.8124 9.16338C10.0531 8.78088 9.99056 8.74963 9.39369 9.19307C8.99556 9.48901 8.73087 9.75338 8.26494 9.65401C7.799 9.55463 6.7865 8.99432 5.89993 8.11057C5.01337 7.22682 4.42056 6.18495 4.32087 5.72057C4.22118 5.2562 4.48993 4.99463 4.78306 4.59557C5.19618 4.03307 5.16493 3.93932 4.81181 3.17995C4.5365 2.58932 3.78556 1.3987 3.28368 0.904947C2.74681 0.374635 2.74681 0.468384 2.40087 0.612134C2.11923 0.730607 1.84903 0.874647 1.59368 1.04245C1.09368 1.37463 0.816185 1.65057 0.622122 2.06526C0.42806 2.47995 0.340872 3.45213 1.34306 5.27276C2.34525 7.09338 3.04837 8.02432 4.50368 9.47557C5.959 10.9268 7.07806 11.7071 8.714 12.6246C10.7377 13.7581 11.514 13.5371 11.9299 13.3434C12.3459 13.1496 12.6231 12.8746 12.9559 12.3746C13.1241 12.1197 13.2685 11.8498 13.3871 11.5684C13.5312 11.2237 13.6249 11.2237 13.0937 10.6871Z"
+                stroke="white"
+                stroke-miterlimit="10"
+              />
+            </svg>
+          </button>
+          <button
+            type="button"
+            class="border border-primary text-white size-9 rounded-lg grid place-content-center place-items-center"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8.87 15L8 14.5L10 11H13C13.2652 11 13.5196 10.8946 13.7071 10.7071C13.8946 10.5196 14 10.2652 14 10V4C14 3.73478 13.8946 3.48043 13.7071 3.29289C13.5196 3.10536 13.2652 3 13 3H3C2.73478 3 2.48043 3.10536 2.29289 3.29289C2.10536 3.48043 2 3.73478 2 4V10C2 10.2652 2.10536 10.5196 2.29289 10.7071C2.48043 10.8946 2.73478 11 3 11H7.5V12H3C2.46957 12 1.96086 11.7893 1.58579 11.4142C1.21071 11.0391 1 10.5304 1 10V4C1 3.46957 1.21071 2.96086 1.58579 2.58579C1.96086 2.21071 2.46957 2 3 2H13C13.5304 2 14.0391 2.21071 14.4142 2.58579C14.7893 2.96086 15 3.46957 15 4V10C15 10.5304 14.7893 11.0391 14.4142 11.4142C14.0391 11.7893 13.5304 12 13 12H10.58L8.87 15Z"
+                fill="#2C2A72"
+              />
+              <path d="M4 5H12V6H4V5ZM4 8H9V9H4V8Z" fill="#2C2A72" />
+            </svg>
+          </button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

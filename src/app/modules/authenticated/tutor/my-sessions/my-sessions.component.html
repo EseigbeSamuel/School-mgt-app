@@ -1,1 +1,65 @@
-<p>my-sessions works!</p>
+<div class="space-y-5">
+  <div class="top-function flex gap-5 justify-between items-center">
+    <div class="flex gap-3 gap-y-2 flex-wrap items-center">
+      <app-sort-dropdown (selectionChange)="onSortChange($event)"/>
+      <div class="relative">
+        <div
+          class="flex items-center w-48 h-10 px-3 bg-white border border-gray-300 rounded-md shadow-sm"
+        >
+          <span class="icon mr-2 text-gray-500">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M13.7847 15.1991C10.6462 17.6416 6.10654 17.4205 3.22181 14.5358C0.0976136 11.4116 0.0976136 6.34625 3.22181 3.22205C6.346 0.0978578 11.4113 0.0978578 14.5355 3.22205C17.4202 6.10677 17.6414 10.6464 15.1989 13.7849L19.4853 18.0713C19.8758 18.4618 19.8758 19.095 19.4853 19.4855C19.0948 19.876 18.4616 19.876 18.0711 19.4855L13.7847 15.1991ZM4.63602 13.1215C6.97917 15.4647 10.7782 15.4647 13.1213 13.1215C15.4644 10.7784 15.4644 6.97941 13.1213 4.63627C10.7782 2.29312 6.97917 2.29312 4.63602 4.63627C2.29288 6.97941 2.29288 10.7784 4.63602 13.1215Z"
+                fill="#667085"
+              />
+            </svg>
+          </span>
+          <input
+            type="text"
+            placeholder="Search by name..."
+            class="w-full outline-none text-gray-700 text-sm bg-transparent"
+          />
+        </div>
+      </div>
+    </div>
+    <app-button>
+      <span class="flex items-center justify-center gap-1">
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 14 14"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6.16667 12.4167C6.16667 12.8769 6.53976 13.25 7 13.25C7.46024 13.25 7.83333 12.8769 7.83333 12.4167V7.83333H12.4167C12.8769 7.83333 13.25 7.46024 13.25 7C13.25 6.53976 12.8769 6.16667 12.4167 6.16667H7.83333V1.58333C7.83333 1.1231 7.46024 0.75 7 0.75C6.53976 0.75 6.16667 1.1231 6.16667 1.58333V6.16667H1.58333C1.1231 6.16667 0.75 6.53976 0.75 7C0.75 7.46024 1.1231 7.83333 1.58333 7.83333H6.16667V12.4167Z"
+            fill="white"
+          />
+        </svg>
+
+        Sessions
+      </span>
+    </app-button>
+  </div>
+
+  <div class="table-box border shadow-sm">
+    <div class="table-container">
+      <app-tutor-sesion [data]="studentData" />
+    </div>
+
+    <div class="pagination-box border-t p-4 sm:p-6">
+      <app-paginator
+        [metadata]="paginationMetadata"
+        [showText]="true"
+      ></app-paginator>
+    </div>
+  </div>
+</div>

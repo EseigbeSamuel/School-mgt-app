@@ -75,7 +75,6 @@ export const navItems = [
     link: '/tutor',
     icon: 'home',
     role: ['tutor'],
-    mobile: 'Home',
   },
   {
     name: 'my-sessions',
@@ -83,7 +82,6 @@ export const navItems = [
     link: '/tutor/my-sessions',
     icon: 'my-sessions',
     role: ['tutor'],
-    mobile: 'Classes',
   },
   {
     name: 'my-courses',
@@ -126,6 +124,5 @@ export const navItems = [
     link: '/tutor/messaging',
     icon: 'messaging',
     role: ['tutor'],
-    mobile: 'Messages',
   },
 ];
