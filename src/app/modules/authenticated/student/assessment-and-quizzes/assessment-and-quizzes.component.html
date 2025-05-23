@@ -1,1 +1,17 @@
 <p>assessment-and-quizzes works!</p>
+
+<nav>
+  <ul class="w-full flex gap-5 justify-center font-semibold uppercase text-xl">
+    <li class="hover:underline">
+      <a routerLink="quiz" routerLinkActive="underline text-primary"> Quiz</a>
+    </li>
+    <li class="hover:underline">
+      <a routerLink="assessment" routerLinkActive="underline text-primary"
+        >Assessment</a
+      >
+    </li>
+  </ul>
+</nav>
+<div>
+  <router-outlet />
+</div>
