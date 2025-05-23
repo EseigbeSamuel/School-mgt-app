@@ -1,207 +1,181 @@
-<div
-  [ngClass]="{
-    'bg-[#2C2A72] rounded-b-2xl md:rounded-none md:bg-white h-fit pb-6 md:pb-0 items-center':
-      isCoursesRoute
-  }"
-  class="flex flex-col"
+<nav
+  class="content-navbar sticky top-0 z-[997] h-[var(--navbar-height)] border-[ghostwhite] border-[#000]/10 bg-white left-0 right-0 w-full border-b p-4 md:px-6 px-4 flex justify-between gap-8 items-center"
 >
-  <nav
-    class="content-navbar sticky top-0 z-[9999] h-[var(--navbar-height)] max-[720px]:border-[ghostwhite] rounded-none md:bg-white left-0 right-0 w-full md:border-b p-4 px-6 max-[720px]:px-4 flex justify-between gap-8 items-center"
-  >
-    <div class="flex gap-4 items-center">
-      <button type="button" class="lg:hidden block max-[720px]:hidden">
-        Me
-      </button>
-      <div class="side-1 lg:space-y-1">
-        <h1
-          [ngClass]="{
-            'text-white md:text-textColor': isCoursesRoute
-          }"
-          class="text-lg md:text-xl lg:text-3xl font-medium"
-        >
-          Welcome Richard! 👋
-        </h1>
-        <p class="text-[#667085] text-lg max-[720px]:hidden">Overview</p>
-      </div>
-    </div>
-
-    <div class="side-2-desktop lg:flex hidden items-center gap-6 sm:gap-8">
-      <button type="button" class="search">
-        <svg
-          width="25"
-          height="24"
-          viewBox="0 0 25 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M15.7263 16.1991C12.5879 18.6416 8.04819 18.4205 5.16346 15.5358C2.03926 12.4116 2.03926 7.34625 5.16346 4.22205C8.28765 1.09786 13.353 1.09786 16.4772 4.22205C19.3619 7.10677 19.583 11.6464 17.1405 14.7849L21.4269 19.0713C21.8175 19.4618 21.8175 20.095 21.4269 20.4855C21.0364 20.876 20.4033 20.876 20.0127 20.4855L15.7263 16.1991ZM6.57767 14.1215C8.92082 16.4647 12.7198 16.4647 15.063 14.1215C17.4061 11.7784 17.4061 7.97941 15.063 5.63627C12.7198 3.29312 8.92082 3.29312 6.57767 5.63627C4.23453 7.97941 4.23453 11.7784 6.57767 14.1215Z"
-            fill="#667085"
-          />
-        </svg>
-      </button>
-
-      <button type="button" class="calender">
-        <svg
-          width="25"
-          height="24"
-          viewBox="0 0 25 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M9.94531 3C9.94531 2.44772 9.4976 2 8.94531 2C8.39303 2 7.94531 2.44772 7.94531 3H6.94531C5.28846 3 3.94531 4.34315 3.94531 6V19C3.94531 20.6569 5.28846 22 6.94531 22H18.9453C20.6022 22 21.9453 20.6569 21.9453 19V6C21.9453 4.34315 20.6022 3 18.9453 3H17.9453C17.9453 2.44772 17.4976 2 16.9453 2C16.393 2 15.9453 2.44772 15.9453 3H9.94531ZM19.9453 7V6C19.9453 5.44772 19.4976 5 18.9453 5H17.9453C17.9453 5.55228 17.4976 6 16.9453 6C16.393 6 15.9453 5.55228 15.9453 5H9.94531C9.94531 5.55228 9.4976 6 8.94531 6C8.39303 6 7.94531 5.55228 7.94531 5H6.94531C6.39303 5 5.94531 5.44772 5.94531 6V7H19.9453ZM5.94531 9V19C5.94531 19.5523 6.39303 20 6.94531 20H18.9453C19.4976 20 19.9453 19.5523 19.9453 19V9H5.94531Z"
-            fill="#667085"
-          />
-        </svg>
-      </button>
-
-      <button type="button" class="notification relative">
-        <svg
-          width="25"
-          height="24"
-          viewBox="0 0 25 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M13.9487 3C13.9487 2.44772 13.501 2 12.9487 2C12.3964 2 11.9487 2.44772 11.9487 3V3.57088C8.55642 4.0561 5.9487 6.97352 5.9487 10.5V15.5L5.2311 16.7558C4.65968 17.7558 5.38173 19 6.53347 19H9.07475C9.51879 20.7252 11.0849 22 12.9487 22C14.8126 22 16.3787 20.7252 16.8227 19H19.3639C20.5157 19 21.2377 17.7558 20.6663 16.7558L19.9487 15.5V10.5C19.9487 6.97354 17.341 4.05614 13.9487 3.57089V3ZM7.9487 16.0311L7.39506 17H18.5023L17.9487 16.0311V10.5C17.9487 7.73858 15.7101 5.5 12.9487 5.5C10.1873 5.5 7.9487 7.73858 7.9487 10.5V16.0311ZM12.9487 20C12.2084 20 11.5621 19.5978 11.2163 19H14.6812C14.3354 19.5978 13.689 20 12.9487 20Z"
-            fill="#667085"
-          />
-        </svg>
-
-        <span
-          class="rounded-full min-w-5 px-1.5 min-h-5 max-h-5 text-xs font-semibold bg-[#F04438] text-white grid place-content-center place-items-center absolute -top-3 -right-3"
-        >
-          1
-        </span>
-      </button>
-
-      <button type="button" class="message relative">
-        <svg
-          width="25"
-          height="24"
-          viewBox="0 0 25 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M2.94531 7C2.94531 5.34315 4.28846 4 5.94531 4H19.9453C21.6022 4 22.9453 5.34315 22.9453 7V17C22.9453 18.6569 21.6022 20 19.9453 20H5.94531C4.28846 20 2.94531 18.6569 2.94531 17V7ZM19.2787 6H6.61201L12.3453 10.3C12.7009 10.5667 13.1898 10.5667 13.5453 10.3L19.2787 6ZM4.94531 7.24998V17C4.94531 17.5523 5.39303 18 5.94531 18H19.9453C20.4976 18 20.9453 17.5523 20.9453 17V7.25002L14.7453 11.9C13.6787 12.7 12.212 12.7 11.1453 11.9L4.94531 7.24998Z"
-            fill="#667085"
-          />
-        </svg>
-
-        <span
-          class="rounded-full min-w-5 px-1.5 min-h-5 max-h-5 text-xs font-semibold bg-[#F04438] text-white grid place-content-center place-items-center absolute -top-3 -right-3"
-        >
-          10
-        </span>
-      </button>
-
-      <button
-        type="button"
-        class="profile size-10 rounded-full bg-gray-100 relative"
+  <div class="flex gap-4 items-center">
+    <button
+      type="button"
+      class="md:hidden block text-black"
+      (click)="sidebarService.toggle()"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-menu-icon lucide-menu"
       >
-        <span
-          class="absolute bottom-1 right-1 active size-3 rounded-full bg-green-500"
-        ></span>
-      </button>
-    </div>
-
-    <div class="side-2-tab lg:hidden flex items-center gap-6">
-      <button type="button" class="menu max-[720px]:hidden">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          class="lucide lucide-grid2x2-icon lucide-grid-2x2"
-        >
-          <path d="M12 3v18" />
-          <path d="M3 12h18" />
-          <rect x="3" y="3" width="18" height="18" rx="2" />
-        </svg>
-      </button>
-
-      <button
-        type="button"
-        class="notification relative max-[720px]:block hidden bg-gray-100 p-1.5 rounded-full"
-      >
-        <svg
-          width="25"
-          height="24"
-          viewBox="0 0 25 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M13.9487 3C13.9487 2.44772 13.501 2 12.9487 2C12.3964 2 11.9487 2.44772 11.9487 3V3.57088C8.55642 4.0561 5.9487 6.97352 5.9487 10.5V15.5L5.2311 16.7558C4.65968 17.7558 5.38173 19 6.53347 19H9.07475C9.51879 20.7252 11.0849 22 12.9487 22C14.8126 22 16.3787 20.7252 16.8227 19H19.3639C20.5157 19 21.2377 17.7558 20.6663 16.7558L19.9487 15.5V10.5C19.9487 6.97354 17.341 4.05614 13.9487 3.57089V3ZM7.9487 16.0311L7.39506 17H18.5023L17.9487 16.0311V10.5C17.9487 7.73858 15.7101 5.5 12.9487 5.5C10.1873 5.5 7.9487 7.73858 7.9487 10.5V16.0311ZM12.9487 20C12.2084 20 11.5621 19.5978 11.2163 19H14.6812C14.3354 19.5978 13.689 20 12.9487 20Z"
-            fill="black"
-          />
-        </svg>
-
-        <span
-          class="rounded-full min-w-4 px-1 min-h-4 max-h-4 text-[9px] font-semibold bg-[#F04438] text-white grid place-content-center place-items-center absolute -top-1 -right-1"
-        >
-          1
-        </span>
-      </button>
-
-      <button
-        type="button"
-        class="profile size-10 rounded-full bg-gray-100 relative max-[720px]:hidden"
-      >
-        <span
-          class="absolute bottom-1 right-1 active size-3 rounded-full bg-green-500"
-        ></span>
-      </button>
-    </div>
-  </nav>
-  <div
-    *ngIf="isCoursesRoute"
-    class="md:hidden w-full flex justify-center items-center pt-4"
-  >
-    <div class="relative w-[90%]">
-      <div
-        class="flex items-center w-full h-10 px-3 bg-white border border-gray-300 rounded-md shadow-sm"
-      >
-        <span class="icon mr-2 text-gray-500">
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
-              d="M13.7847 15.1991C10.6462 17.6416 6.10654 17.4205 3.22181 14.5358C0.0976136 11.4116 0.0976136 6.34625 3.22181 3.22205C6.346 0.0978578 11.4113 0.0978578 14.5355 3.22205C17.4202 6.10677 17.6414 10.6464 15.1989 13.7849L19.4853 18.0713C19.8758 18.4618 19.8758 19.095 19.4853 19.4855C19.0948 19.876 18.4616 19.876 18.0711 19.4855L13.7847 15.1991ZM4.63602 13.1215C6.97917 15.4647 10.7782 15.4647 13.1213 13.1215C15.4644 10.7784 15.4644 6.97941 13.1213 4.63627C10.7782 2.29312 6.97917 2.29312 4.63602 4.63627C2.29288 6.97941 2.29288 10.7784 4.63602 13.1215Z"
-              fill="#667085"
-            />
-          </svg>
-        </span>
-        <input
-          type="text"
-          placeholder="Search by name..."
-          class="w-full outline-none text-gray-700 text-sm bg-transparent"
-        />
-      </div>
+        <path d="M4 12h16" />
+        <path d="M4 18h16" />
+        <path d="M4 6h16" />
+      </svg>
+    </button>
+    <div class="side-1 lg:space-y-1">
+      <h1 class="text-lg md:text-xl lg:text-3xl font-medium">
+        Welcome Richard! 👋
+      </h1>
+      <p class="text-[#667085] text-lg hidden md:block">Overview</p>
     </div>
   </div>
-</div>
+
+  <div class="side-2-desktop lg:flex hidden items-center gap-6 sm:gap-8">
+    <button type="button" class="search">
+      <svg
+        width="25"
+        height="24"
+        viewBox="0 0 25 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M15.7263 16.1991C12.5879 18.6416 8.04819 18.4205 5.16346 15.5358C2.03926 12.4116 2.03926 7.34625 5.16346 4.22205C8.28765 1.09786 13.353 1.09786 16.4772 4.22205C19.3619 7.10677 19.583 11.6464 17.1405 14.7849L21.4269 19.0713C21.8175 19.4618 21.8175 20.095 21.4269 20.4855C21.0364 20.876 20.4033 20.876 20.0127 20.4855L15.7263 16.1991ZM6.57767 14.1215C8.92082 16.4647 12.7198 16.4647 15.063 14.1215C17.4061 11.7784 17.4061 7.97941 15.063 5.63627C12.7198 3.29312 8.92082 3.29312 6.57767 5.63627C4.23453 7.97941 4.23453 11.7784 6.57767 14.1215Z"
+          fill="#667085"
+        />
+      </svg>
+    </button>
+
+    <button type="button" class="calender">
+      <svg
+        width="25"
+        height="24"
+        viewBox="0 0 25 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M9.94531 3C9.94531 2.44772 9.4976 2 8.94531 2C8.39303 2 7.94531 2.44772 7.94531 3H6.94531C5.28846 3 3.94531 4.34315 3.94531 6V19C3.94531 20.6569 5.28846 22 6.94531 22H18.9453C20.6022 22 21.9453 20.6569 21.9453 19V6C21.9453 4.34315 20.6022 3 18.9453 3H17.9453C17.9453 2.44772 17.4976 2 16.9453 2C16.393 2 15.9453 2.44772 15.9453 3H9.94531ZM19.9453 7V6C19.9453 5.44772 19.4976 5 18.9453 5H17.9453C17.9453 5.55228 17.4976 6 16.9453 6C16.393 6 15.9453 5.55228 15.9453 5H9.94531C9.94531 5.55228 9.4976 6 8.94531 6C8.39303 6 7.94531 5.55228 7.94531 5H6.94531C6.39303 5 5.94531 5.44772 5.94531 6V7H19.9453ZM5.94531 9V19C5.94531 19.5523 6.39303 20 6.94531 20H18.9453C19.4976 20 19.9453 19.5523 19.9453 19V9H5.94531Z"
+          fill="#667085"
+        />
+      </svg>
+    </button>
+
+    <button type="button" class="notification relative">
+      <svg
+        width="25"
+        height="24"
+        viewBox="0 0 25 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M13.9487 3C13.9487 2.44772 13.501 2 12.9487 2C12.3964 2 11.9487 2.44772 11.9487 3V3.57088C8.55642 4.0561 5.9487 6.97352 5.9487 10.5V15.5L5.2311 16.7558C4.65968 17.7558 5.38173 19 6.53347 19H9.07475C9.51879 20.7252 11.0849 22 12.9487 22C14.8126 22 16.3787 20.7252 16.8227 19H19.3639C20.5157 19 21.2377 17.7558 20.6663 16.7558L19.9487 15.5V10.5C19.9487 6.97354 17.341 4.05614 13.9487 3.57089V3ZM7.9487 16.0311L7.39506 17H18.5023L17.9487 16.0311V10.5C17.9487 7.73858 15.7101 5.5 12.9487 5.5C10.1873 5.5 7.9487 7.73858 7.9487 10.5V16.0311ZM12.9487 20C12.2084 20 11.5621 19.5978 11.2163 19H14.6812C14.3354 19.5978 13.689 20 12.9487 20Z"
+          fill="#667085"
+        />
+      </svg>
+
+      <span
+        class="rounded-full min-w-5 px-1.5 min-h-5 max-h-5 text-xs font-semibold bg-[#F04438] text-white grid place-content-center place-items-center absolute -top-3 -right-3"
+      >
+        1
+      </span>
+    </button>
+
+    <button type="button" class="message relative">
+      <svg
+        width="25"
+        height="24"
+        viewBox="0 0 25 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M2.94531 7C2.94531 5.34315 4.28846 4 5.94531 4H19.9453C21.6022 4 22.9453 5.34315 22.9453 7V17C22.9453 18.6569 21.6022 20 19.9453 20H5.94531C4.28846 20 2.94531 18.6569 2.94531 17V7ZM19.2787 6H6.61201L12.3453 10.3C12.7009 10.5667 13.1898 10.5667 13.5453 10.3L19.2787 6ZM4.94531 7.24998V17C4.94531 17.5523 5.39303 18 5.94531 18H19.9453C20.4976 18 20.9453 17.5523 20.9453 17V7.25002L14.7453 11.9C13.6787 12.7 12.212 12.7 11.1453 11.9L4.94531 7.24998Z"
+          fill="#667085"
+        />
+      </svg>
+
+      <span
+        class="rounded-full min-w-5 px-1.5 min-h-5 max-h-5 text-xs font-semibold bg-[#F04438] text-white grid place-content-center place-items-center absolute -top-3 -right-3"
+      >
+        10
+      </span>
+    </button>
+
+    <button
+      type="button"
+      class="profile size-10 rounded-full bg-gray-100 relative"
+    >
+      <span
+        class="absolute bottom-1 right-1 active size-3 rounded-full bg-green-500"
+      ></span>
+    </button>
+  </div>
+
+  <div class="side-2-tab lg:hidden flex items-center gap-6">
+    <button type="button" class="menu md:block hidden">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-grid2x2-icon lucide-grid-2x2"
+      >
+        <path d="M12 3v18" />
+        <path d="M3 12h18" />
+        <rect x="3" y="3" width="18" height="18" rx="2" />
+      </svg>
+    </button>
+
+    <button
+      type="button"
+      class="notification relative block md:hidden bg-gray-100 p-1.5 rounded-full"
+    >
+      <svg
+        width="25"
+        height="24"
+        viewBox="0 0 25 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M13.9487 3C13.9487 2.44772 13.501 2 12.9487 2C12.3964 2 11.9487 2.44772 11.9487 3V3.57088C8.55642 4.0561 5.9487 6.97352 5.9487 10.5V15.5L5.2311 16.7558C4.65968 17.7558 5.38173 19 6.53347 19H9.07475C9.51879 20.7252 11.0849 22 12.9487 22C14.8126 22 16.3787 20.7252 16.8227 19H19.3639C20.5157 19 21.2377 17.7558 20.6663 16.7558L19.9487 15.5V10.5C19.9487 6.97354 17.341 4.05614 13.9487 3.57089V3ZM7.9487 16.0311L7.39506 17H18.5023L17.9487 16.0311V10.5C17.9487 7.73858 15.7101 5.5 12.9487 5.5C10.1873 5.5 7.9487 7.73858 7.9487 10.5V16.0311ZM12.9487 20C12.2084 20 11.5621 19.5978 11.2163 19H14.6812C14.3354 19.5978 13.689 20 12.9487 20Z"
+          fill="black"
+        />
+      </svg>
+
+      <span
+        class="rounded-full min-w-4 px-1 min-h-4 max-h-4 text-[9px] font-semibold bg-[#F04438] text-white grid place-content-center place-items-center absolute -top-1 -right-1"
+      >
+        1
+      </span>
+    </button>
+
+    <button
+      type="button"
+      class="profile size-10 rounded-full bg-gray-100 relative md:block hidden"
+    >
+      <span
+        class="absolute bottom-1 right-1 active size-3 rounded-full bg-green-500"
+      ></span>
+    </button>
+  </div>
+</nav>
