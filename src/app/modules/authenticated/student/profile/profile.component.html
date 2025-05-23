@@ -15,18 +15,33 @@
         </div>
       </div>
       <div class="w-full flex justify-between">
-        <div class="p-3 border rounded-lg">Overveiw</div>
-        <div class="p-3 border rounded-lg">Notes</div>
-        <div class="p-3 border rounded-lg">Test</div>
-        <div class="p-3 border rounded-lg">Assignment</div>
-        <div class="p-3 border rounded-lg">History</div>
+        <div class="p-3 border rounded-lg flex items-center gap-2">
+          <img src="/assets/icons/home.svg" alt="" /> Overveiw
+        </div>
+        <div class="p-3 border rounded-lg flex items-center gap-2">
+          <img src="/assets/icons/add-notes.svg" alt="" />Notes
+        </div>
+        <div class="p-3 border rounded-lg flex items-center gap-2">
+          <img src="/assets/icons/check-mark box.svg" alt="" />Test
+        </div>
+        <div class="p-3 border rounded-lg flex items-center gap-2">
+          <img src="/assets/icons/assignment.svg" alt="" />Assignment
+        </div>
+        <div class="p-3 border rounded-lg flex items-center gap-2">
+          <img src="/assets/icons/history-outline.svg" alt="" />History
+        </div>
       </div>
     </section>
 
-    <section class="flex-col flex gap-3 border rounded-lg p-5">
+    <section class="flex-col flex gap-5 border rounded-lg p-5">
       <div class="flex justify-between">
         <h1 class="font-semibold text-xl">All Personal Information</h1>
-        <div class="text-primary">Edit</div>
+        <div
+          class="text-primary cursor-pointer flex items-center"
+          (click)="invisible = !invisible"
+        >
+          <img src="/assets/icons/PencilLine.svg" alt="" /> Edit
+        </div>
       </div>
       <div class="grid grid-cols-2 gap-5">
         <div class="flex gap-2">
@@ -76,6 +91,42 @@
             <p class="capitalize font-light">Address</p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="bg-white p-6 rounded-lg border w-full">
+        <h2 class="text-lg font-semibold mb-4">Saved Lessons</h2>
+        <table class="w-full text-left text-sm">
+          <thead>
+            <tr class="border-b">
+              <th class="py-2 text-gray-600">SUBJECT</th>
+              <th class="py-2 text-gray-600">STARTED</th>
+              <th class="py-2 text-gray-600">PROGRESS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let lesson of lessons" class="border-b">
+              <td class="py-4">
+                <div class="font-medium text-black">{{ lesson.subject }}</div>
+                <div class="text-xs text-gray-500">{{ lesson.category }}</div>
+              </td>
+              <td class="py-4 text-gray-700">{{ lesson.started }}</td>
+              <td class="py-4">
+                <div class="w-full bg-gray-200 rounded-full h-2 mb-1">
+                  <div
+                    class="h-2 rounded-full"
+                    [ngClass]="lesson.color"
+                    [style.width.%]="lesson.progress"
+                  ></div>
+                </div>
+                <div class="text-xs text-right text-gray-700 font-semibold">
+                  {{ lesson.progress }}%
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </section>
   </div>
@@ -143,4 +194,32 @@
       </div>
     </section>
   </div>
+</section>
+
+<section *ngIf="invisible">
+  <section
+    class="w-screen h-screen absolute top-[70px] left-0 flex justify-center items-center bg-black/30"
+  >
+    <div
+      class="flex-col flex items-center w-[500px] gap-3 p-[30px] bg-white rounded-lg border"
+    >
+      <h1 class="font-medium">Profile</h1>
+      <img src="" alt="" class="bg-gray-300 rounded-full size-10" />
+      <form class="w-full flex-col flex gap-3">
+        <app-input-ui label="Full Name" />
+        <app-input-ui label="Email" />
+        <app-input-ui label="Date of Birth" />
+        <app-intl-phone-input />
+        <app-drop-select label="Exam" />
+        <div class="flex gap-5 w-full justify-center items-center">
+          <app-button
+            variant="secondary"
+            label="Cancel"
+            (btnClick)="invisible = !invisible"
+          />
+          <app-button label="Save" />
+        </div>
+      </form>
+    </div>
+  </section>
 </section>

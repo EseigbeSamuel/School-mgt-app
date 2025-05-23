@@ -1,14 +1,17 @@
 <p>assessment-and-quizzes works!</p>
 
+<nav>
+  <ul class="w-full flex gap-5 justify-center font-semibold uppercase text-xl">
+    <li class="hover:underline">
+      <a routerLink="quiz" routerLinkActive="underline text-primary"> Quiz</a>
+    </li>
+    <li class="hover:underline">
+      <a routerLink="assessment" routerLinkActive="underline text-primary"
+        >Assessment</a
+      >
+    </li>
+  </ul>
+</nav>
 <div>
-  <!-- <section class="">
-    <img src="../../../../../assets/images/quiz background.svg" alt="" />
-    <h1 class="z-20 top-1">quizz</h1>
-  </section> -->
-  <section
-    class="bg-[url('/assets/images/quiz background.svg')] bg-cover bg-center h-60"
-  ></section>
-  <div
-    class="bg-[url('/assets/images/quiz background.svg')] bg-cover bg-center h-60"
-  ></div>
+  <router-outlet />
 </div>
