@@ -19,6 +19,7 @@
               matrixParams: 'exact',
               queryParams: 'ignored'
             }"
+            (click)="sidebarService.toggle()"
             class="nav-link flex gap-3 items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70 cursor-pointer"
           >
             <span
@@ -38,6 +39,7 @@
       <li *ngIf="userType !== 'tutor'">
         <a
           routerLink="/students/settings"
+          (click)="sidebarService.toggle()"
           class="flex gap-3 nav-link items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70 cursor-pointer"
         >
           <span class="icon">
@@ -72,6 +74,7 @@
       <li *ngIf="userType === 'tutor'">
         <a
           routerLink="/tutor/profile"
+          (click)="sidebarService.toggle()"
           class="flex gap-3 nav-link items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70 cursor-pointer"
         >
           <span class="icon">
@@ -156,6 +159,7 @@
       <div *ngIf="item.role.includes(userType) && !!item.mobile">
         <a
           [routerLink]="item.link"
+          (click)="sidebarService.toggle()"
           routerLinkActive="text-[#2C2A72] active"
           [routerLinkActiveOptions]="{
             paths: 'exact',
