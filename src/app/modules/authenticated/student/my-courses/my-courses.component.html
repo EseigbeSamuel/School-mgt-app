@@ -69,13 +69,8 @@
   </div>
 
   <div *ngIf="activeTab === 'science'">
-    <div
-      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 p-5"
-    >
-      <app-subject-card
-        *ngFor="let subject of data"
-        [subject]="subject"
-      ></app-subject-card>
+    <div class="pt-3">
+      <app-subject-card [subjects]="data" />
     </div>
   </div>
   <div *ngIf="activeTab === 'commercial'">

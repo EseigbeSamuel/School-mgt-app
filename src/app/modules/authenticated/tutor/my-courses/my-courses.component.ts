@@ -8,7 +8,7 @@ import { SharedModule } from '../../../../shared/shared.module';
   templateUrl: './my-courses.component.html',
   styleUrl: './my-courses.component.css',
 })
-export class MyCoursesComponent {
+export class MyCoursesComponentTutor {
   data = [
     {
       name: 'Mathematics',

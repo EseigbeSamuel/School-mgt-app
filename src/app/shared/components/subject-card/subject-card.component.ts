@@ -10,16 +10,5 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule],
 })
 export class SubjectCardComponent {
-  @Input() subject: any = [];
-
-  getProgressColorClass(progress?: string): string {
-    if (!progress) return 'text-gray-500';
-    return (
-      {
-        Completed: 'text-green-500',
-        'In progress': 'text-yellow-500',
-        'Not started': 'text-red-500',
-      }[progress] || 'text-gray-500'
-    );
-  }
+  @Input() subjects: any = [];
 }
