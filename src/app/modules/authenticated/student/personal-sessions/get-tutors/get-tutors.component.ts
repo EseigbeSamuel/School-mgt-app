@@ -5,7 +5,7 @@ import { SharedModule } from '../../../../../shared/shared.module';
 
 @Component({
   selector: 'app-get-tutors',
-  imports: [SharedModule],
+  imports: [InputUiComponent, SharedModule],
   templateUrl: './get-tutors.component.html',
   styleUrl: './get-tutors.component.css',
 })

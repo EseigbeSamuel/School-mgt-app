@@ -6,7 +6,6 @@
     <div
       class="flex w-max md:w-full gap-2 md:gap-0 items-center pt-4 md:flex-nowrap flex-nowrap"
     >
-      <!-- Sciences -->
       <div
         (click)="switchTabs('science')"
         class="min-w-fit px-4 py-3 md:py-2 rounded-lg md:rounded-none text-sm font-semibold cursor-pointer transition-all duration-200"
@@ -51,7 +50,6 @@
         Arts
       </div>
 
-      <!-- Vocational -->
       <div
         (click)="switchTabs('vocational')"
         class="min-w-fit px-4 py-2 rounded-lg md:rounded-none text-sm font-semibold cursor-pointer transition-all duration-200"
@@ -74,12 +72,85 @@
     </div>
   </div>
   <div *ngIf="activeTab === 'commercial'">
-    <div>commercial</div>
+    <div class="pt-3">
+      <app-subject-card [subjects]="buttonData" />
+    </div>
   </div>
   <div *ngIf="activeTab === 'art'">
-    <div>art</div>
+    <div class="pt-3">
+      <app-subject-card [subjects]="data" />
+    </div>
   </div>
   <div *ngIf="activeTab === 'vocational'">
-    <div>vocational</div>
+    <div class="pt-3">
+      <app-subject-card [subjects]="buttonData" />
+    </div>
+  </div>
+
+  <div class="md:border-b border-[#E9E9E9] overflow-x-auto">
+    <div
+      class="flex w-max md:w-full gap-2 md:gap-0 items-center pt-4 md:flex-nowrap flex-nowrap"
+    >
+      <div
+        (click)="switchTab2('trending')"
+        class="min-w-fit px-4 py-3 md:py-2 rounded-lg md:rounded-none text-sm font-semibold cursor-pointer transition-all duration-200"
+        [ngClass]="{
+          'bg-[#F4EDFF] text-textColor': buttomActiveTab === 'trending',
+          'bg-gray-100 text-gray-500 md:bg-white':
+            buttomActiveTab !== 'trending',
+          'md:border-b-2 md:border-textColor md:bg-transparent md:text-textColor':
+            buttomActiveTab === 'trending' && isDesktop,
+          'md:border-b-0': buttomActiveTab !== 'trending' && isDesktop
+        }"
+      >
+        Trending
+      </div>
+
+      <div
+        (click)="switchTab2('topRatedLessons')"
+        class="min-w-fit px-4 py-2 rounded-lg md:rounded-none text-sm font-semibold cursor-pointer transition-all duration-200"
+        [ngClass]="{
+          'bg-[#F4EFF2] text-textColor': buttomActiveTab === 'topRatedLessons',
+          'bg-gray-100 text-gray-500 md:bg-white':
+            buttomActiveTab !== 'topRatedLessons',
+          'md:border-b-2 md:border-textColor md:bg-transparent md:text-textColor':
+            buttomActiveTab === 'topRatedLessons' && isDesktop,
+          'md:border-b-0': buttomActiveTab !== 'topRatedLessons' && isDesktop
+        }"
+      >
+        Top rated lessons
+      </div>
+
+      <div
+        (click)="switchTab2('recentlyUpdated')"
+        class="min-w-fit px-4 py-2 rounded-lg md:rounded-none text-sm font-semibold cursor-pointer transition-all duration-200"
+        [ngClass]="{
+          'bg-[#E7F1FF] text-textColor': buttomActiveTab === 'recentlyUpdated',
+          'bg-gray-100 text-gray-500 md:bg-white':
+            buttomActiveTab !== 'recentlyUpdated',
+          'md:border-b-2 md:border-textColor md:bg-transparent md:text-textColor':
+            buttomActiveTab === 'recentlyUpdated' && isDesktop,
+          'md:border-b-0': buttomActiveTab !== 'recentlyUpdated' && isDesktop
+        }"
+      >
+        Recently updated
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="buttomActiveTab === 'trending'">
+    <div class="pt-3 overflow-x-auto w-full">
+      <app-subject-card [subjects]="buttonData" />
+    </div>
+  </div>
+  <div *ngIf="buttomActiveTab === 'topRatedLessons'" class="overflow-x-scroll">
+    <div class="pt-3 w-full">
+      <app-subject-card [subjects]="data" />
+    </div>
+  </div>
+  <div *ngIf="buttomActiveTab === 'recentlyUpdated'" class="overflow-x-auto">
+    <div class="pt-3 overflow-x-auto">
+      <app-subject-card [subjects]="buttonData" />
+    </div>
   </div>
 </main>

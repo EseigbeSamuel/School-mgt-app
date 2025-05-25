@@ -11,4 +11,13 @@ import { CommonModule } from '@angular/common';
 })
 export class SubjectCardComponent {
   @Input() subjects: any = [];
+  isHeartActive = false;
+  isBookmarkActive = false;
+  toggleHeart(subject: any) {
+    subject.isHeartActive = !subject.isHeartActive;
+  }
+
+  toggleBookmark(subject: any) {
+    subject.isBookmarkActive = !subject.isBookmarkActive;
+  }
 }

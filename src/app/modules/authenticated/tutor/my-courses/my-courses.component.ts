@@ -1,7 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { SharedModule } from '../../../../shared/shared.module';
-import { SortDropdownComponent, SortOption } from '../../../../shared/components/sort-dropdown/sort-dropdown.component';
+import {
+  SortDropdownComponent,
+  SortOption,
+} from '../../../../shared/components/sort-dropdown/sort-dropdown.component';
 
 @Component({
   selector: 'app-my-courses',
