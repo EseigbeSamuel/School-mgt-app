@@ -1,10 +1,17 @@
 <div class="flex flex-col gap-3">
   <section class="flex w-full justify-end">
-    <div class="flex justify-end w-[200px]">
-      <app-drop-select placeholder="sort-by-class" />
+    <div class="flex justify-end mb-1">
+      <app-sort-dropdown
+        [customOptions]="customSortOptions"
+        [defaultSort]="'name'"
+        [allowDirectionToggle]="true"
+        (selectionChange)="onSortChange($event)"
+      />
     </div>
   </section>
-  <section class="flex justify-between w-full border-[1px] p-4">
+  <section
+    class="border-[1px] p-4 lg:py-4 py-8 gap-6 grid grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))] place-items-center"
+  >
     <app-students-card
       *ngFor="let student of students"
       [name]="student.name"

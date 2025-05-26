@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { SharedModule } from '../../../../shared/shared.module';
 import {
+  SortConfig,
   SortDropdownComponent,
   SortOption,
 } from '../../../../shared/components/sort-dropdown/sort-dropdown.component';
@@ -28,8 +29,17 @@ export class MyCoursesComponentTutor {
     },
   ];
 
-  onSortChange(option: SortOption): void {
-    console.log('Selected sort option:', option);
-    // Handle the sort change logic here
+  customSortOptions: SortOption[] = [
+    { value: 'daily', label: 'Daily', direction: 'desc' },
+    { value: 'weekly', label: 'Weekly', direction: 'desc' },
+    { value: 'monthly', label: 'Monthly', direction: 'desc' },
+    { value: 'yearly', label: 'Yearly', direction: 'desc' },
+  ];
+
+  onSortChange(sortConfig: SortConfig): void {
+    console.log(
+      `Sorting by ${sortConfig.field} in ${sortConfig.direction} order`
+    );
+    // Apply sorting logic here
   }
 }
