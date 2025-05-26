@@ -1,1 +1,5 @@
 <p>tutors-description works!</p>
+<div *ngIf="tutor">
+  <app-button label="something" />
+  <h1 class="font-semibold text-xl">{{ tutor.name }} {{ tutor.id }}</h1>
+</div>

@@ -1,1 +1,77 @@
-<p>tutors works!</p>
+<section class="flex justify-between items-center p-3 mb-5 border-y">
+  <h1 class="font-semibold text-xl">Tutors</h1>
+  <div class="flex gap-3">
+    <div class="border rounded-lg p-3">Commit to long Term</div>
+    <div class="border rounded-lg p-3">Filter</div>
+  </div>
+</section>
+<div>
+  <section></section>
+  <section class="grid grid-cols-3 gap-10">
+    <div
+      class="border rounded-lg p-5 flex flex-col w-[350px] gap-5 items-center bg-white"
+      *ngFor="let tutor of tutors"
+      (click)="onSelectTutor(tutor)"
+    >
+      <div class="flex flex-col items-center gap-3">
+        <div>
+          <img src="" alt="" class="size-[100px] rounded-full bg-gray-300" />
+        </div>
+        <div class="text-center">
+          <h1 class="font-medium text-xl">{{ tutor.name }}</h1>
+          <p>{{ tutor.age }} years</p>
+        </div>
+      </div>
+      <div class="">
+        <div class="flex gap-3">
+          <P
+            >Subject: <span class="font-light">{{ tutor.subjects }}</span>
+          </P>
+          <P
+            >Qualification:
+            <span class="font-light">{{ tutor.qualification }}</span>
+          </P>
+        </div>
+        <div class="flex gap-3">
+          <P
+            >Classes: <span class="font-light">{{ tutor.classes }}</span>
+          </P>
+          <P
+            >Success Rate:
+            <span class="text-blue-400">{{ tutor.success }}%</span>
+          </P>
+        </div>
+      </div>
+      <div class="flex gap-2 items-center">
+        <p>Rating:</p>
+        <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
+          <svg
+            *ngIf="star <= tutor.rating; else emptyStar"
+            class="w-4 h-4 text-yellow-400"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.945a1 1 0 00.95.69h4.14c.969 0 1.371 1.24.588 1.81l-3.354 2.437a1 1 0 00-.364 1.118l1.286 3.945c.3.921-.755 1.688-1.54 1.118l-3.354-2.437a1 1 0 00-1.175 0l-3.354 2.437c-.785.57-1.84-.197-1.54-1.118l1.286-3.945a1 1 0 00-.364-1.118L2.085 9.372c-.783-.57-.38-1.81.588-1.81h4.14a1 1 0 00.95-.69l1.286-3.945z"
+            />
+          </svg>
+          <ng-template #emptyStar>
+            <svg
+              class="w-4 h-4 text-gray-300"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.945a1 1 0 00.95.69h4.14c.969 0 1.371 1.24.588 1.81l-3.354 2.437a1 1 0 00-.364 1.118l1.286 3.945c.3.921-.755 1.688-1.54 1.118l-3.354-2.437a1 1 0 00-1.175 0l-3.354 2.437c-.785.57-1.84-.197-1.54-1.118l1.286-3.945a1 1 0 00-.364-1.118L2.085 9.372c-.783-.57-.38-1.81.588-1.81h4.14a1 1 0 00.95-.69l1.286-3.945z"
+              />
+            </svg>
+          </ng-template>
+        </ng-container>
+      </div>
+      <div class="flex gap-2 items-center">
+        <img src="/assets/icons/green-circle check-mark.svg" alt="" />
+        <p>Approved</p>
+      </div>
+    </div>
+  </section>
+</div>
