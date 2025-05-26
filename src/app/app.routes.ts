@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 import { UnAthenticatedComponent } from './layout/un-athenticated/un-athenticated.component';
 import { SplashScreenComponent } from './modules/unAuthenticated/splash-screen/splash-screen.component';
-
 import { PreRegisterComponent } from './modules/unAuthenticated/register/pre-register.component';
 import { LoginComponent } from './modules/unAuthenticated/login/login.component';
 import { SignUpComponent } from './modules/unAuthenticated/sign-up/sign-up.component';
@@ -35,6 +34,7 @@ import { TutorsComponent } from './modules/authenticated/student/personal-sessio
 import { TutorsDescriptionComponent } from './modules/authenticated/student/personal-sessions/tutors-description/tutors-description.component';
 import { GetTutorsComponent } from './modules/authenticated/student/personal-sessions/get-tutors/get-tutors.component';
 import { MyCoursesComponentTutor } from './modules/authenticated/tutor/my-courses/my-courses.component';
+import { ViewCourseComponent } from './modules/authenticated/student/my-courses/view-course/view-course.component';
 // test
 export const routes: Routes = [
   // {
@@ -97,7 +97,17 @@ export const routes: Routes = [
         component: RouteEntryComponent,
         children: [
           { path: '', component: StudentDashboardComponent },
-          { path: 'courses', component: MyCoursesComponent },
+          {
+            path: 'courses',
+            component: RouteEntryComponent,
+            children: [
+              { path: '', component: MyCoursesComponent },
+              {
+                path: 'view-course/:id',
+                component: ViewCourseComponent,
+              },
+            ],
+          },
           {
             path: 'assessments',
             component: AssessmentAndQuizzesComponent,

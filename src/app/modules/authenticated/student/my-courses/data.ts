@@ -1,4 +1,3 @@
-// src/app/models/subject.model.ts
 export interface SubjectCard {
   name: string;
   duration?: string;
@@ -6,7 +5,7 @@ export interface SubjectCard {
   progress?: string;
   isStarFlow?: boolean;
 }
-interface subjects {
+export interface subjects {
   id: number;
   name: string;
   lessons: number;
@@ -15,6 +14,7 @@ interface subjects {
   progressPercent: number;
   color: string;
   icon: string;
+  author?: string;
 }
 
 export const SUBJECTS_DATA: subjects[] = [

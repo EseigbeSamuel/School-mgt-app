@@ -1,7 +1,7 @@
 // src/app/subject-card/subject-card.component.ts
 import { Component, Input } from '@angular/core';
-import { SubjectCard } from '../../../modules/authenticated/student/my-courses/data';
 import { CommonModule } from '@angular/common';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-subject-card',
@@ -11,6 +11,10 @@ import { CommonModule } from '@angular/common';
 })
 export class SubjectCardComponent {
   @Input() subjects: any = [];
+  constructor(private router: Router) {}
+  viewCourse(id: number) {
+    this.router.navigate([`student/courses/view-course/${id}`]);
+  }
   isHeartActive = false;
   isBookmarkActive = false;
   toggleHeart(subject: any) {

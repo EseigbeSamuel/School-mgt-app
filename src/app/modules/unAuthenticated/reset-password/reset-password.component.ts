@@ -51,11 +51,7 @@ export class ResetPasswordComponent {
     this.resetForm = this.fb.group({
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required],
-      verificationCode: ['', Validators.required],
     });
-  }
-  get verificationCode(): any {
-    return this.resetForm.get('verificationCode')?.value || '';
   }
 
   get password(): string {

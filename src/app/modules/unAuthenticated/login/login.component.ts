@@ -16,13 +16,11 @@ export class LoginComponent {
   constructor(private router: Router) {}
 
   login(event: Event) {
-    // console.log('Button clicked!', event);
-
     this.router.navigate(['']);
   }
 
   signUp() {
-    this.router.navigate(['/auth/sign-up']);
+    this.router.navigate(['/auth/register']);
   }
   resetPassword() {
     this.router.navigate(['/auth/reset-password']);
