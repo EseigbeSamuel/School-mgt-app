@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { SubjectCardComponent } from '../../../../shared/components/subject-card/subject-card.component';
 import { SUBJECTS_DATA } from './data';
+import { SudentCoursesSubjetCardSvgIcons } from '../../../../utils/icons';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-my-courses',
@@ -11,16 +13,40 @@ import { SUBJECTS_DATA } from './data';
 })
 export class MyCoursesComponent {
   activeTab: 'science' | 'art' | 'commercial' | 'vocational' = 'science';
-  data = SUBJECTS_DATA;
+  buttomActiveTab: 'trending' | 'topRatedLessons' | 'recentlyUpdated' =
+    'trending';
+
+  data: Array<any> = [];
+  buttonData: Array<any> = [];
+  isDesktop = window.innerWidth >= 768;
+  constructor(private sanitizer: DomSanitizer) {}
 
   switchTabs(tab: 'science' | 'art' | 'commercial' | 'vocational') {
     this.activeTab = tab;
   }
-  isDesktop = window.innerWidth >= 768;
+  switchTab2(tab: 'trending' | 'topRatedLessons' | 'recentlyUpdated') {
+    this.buttomActiveTab = tab;
+  }
 
   ngOnInit() {
     window.addEventListener('resize', () => {
       this.isDesktop = window.innerWidth >= 768;
     });
+    this.data = SUBJECTS_DATA.map((link) => ({
+      ...link,
+      isHeartActive: false,
+      isBookmarkActive: false,
+      safeSvg: this.sanitizer.bypassSecurityTrustHtml(
+        SudentCoursesSubjetCardSvgIcons[link.icon]
+      ),
+    }));
+    this.buttonData = SUBJECTS_DATA.slice(0, 3).map((link) => ({
+      ...link,
+      isHeartActive: false,
+      isBookmarkActive: false,
+      safeSvg: this.sanitizer.bypassSecurityTrustHtml(
+        SudentCoursesSubjetCardSvgIcons[link.icon]
+      ),
+    }));
   }
 }

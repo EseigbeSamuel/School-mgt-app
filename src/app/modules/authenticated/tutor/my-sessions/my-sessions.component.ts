@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { TutorSesionComponentTable } from '../../../../shared/components/tables/tutor-sesion/tutor-sesion.component';
 import { students } from './data';
 import {
+  SortConfig,
   SortDropdownComponent,
   SortOption,
 } from '../../../../shared/components/sort-dropdown/sort-dropdown.component';
@@ -33,8 +34,10 @@ export class MySessionsComponent {
     totalItems: 0,
   };
 
-  onSortChange(option: SortOption): void {
-    console.log('Selected sort option:', option);
-    // Handle the sort change logic here
+  onSortChange(sortConfig: SortConfig): void {
+    console.log(
+      `Sorting by ${sortConfig.field} in ${sortConfig.direction} order`
+    );
+    // Apply sorting logic here
   }
 }
