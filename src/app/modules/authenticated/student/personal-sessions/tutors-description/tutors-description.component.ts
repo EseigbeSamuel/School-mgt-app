@@ -17,4 +17,6 @@ export class TutorsDescriptionComponent implements OnInit {
   ngOnInit(): void {
     this.tutor = this.tutorDataService.getTutor();
   }
+
+  invisible = false;
 }
