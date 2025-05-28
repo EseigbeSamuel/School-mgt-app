@@ -6,42 +6,57 @@
       track your performance, <br />
       and identify areas that need improvement
     </p>
-    <div><app-button label="Start Quiz" /></div>
+    <div>
+      <app-button label="Start Quiz" (click)="invisible = !invisible" />
+    </div>
   </div>
 </section>
 
-<section class="hidden absolute">
-  <div class="w-[300px] border rounded-lg rotate-12">
+<section
+  class="w-screen h-screen absolute top-[70px] left-0 flex justify-center items-center bg-black/30"
+  *ngIf="invisible"
+>
+  <div class="w-[430px] h-[530px] bg-white border rounded-lg rotate-12">
     <div
-      class="w-[300px] bg-white border rounded-lg p-10 flex flex-col gap-3 z-20 -rotate-12"
+      class="w-[430px] h-[530px] bg-white border rounded-lg p-10 flex flex-col gap-5 z-20 -rotate-12"
     >
-      <div class="flex w-full">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+      <div class="flex w-full items-center justify-between">
+        <div class="bg-primary w-[60px] h-[10px] rounded-3xl"></div>
+        <div class="bg-primary w-[60px] h-[10px] rounded-3xl"></div>
+        <div class="bg-primary w-[60px] h-[10px] rounded-3xl"></div>
+        <div class="bg-primary w-[60px] h-[10px] rounded-3xl"></div>
+        <div class="bg-primary w-[60px] h-[10px] rounded-3xl"></div>
+        <img
+          src="/assets/icons/purple-circle X-mark.svg"
+          alt=""
+          (click)="invisible = !invisible"
+        />
       </div>
 
       <div class="flex justify-between text-sm">
         <p>QUESTION 05/05</p>
-        <p>GEOGRAPHY</p>
+        <p class="font-medium">GEOGRAPHY</p>
       </div>
 
       <div>
-        <h1 class="text-2xl">What is the largest ocean on Earth?</h1>
+        <h1 class="text-2xl font-semibold">
+          What is the largest ocean on Earth?
+        </h1>
       </div>
 
-      <div>
-        <p class="uppercase text-sm">select only one</p>
-        <ul>
-          <li>Atlantic</li>
-          <li>India</li>
-          <li>Pacific</li>
-          <li>Artic</li>
+      <div class="grid gap-3">
+        <p class="uppercase text-xs">select only one</p>
+        <ul class="flex flex-col gap-3 text-xl font-medium">
+          <li>
+            <input type="radio" class="accent-primary size-4" />
+            Atlantic
+          </li>
+          <li><input type="radio" class="accent-primary size-4" /> India</li>
+          <li><input type="radio" class="accent-primary size-4" /> Pacific</li>
+          <li><input type="radio" class="accent-primary size-4" /> Artic</li>
         </ul>
       </div>
-      <div class="flex">
+      <div class="flex gap-3 w-full justify-end">
         <app-button label="Back" variant="secondary" />
         <app-button label="Next" />
       </div>
