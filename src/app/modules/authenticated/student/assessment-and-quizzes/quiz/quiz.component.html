@@ -1,7 +1,7 @@
 <section>
   <div class="flex flex-col justify-center items-center gap-5 text-primary">
-    <h1 class="text-3xl">Daily Quiz, Daily Bonus- Play Today!</h1>
-    <p class="text-center flex">
+    <h1 class="text-xl lg:text-3xl">Daily Quiz, Daily Bonus- Play Today!</h1>
+    <p class="text-center text-sm lg:text-base flex">
       Boost your confidence by taking interactive quizzes. Get instant feedback,
       track your performance, <br />
       and identify areas that need improvement
@@ -16,9 +16,11 @@
   class="w-screen h-screen absolute top-[70px] left-0 flex justify-center items-center bg-black/30"
   *ngIf="invisible"
 >
-  <div class="w-[430px] h-[530px] bg-white border rounded-lg rotate-12">
+  <div
+    class="w-[250px] h-[400px] lg:w-[430px] lg:h-[530px] bg-white border rounded-lg rotate-12"
+  >
     <div
-      class="w-[430px] h-[530px] bg-white border rounded-lg p-10 flex flex-col gap-5 z-20 -rotate-12"
+      class="w-[250px] h-[400px] lg:w-[430px] lg:h-[530px] bg-white border rounded-lg p-3 lg:p-10 flex flex-col gap-2 lg:gap-5 z-20 -rotate-12"
     >
       <div class="flex w-full items-center justify-between">
         <div class="bg-primary w-[60px] h-[10px] rounded-3xl"></div>
@@ -33,20 +35,20 @@
         />
       </div>
 
-      <div class="flex justify-between text-sm">
+      <div class="flex justify-between text-xs lg:text-sm">
         <p>QUESTION 05/05</p>
         <p class="font-medium">GEOGRAPHY</p>
       </div>
 
       <div>
-        <h1 class="text-2xl font-semibold">
+        <h1 class="text-lg lg:text-2xl font-semibold">
           What is the largest ocean on Earth?
         </h1>
       </div>
 
       <div class="grid gap-3">
         <p class="uppercase text-xs">select only one</p>
-        <ul class="flex flex-col gap-3 text-xl font-medium">
+        <ul class="flex flex-col gap-3 text-md lg:text-xl font-medium">
           <li>
             <input type="radio" class="accent-primary size-4" />
             Atlantic
