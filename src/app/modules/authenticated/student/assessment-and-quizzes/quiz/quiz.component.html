@@ -13,25 +13,26 @@
 </section>
 
 <section
-  class="w-screen h-[93%] absolute top-[70px] left-0 flex justify-center items-center bg-black/30"
+  class="w-screen h-screen lg:h-[91%] absolute top-[70px] left-0 flex justify-center items-center bg-black/30"
   *ngIf="invisible"
 >
   <div
-    class="w-[250px] h-[400px] lg:w-[430px] lg:h-[530px] bg-white border rounded-lg rotate-12"
+    class="w-[230px] h-[380px] lg:w-[400px] lg:h-[510px] bg-white border rounded-lg rotate-12"
   >
     <div
-      class="w-[250px] h-[400px] lg:w-[430px] lg:h-[530px] bg-white border rounded-lg p-3 lg:p-10 flex flex-col gap-2 lg:gap-5 z-20 -rotate-12"
+      class="w-[230px] h-[380px] lg:w-[400px] lg:h-[510px] bg-white border rounded-lg p-3 lg:p-10 flex flex-col gap-2 lg:gap-5 z-20 -rotate-12"
     >
       <div class="flex w-full items-center justify-between">
-        <div class="bg-primary w-[60px] h-[10px] rounded-3xl"></div>
-        <div class="bg-primary w-[60px] h-[10px] rounded-3xl"></div>
-        <div class="bg-primary w-[60px] h-[10px] rounded-3xl"></div>
-        <div class="bg-primary w-[60px] h-[10px] rounded-3xl"></div>
-        <div class="bg-primary w-[60px] h-[10px] rounded-3xl"></div>
+        <div class="bg-primary w-[40px] lg:w-[60px] h-[10px] rounded-3xl"></div>
+        <div class="bg-primary w-[40px] lg:w-[60px] h-[10px] rounded-3xl"></div>
+        <div class="bg-primary w-[40px] lg:w-[60px] h-[10px] rounded-3xl"></div>
+        <div class="bg-primary w-[40px] lg:w-[60px] h-[10px] rounded-3xl"></div>
+        <div class="bg-primary w-[40px] lg:w-[60px] h-[10px] rounded-3xl"></div>
         <img
           src="/assets/icons/purple-circle X-mark.svg"
           alt=""
           (click)="invisible = !invisible"
+          class="size-5"
         />
       </div>
 

@@ -6,12 +6,7 @@ import { SharedModule } from '../../../../../shared/shared.module';
 
 @Component({
   selector: 'app-account',
-  imports: [
-    RouterLink,
-    IntlPhoneInputComponent,
-    InputUiComponent,
-    SharedModule,
-  ],
+  imports: [RouterLink, InputUiComponent, SharedModule],
   templateUrl: './account.component.html',
   styleUrl: './account.component.css',
 })
