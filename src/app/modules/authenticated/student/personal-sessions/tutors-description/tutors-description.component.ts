@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { TutorDataService } from '../../../../../services/tutor-data.service';
-import { NgIf } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { SharedModule } from '../../../../../shared/shared.module';
 
 @Component({
   selector: 'app-tutors-description',
-  imports: [SharedModule, NgIf],
+  imports: [SharedModule, NgIf, NgFor],
   templateUrl: './tutors-description.component.html',
   styleUrl: './tutors-description.component.css',
 })

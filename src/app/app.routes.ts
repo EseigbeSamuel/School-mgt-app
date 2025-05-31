@@ -35,6 +35,11 @@ import { TutorsDescriptionComponent } from './modules/authenticated/student/pers
 import { GetTutorsComponent } from './modules/authenticated/student/personal-sessions/get-tutors/get-tutors.component';
 import { MyCoursesComponentTutor } from './modules/authenticated/tutor/my-courses/my-courses.component';
 import { ViewCourseComponent } from './modules/authenticated/student/my-courses/view-course/view-course.component';
+import { EditProfileComponent } from './modules/authenticated/student/profile/edit-profile/edit-profile.component';
+import { AccountComponent } from './modules/authenticated/student/profile/account/account.component';
+import { NotificationsComponent } from './modules/authenticated/student/profile/notifications/notifications.component';
+import { SecurityComponent } from './modules/authenticated/student/profile/security/security.component';
+import { MainProfileComponent } from './modules/authenticated/student/profile/main-profile/main-profile.component';
 // test
 export const routes: Routes = [
   // {
@@ -129,7 +134,18 @@ export const routes: Routes = [
           },
           { path: 'achievements', component: AchievementsComponent },
           { path: 'messages', component: MessagesComponent },
-          { path: 'profile', component: ProfileComponent },
+          {
+            path: 'profile',
+            component: ProfileComponent,
+            children: [
+              { path: '', component: MainProfileComponent },
+              { path: 'main-profile', component: MainProfileComponent },
+              { path: 'edit-profile', component: EditProfileComponent },
+              { path: 'account', component: AccountComponent },
+              { path: 'notification', component: NotificationsComponent },
+              { path: 'security', component: SecurityComponent },
+            ],
+          },
         ],
       },
       {

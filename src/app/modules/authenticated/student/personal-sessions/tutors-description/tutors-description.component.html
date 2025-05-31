@@ -1,4 +1,4 @@
-<div *ngIf="tutor" class="">
+<div *ngIf="tutor" class="hidden lg:grid">
   <section>
     <div class="flex gap-3 items-center mb-5">
       <img src="" alt="" class="bg-gray-300 size-[100px] rounded-full" />
@@ -8,8 +8,8 @@
       </div>
     </div>
   </section>
-  <section class="flex gap-5">
-    <div class="flex-col flex gap-5 w-[60%]">
+  <section class="lg:flex gap-5">
+    <div class="flex-col flex gap-5 lg:w-[60%]">
       <section>
         <div class="flex gap-3">
           <h1 class="font-semibold">Overview</h1>
@@ -47,23 +47,31 @@
       <section>
         <h1 class="font-semibold text-xl">Background</h1>
         <div class="border flex flex-col gap-3 rounded-lg p-5">
-          <div class="justify-between flex">
+          <div class="justify-between lg:flex">
             <p>Expertise</p>
             <div class="flex gap-1">
-              <p class="border rounded-md border-[#008AD8] text-[#008AD8] px-1">
+              <p
+                class="hidden lg:flex border rounded-md border-[#008AD8] text-[#008AD8] px-1"
+              >
                 Exam focused question analysis
+              </p>
+              <p
+                class="lg:hidden border rounded-md border-[#008AD8] text-[#008AD8] px-1"
+              >
+                Exam focused analysis
               </p>
               <p class="border rounded-md border-[#8F00FF] text-[#8F00FF] px-1">
                 Mentorship
               </p>
             </div>
           </div>
-          <div class="justify-between flex">
+          <div class="justify-between lg:flex">
             <p>Disipline</p>
             <div class="flex gap-1">
               <!-- <div class="rounded-md border px-2">{{ tutor.subjects }}</div> -->
               <div class="border rounded-md px-2">Physics</div>
               <div class="border rounded-md px-2">Mathematics</div>
+              <div class="border rounded-md px-2">Chemistry</div>
               <div class="border rounded-md px-2">Chemistry</div>
             </div>
           </div>
@@ -73,6 +81,7 @@
           </div>
         </div>
       </section>
+
       <section>
         <h1 class="font-semibold text-xl">
           Experience
@@ -102,7 +111,7 @@
       </section>
     </div>
 
-    <div class="flex flex-col gap-5 w-[40%]">
+    <div class="flex flex-col gap-5 lg:w-[40%]">
       <section>
         <h1 class="font-semibold text-xl">
           Available Session
@@ -253,3 +262,73 @@
     </div>
   </section>
 </section>
+
+<!-- mobile veiw -->
+<div *ngIf="tutor" class="lg:invisible grid gap-5">
+  <section class="grid gap-3">
+    <div class="flex justify-between items-center">
+      <div>
+        <h2 class="text-sm">Finished Class</h2>
+        <p class="font-semibold text-center">5</p>
+      </div>
+      <img src="" alt="" class="rounded-full size-[100px] bg-gray-200" />
+      <div>
+        <h2 class="text-sm">Open Class</h2>
+        <p class="font-semibold text-center">2</p>
+      </div>
+    </div>
+    <div class="flex flex-col items-center">
+      <h1 class="font-bold text-xl">{{ tutor.name }}</h1>
+      <p>{{ tutor.age }} years</p>
+      <div class="flex gap-2">
+        <ng-container *ngFor="let star of [1, 2, 3, 4, 5]">
+          <svg
+            *ngIf="star <= tutor.rating; else emptyStar"
+            class="w-4 h-4 text-yellow-400"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.945a1 1 0 00.95.69h4.14c.969 0 1.371 1.24.588 1.81l-3.354 2.437a1 1 0 00-.364 1.118l1.286 3.945c.3.921-.755 1.688-1.54 1.118l-3.354-2.437a1 1 0 00-1.175 0l-3.354 2.437c-.785.57-1.84-.197-1.54-1.118l1.286-3.945a1 1 0 00-.364-1.118L2.085 9.372c-.783-.57-.38-1.81.588-1.81h4.14a1 1 0 00.95-.69l1.286-3.945z"
+            />
+          </svg>
+          <ng-template #emptyStar>
+            <svg
+              class="w-4 h-4 text-gray-300"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.945a1 1 0 00.95.69h4.14c.969 0 1.371 1.24.588 1.81l-3.354 2.437a1 1 0 00-.364 1.118l1.286 3.945c.3.921-.755 1.688-1.54 1.118l-3.354-2.437a1 1 0 00-1.175 0l-3.354 2.437c-.785.57-1.84-.197-1.54-1.118l1.286-3.945a1 1 0 00-.364-1.118L2.085 9.372c-.783-.57-.38-1.81.588-1.81h4.14a1 1 0 00.95-.69l1.286-3.945z"
+              />
+            </svg>
+          </ng-template>
+        </ng-container>
+      </div>
+    </div>
+    <div class="flex justify-center gap-4">
+      <img
+        src="/assets/icons/share.svg"
+        alt=""
+        class="border rounded-full px-3 border-primary"
+      />
+      <div class="w-[150px]"><app-button label="Message" /></div>
+      <img
+        src="/assets/icons/calendar.svg"
+        alt=""
+        class="border rounded-full px-2 border-primary"
+      />
+    </div>
+  </section>
+
+  <section>
+    <section>
+      <ul class="flex justify-between font-medium text-sm">
+        <li class="hover:text-primary hover:underline">Overveiw</li>
+        <li class="hover:text-primary hover:underline">Background</li>
+        <li class="hover:text-primary hover:underline">Session</li>
+        <li class="hover:text-primary hover:underline">Review</li>
+      </ul>
+    </section>
+  </section>
+</div>
