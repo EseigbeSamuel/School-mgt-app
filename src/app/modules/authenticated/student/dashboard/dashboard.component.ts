@@ -9,6 +9,7 @@ import {
   PaginationMetadata,
   PaginatorComponent,
 } from '../../../../shared/components/paginator/paginator.component';
+import { Chart2Component } from '../../../../shared/components/charts/chart2/chart2.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,6 +18,7 @@ import {
     CommonModule,
     StudentDashboardComponentTable,
     PaginatorComponent,
+    Chart2Component,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SUBJECTS_DATA } from '../data';
 import { SudentCoursesSubjetCardSvgIcons } from '../../../../../utils/icons';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -14,6 +14,8 @@ import { CommonModule } from '@angular/common';
 export class ViewCourseComponent implements OnInit {
   courseId!: number;
   pageData: any = null;
+  ratingScore: number = 0;
+  expandedIndex: number | null = 0;
 
   constructor(private route: ActivatedRoute, private sanitizer: DomSanitizer) {}
 
@@ -33,19 +35,22 @@ export class ViewCourseComponent implements OnInit {
             ),
           };
           console.log('Course Data:', this.pageData);
+          this.ratingScore = this.pageData.rating;
         }
       }
     });
   }
-  ratingScore = 50;
+
   getStars(): number[] {
     const fullStars = Math.round(this.ratingScore / 20);
     return Array(5)
       .fill(0)
       .map((_, i) => (i < fullStars ? 1 : 0));
   }
-
-  getclass() {
+  toggle(i: number): void {
+    this.expandedIndex = this.expandedIndex === i ? null : i;
+  }
+  getclassBg() {
     return `${this.pageData?.color}`;
   }
 }
