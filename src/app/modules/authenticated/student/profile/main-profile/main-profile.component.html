@@ -1,194 +1,4 @@
-<section class="hidden lg:flex w-full gap-5">
-  <div class="flex flex-col gap-5 w-[60%]">
-    <section class="flex-col flex gap-3 border rounded-lg p-5">
-      <div class="flex gap-3 items-center">
-        <div class="rounded-full size-20 bg-gray-400"></div>
-        <div>
-          <h1 class="font-semibold">Sharfa Wazifa BD</h1>
-          <p class="font-light">JAMB STUDENT</p>
-        </div>
-      </div>
-      <div class="w-full flex justify-between">
-        <div class="p-3 border rounded-lg flex items-center gap-2">
-          <img src="/assets/icons/home.svg" alt="" /> Overveiw
-        </div>
-        <div class="p-3 border rounded-lg flex items-center gap-2">
-          <img src="/assets/icons/add-notes.svg" alt="" />Notes
-        </div>
-        <div class="p-3 border rounded-lg flex items-center gap-2">
-          <img src="/assets/icons/check-mark box.svg" alt="" />Test
-        </div>
-        <div class="p-3 border rounded-lg flex items-center gap-2">
-          <img src="/assets/icons/assignment.svg" alt="" />Assignment
-        </div>
-        <div class="p-3 border rounded-lg flex items-center gap-2">
-          <img src="/assets/icons/history-outline.svg" alt="" />History
-        </div>
-      </div>
-    </section>
-
-    <section class="flex-col flex gap-5 border rounded-lg p-5">
-      <div class="flex justify-between">
-        <h1 class="font-semibold text-xl">All Personal Information</h1>
-        <div
-          class="text-primary cursor-pointer flex items-center"
-          (click)="invisible = !invisible"
-        >
-          <img src="/assets/icons/PencilLine.svg" alt="" /> Edit
-        </div>
-      </div>
-      <div class="grid grid-cols-2 gap-5">
-        <div class="flex gap-2">
-          <img
-            src="/assets/icons/mail.svg"
-            alt=""
-            class="bg-gray-200 rounded-full p-2 size-10"
-          />
-          <div>
-            <h1 class="font-semibold">Adebusola Meggy</h1>
-            <p class="capitalize font-light">Mail Address</p>
-          </div>
-        </div>
-
-        <div class="flex gap-2">
-          <img
-            src="/assets/icons/cake.svg"
-            alt=""
-            class="bg-gray-200 rounded-full p-2 size-10"
-          />
-          <div>
-            <h1 class="font-semibold">02 August 2012</h1>
-            <p class="capitalize font-light">14 years old</p>
-          </div>
-        </div>
-
-        <div class="flex gap-2">
-          <img
-            src="/assets/icons/phone.svg"
-            alt=""
-            class="bg-gray-200 rounded-full p-2 size-10"
-          />
-          <div>
-            <h1 class="font-semibold">+2347154357821</h1>
-            <p class="capitalize font-light">Phone Number</p>
-          </div>
-        </div>
-
-        <div class="flex gap-2">
-          <img
-            src="/assets/icons/address-book.svg"
-            alt=""
-            class="bg-gray-200 rounded-full p-2 size-10"
-          />
-          <div>
-            <h1 class="font-semibold">Ibadan, Nigeria</h1>
-            <p class="capitalize font-light">Address</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="bg-white p-6 rounded-lg border w-full">
-        <h2 class="text-lg font-semibold mb-4">Saved Lessons</h2>
-        <table class="w-full text-left text-sm">
-          <thead>
-            <tr class="border-b">
-              <th class="py-2 text-gray-600">SUBJECT</th>
-              <th class="py-2 text-gray-600">STARTED</th>
-              <th class="py-2 text-gray-600">PROGRESS</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let lesson of lessons" class="border-b">
-              <td class="py-4">
-                <div class="font-medium text-black">{{ lesson.subject }}</div>
-                <div class="text-xs text-gray-500">{{ lesson.category }}</div>
-              </td>
-              <td class="py-4 text-gray-700">{{ lesson.started }}</td>
-              <td class="py-4">
-                <div class="w-full bg-gray-200 rounded-full h-2 mb-1">
-                  <div
-                    class="h-2 rounded-full"
-                    [ngClass]="lesson.color"
-                    [style.width.%]="lesson.progress"
-                  ></div>
-                </div>
-                <div class="text-xs text-right text-gray-700 font-semibold">
-                  {{ lesson.progress }}%
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-  </div>
-  <div class="flex-col flex gap-5 w-[40%]">
-    <section class="border p-10 rounded-lg">
-      <h1>Progress Tracker</h1>
-
-      <div>
-        <p>Tutor Session Completed</p>
-        <div class="flex items-center gap-2">
-          <div class="bg-gray-200 h-2 rounded-full w-full">
-            <div class="bg-primary w-[50%] h-2 rounded-full"></div>
-          </div>
-          2/4
-        </div>
-      </div>
-      <div>
-        <p>Lessons completed</p>
-        <div class="flex items-center gap-2">
-          <div class="bg-gray-200 h-2 rounded-full w-full">
-            <div class="bg-primary w-[85%] h-2 rounded-full"></div>
-          </div>
-          85%
-        </div>
-      </div>
-      <div>
-        <p>Latest Mock Exam Score</p>
-        <div class="flex items-center gap-2">
-          <div class="bg-gray-200 h-2 rounded-full w-full">
-            <div class="bg-primary w-[100%] h-2 rounded-full"></div>
-          </div>
-          1/1
-        </div>
-      </div>
-    </section>
-    <section class="border p-10 rounded-lg">
-      <h1>Progress Tracker</h1>
-
-      <div>
-        <p>Tutor Session Completed</p>
-        <div class="flex items-center gap-2">
-          <div class="bg-gray-200 h-2 rounded-full w-full">
-            <div class="bg-primary w-[50%] h-2 rounded-full"></div>
-          </div>
-          2/4
-        </div>
-      </div>
-      <div>
-        <p>Lessons completed</p>
-        <div class="flex items-center gap-2">
-          <div class="bg-gray-200 h-2 rounded-full w-full">
-            <div class="bg-primary w-[85%] h-2 rounded-full"></div>
-          </div>
-          85%
-        </div>
-      </div>
-      <div>
-        <p>Latest Mock Exam Score</p>
-        <div class="flex items-center gap-2">
-          <div class="bg-gray-200 h-2 rounded-full w-full">
-            <div class="bg-primary w-[100%] h-2 rounded-full"></div>
-          </div>
-          1/1
-        </div>
-      </div>
-    </section>
-  </div>
-</section>
+<!-- former desktop view -->
 
 <!-- pop up -->
 <section *ngIf="invisible">
@@ -220,7 +30,7 @@
 </section>
 
 <!-- mobile view -->
-<div class="grid gap-5 lg:hidden">
+<div class="flex flex-col gap-5 lg:hidden">
   <section
     class="bg-primary rounded-xl flex flex-col items-center p-5 text-white gap-3"
   >
@@ -440,3 +250,270 @@
     </div>
   </section>
 </section>
+
+<!-- new desktop view -->
+<div class="hidden lg:grid">
+  <section>
+    <div
+      class="h-[150px] w-full bg-gradient-to-br from-primary from-20% to-[#EA8E39] to-80% flex justify-between"
+    >
+      <div class="flex pl-[40px] pt-[165px] gap-3 items-center">
+        <img src="" alt="" class="bg-gray-200 size-[160px] rounded-full" />
+        <div class="flex-col flex">
+          <h1 class="text-lg font-bold">Abiodun Adeleke</h1>
+          <p class="capitalize">WAEC Student</p>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-end text-white p-3">
+        <div class="">
+          <h1 class="text-3xl font-bold">
+            Find the Perfect Tutor & Ace <br />
+            Your Exams!
+          </h1>
+          <p class="text-xs">
+            Personalized one-on-one lessons to boost your JAMB, WAEC, and NECO
+            scores.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="flex gap-5 mt-4">
+    <section class="grid gap-5 w-[70%] mt-[100px]">
+      <div class="flex flex-col gap-5 border rounded-lg p-5">
+        <h1 class="font-medium text-xl">Progress Summary</h1>
+        <section class="flex justify-between">
+          <div class="px-5 py-3 bg-[#05CD99]/10 rounded-lg gap-3 w-[170px]">
+            <div class="w-full justify-end flex">
+              <img
+                src="/assets/icons/profile-outline-class.svg"
+                alt=""
+                class="bg-white rounded-full p-2"
+              />
+            </div>
+            <p class="text-sm capitalize gap-2 flex items-center">
+              <span
+                class="rounded-full text-[#05CD99] bg-[#05CD99]/20 px-2 py-1"
+                >3</span
+              >
+              Classes
+            </p>
+          </div>
+          <div class="px-5 py-3 bg-[#9747FF]/10 rounded-lg gap-3 w-[170px]">
+            <div class="w-full justify-end flex">
+              <img
+                src="/assets/icons/profile-progress-bar.svg"
+                alt=""
+                class="bg-white rounded-full p-2"
+              />
+            </div>
+            <p class="text-sm capitalize gap-2 flex items-center">
+              <span
+                class="rounded-full text-[#9747FF] bg-[#9747FF]/20 px-2 py-1"
+                >3</span
+              >
+              in progress
+            </p>
+          </div>
+          <div class="px-5 py-3 bg-[#6DB1FF]/10 rounded-lg gap-3 w-[170px]">
+            <div class="w-full justify-end flex">
+              <img
+                src="/assets/icons/profile-check-correct.svg"
+                alt=""
+                class="bg-white rounded-full p-2"
+              />
+            </div>
+            <p class="text-sm capitalize gap-2 flex items-center">
+              <span
+                class="rounded-full text-[#6DB1FF] bg-[#6DB1FF]/20 px-2 py-1"
+                >3</span
+              >
+              completed
+            </p>
+          </div>
+          <div class="px-5 py-3 bg-[#FFB02E]/10 rounded-lg gap-3 w-[170px]">
+            <div class="w-full justify-end flex">
+              <img
+                src="/assets/icons/emoji-fire.svg"
+                alt=""
+                class="bg-white rounded-full p-2"
+              />
+            </div>
+            <p class="text-sm capitalize gap-2 flex items-center">
+              <span
+                class="rounded-full text-[#FFB02E] bg-[#FFB02E]/20 px-2 py-1"
+                >12</span
+              >
+              daily Streaks
+            </p>
+          </div>
+        </section>
+      </div>
+
+      <div class="p-5 gap-5 flex flex-col border rounded-lg">
+        <div class="flex justify-between items-center">
+          <h1 class="font-medium text-xl">Details</h1>
+          <div class="border rounded-2xl flex items-center gap-2 px-2">
+            <p>edit</p>
+            <img src="/assets/icons/profile-edit.svg" alt="" />
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-5">
+          <div>
+            <h3 class="text-xs text-[#667085]">Email</h3>
+            <p>Abiodunadeleke23&#64;gmail.com</p>
+          </div>
+          <div>
+            <h3 class="text-xs text-[#667085]">Phone Number</h3>
+            <p>08149648842</p>
+          </div>
+          <div>
+            <h3 class="text-xs text-[#667085]">Address</h3>
+            <p>Ibadan, Nigeria</p>
+          </div>
+          <div>
+            <h3 class="text-xs text-[#667085]">Date of Birth</h3>
+            <p>27 August 2020</p>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xs text-[#667085]">Bio</h3>
+          <p>
+            Adebusola is a dedicated student preparing for JAMB, striving for
+            academic excellence. Passionate about Biology and is committed to
+            mastering key concepts and improving her performance through
+            consistent study and practice.
+          </p>
+        </div>
+      </div>
+
+      <div class="p-5 gap-5 flex flex-col border rounded-lg">
+        <h1 class="font-medium text-xl">Payment History</h1>
+        <div>
+          <div class="">
+            <div class="overflow-x-auto rounded-lg shadow bg-white">
+              <table class="min-w-full text-left text-base font-normal">
+                <thead class="bg-gray-100 font-normal">
+                  <tr>
+                    <th *ngFor="let column of columns" class="px-6 py-4">
+                      {{ column.header }}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="text-gray-700">
+                  <tr
+                    *ngFor="let row of data"
+                    class="border-b hover:bg-gray-50"
+                  >
+                    <td *ngFor="let column of columns" class="px-6 py-4">
+                      <!-- Status column badge -->
+                      <ng-container *ngIf="column.key === 'status'">
+                        <span
+                          class="px-3 py-1 rounded-full text-sm"
+                          [ngClass]="getStatusClass(row[column.key])"
+                        >
+                          {{ row[column.key] }}
+                        </span>
+                      </ng-container>
+
+                      <!-- Action column (⋮ icon) -->
+                      <ng-container *ngIf="column.key === 'action'">
+                        <button class="text-gray-500 hover:text-black text-xl">
+                          <img
+                            src="/assets/icons/profile-3-dots-scale.svg"
+                            alt=""
+                          />
+                        </button>
+                      </ng-container>
+
+                      <!-- Normal columns -->
+                      <ng-container
+                        *ngIf="
+                          column.key !== 'status' && column.key !== 'action'
+                        "
+                      >
+                        {{ row[column.key] }}
+                      </ng-container>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="w-[30%] grid gap-5">
+      <div class="border rounded-lg p-5 gap-5 h-[400px]">
+        <h1 class="text-lg font-medium">Upcoming Tasks</h1>
+        <section class="overflow-y-scroll h-[350px] grid gap-5">
+          <div class="border rounded-lg p-3 flex-col flex h-[100px] gap-3">
+            <div class="flex gap-3 items-center">
+              <input
+                type="radio"
+                class="accent-primary border-2 border-primary"
+              />
+              <h1>Take mock exams</h1>
+            </div>
+            <div class="flex items-center gap-1 text-xs">
+              <img src="/assets/icons/calendar.svg" alt="" /> May 11, 2025
+              <img src="/assets/icons/time.svg" alt="" /> Due on Saturday
+            </div>
+          </div>
+
+          <div
+            *ngFor="let tasks of tasks"
+            class="border rounded-lg flex flex-col h-[100px] p-3 gap-3"
+          >
+            <div class="flex w-full justify-between">
+              <div>
+                <h1 class="font-medium text-lg capitalize">{{ tasks.task }}</h1>
+                <h2 class="text-xs text-[#667085]">{{ tasks.class }}</h2>
+              </div>
+              <img src="/assets/icons/profile-3-dots-scale.svg" alt="" />
+            </div>
+            <div class="flex items-center gap-1 text-xs">
+              <img src="/assets/icons/calendar.svg" alt="" /> {{ tasks.date }}
+              <img src="/assets/icons/time.svg" alt="" /> {{ tasks.time }}
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="border rounded-lg p-5 gap-5 h-[400px]">
+        <h1>In Progress</h1>
+        <section class="overflow-y-scroll h-[350px] grid gap-5">
+          <div
+            *ngFor="let progress of progress"
+            class="border h-[130px] rounded-lg p-3 grid gap-3"
+          >
+            <div>
+              <h1 class="text-lg font-medium capitalize">
+                {{ progress.subject }}
+              </h1>
+              <h2 class="text-xs text-[#667085]">{{ progress.topic }}</h2>
+            </div>
+            <div class="w-full h-[10px] bg-gray-300 rounded-full">
+              <div
+                [class]="
+                  'h-full bg-primary rounded-full w-[' +
+                  progress.progress +
+                  '%]'
+                "
+              ></div>
+            </div>
+            <div>
+              <button
+                class="p-2 rounded-full bg-primary text-white text-[10px]"
+              >
+                Continue Watching
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </div>
+</div>
