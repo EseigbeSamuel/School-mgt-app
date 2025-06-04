@@ -52,8 +52,8 @@ export class Chart2Component implements OnInit {
       plotOptions: {
         bar: {
           horizontal: false,
-          columnWidth: this.isDesktop ? '50%' : '80%',
-          borderRadius: 8,
+          columnWidth: this.isDesktop ? '50%' : '60%',
+          borderRadius: 10,
         },
       },
       dataLabels: {

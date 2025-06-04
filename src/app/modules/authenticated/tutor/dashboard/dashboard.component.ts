@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { DasboardCardSvgIcons } from '../../../../utils/icons';
 import { CardUiDashboaredComponent } from '../../../../shared/components/card-ui-dashboared/card-ui-dashboared.component';
 import { TutorDashBoardComponentTable } from '../../../../shared/components/tables/tutor-dash-board/tutor-dash-board.component';
+import { Chart1Component } from '../../../../shared/components/charts/chart1/chart1.component';
 @Component({
   selector: 'app-dashboard',
   imports: [
@@ -14,6 +15,7 @@ import { TutorDashBoardComponentTable } from '../../../../shared/components/tabl
     CardUiDashboaredComponent,
     CommonModule,
     TutorDashBoardComponentTable,
+    Chart1Component,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',

@@ -45,9 +45,9 @@ export class PiechartComponent {
         type: 'pie',
         height: this.height || 300,
       },
-      labels: ['Team B', 'Team C', 'Team A'],
+      labels: ['Quiz', 'Submission', 'Mock exams'],
 
-      colors: ['#8B5CF6', '#F97316', '#0EA5E9', '#10B981', '#EF4444'], // custom colors
+      colors: ['#FF4A4A', '#FFCC00', '#3BA94A', '#10B981', '#EF4444'],
       legend: {
         position: 'bottom',
         horizontalAlign: 'center',
