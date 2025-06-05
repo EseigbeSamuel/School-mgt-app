@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { SharedModule } from '../../../../../shared/shared.module';
 import { NgClass, NgFor, NgIf } from '@angular/common';
 import { InputUiComponent } from '../../../../../shared/components/input-ui/input-ui.component';
@@ -22,18 +22,21 @@ import { RouterLink } from '@angular/router';
 export class MainProfileComponent {
   tasks = [
     {
+      taskId: '#123456a',
       task: 'English Tutor',
       class: 'Group class',
       date: 'May 12, 2025',
       time: '09.00 - 10.00 AM',
     },
     {
+      taskId: '#123456b',
       task: 'English Tutor',
       class: 'Group class',
       date: 'May 12, 2025',
       time: '09.00 - 10.00 AM',
     },
     {
+      taskId: '#123456c',
       task: 'English Tutor',
       class: 'Group class',
       date: 'May 12, 2025',
@@ -68,30 +71,55 @@ export class MainProfileComponent {
 
   data: { [key: string]: any }[] = [
     {
-      transactionId: '#123456789',
+      transactionId: '#123456789a',
       date: '2 March 2021',
       amount: 'NGN 30,000',
       status: 'Confirmed',
     },
     {
-      transactionId: '#123456789',
+      transactionId: '#1234567890b',
       date: '2 March 2021',
       amount: 'NGN 30,000',
       status: 'Canceled',
     },
     {
-      transactionId: '#123456789',
+      transactionId: '#123456789c',
       date: '2 March 2021',
       amount: 'NGN 30,000',
       status: 'Pending',
     },
     {
-      transactionId: '#123456789',
+      transactionId: '#1234567890d',
       date: '2 March 2021',
       amount: 'NGN 30,000',
       status: 'Complete',
     },
   ];
+
+  openMenuId: string | null = null;
+  taskMenuId: string | null = null;
+
+  toggleMenu(transactionId: string): void {
+    this.openMenuId = this.openMenuId === transactionId ? null : transactionId;
+  }
+
+  toggleTaskMenu(taskId: string): void {
+    this.taskMenuId = this.taskMenuId === taskId ? null : taskId;
+  }
+
+  @HostListener('document:click', ['$event.target'])
+  onClickOutside(target: HTMLElement) {
+    if (!target.closest('.action-menu')) {
+      this.openMenuId = null;
+    }
+  }
+
+  @HostListener('document:click', ['$event.target'])
+  onClickOutsideTask(target: HTMLElement) {
+    if (!target.closest('.task-action-menu')) {
+      this.taskMenuId = null;
+    }
+  }
 
   getStatusClass(status: string): string {
     switch (status.toLowerCase()) {

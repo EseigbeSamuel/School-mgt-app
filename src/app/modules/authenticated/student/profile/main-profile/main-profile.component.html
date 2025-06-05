@@ -1,6 +1,6 @@
 <!-- former desktop view -->
 
-<!-- pop up -->
+<!--edit pop up -->
 <section *ngIf="invisible">
   <section
     class="w-screen h-[91%] absolute top-[70px] left-0 flex justify-center items-center bg-black/30"
@@ -257,7 +257,7 @@
     <div
       class="h-[150px] w-full bg-gradient-to-br from-primary from-20% to-[#EA8E39] to-80% flex justify-between"
     >
-      <div class="flex pl-[40px] pt-[165px] gap-3 items-center">
+      <div class="flex pl-[40px] pt-[170px] gap-3 items-center">
         <img src="" alt="" class="bg-gray-200 size-[160px] rounded-full" />
         <div class="flex-col flex">
           <h1 class="text-lg font-bold">Abiodun Adeleke</h1>
@@ -355,7 +355,10 @@
       <div class="p-5 gap-5 flex flex-col border rounded-lg">
         <div class="flex justify-between items-center">
           <h1 class="font-medium text-xl">Details</h1>
-          <div class="border rounded-2xl flex items-center gap-2 px-2">
+          <div
+            (click)="invisible = !invisible"
+            class="border rounded-2xl flex items-center gap-2 px-2 cursor-pointer"
+          >
             <p>edit</p>
             <img src="/assets/icons/profile-edit.svg" alt="" />
           </div>
@@ -420,12 +423,38 @@
 
                       <!-- Action column (⋮ icon) -->
                       <ng-container *ngIf="column.key === 'action'">
-                        <button class="text-gray-500 hover:text-black text-xl">
-                          <img
-                            src="/assets/icons/profile-3-dots-scale.svg"
-                            alt=""
-                          />
-                        </button>
+                        <div
+                          class="relative inline-block text-left action-menu"
+                        >
+                          <button
+                            (click)="toggleMenu(row['transactionId'])"
+                            class="text-gray-500 hover:text-black text-xl focus:outline-none"
+                          >
+                            <img
+                              src="/assets/icons/profile-3-dots-scale.svg"
+                              alt=""
+                            />
+                          </button>
+
+                          <div
+                            *ngIf="openMenuId === row['transactionId']"
+                            class="absolute right-0 z-10 mt-2 w-36 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                          >
+                            <ul class="py-1 text-sm text-gray-700">
+                              <li class="block px-4 py-2 hover:bg-gray-100">
+                                View
+                              </li>
+                              <li class="block px-4 py-2 hover:bg-gray-100">
+                                Edit
+                              </li>
+                              <li
+                                class="block px-4 py-2 hover:bg-gray-100 text-red-500"
+                              >
+                                Delete
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
                       </ng-container>
 
                       <!-- Normal columns -->
@@ -446,9 +475,9 @@
       </div>
     </section>
 
-    <section class="w-[30%] grid gap-5">
-      <div class="border rounded-lg p-5 gap-5 h-[400px]">
-        <h1 class="text-lg font-medium">Upcoming Tasks</h1>
+    <section class="w-[30%] flex-col flex gap-5">
+      <div class="border rounded-lg p-5 flex-col flex gap-5 h-[400px]">
+        <h1 class="text-xl font-medium">Upcoming Tasks</h1>
         <section class="overflow-y-scroll h-[350px] grid gap-5">
           <div class="border rounded-lg p-3 flex-col flex h-[100px] gap-3">
             <div class="flex gap-3 items-center">
@@ -473,7 +502,21 @@
                 <h1 class="font-medium text-lg capitalize">{{ tasks.task }}</h1>
                 <h2 class="text-xs text-[#667085]">{{ tasks.class }}</h2>
               </div>
-              <img src="/assets/icons/profile-3-dots-scale.svg" alt="" />
+              <div
+                class="task-action-menu"
+                (click)="toggleTaskMenu(tasks.taskId)"
+              >
+                <img src="/assets/icons/profile-3-dots-scale.svg" alt="" />
+                <div
+                  class="absolute right-0 z-10 mt-2 w-36 rounded-lg bg-white shadow-lg p-3"
+                  *ngIf="taskMenuId === tasks.taskId"
+                >
+                  <ul class="gap-3 flex flex-col text-[#667085]">
+                    <li>Resedule</li>
+                    <li>Cancel</li>
+                  </ul>
+                </div>
+              </div>
             </div>
             <div class="flex items-center gap-1 text-xs">
               <img src="/assets/icons/calendar.svg" alt="" /> {{ tasks.date }}
@@ -482,8 +525,8 @@
           </div>
         </section>
       </div>
-      <div class="border rounded-lg p-5 gap-5 h-[400px]">
-        <h1>In Progress</h1>
+      <div class="border rounded-lg p-5 flex-col flex gap-5 h-[400px]">
+        <h1 class="font-medium text-xl">In Progress</h1>
         <section class="overflow-y-scroll h-[350px] grid gap-5">
           <div
             *ngFor="let progress of progress"
