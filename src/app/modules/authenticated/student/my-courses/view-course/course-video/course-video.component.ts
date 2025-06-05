@@ -17,6 +17,7 @@ export class CourseVideoComponent {
   courseId!: number;
   pageData: any = null;
   ratingScore: number = 0;
+  courseTopic: any;
   newReview = {
     comment: '',
     rating: 0,
@@ -29,30 +30,27 @@ export class CourseVideoComponent {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       const id = params.get('id');
+      console.log('Route Params:', params);
+
       if (id) {
         this.courseId = +id;
         const foundCourse = SUBJECTS_DATA.find(
           (course) => course.id === this.courseId
         );
         if (foundCourse) {
-          this.pageData = {
-            ...foundCourse,
-            safeSvg: this.sanitizer.bypassSecurityTrustHtml(
-              SudentCoursesSubjetCardSvgIcons[foundCourse.icon]
-            ),
-          };
-
-          this.ratingScore = this.pageData.rating;
+          this.courseTopic = foundCourse.topics?.find((topicData) => {
+            return topicData.id === this.courseId;
+          });
         }
       }
     });
   }
   getRatingInWords(): string {
-    return (this.ratingScore / 20).toFixed(1); // e.g., 4.5
+    return (this.courseTopic.rating / 20).toFixed(1);
   }
 
   getStars(): number[] {
-    const fullStars = Math.round(this.ratingScore / 20);
+    const fullStars = Math.round(this.courseTopic.rating / 20);
     return Array(5)
       .fill(0)
       .map((_, i) => (i < fullStars ? 1 : 0));
@@ -66,7 +64,6 @@ export class CourseVideoComponent {
       comment: `Taking the Biology class on flexy demy made it easy for me ace my exam. From  connectting with a tutor who explained difficult concepts in a way that made sense. I saw a big improvement in my grades within weeks!`,
       rating: 4.5,
     },
-    // You can add more dummy reviews
   ];
 
   setRating(stars: number) {
@@ -94,11 +91,11 @@ export class CourseVideoComponent {
 
     for (let i = 0; i < 5; i++) {
       if (i < fullStars) {
-        stars.push('&#9733;'); // filled star
+        stars.push('&#9733;');
       } else if (i === fullStars && halfStar) {
-        stars.push('&#189;'); // half star (you can swap this for better SVG or icon)
+        stars.push('&#189;');
       } else {
-        stars.push('&#9734;'); // empty star
+        stars.push('&#9734;');
       }
     }
 

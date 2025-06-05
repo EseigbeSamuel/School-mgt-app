@@ -102,10 +102,10 @@
   <!-- Content based on tab -->
   <div class="tab-content">
     <ng-container *ngIf="selectedTab === 'about'">
-      <p class="py-4">{{ pageData.courseDescription }}</p>
+      <p class="py-4">{{ courseTopic.about }}</p>
     </ng-container>
     <ng-container *ngIf="selectedTab === 'transcript'">
-      <p>{{ pageData.transcript }}</p>
+      <p class="capitalize">transScript</p>
     </ng-container>
     <ng-container *ngIf="selectedTab === 'reviews'">
       <div class="space-y-6 py-7">

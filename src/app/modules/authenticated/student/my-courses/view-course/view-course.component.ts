@@ -72,7 +72,6 @@ export class ViewCourseComponent implements OnInit {
     return this.isDisabled ? 'opacity-10 cursor-not-allowed' : '';
   }
   handleCOurseVideoClick(ID: number) {
-    const courseTrack = Number(localStorage.getItem('courseTrack'));
     if (this.pageData?.id && this.pageData?.topics?.length) {
       this.router.navigate([
         `student/courses/view-course/${this.pageData.id}/lesson/${ID}`,
