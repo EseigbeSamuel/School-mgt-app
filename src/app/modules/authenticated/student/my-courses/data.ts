@@ -48,6 +48,7 @@ export const SUBJECTS_DATA: subjects[] = [
     courseDuration: 10,
     topics: [
       {
+        id: 1,
         title: 'Introductory to Biology',
         lectures: 1,
         duration: '10mins',
@@ -55,6 +56,7 @@ export const SUBJECTS_DATA: subjects[] = [
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 2,
         title: 'Classification of Living Things',
         lectures: 2,
         duration: '40mins',
@@ -62,6 +64,7 @@ export const SUBJECTS_DATA: subjects[] = [
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 3,
         title: 'The cell and it’s function',
         lectures: 2,
         duration: '24mins',
@@ -69,6 +72,7 @@ export const SUBJECTS_DATA: subjects[] = [
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 4,
         title: 'Ecology and Ecosystem',
         lectures: 2,
         duration: '32mins',
@@ -76,6 +80,7 @@ export const SUBJECTS_DATA: subjects[] = [
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 5,
         title: 'Genetics and Hereditary',
         lectures: 2,
         duration: '18mins',
@@ -83,6 +88,7 @@ export const SUBJECTS_DATA: subjects[] = [
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 6,
         title: 'Reproduction in Living things',
         lectures: 3,
         duration: '32mins',
@@ -90,6 +96,7 @@ export const SUBJECTS_DATA: subjects[] = [
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 7,
         title: 'Nutrition and Digestion',
         lectures: 2,
         duration: '21mins',
@@ -97,6 +104,7 @@ export const SUBJECTS_DATA: subjects[] = [
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 8,
         title: 'Evolution and Adaptation',
         lectures: 2,
         duration: '20mins',
@@ -130,6 +138,7 @@ export const SUBJECTS_DATA: subjects[] = [
     courseDuration: 10,
     topics: [
       {
+        id: 1,
         title: 'Introductory to Biology',
         lectures: 1,
         duration: '10mins',
@@ -137,6 +146,7 @@ export const SUBJECTS_DATA: subjects[] = [
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 2,
         title: 'Classification of Living Things',
         lectures: 2,
         duration: '40mins',
@@ -144,6 +154,7 @@ export const SUBJECTS_DATA: subjects[] = [
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 3,
         title: 'The cell and it’s function',
         lectures: 2,
         duration: '24mins',
@@ -151,6 +162,7 @@ export const SUBJECTS_DATA: subjects[] = [
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 4,
         title: 'Ecology and Ecosystem',
         lectures: 2,
         duration: '32mins',
@@ -158,6 +170,7 @@ export const SUBJECTS_DATA: subjects[] = [
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 5,
         title: 'Genetics and Hereditary',
         lectures: 2,
         duration: '18mins',
@@ -165,6 +178,7 @@ export const SUBJECTS_DATA: subjects[] = [
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 6,
         title: 'Reproduction in Living things',
         lectures: 3,
         duration: '32mins',
@@ -172,6 +186,7 @@ export const SUBJECTS_DATA: subjects[] = [
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 7,
         title: 'Nutrition and Digestion',
         lectures: 2,
         duration: '21mins',
@@ -179,6 +194,7 @@ export const SUBJECTS_DATA: subjects[] = [
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 8,
         title: 'Evolution and Adaptation',
         lectures: 2,
         duration: '20mins',
@@ -211,6 +227,7 @@ export const SUBJECTS_DATA: subjects[] = [
     courseDuration: 10,
     topics: [
       {
+        id: 1,
         title: 'Introductory to Biology',
         lectures: 1,
         duration: '10mins',
@@ -218,6 +235,7 @@ export const SUBJECTS_DATA: subjects[] = [
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 2,
         title: 'Classification of Living Things',
         lectures: 2,
         duration: '40mins',
@@ -225,6 +243,7 @@ export const SUBJECTS_DATA: subjects[] = [
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 3,
         title: 'The cell and it’s function',
         lectures: 2,
         duration: '24mins',
@@ -232,6 +251,7 @@ export const SUBJECTS_DATA: subjects[] = [
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 4,
         title: 'Ecology and Ecosystem',
         lectures: 2,
         duration: '32mins',
@@ -239,6 +259,7 @@ export const SUBJECTS_DATA: subjects[] = [
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 5,
         title: 'Genetics and Hereditary',
         lectures: 2,
         duration: '18mins',
@@ -246,6 +267,7 @@ export const SUBJECTS_DATA: subjects[] = [
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 6,
         title: 'Reproduction in Living things',
         lectures: 3,
         duration: '32mins',
@@ -253,6 +275,7 @@ export const SUBJECTS_DATA: subjects[] = [
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 7,
         title: 'Nutrition and Digestion',
         lectures: 2,
         duration: '21mins',
@@ -260,6 +283,7 @@ export const SUBJECTS_DATA: subjects[] = [
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 8,
         title: 'Evolution and Adaptation',
         lectures: 2,
         duration: '20mins',
@@ -292,6 +316,7 @@ export const SUBJECTS_DATA: subjects[] = [
     courseDuration: 10,
     topics: [
       {
+        id: 1,
         title: 'Introductory to Biology',
         lectures: 1,
         duration: '10mins',
@@ -299,6 +324,7 @@ export const SUBJECTS_DATA: subjects[] = [
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 2,
         title: 'Classification of Living Things',
         lectures: 2,
         duration: '40mins',
@@ -306,6 +332,7 @@ export const SUBJECTS_DATA: subjects[] = [
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 3,
         title: 'The cell and it’s function',
         lectures: 2,
         duration: '24mins',
@@ -313,14 +340,15 @@ export const SUBJECTS_DATA: subjects[] = [
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 4,
         title: 'Ecology and Ecosystem',
         lectures: 2,
         duration: '32mins',
-
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 5,
         title: 'Genetics and Hereditary',
         lectures: 2,
         duration: '18mins',
@@ -328,6 +356,7 @@ export const SUBJECTS_DATA: subjects[] = [
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 6,
         title: 'Reproduction in Living things',
         lectures: 3,
         duration: '32mins',
@@ -335,6 +364,7 @@ export const SUBJECTS_DATA: subjects[] = [
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 7,
         title: 'Nutrition and Digestion',
         lectures: 2,
         duration: '21mins',
@@ -342,6 +372,7 @@ export const SUBJECTS_DATA: subjects[] = [
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 8,
         title: 'Evolution and Adaptation',
         lectures: 2,
         duration: '20mins',
@@ -386,7 +417,8 @@ export const SUBJECTS_DATA: subjects[] = [
         title: 'Classification of Living Things',
         lectures: 2,
         duration: '40mins',
-        description: 'hellow rold',
+        description:
+          'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
         id: 3,

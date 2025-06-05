@@ -40,6 +40,7 @@ import { AccountComponent } from './modules/authenticated/student/profile/accoun
 import { NotificationsComponent } from './modules/authenticated/student/profile/notifications/notifications.component';
 import { SecurityComponent } from './modules/authenticated/student/profile/security/security.component';
 import { MainProfileComponent } from './modules/authenticated/student/profile/main-profile/main-profile.component';
+import { CourseVideoComponent } from './modules/authenticated/student/my-courses/view-course/course-video/course-video.component';
 // test
 export const routes: Routes = [
   // {
@@ -110,6 +111,10 @@ export const routes: Routes = [
               {
                 path: 'view-course/:id',
                 component: ViewCourseComponent,
+              },
+              {
+                path: 'view-course/:id/lesson/:id',
+                component: CourseVideoComponent,
               },
             ],
           },
