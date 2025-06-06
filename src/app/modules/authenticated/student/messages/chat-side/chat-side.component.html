@@ -1,1 +1,18 @@
-<p>chat-side works!</p>
+<div *ngIf="friends" class="w-full">
+  <section class="flex justify-between shadow-lg bg-white p-5 w-full">
+    <div class="flex gap-3">
+      <div>
+        <img
+          src="{{ friends?.image }}"
+          alt=""
+          class="size-[50px] rounded-full"
+        />
+      </div>
+      <div>
+        <h1 class="font-medium text-lg">{{ friends?.name }}</h1>
+        <p>{{ friends?.id }}</p>
+      </div>
+    </div>
+    <div><img src="/assets/icons/More.svg" alt="" /></div>
+  </section>
+</div>
