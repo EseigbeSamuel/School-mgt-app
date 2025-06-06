@@ -40,6 +40,8 @@ import { AccountComponent } from './modules/authenticated/student/profile/accoun
 import { NotificationsComponent } from './modules/authenticated/student/profile/notifications/notifications.component';
 import { SecurityComponent } from './modules/authenticated/student/profile/security/security.component';
 import { MainProfileComponent } from './modules/authenticated/student/profile/main-profile/main-profile.component';
+import { ChatSideComponent } from './modules/authenticated/student/messages/chat-side/chat-side.component';
+import { ChatSidebarComponent } from './modules/authenticated/student/messages/chat-sidebar/chat-sidebar.component';
 // test
 export const routes: Routes = [
   // {
@@ -133,7 +135,14 @@ export const routes: Routes = [
             ],
           },
           { path: 'achievements', component: AchievementsComponent },
-          { path: 'messages', component: MessagesComponent },
+          {
+            path: 'messages',
+            component: MessagesComponent,
+            children: [
+              { path: '', component: ChatSidebarComponent },
+              { path: 'friends/:id', component: ChatSideComponent },
+            ],
+          },
           {
             path: 'profile',
             component: ProfileComponent,
