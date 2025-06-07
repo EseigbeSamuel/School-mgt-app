@@ -65,7 +65,7 @@ export class IntlPhoneInputComponent {
   }
   variantClasses(): string {
     const baseClasses =
-      'w-full md:w-[440px]  rounded focus:outline-none transition duration-200 py-2 px-3 pl-12';
+      'w-full rounded focus:outline-none transition duration-200 py-2 px-3 pl-12';
     const focusClasses = this.isFocused ? 'ring-2 ' : '';
 
     return `${baseClasses} ${focusClasses} bg-transparent border border-[#2C2A724D] focus:ring-[#2C2A724D] focus:border-[#2C2A724D]`;
