@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+:host {
+  --bg-image: url("/assets/images/quiz background.svg");
+=======
 /* assessment-and-quizzes.component.css */
 
 /* Only keeping minimal custom animations since Tailwind handles most styling */
@@ -32,4 +36,5 @@
 
 .result-icon {
   animation: popIn 0.3s ease-out;
+>>>>>>> da87b902b6161a3bb9c9a904e51b187aff8a0798
 }
