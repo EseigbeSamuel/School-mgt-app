@@ -38,6 +38,7 @@ export class CourseVideoComponent {
           (course) => course.id === this.courseId
         );
         if (foundCourse) {
+          console.log('Found Course:', foundCourse);
           this.courseTopic = foundCourse.topics?.find((topicData) => {
             return topicData.id === this.courseId;
           });

@@ -1,0 +1,19 @@
+<!-- DEFAULT MODAL -->
+<div class="modal-backdrop" *ngIf="show && !custom">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>{{ title }}</h2>
+      <button class="close-button" (click)="closeModal()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>
+
+<!-- CUSTOM MODAL -->
+<div class="modal-backdrop" *ngIf="show && custom">
+  <div class="modal-custom">
+    <ng-content></ng-content>
+  </div>
+</div>

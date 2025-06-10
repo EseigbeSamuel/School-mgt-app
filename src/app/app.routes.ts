@@ -45,6 +45,7 @@ import { ChatSidebarComponent } from './modules/authenticated/student/messages/c
 import { ReferalComponent } from './modules/authenticated/student/achievements/referal/referal.component';
 import { LeaderboardComponent } from './modules/authenticated/student/achievements/leaderboard/leaderboard.component';
 import { StreaksComponent } from './modules/authenticated/student/achievements/streaks/streaks.component';
+import { CourseVideoComponent } from './modules/authenticated/student/my-courses/view-course/course-video/course-video.component';
 // test
 export const routes: Routes = [
   // {
