@@ -40,7 +40,11 @@ import { AccountComponent } from './modules/authenticated/student/profile/accoun
 import { NotificationsComponent } from './modules/authenticated/student/profile/notifications/notifications.component';
 import { SecurityComponent } from './modules/authenticated/student/profile/security/security.component';
 import { MainProfileComponent } from './modules/authenticated/student/profile/main-profile/main-profile.component';
-import { CourseVideoComponent } from './modules/authenticated/student/my-courses/view-course/course-video/course-video.component';
+import { ChatSideComponent } from './modules/authenticated/student/messages/chat-side/chat-side.component';
+import { ChatSidebarComponent } from './modules/authenticated/student/messages/chat-sidebar/chat-sidebar.component';
+import { ReferalComponent } from './modules/authenticated/student/achievements/referal/referal.component';
+import { LeaderboardComponent } from './modules/authenticated/student/achievements/leaderboard/leaderboard.component';
+import { StreaksComponent } from './modules/authenticated/student/achievements/streaks/streaks.component';
 // test
 export const routes: Routes = [
   // {
@@ -137,8 +141,24 @@ export const routes: Routes = [
               { path: 'tutors/:id', component: TutorsDescriptionComponent },
             ],
           },
-          { path: 'achievements', component: AchievementsComponent },
-          { path: 'messages', component: MessagesComponent },
+          {
+            path: 'achievements',
+            component: AchievementsComponent,
+            children: [
+              { path: '', component: ReferalComponent },
+              { path: 'referal', component: ReferalComponent },
+              { path: 'leaderboard', component: LeaderboardComponent },
+              { path: 'streaks', component: StreaksComponent },
+            ],
+          },
+          {
+            path: 'messages',
+            component: MessagesComponent,
+            children: [
+              { path: '', component: ChatSidebarComponent },
+              { path: 'friends/:id', component: ChatSideComponent },
+            ],
+          },
           {
             path: 'profile',
             component: ProfileComponent,
