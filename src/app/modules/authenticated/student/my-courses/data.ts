@@ -21,11 +21,14 @@ export interface subjects {
   courseContent?: string[];
   courseDuration?: number;
   topics?: any[];
+  about?: string;
 }
 
 export const SUBJECTS_DATA: subjects[] = [
   {
     id: 1,
+    author: 'Dr. Jane Smith',
+
     name: 'Biology',
     lessons: 12,
     time: '1.30hrs',
@@ -48,57 +51,89 @@ export const SUBJECTS_DATA: subjects[] = [
     courseDuration: 10,
     topics: [
       {
+        id: 1,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         title: 'Introductory to Biology',
         lectures: 1,
         duration: '10mins',
+        rating: 70,
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 2,
         title: 'Classification of Living Things',
         lectures: 2,
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         duration: '40mins',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 3,
         title: 'The cell and it’s function',
         lectures: 2,
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         duration: '24mins',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 4,
         title: 'Ecology and Ecosystem',
         lectures: 2,
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         duration: '32mins',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 5,
         title: 'Genetics and Hereditary',
         lectures: 2,
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         duration: '18mins',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 6,
         title: 'Reproduction in Living things',
         lectures: 3,
         duration: '32mins',
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 7,
         title: 'Nutrition and Digestion',
         lectures: 2,
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         duration: '21mins',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 8,
         title: 'Evolution and Adaptation',
         lectures: 2,
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         duration: '20mins',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
@@ -130,57 +165,89 @@ export const SUBJECTS_DATA: subjects[] = [
     courseDuration: 10,
     topics: [
       {
+        id: 1,
         title: 'Introductory to Biology',
         lectures: 1,
         duration: '10mins',
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 2,
         title: 'Classification of Living Things',
         lectures: 2,
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         duration: '40mins',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 3,
         title: 'The cell and it’s function',
         lectures: 2,
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         duration: '24mins',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 4,
         title: 'Ecology and Ecosystem',
         lectures: 2,
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         duration: '32mins',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 5,
         title: 'Genetics and Hereditary',
         lectures: 2,
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         duration: '18mins',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 6,
         title: 'Reproduction in Living things',
         lectures: 3,
         duration: '32mins',
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 7,
         title: 'Nutrition and Digestion',
         lectures: 2,
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         duration: '21mins',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 8,
         title: 'Evolution and Adaptation',
         lectures: 2,
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         duration: '20mins',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
@@ -211,57 +278,89 @@ export const SUBJECTS_DATA: subjects[] = [
     courseDuration: 10,
     topics: [
       {
+        id: 1,
         title: 'Introductory to Biology',
         lectures: 1,
         duration: '10mins',
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 2,
         title: 'Classification of Living Things',
         lectures: 2,
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         duration: '40mins',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 3,
         title: 'The cell and it’s function',
         lectures: 2,
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         duration: '24mins',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 4,
         title: 'Ecology and Ecosystem',
         lectures: 2,
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         duration: '32mins',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 5,
         title: 'Genetics and Hereditary',
         lectures: 2,
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         duration: '18mins',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 6,
         title: 'Reproduction in Living things',
         lectures: 3,
         duration: '32mins',
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 7,
         title: 'Nutrition and Digestion',
         lectures: 2,
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         duration: '21mins',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 8,
         title: 'Evolution and Adaptation',
         lectures: 2,
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         duration: '20mins',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
@@ -292,58 +391,89 @@ export const SUBJECTS_DATA: subjects[] = [
     courseDuration: 10,
     topics: [
       {
+        id: 1,
         title: 'Introductory to Biology',
         lectures: 1,
         duration: '10mins',
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 2,
         title: 'Classification of Living Things',
         lectures: 2,
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         duration: '40mins',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 3,
         title: 'The cell and it’s function',
         lectures: 2,
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         duration: '24mins',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 4,
         title: 'Ecology and Ecosystem',
         lectures: 2,
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         duration: '32mins',
-
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 5,
         title: 'Genetics and Hereditary',
         lectures: 2,
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         duration: '18mins',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 6,
         title: 'Reproduction in Living things',
         lectures: 3,
         duration: '32mins',
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 7,
         title: 'Nutrition and Digestion',
         lectures: 2,
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         duration: '21mins',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
+        id: 8,
         title: 'Evolution and Adaptation',
         lectures: 2,
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         duration: '20mins',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
@@ -378,6 +508,9 @@ export const SUBJECTS_DATA: subjects[] = [
         title: 'Introductory to Biology',
         lectures: 1,
         duration: '10mins',
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
+        rating: 10,
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
@@ -385,13 +518,20 @@ export const SUBJECTS_DATA: subjects[] = [
         id: 2,
         title: 'Classification of Living Things',
         lectures: 2,
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         duration: '40mins',
-        description: 'hellow rold',
+        description:
+          'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
       {
         id: 3,
         title: 'The cell and it’s function',
         lectures: 2,
+        rating: 50,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         duration: '24mins',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
@@ -400,6 +540,9 @@ export const SUBJECTS_DATA: subjects[] = [
         id: 4,
         title: 'Ecology and Ecosystem',
         lectures: 2,
+        rating: 20,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         duration: '32mins',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
@@ -408,6 +551,9 @@ export const SUBJECTS_DATA: subjects[] = [
         id: 5,
         title: 'Genetics and Hereditary',
         lectures: 2,
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         duration: '18mins',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
@@ -417,6 +563,9 @@ export const SUBJECTS_DATA: subjects[] = [
         title: 'Reproduction in Living things',
         lectures: 3,
         duration: '32mins',
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
       },
@@ -424,6 +573,9 @@ export const SUBJECTS_DATA: subjects[] = [
         id: 7,
         title: 'Nutrition and Digestion',
         lectures: 2,
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         duration: '21mins',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',
@@ -432,6 +584,9 @@ export const SUBJECTS_DATA: subjects[] = [
         id: 8,
         title: 'Evolution and Adaptation',
         lectures: 2,
+        rating: 70,
+        about:
+          'Biology is the scientific study of living organisms and their interactions with the environment. It explores life at different levels, from microscopic bacteria to complex organisms like humans and plants. All living things share characteristics such as movement, respiration, growth, reproduction, excretion, and response to stimuli. Life is organized in a structured hierarchy: cells → tissues → organs → organ systems → organisms → ecosystems.',
         duration: '20mins',
         description:
           'You are been thought the characteristics of living things, All living organisms share common traits, such as movement, respiration, growth, reproduction...',

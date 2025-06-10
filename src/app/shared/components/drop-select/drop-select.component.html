@@ -1,6 +1,6 @@
 <div class="relative w-full">
   <label
-    *ngIf="label"
+    *ngIf="label && showLabel"
     class="font-medium text-textColor capitalize text-[16px]"
   >
     {{ label }}
@@ -22,7 +22,7 @@
   </select>
 
   <svg
-    class="absolute right-3 top-[2.3rem] pointer-events-none w-6 h-6 text-gray-400"
+    class="absolute right-3 top-2 pointer-events-none w-6 h-6 text-gray-400"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
