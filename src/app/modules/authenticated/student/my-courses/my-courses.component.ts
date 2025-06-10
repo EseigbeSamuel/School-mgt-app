@@ -4,6 +4,7 @@ import { SubjectCardComponent } from '../../../../shared/components/subject-card
 import { SUBJECTS_DATA } from './data';
 import { SudentCoursesSubjetCardSvgIcons } from '../../../../utils/icons';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-courses',
@@ -19,7 +20,7 @@ export class MyCoursesComponent {
   data: Array<any> = [];
   buttonData: Array<any> = [];
   isDesktop = window.innerWidth >= 768;
-  constructor(private sanitizer: DomSanitizer) {}
+  constructor(private sanitizer: DomSanitizer, private router: Router) {}
 
   switchTabs(tab: 'science' | 'art' | 'commercial' | 'vocational') {
     this.activeTab = tab;

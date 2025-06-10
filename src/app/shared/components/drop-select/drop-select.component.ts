@@ -12,7 +12,7 @@ export class DropSelectComponent {
   @Input() disabled: boolean = false;
   @Input() value: string = '';
   @Input() placeholder: string | null = null;
-
+  @Input() showLabel: boolean = true;
   @Output() valueChange = new EventEmitter<string>();
 
   isFocused: boolean = false;

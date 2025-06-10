@@ -1,10 +1,14 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { ChartComponent, NgApexchartsModule } from 'ng-apexcharts';
+import { share } from 'rxjs';
+import { SharedModule } from '../../../shared.module';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-chart2',
   standalone: true,
-  imports: [NgApexchartsModule],
+  imports: [NgApexchartsModule, SharedModule, CommonModule, FormsModule],
   templateUrl: './chart2.component.html',
   styleUrls: ['./chart2.component.css'],
 })
@@ -13,6 +17,13 @@ export class Chart2Component implements OnInit {
   isDesktop = window.innerWidth >= 768;
   public chartOptions: any;
   height: any;
+
+  filterOptions = ['Month', '30 Days', '7 Days'];
+  selectedFilter = 'Month';
+
+  setFilter(option: string) {
+    this.selectedFilter = option;
+  }
 
   ngOnInit() {
     window.addEventListener('resize', () => {

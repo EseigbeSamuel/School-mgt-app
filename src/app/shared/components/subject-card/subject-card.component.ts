@@ -24,4 +24,13 @@ export class SubjectCardComponent {
   toggleBookmark(subject: any) {
     subject.isBookmarkActive = !subject.isBookmarkActive;
   }
+
+  handleCOurseVideoClick(pageData: any) {
+    if (pageData?.id && pageData?.topics?.length) {
+      this.router.navigate([
+        `student/courses/view-course/${pageData.id}/lesson/${pageData.topics[0].id}`,
+      ]);
+      console.log(pageData.topics[0].id, 'id:', pageData.id);
+    }
+  }
 }
