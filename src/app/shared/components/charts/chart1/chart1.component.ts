@@ -30,7 +30,7 @@ export class Chart1Component implements OnInit {
 
     window.addEventListener('resize', () => {
       this.isDesktop = window.innerWidth >= 768;
-      this.height = this.isDesktop ? 400 : 250;
+      this.height = this.isDesktop ? 400 : 300;
       this.updateChartOptions();
     });
   }
@@ -47,7 +47,7 @@ export class Chart1Component implements OnInit {
       colors: ['#2C2A72'],
 
       chart: {
-        height: this.height || 450,
+        height: this.height || 400,
         type: 'bar',
         toolbar: {
           show: false,
@@ -88,7 +88,7 @@ export class Chart1Component implements OnInit {
         offsetY: -20,
         style: {
           fontSize: '12px',
-          colors: ['#304758'], // Change data label colors here
+          colors: ['#304758'],
         },
       },
 
@@ -130,7 +130,7 @@ export class Chart1Component implements OnInit {
               opacityFrom: 0.4,
               opacityTo: 0.5,
             },
-            color: '#2C2A72', // Your primary color
+            color: '#2C2A72',
           },
         },
         tooltip: {
@@ -144,7 +144,7 @@ export class Chart1Component implements OnInit {
           shade: 'light',
           type: 'horizontal',
           shadeIntensity: 0.25,
-          gradientToColors: ['#667085'], // Your secondary color as end gradient
+          gradientToColors: ['#667085'],
           inverseColors: false,
           opacityFrom: 0.8,
           opacityTo: 0.9,
@@ -171,7 +171,7 @@ export class Chart1Component implements OnInit {
         offsetY: -320,
         align: 'top',
         style: {
-          color: '#444', // Title color
+          color: '#444',
           fontSize: '14px',
         },
       },

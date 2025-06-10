@@ -1,0 +1,32 @@
+.video-wrapper video {
+  width: 100%;
+  max-height: 450px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.breadcrumb {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.info-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}
+
+.tabs span {
+  margin-right: 16px;
+  cursor: pointer;
+  font-weight: 500;
+}
+.tabs .active {
+  border-bottom: 2px solid #2c2a72;
+  color: #2c2a72;
+}
+
+.rating i {
+  color: gold;
+}

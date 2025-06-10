@@ -1,17 +1,483 @@
-<nav>
-  <ul
-    class="w-full flex gap-5 justify-center font-semibold uppercase text-xl mb-3"
-  >
-    <li class="hover:underline">
-      <a routerLink="quiz" routerLinkActive="underline text-primary"> Quiz</a>
-    </li>
-    <li class="hover:underline">
-      <a routerLink="assessment" routerLinkActive="underline text-primary"
-        >Assessment</a
+<div
+  [style.backgroundImage]="getBackgroundImage()"
+  class="flex items-center justify-center h-full w-full bg-no-repeat bg-cover"
+>
+  <section>
+    <div
+      class="w-full flex gap-5 justify-center font-semibold uppercase text-xl mb-3"
+    ></div>
+    <div class="flex flex-col justify-center items-center gap-5 text-primary">
+      <h1 class="text-xl text-[#2C2A72] font-[400] lg:text-3xl">
+        Daily Quiz, Daily Bonus- Play Today!
+      </h1>
+      <p class="text-center text-sm lg:text-base flex">
+        Boost your confidence by taking interactive quizzes. Get instant
+        feedback, track your performance, <br />
+        and identify areas that need improvement
+      </p>
+      <div>
+        <app-button label="Start Quiz" (click)="openModal()" />
+      </div>
+    </div>
+  </section>
+
+  <app-modal [show]="showModal" (close)="closeModal()" [custom]="true">
+    <div
+      class="flex items-center justify-center bg-white quiz-container w-full rounded-2xl shadow-xl"
+    >
+      <div
+        *ngIf="quizCompleted"
+        class="bg-white rounded-2xl shadow-xl d w-full relative"
       >
-    </li>
-  </ul>
-</nav>
-<div>
-  <router-outlet />
+        <!-- Header with progress dots -->
+        <div class="flex items-center p-2 pb-4 justify-end">
+          <button
+            class="text-gray-400 hover:text-gray-600"
+            (click)="closeModal()"
+          >
+            <svg
+              width="27"
+              height="27"
+              viewBox="0 0 27 27"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8.25 19.7825L13.5 14.5325L18.75 19.7825L19.7825 18.75L14.5325 13.5L19.7825 8.25L18.75 7.2175L13.5 12.4675L8.25 7.2175L7.2175 8.25L12.4675 13.5L7.2175 18.75L8.25 19.7825ZM13.5044 26.625C11.6902 26.625 9.98396 26.2808 8.38562 25.5925C6.78826 24.9032 5.39847 23.9679 4.21625 22.7867C3.03403 21.6054 2.09826 20.2171 1.40896 18.6217C0.719653 17.0262 0.375 15.3205 0.375 13.5044C0.375 11.6883 0.719653 9.98201 1.40896 8.38562C2.09729 6.78826 3.03111 5.39847 4.21042 4.21625C5.38972 3.03403 6.77854 2.09826 8.37688 1.40896C9.97521 0.719653 11.6815 0.375 13.4956 0.375C15.3098 0.375 17.016 0.719653 18.6144 1.40896C20.2117 2.09729 21.6015 3.0316 22.7837 4.21187C23.966 5.39215 24.9017 6.78097 25.591 8.37833C26.2803 9.97569 26.625 11.6815 26.625 13.4956C26.625 15.3098 26.2808 17.016 25.5925 18.6144C24.9042 20.2127 23.9689 21.6025 22.7867 22.7837C21.6044 23.965 20.2161 24.9008 18.6217 25.591C17.0272 26.2813 15.3215 26.626 13.5044 26.625Z"
+                fill="#2C2A72"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div class="px-6 pb-6">
+          <div class="text-center space-y-1">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-2">
+                {{ getScoreMessage() }}
+              </h2>
+              <p class="text-[#667085] foent-[500]">
+                You've scored
+                <span class="px-1"> {{ calculateScore() }} % </span>
+              </p>
+            </div>
+
+            <div class="text-6xl mb-4 flex justify-center items-center">
+              <img src="{{ getScoreEmoji() }}" alt="" />
+            </div>
+
+            <div class="flex items-center justify-center">
+              <div
+                class="flex flex-col item-center justify-center border-2 gap-3 border-[#E9E9E9] w-1/3 p-3"
+              >
+                <div
+                  class="flex items-center justify-center text-text-color gap-1 font-[700]"
+                >
+                  <svg
+                    width="25"
+                    height="26"
+                    viewBox="0 0 25 26"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                  >
+                    <rect
+                      x="0.5"
+                      y="0.5"
+                      width="24"
+                      height="25"
+                      fill="url(#pattern0_1560_8236)"
+                    />
+                    <defs>
+                      <pattern
+                        id="pattern0_1560_8236"
+                        patternContentUnits="objectBoundingBox"
+                        width="1"
+                        height="1"
+                      >
+                        <use
+                          xlink:href="#image0_1560_8236"
+                          transform="matrix(0.0104167 0 0 0.01 0 0.02)"
+                        />
+                      </pattern>
+                      <image
+                        id="image0_1560_8236"
+                        width="96"
+                        height="96"
+                        preserveAspectRatio="none"
+                        xlink:href="data:image/png;base64,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"
+                      />
+                    </defs>
+                  </svg>
+                  {{ totalQuestions }}
+                </div>
+                <div class="text-[#667085] font-[600] text-[16px]">
+                  Total Qustions
+                </div>
+              </div>
+              <div
+                class="flex flex-col item-center justify-center border-2 gap-3 border-[#E9E9E9] p-3 w-1/3"
+              >
+                <div
+                  class="flex items-center justify-center text-text-color gap-1 font-[700]"
+                >
+                  <svg
+                    width="25"
+                    height="24"
+                    viewBox="0 0 25 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                  >
+                    <rect
+                      x="0.5"
+                      width="24"
+                      height="24"
+                      fill="url(#pattern0_1560_8242)"
+                    />
+                    <defs>
+                      <pattern
+                        id="pattern0_1560_8242"
+                        patternContentUnits="objectBoundingBox"
+                        width="1"
+                        height="1"
+                      >
+                        <use
+                          xlink:href="#image0_1560_8242"
+                          transform="scale(0.0104167)"
+                        />
+                      </pattern>
+                      <image
+                        id="image0_1560_8242"
+                        width="96"
+                        height="96"
+                        preserveAspectRatio="none"
+                        xlink:href="data:image/png;base64,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"
+                      />
+                    </defs>
+                  </svg>
+
+                  {{ getCorrectAnswersCount() }}
+                </div>
+                <div class="text-[#667085] font-[600] text-[16px]">Correct</div>
+              </div>
+              <div
+                class="flex flex-col item-center justify-center border-2 gap-3 border-[#E9E9E9] p-3 w-1/3"
+              >
+                <div
+                  class="flex items-center justify-center text-text-color gap-1 font-[700]"
+                >
+                  <svg
+                    width="25"
+                    height="24"
+                    viewBox="0 0 25 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                  >
+                    <rect
+                      x="0.5"
+                      width="24"
+                      height="24"
+                      fill="url(#pattern0_1560_8248)"
+                    />
+                    <defs>
+                      <pattern
+                        id="pattern0_1560_8248"
+                        patternContentUnits="objectBoundingBox"
+                        width="1"
+                        height="1"
+                      >
+                        <use
+                          xlink:href="#image0_1560_8248"
+                          transform="scale(0.0104167)"
+                        />
+                      </pattern>
+                      <image
+                        id="image0_1560_8248"
+                        width="96"
+                        height="96"
+                        preserveAspectRatio="none"
+                        xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAALqElEQVR4nO2ca2ybZxXHzUXs8gXBBhJsLHGatknaxHfHju/x3X5t5+bG7taOXrZ2W9dNXASCD9PGlyHBtGxUY0MDNPEFkLaVChCMTxMT32DtljTzJXEc3y+vrylUSnrQeROjpaya3fex/drxXzrql0pRfv83z3Oe5znn8Hg99dRTTz311FNPPfXUU08cUmX6oa9WnUesFYfvfMXpvVByeP9Wchy5UrZ7w2XbHF2yea+XbLPXy9ZZumydC5esM1dKltl3SpaZC0XL9JNF86ylbPN+pd2/R8cIKOrusmveU3bOL5Sp+Stlav5GxTkPFecRKDtq4YWyvRZzULbVYhZK1lrMQMmyHUXzzI2Seepy0Tz9Im2adkcV3rva/XtySvDMM58tU351hfK9WnHNlyqUDyrU/HawhF8yY0wzUTRhTEHROFUqGKfeoCc9LvB6P8fbqwLdw3eWKf/jFcq3UnH5gIlmw982AIpGz3YY3OGiwfUY2Gx38PbSMlOl5r9TcfkSFZcf2gZ/EsPNRMHgShT01LfiFHU3r5u14fG7Ki7/atWN4LkCnzEACnom1gs65xyv2/Rvz3x/xe27hOA5DB8KegoKOiYu0irqAV43aMPjn6q6fXQHwYeCzgm01lnKax1HeJ0q3NiqHv9CDXyHwYftcACtsb/acZt0aerYPRWP/x+dD9+xHSrb34sKy5d5naANt+/rVbf/StfAV9u3Q2Vbymss3+BxWWXKP1RxH412H3w75FU2yClta9kJ60EeF7XhPH5fxe2PdCv8/ASGFfITlhitdPTxuLbmV91Hl7ofvhXySgzzImf2BMwQumrDVX8afAvkFRbIjpveC3AhO6p6/D/ba/BzCjPkxs2QlZsW2gq/7H5wbq/Cz42bICc3QU5qmmnb9ULV5S/uafhyE2RlxgItMrR+U664fH/Y6/BzMiMTGdnk2y2Fv0Hh/U4Pfk5mhKxsErJSJlwtu8+vuH0Rkl9+wTIDOcsUZE1TkGe++OZ8+RmNHVJqG6TVdsipbSThQ1ZsWIkqFM1/7qy6/d8lCT9nmYa4yQ0RAwUrBidEDS5IIViC8PNaJ8TVVlhVWiCkMEN43ARRpQXSCJ0EfImBiYxY93Tzc36XP04SfszogmW9A+LPPg/ZX/0GQr4TsKJ3QMLgBhphE4IfVJggMPMQZF77Naz/4DlYkhshojBBEmETgJ8V6yEr0idWdbo7m2YA84bbBPj0W5egpq1qFVbPPg0hrR0SBhfQCJwl/IDCBOHjZ2GzXP7fz6Ev/gkW5ZMQGTdCUmlmD1+sh4wITdCcaVr1AqkH9FvB323CUxDS2CGJYAnDr4m++EdYlBsgIjdCSmFmDT8j0kFGoA0Bj/cZ4gZU3EcNpDZcXPMRfuHSn/8Pyi4THj0PIY0Nkgj2duGfeAI2K9Vb/hz6zUuwKNXDGqaTChM7+EIMLWRGNVryBrh8vySR52O2gxtu/Lkf3xLKLhMeQROskNA5IY/ACcKvKfq9ZyEo1UMSgbOFL9BCWqD+BVH44PXeVaF8RRKHLEw1Vw0Us+HWo60KmvAkBNVWSOABijB8VOqV1yEg1kNCPskafkaggfSYpkQ0JcVyQVInXMzzMdXEbGerWq3bhJXT5yCoskACT68E4eP/W6Z8EJboIYXQWcLfMQD/dZIzwDm/QPJ6AfN8TDVXTp2DzVK5AROehKDKDAmNHegGN9xbwQ8dOwsfiXWwLjUQg58eU0N6VP0TcgZQ81dI3u3gIStpcENYZ4eVU080aMI5CE6gCTYGPFv4y2ItAz9LFj6kRlX/IlYiTqJK+ebrhYJpCpIGF4S1dlg5+XjDJgSUJoirbZyEnx5VQeqwait+QHcvawOY+vwm3WoWjFNMno+p5sqJ+k1AgOFT2yawgR+VGiAjNxKHnz68HalhhYn9XwDTHNG8K+WC0cPk+WGNFVZOPNaYCSfPcRZ++tAEJEeUT7A3wOm90Oz7/MKkG5I6J4TUVgg3YMLWtWuwtbHBSfgpjGHlS6wNKNm977TiMYU2uJk8P6SyQPib9ZvAWfgjSkgOK/5CwoAPWvWSRetdTJ6PqWb44bNETGgX/B0DLrM2oGz3Rlr5jEjrKSbPx1Qz/PAZVia0E35qWIGxQsKAfKvfcGkdmmBjspzQ8dszgQPwMbKsDcBW0HY8oOeZA9aOCcfO1H1tUducOQAfUkPy/xAwYPZ6O6oX8jedcOvNdhgDNq5B6PhZWBbtGCCbbAP8cUiSMKBsm823G/5mmcUSJNJAVKKHtMzQYvjjkDwoZ78Ela1zkU6Dv9uEM3BVpIE1sQ7SeO3QOviQOChjvwmXbLMfdCL8mjYrFQgeexSuCjWwJtJCWqJvCXzGgP0y9mkoM3uhQ+HvMuGhR+CqQA1rQg2kxbqmw08ewJASOIhZZi5wFf7WxrW6syPGhAdPw9UxFUQEGkg1Hb4MEoNSAlcR1unzXIS/ubPJBv2nYLNYqtuEwNHTsDQ6AZExNaSaCD+5X4Z/Aewv44qmGStX4S+LtUyqeVsmHFZCBO/tmwV/vxRi+6Xsr6Nx3s72yBfuwV+XGpjAVDPoP9mYCf5TsHRIAWtoQhPgxwelW7Eh2T2sDWD+CszTV7gIP7tdnw/rEj2TagZ8J+o3oYwmnITFEQVEDk9AiiD8xKAUEvsk/yQCf8eAF0lWKddqNcOEnhHxpBsV65hUMzDfoAm+E7A0PA6RQ0py8AelEB+QkHuUx0lTJEvEsUo5MHOsodKRT3vDzUgnISrSMqlm8OhpZpmp14QlyxQEh8chfmiCCPzEPgkkBiQOYgbgmK+iyVMk0ZmC9fn49WOVMukH9IzEAFGhhkk1Aw2YkHzp53B1WA4xBE4AfnyfpBi9n3CvQHHS8zqJtiBsjsD6/PUf/qgh+PXeambEelgTaJhUEzfaekxYffr7sDwkg/UaeDZfPvP1i17jkVbB6NGT6MnCzhRsjsD6fPoTKqNv58u/+W4nLdLB2piGSTUDvpPMMnMr5X77FlwekkFoeBwSJODvE0OcL9Y0pTydmbFGoCEOO1OwOWJRNgn5371FFH7teiEt1MLaqJpJNT+aO/aJG3Pu92/D5WE5s/6vI2wC8BN8cbAp5ekoHHBHqhsxpbQyzRGLMsMuE0i+ZKUFGibPx1RzeXa3CU2BPyDGfx/lNbNFqaB3xUm1gqaUFqY5AuvzsUQcq5SxUBZrNUm9ZOEhC/N8TDUx20m+/Cqz5uOyQxw+X7QeGBxs7viCgt71bZJ9uCmFmWmOwPp8LBHHKmXS5YJ4yMI8H4FjtrO8s+YThT8ggni/8Dyv2cLRjrSeWiXZBJ3BZjm5ianPJ1kifvP1Aub5mGpitkNqw/0Y/NBqXxMb9D6uvJayt6IDPdvyN9zbhM8XwfqAgFw/QD3C0Y49+CIGfowvfJPXauFczbzGUdjrX36cL6Jj+w61Z5YcrbZTea3jxl6FH+OLbsT7BNO8diqvsS/sRfhxjH7hC7x2C88GtMr23l6DH+sTvvvhyMgXeFwQbTJ9MT9hf3/PwO8Xfhi9f4QbQ/tqyimc9+UmrJFuhx/vE67HByTcHOyNQ01zSutat8KP9QnWYvyxAzwuK6Oxfi2nNF/uOvj9gsW2pZuNCoea4lzNroHfJ3x37YHRL/E6SaDTfT4nNz6flZtudHKeH+sTLHAm27kdZeVGT1ZqpDsOfr+wFOMLvbxuEM7VzMgmL3YMfL7wzY5Z7xtRRmykcLogV+HH+MJwy281Wy2co4PTBTNiXYwz8Pmi9Xi/8KmW3edzQYFB2x044A5nrLUNPl8cxDfcjt5kSSg7qpakBZqFzJg612z4WDQVHxC/EeMLTU2rXuhUrfbp7sRJU+nDqhdw3g6OfCFRpYyFsvEB8U+xXHBPLTNsFT+guzd1WGXGqSOpYeXLyRHlX5NDiveTw4pwamg8nzo4fj2JcUCWTxyUhxMHZO9jW1BiUPYyNkdgfT6xEvGeeuqpp5566qmnnnrqqSceGf0XNAzzEy1G/a0AAAAASUVORK5CYII="
+                      />
+                    </defs>
+                  </svg>
+
+                  {{ getWrongAnswersCount() }}
+                </div>
+                <div class="text-[#667085] font-[600] text-[16px]">Wrong</div>
+              </div>
+            </div>
+            <!-- 
+            <button
+              (click)="restartQuiz()"
+              class="w-full bg-textColor text-white py-3 px-6 rounded-lg font-medium hover:bg-indigo-800 hover:-translate-y-0.5 transition-all duration-200"
+            >
+              Try Again
+            </button> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Quiz Questions -->
+      <div
+        *ngIf="!quizCompleted"
+        class="bg-white w-full mx-auto relative rounded-2xl shadow-xl"
+      >
+        <!-- Header with progress dots -->
+        <div class="flex justify-between items-center p-6 pb-4">
+          <div class="flex space-x-2">
+            <div
+              *ngFor="let dot of getProgressArray(); let i = index"
+              class="md:w-14 w-6 h-1 md:h-2 2 rounded-full transition-colors duration-300"
+              [ngClass]="{
+                'bg-[#2C2A72]': i <= currentQuestionIndex,
+                'bg-[#2C2A724D]': i > currentQuestionIndex
+              }"
+            ></div>
+          </div>
+          <div
+            class="text-gray-400 hover:text-gray-600 cursor-pointer"
+            (click)="closeModal()"
+          >
+            <svg
+              width="27"
+              height="27"
+              viewBox="0 0 27 27"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8.25 19.7825L13.5 14.5325L18.75 19.7825L19.7825 18.75L14.5325 13.5L19.7825 8.25L18.75 7.2175L13.5 12.4675L8.25 7.2175L7.2175 8.25L12.4675 13.5L7.2175 18.75L8.25 19.7825ZM13.5044 26.625C11.6902 26.625 9.98396 26.2808 8.38562 25.5925C6.78826 24.9032 5.39847 23.9679 4.21625 22.7867C3.03403 21.6054 2.09826 20.2171 1.40896 18.6217C0.719653 17.0262 0.375 15.3205 0.375 13.5044C0.375 11.6883 0.719653 9.98201 1.40896 8.38562C2.09729 6.78826 3.03111 5.39847 4.21042 4.21625C5.38972 3.03403 6.77854 2.09826 8.37688 1.40896C9.97521 0.719653 11.6815 0.375 13.4956 0.375C15.3098 0.375 17.016 0.719653 18.6144 1.40896C20.2117 2.09729 21.6015 3.0316 22.7837 4.21187C23.966 5.39215 24.9017 6.78097 25.591 8.37833C26.2803 9.97569 26.625 11.6815 26.625 13.4956C26.625 15.3098 26.2808 17.016 25.5925 18.6144C24.9042 20.2127 23.9689 21.6025 22.7867 22.7837C21.6044 23.965 20.2161 24.9008 18.6217 25.591C17.0272 26.2813 15.3215 26.626 13.5044 26.625Z"
+                fill="#2C2A72"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <div class="px-6 pb-6">
+          <!-- Question Header -->
+          <div class="mb-6">
+            <div class="flex items-center justify-between">
+              <p
+                class="text-sm text-textColor font-[500] uppercase tracking-wide mb-2"
+              >
+                QUESTION {{ formatQuestionNumber(currentQuestionIndex + 1) }}/{{
+                  formatQuestionNumber(totalQuestions)
+                }}
+              </p>
+              <p
+                class="text-sm text-textColor font-[700] uppercase tracking-wide mb-3"
+              >
+                GEOGRAPHY
+              </p>
+            </div>
+            <h2 class="text-xl font-[600] text-textColor leading-tight">
+              {{ currentQuestion.text }}
+            </h2>
+          </div>
+
+          <!-- Instructions -->
+          <p class="text-sm text-gray-500 uppercase tracking-wide mb-4">
+            SELECT ONLY ONE
+          </p>
+
+          <!-- Options -->
+          <!-- Options -->
+          <div class="space-y-1 mb-8">
+            <div
+              *ngFor="let option of currentQuestion.options"
+              class="flex items-center p-4 cursor-pointer transition-all duration-200 hover:shadow-md hover:-translate-y-0.5"
+              (click)="selectAnswer(option)"
+            >
+              <div class="flex items-center flex-1">
+                <div
+                  class="w-5 h-5 border-2 rounded-full flex items-center justify-center mr-4"
+                  [ngClass]="{
+                    'border-[#2C2A72] bg-[#2C2A72]': selectedAnswer === option,
+                    'border-gray-300': selectedAnswer !== option
+                  }"
+                >
+                  <div
+                    *ngIf="selectedAnswer === option"
+                    class="w-2 h-2 bg-white rounded-full"
+                  ></div>
+                </div>
+                <span class="text-gray-900 font-medium">{{ option }}</span>
+              </div>
+
+              <!-- Result indicators -->
+              <div *ngIf="showResult" class="ml-2">
+                <span
+                  *ngIf="option === currentQuestion.correctAnswer"
+                  class="text-green-500 text-lg result-icon"
+                  ><svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                  >
+                    <rect
+                      width="24"
+                      height="24"
+                      fill="url(#pattern0_555_12573)"
+                    />
+                    <defs>
+                      <pattern
+                        id="pattern0_555_12573"
+                        patternContentUnits="objectBoundingBox"
+                        width="1"
+                        height="1"
+                      >
+                        <use
+                          xlink:href="#image0_555_12573"
+                          transform="scale(0.0104167)"
+                        />
+                      </pattern>
+                      <image
+                        id="image0_555_12573"
+                        width="96"
+                        height="96"
+                        preserveAspectRatio="none"
+                        xlink:href="data:image/png;base64,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"
+                      />
+                    </defs>
+                  </svg>
+                </span>
+                <span
+                  *ngIf="
+                    option !== currentQuestion.correctAnswer &&
+                    selectedAnswer === option
+                  "
+                  class="text-red-500 text-lg result-icon"
+                  ><svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                  >
+                    <rect
+                      width="24"
+                      height="24"
+                      fill="url(#pattern0_1410_7528)"
+                    />
+                    <defs>
+                      <pattern
+                        id="pattern0_1410_7528"
+                        patternContentUnits="objectBoundingBox"
+                        width="1"
+                        height="1"
+                      >
+                        <use
+                          xlink:href="#image0_1410_7528"
+                          transform="scale(0.0104167)"
+                        />
+                      </pattern>
+                      <image
+                        id="image0_1410_7528"
+                        width="96"
+                        height="96"
+                        preserveAspectRatio="none"
+                        xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAAF8klEQVR4nO2dW3MaNxiG+Q0dwLlr4/gQJzYgWA5rm4PBYDAGH0gcnF/Y2E2bTDpJpm0mdiY3ue8faBp2YUG7wnauv45MmTaUtj6sVqtF78w3k8vleeQPSRFan09GRkZGRkZGRkZGRkZGRuaa6e88mjvfPjg6qx/oZ7WmdlZ7dNSvHsyKCtQIFeaMaO7IiGT0TjirGeEM/bc7P8/nelM5335sntcPgNZZrTmorX3zc6Wp+ARLF2WVTjRnGigLRoRWBoxwBtqhtNldXHbX5zmvN9F5/TH+J/xHg6ruE1J9mPAJEkPJoA7K4lH4nVAaOqFVaC+uEP1eKiEK/Is63dwnpOR+Ccb/wO8srUJncQXa910g4Qrw4bTykJarJRiXhD8QsAz6PZWfhGvAh9PyAzgtN1wpwbgi/PZ9Fdr3VNAXUs5LuD78B9DfaEB/Y4+Q0k5CdPjthdRFaXeTRJ91SMLN4TegX9qDfmnXFRJuCl+/mwR9PgnafILos7GEIPD3oF/chX5xh5A8Pwl2wdfnE6DPxUGbjbOTMFhkjZvnXxf+LpB1WjsWWa8rnOb5ll3w9VkqQAFtRjF/n47Yv1ijK1wG8IEUaNUtknVOwqXgL10LPmh3YtCaRk9sf2i6vcAG/jaQ/DaQtZoj7cjutjMKX7sTpQLatj/4n/s7bODn62Ct1cHKbRGSrya4wl+6GXxtOgqt25GW7Q9/ttU8ZAp/rQZWrgZmbssi2YoiWtv5Cz6iAr61+/l9dFeTbqyxhG/Rym6BmanaKoHhF+4Y+Mj8eAfN+FhNQ8+q+5glfGsgAMx0lfTSN29HzrUdBK1vIuTj7TDjtUC5iU439zFT+BkqYBPM1U3SS5cSbv7CdRT+MOflBjqtPMRM4aepgAqYKxXSS11dgudG/lgJ5QZmDB/wShl6yxtXkuDZkT8aq9xA/Y09zBI+Xt64qJ5aupQEz4/80ViFBuoXdzFL+FgtAU6VoJsq/qeEiRn5YyWs72CW8HupIvSSRegm1kkvlv/HB5+4kT9OglXYxizh9xLr0EsUoBvPfyFhYkf+aKxCHVn5OmYJvxcvQFfJg6GsXUiY+JE/GrqrSfI1iyX8Lq3YGhjRnOXgCtfSppG7jqP8W6xMHZm5GmYJvxvNUQEwsT3/UhKyNcwN/uIEw/9SwhaWI59jrEwZ4UwVy5HPW0J6E8uez1vCSgXLns8xllpGveUNLGc7vCWoRSxnOxxjqQXUTa5jOc/nGINKiBewnOfzlKAUUFfJY7nC5SzBiK1hucLlKiGDDLqdLPd2+AnoOLSf/9vXkf53gdCHw68E3d8RHr5/6dcjfxieBkLk+0mXYHCDH4YfAmF4HgiTF5MqgT/8CLwYFHk9NWES3AL/xwCCl0EEr4KIvJ5i/PMit8Rt8F8Ho/BTMApvgjHyi9cluBg+vJ2KwcmUQk68KkEA+PBuUN6TIBB88JwEAeGDZyQIDB+El+AB+CCsBA/BB+EkOH1Q9mkg9IEx/GFZ72/F3X00kccp5SN/CD0NhDFj+O7/S+B5RPyZP4SeByKYMXz3SnDD+fxn/hB6EUCYMXz3SXAD/GFe+kPoVQBhxvDdI8FN8If52a+gN4EoZgyfvwQ3wh/m2K+g42AMM4bPT4Kb4f9dwokXJYgA37MSRILvOQn0IutxdymL8IO497fiCl3JOiHhJKiYx/6k/XfGXdwiLiB8HhLeBWP23xlHr3AX/deIx461o5j9d8YZYSpAXPhOSjiZUuy/M86IpA9Fazvc2lEwZv+dcfTNEfTlBaLDZy2Bfgm/DTC6M84IZVBnaRWL1nYcbEcOrAUWVNRZXMGiw2cgwcHV8IKK2vdVLDp8GyVw2A+iEu4msejwbZDAcUd0QUX6fAKLDv8GEvj/n8CnGRXpc3EsOvxrSOAPf5hPMwrSZxQsOvwrSHAP/GG0+bhCX14w7i5lYW6aGlkn0Dn9uHm+a4+n0DdHtKbRYWsaaa3bEVpPmF1k7UDoruZJUDl8N6VoFxWMPWG2yJKRkZGRkZGRkZGRkZGR8U1C/gAATT8z+Z/NRQAAAABJRU5ErkJggg=="
+                      />
+                    </defs>
+                  </svg>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navigation Buttons -->
+          <div class="flex justify-end items-center gap-3">
+            <button
+              (click)="handleBack()"
+              [disabled]="currentQuestionIndex === 0"
+              class="bg-gray-200 text-textColor py-3 px-6 rounded-lg font-medium hover:bg-gray-300 hover:-translate-y-0.5 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+            >
+              Back
+            </button>
+            <button
+              (click)="handleNext()"
+              [disabled]="!selectedAnswer"
+              class="bg-button saturation text-white py-3 px-8 rounded-lg font-medium hover:bg-indigo-800 hover:-translate-y-0.5 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+            >
+              {{
+                !showResult
+                  ? "Submit"
+                  : currentQuestionIndex === totalQuestions - 1
+                  ? "Finish"
+                  : "Next"
+              }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div
+      class="w-[230px] h-[380px] lg:w-[400px] lg:h-[510px] bg-white rounded-lg rotate-12"
+    >
+      <div
+        class="w-[230px] h-[380px] lg:w-[400px] lg:h-[510px] bg-white border rounded-lg p-3 lg:p-10 flex flex-col gap-2 lg:gap-5 z-20 -rotate-12"
+      >
+        <div class="flex w-full items-center justify-between">
+          <div
+            class="bg-primary w-[40px] lg:w-[60px] h-[10px] rounded-3xl"
+          ></div>
+          <div
+            class="bg-primary w-[40px] lg:w-[60px] h-[10px] rounded-3xl"
+          ></div>
+          <div
+            class="bg-primary w-[40px] lg:w-[60px] h-[10px] rounded-3xl"
+          ></div>
+          <div
+            class="bg-primary w-[40px] lg:w-[60px] h-[10px] rounded-3xl"
+          ></div>
+          <div
+            class="bg-primary w-[40px] lg:w-[60px] h-[10px] rounded-3xl"
+          ></div>
+          <img
+            src="/assets/icons/purple-circle X-mark.svg"
+            alt=""
+            (click)="closeModal()"
+            class="size-5"
+          />
+        </div>
+
+        <div class="flex justify-between text-xs lg:text-sm">
+          <p>QUESTION 05/05</p>
+          <p class="font-medium">GEOGRAPHY</p>
+        </div>
+
+        <div>
+          <h1 class="text-lg lg:text-2xl font-semibold">
+            What is the largest ocean on Earth?
+          </h1>
+        </div>
+
+        <div class="grid gap-3">
+          <p class="uppercase text-xs">select only one</p>
+          <ul class="flex flex-col gap-3 text-md lg:text-xl font-medium">
+            <li>
+              <input type="radio" class="accent-primary size-4" />
+              Atlantic
+            </li>
+            <li><input type="radio" class="accent-primary size-4" /> India</li>
+            <li>
+              <input type="radio" class="accent-primary size-4" /> Pacific
+            </li>
+            <li><input type="radio" class="accent-primary size-4" /> Artic</li>
+          </ul>
+        </div>
+        <div class="flex gap-3 w-full justify-end">
+          <app-button label="Back" variant="secondary" />
+          <app-button label="Next" />
+        </div>
+      </div>
+    </div> -->
+  </app-modal>
 </div>
