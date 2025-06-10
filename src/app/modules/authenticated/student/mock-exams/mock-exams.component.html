@@ -1,4 +1,8 @@
 <div>
+  <section class="lg:hidden">
+    <img src="/assets/icons/mock-exam-hero.svg" alt="" />
+  </section>
+
   <section class="flex gap-5 items-center px-10">
     <h1 class="text-lg font-semibold">Use of English Mock Tests</h1>
 
@@ -40,7 +44,7 @@
           let i = index
         "
         class="flex items-center justify-between border rounded cursor-pointer hover:bg-gray-100"
-        [class.bg-indigo-50]="selectedOptions[currentQuestionIndex] === i"
+        [class.bg-gray-50]="selectedOptions[currentQuestionIndex] === i"
         (click)="selectOption(i)"
       >
         <div class="flex gap-3">
@@ -49,7 +53,7 @@
         </div>
         <div
           class="w-4 h-4 mr-3 border-2 rounded-full border-primary flex items-center justify-center"
-          [class.border-purple-700]="
+          [class.border-purple-900]="
             selectedOptions[currentQuestionIndex] === i
           "
         >
