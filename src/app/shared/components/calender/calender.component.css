@@ -1,0 +1,9 @@
+.border-l-3 {
+  border-left-width: 3px;
+}
+
+@media (max-width: 768px) {
+  .grid-cols-7 {
+    display: none;
+  }
+}

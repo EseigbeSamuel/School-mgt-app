@@ -1,0 +1,106 @@
+<div
+  class="max-w-6xl max-h-[500px] overflow-y-auto mx-auto bg-white rounded-xl shadow-lg overflow-hidden"
+>
+  <!-- Header with Month Navigation -->
+  <div class="pt-5 pl-5 text-xl text-textColor">Shedule</div>
+  <div
+    class="bg-white text-center border-b border-gray-200 p-2 flex justify-between items-center"
+  >
+    <button
+      (click)="changeMonth(-1)"
+      class="px-4 py-2 text-textColor hover:bg-gray-100 rounded-lg"
+    >
+      &lt;
+    </button>
+    <h1 class="text-lg text-textColor">
+      {{ months[currentMonth] }} {{ currentYear }}
+    </h1>
+    <button
+      (click)="changeMonth(1)"
+      class="px-4 py-2 text-textColor hover:bg-gray-100 rounded-lg"
+    >
+      &gt;
+    </button>
+  </div>
+
+  <!-- Calendar Grid -->
+  <div class="grid-cols-7 bg-gray-50 hidden md:grid">
+    <!-- Day Headers -->
+    <div
+      *ngFor="let day of dayHeaders"
+      class="p-4 text-center font-semibold text-gray-600 border-r border-gray-200 last:border-r-0 bg-gray-50"
+    >
+      {{ day }}
+    </div>
+
+    <!-- Calendar Days -->
+    <div
+      *ngFor="let day of calendarDays; trackBy: trackByDay"
+      [class.bg-gray-50]="!day.isCurrentMonth"
+      [class.text-gray-400]="!day.isCurrentMonth"
+      class="min-h-[80px] border-r border-b border-gray-200 last:border-r-0 p-3 bg-white relative"
+    >
+      <!-- Date Number -->
+      <div
+        class="text-[12px] font-[400]"
+        [class.text-textColor]="day.isCurrentMonth"
+      >
+        {{ day.date }}
+        <span *ngIf="!day.isCurrentMonth" class="text-xs ml-1"
+          >({{ day.month }})</span
+        >
+      </div>
+
+      <!-- Schedule Items -->
+      <div
+        *ngFor="let schedule of day.schedules; trackBy: trackBySchedule"
+        class="p-1 text-center font-medium shadow-sm"
+      >
+        <div class="text-xs mb-1 text-[8px] text-[#AF4B4B]">
+          {{ schedule.time }}
+        </div>
+        <div
+          [ngClass]="getScheduleClasses(schedule.subjectClass)"
+          class="font-[500] text-[8px]"
+        >
+          {{ schedule.subject }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile View -->
+  <!-- Mobile View -->
+  <div class="md:hidden w-full">
+    <ng-container *ngFor="let day of calendarDays; trackBy: trackByDay">
+      <div
+        *ngIf="day.isCurrentMonth"
+        class="border-b border-gray-200 p-4 bg-white"
+      >
+        <div class="flex justify-between items-center mb-3">
+          <div class="text-lg font-semibold text-gray-800">
+            {{ day.dayName }}
+          </div>
+          <div class="text-lg font-semibold text-gray-600">
+            {{ day.date }} {{ day.month }}
+          </div>
+        </div>
+
+        <ng-container *ngIf="day.schedules.length > 0; else noSchedule">
+          <div
+            *ngFor="let schedule of day.schedules; trackBy: trackBySchedule"
+            class="mb-2 rounded-md p-3 text-sm font-medium border-l-4 shadow-sm"
+            [ngClass]="getScheduleClasses(schedule.subjectClass)"
+          >
+            <div class="text-gray-600 text-xs mb-1">{{ schedule.time }}</div>
+            <div class="font-semibold">{{ schedule.subject }}</div>
+          </div>
+        </ng-container>
+
+        <ng-template #noSchedule>
+          <div class="text-gray-400 text-sm">No classes scheduled</div>
+        </ng-template>
+      </div>
+    </ng-container>
+  </div>
+</div>
