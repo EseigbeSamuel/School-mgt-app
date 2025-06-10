@@ -1,0 +1,35 @@
+/* assessment-and-quizzes.component.css */
+
+/* Only keeping minimal custom animations since Tailwind handles most styling */
+
+/* Slide in animation for quiz container */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.quiz-container {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Pop in animation for result icons */
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.result-icon {
+  animation: popIn 0.3s ease-out;
+}

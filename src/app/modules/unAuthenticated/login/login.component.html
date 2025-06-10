@@ -1,0 +1,90 @@
+<div
+  class="w-full min-h-screen bg-auth flex flex-col items-center justify-center py-4 md:py-6"
+>
+  <div
+    class="flex flex-col justify-center items-center gap-3 mb-6 md:mb-8 px-4 text-center"
+  >
+    <h1 class="font-bold text-2xl md:text-[30px] text-primary">Welcome!</h1>
+    <p class="font-normal text-gray-600 text-base md:text-[18px]">
+      Login to get instant access to premium <br class="hidden md:block" />
+      lessons, quizzes & study tools.
+    </p>
+  </div>
+
+  <form class="w-full md:w-fit mx-auto px-4 flex flex-col gap-4" action="">
+    <app-input-ui
+      label="email"
+      placeholder="Enter email"
+      iconLeft="mailIcon"
+      class="w-full"
+    />
+
+    <app-input-ui
+      label="Password"
+      inputId="user-password"
+      type="password"
+      [placeholder]="'Enter your password'"
+      iconLeft="lockIcon"
+    >
+    </app-input-ui>
+    <div class="flex flex-col items-center">
+      <div class="flex gap-2 mt-2 items-center w-full justify-between">
+        <mat-checkbox color="#2C2A72" formControlName="acceptTerms">
+          Save login</mat-checkbox
+        >
+        <div
+          (click)="resetPassword()"
+          class="text-sm md:text-[16px] text-textColor cursor-pointer"
+        >
+          Forget password?
+        </div>
+      </div>
+      <div class="w-full py-3">
+        <app-button
+          variant="primary"
+          label="Login"
+          (btnClick)="login($event)"
+        />
+      </div>
+      <div class="flex flex-col gap-4 w-full max-w-xs md:max-w-none">
+        <div class="text-center text-textColor text-sm md:text-base">
+          or sign up with
+        </div>
+
+        <div class="flex gap-4 md:gap-6 items-center justify-center">
+          <div
+            class="bg-white rounded-[6px] lg:w-[65px] lg:h-[65px] h-[50px] w-[50px] flex justify-center items-center"
+          >
+            <img src="assets/icons/google.svg" alt="Google" class="w-10 h-10" />
+          </div>
+          <div
+            class="bg-white rounded-[6px] lg:w-[65px] lg:h-[65px] h-[50px] w-[50px] flex justify-center items-center"
+          >
+            <img
+              src="assets/icons/facebook.svg"
+              alt="Facebook"
+              class="w-10 h-10"
+            />
+          </div>
+          <div
+            class="bg-white rounded-[6px] lg:w-[65px] lg:h-[65px] h-[50px] w-[50px] flex justify-center items-center"
+          >
+            <img src="assets/icons/apple.svg" alt="Apple" class="w-10 h-10" />
+          </div>
+        </div>
+
+        <div
+          class="text-sm md:text-[16px] text-center text-textColor flex justify-center"
+        >
+          You already have an account?
+          <div
+            (click)="signUp()"
+            class="text-[#2C2A72] font-medium cursor-pointer px-2"
+          >
+            Sign up
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

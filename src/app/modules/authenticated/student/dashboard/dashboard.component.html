@@ -1,0 +1,72 @@
+<div class="flex gap-3 flex-col">
+  <div
+    class="grid gap-5 grid-cols-2 md:grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))]"
+  >
+    <app-card-ui-dashboared
+      *ngFor="let card of data"
+      [title]="card.title"
+      [count]="card.count"
+      [icon]="card.safeSvg"
+      [subjects]="card.subjects"
+      [variant]="'student'"
+    />
+  </div>
+
+  <div class="flex gap-3">
+    <div
+      class="w-full md:w-[70%] md:p-4 border rounded-lg border-[#E9E9E9] h-fit md:h-[420px]"
+    >
+      <app-chart2 />
+    </div>
+
+    <div
+      class="border w-[30%] hidden border-[#E9E9E9] rounded-lg h-fit md:h-[420px] md:flex justify-center items-center"
+    >
+      <app-piechart />
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-4 py-4">
+    <div class="border-b border-[#E9E9E9] flex gap-6 items-center">
+      <div
+        (click)="switchTabs('category')"
+        class="text-[16px] font-[600] pb-1 cursor-pointer py-4"
+        [class.text-textColor]="activeTab === 'category'"
+        [class.text-gray-400]="activeTab !== 'category'"
+        [class.border-b-2]="activeTab === 'category'"
+        [class.border-textColor]="activeTab === 'category'"
+      >
+        Course categories
+      </div>
+      <div
+        (click)="switchTabs('lessons')"
+        class="text-[16px] font-[600] pb-1 cursor-pointer py-4"
+        [class.text-textColor]="activeTab === 'lessons'"
+        [class.text-gray-400]="activeTab !== 'lessons'"
+        [class.border-b-2]="activeTab === 'lessons'"
+        [class.border-textColor]="activeTab === 'lessons'"
+      >
+        Saved lessons
+      </div>
+    </div>
+    <ng-container class="mt-4 table-box">
+      <div *ngIf="activeTab === 'category'">
+        <div class="table-container">
+          <app-student-dashboard [data]="examBoardData" />
+        </div>
+      </div>
+      <div *ngIf="activeTab === 'lessons'">
+        <div class="overflow-x-auto">
+          <app-student-dashboard [variant]="'progress'" [data]="progressData" />
+        </div>
+      </div>
+
+      <div class="pagination-box border-t p-4 sm:p-6">
+        <app-paginator
+          [metadata]="paginationMetadata"
+          [showText]="true"
+        ></app-paginator>
+      </div>
+    </ng-container>
+  </div>
+</div>

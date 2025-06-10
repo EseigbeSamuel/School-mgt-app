@@ -1,0 +1,12 @@
+:root {
+  --options-h: 8rem;
+  --options-h-full: 16rem;
+}
+
+.options {
+  height: var(--options-h);
+}
+
+.full .options {
+  height: var(--options-h-full);
+}

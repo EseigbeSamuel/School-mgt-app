@@ -1,0 +1,93 @@
+<div class="xl:grid grid-cols-[1fr_360px] gap-5 space-y-5">
+  <div class="main-content space-y-5">
+    <div class="grid gap-5 grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))]">
+      <app-card-ui-dashboared
+        *ngFor="let card of data"
+        [title]="card.title"
+        [icon]="card.safeSvg"
+        [value]="card.value"
+        [growthRate]="card.growthRate"
+        [type]="card.type"
+        [variant]="'tutor'"
+      />
+    </div>
+
+    <div class="content-2 space-y-4">
+      <h2 class="text-xl font-semibold">Earnings</h2>
+
+      <div
+        class="graph border shadow-sm md:p-4 size-full border-[#E9E9E9] rounded-lg h-fit md:h-[400px]"
+      >
+        <app-chart1 />
+      </div>
+    </div>
+
+    <div class="content-2 space-y-4">
+      <h2 class="text-xl font-semibold py-4">Ratings</h2>
+      <app-tutor-dash-board [data]="ratingsData" />
+    </div>
+  </div>
+
+  <div class="side-content space-y-5">
+    <div class="space-y-4 border p-4 shadow-sm sm:max-w-sm">
+      <h3 class="text-xl font-semibold">Students</h3>
+      <div class="space-y-4 overflow-auto max-h-[400px]">
+        <div
+          *ngFor="let tutor of tutorData"
+          class="box border shadow-sm w-full p-4"
+        >
+          <div class="flex gap-2 items-center">
+            <div class="avatar size-10 min-w-10 bg-gray-200 rounded-full"></div>
+            <div class="info">
+              <span class="block text-lg">{{ tutor.name }}</span>
+              <span class="block text-base text-accent">{{ tutor.name }}</span>
+            </div>
+          </div>
+
+          <div class="tags flex gap-2 flex-wrap my-4">
+            <span
+              *ngFor="let subject of tutor.subjects"
+              class="tag text-xs block px-2.5 py-1 rounded-md font-semibold"
+              [ngClass]="{
+                'bg-red-500/20 text-red-500': subject.color === 'red',
+                'bg-blue-500/20 text-blue-500': subject.color === 'blue',
+                'bg-green-500/20 text-green-500': subject.color === 'green'
+              }"
+            >
+              {{ subject.name }}
+            </span>
+          </div>
+
+          <app-button class="py-2! text-sm! font-semibold">Contact</app-button>
+        </div>
+      </div>
+    </div>
+    <div class="space-y-4 border p-4 shadow-sm sm:max-w-sm">
+      <h3 class="text-xl font-semibold">Messages</h3>
+      <div class="space-y-1 w-full max-h-[350px] pr-2 overflow-auto">
+        <div
+          *ngFor="let chat of chatData"
+          class="box w-full flex justify-between gap-4 p-4 hover:bg-purple-100 cursor-pointer"
+        >
+          <div class="flex gap-3 items-center">
+            <div
+              class="avatar size-10 min-w-10 bg-gray-200 rounded-full relative"
+            >
+              <div
+                *ngIf="chat.isOnline"
+                class="active bg-green-500 rounded-full size-3 absolute bottom-0.5 right-0.5 border-2 border-white"
+              ></div>
+            </div>
+            <div class="info space-y-0.5">
+              <span class="block text-base">{{ chat.name }}</span>
+              <span class="block text-sm text-accent font-medium">
+                {{ chat.role }}
+              </span>
+            </div>
+          </div>
+          <span class="text-accent text-sm">{{ chat.timestamp }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

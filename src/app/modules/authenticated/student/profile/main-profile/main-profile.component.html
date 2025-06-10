@@ -1,0 +1,562 @@
+<!-- former desktop view -->
+
+<!--edit pop up -->
+<section *ngIf="invisible">
+  <section
+    class="w-screen h-[91%] absolute top-[70px] left-0 flex justify-center items-center bg-black/30"
+  >
+    <div
+      class="flex-col flex items-center w-[500px] gap-3 p-[30px] bg-white rounded-lg border"
+    >
+      <h1 class="font-medium">Profile</h1>
+      <img src="" alt="" class="bg-gray-300 rounded-full size-10" />
+      <form class="w-full flex-col flex gap-3">
+        <app-input-ui label="Full Name" />
+        <app-input-ui label="Email" />
+        <app-input-ui label="Date of Birth" />
+        <app-intl-phone-input />
+        <app-drop-select label="Exam" />
+        <div class="flex gap-5 w-full justify-center items-center">
+          <app-button
+            variant="secondary"
+            label="Cancel"
+            (btnClick)="invisible = !invisible"
+          />
+          <app-button label="Save" />
+        </div>
+      </form>
+    </div>
+  </section>
+</section>
+
+<!-- mobile view -->
+<div class="flex flex-col gap-5 lg:hidden">
+  <section
+    class="bg-primary rounded-xl flex flex-col items-center p-5 text-white gap-3"
+  >
+    <img
+      src="/assets/images/tutor-students-image.png"
+      alt=""
+      class="rounded-full border size-[100px] object-fill"
+    />
+    <div class="text-white text-center">
+      <h1 class="text-lg font-medium">Adeoluwa Adegbuyi</h1>
+      <p class="text-sm">Deoluwa11&#64;gmail.com</p>
+      <p class="text-sm">08149648842</p>
+    </div>
+    <div class="flex justify-center gap-3">
+      <div class="rounded-lg p-2 bg-[#262547] flex flex-col items-center">
+        <img src="/assets/icons/course-light.svg" alt="" />
+        <p class="text-sm">0 Courses</p>
+      </div>
+      <div class="rounded-lg p-2 bg-[#262547] flex flex-col items-center">
+        <img src="/assets/icons/time-light.svg" alt="" />
+        <p class="text-sm">15 Hours</p>
+      </div>
+      <div class="rounded-lg p-2 bg-[#262547] flex flex-col items-center">
+        <img src="/assets/icons/classes-light.svg" alt="" />
+        <p class="text-sm">18 Classes</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h1 class="text-lg font-semibold mb-3">Account Setting</h1>
+    <div class="flex flex-col gap-5">
+      <div
+        class="flex gap-4 items-center"
+        routerLink="/student/profile/edit-profile"
+      >
+        <img src="/assets/icons/profile.svg" alt="" />
+        <div class="w-full flex justify-between items-center">
+          <div>
+            <h1 class="font-semibold">Profile</h1>
+            <p class="text-sm text-[#667085]">Account Information</p>
+          </div>
+          <img src="/assets/icons/dropdown.svg" alt=" " class="-rotate-90" />
+        </div>
+      </div>
+
+      <div class="flex gap-4 items-center">
+        <img src="/assets/icons/classes.svg" alt="" />
+        <div class="w-full flex justify-between items-center">
+          <div>
+            <h1 class="font-semibold">My courses</h1>
+            <p class="text-sm text-[#667085]">
+              Finished courses, ongoing, saved
+            </p>
+          </div>
+          <img src="/assets/icons/dropdown.svg" alt=" " class="-rotate-90" />
+        </div>
+      </div>
+
+      <div class="flex gap-4 items-center">
+        <img src="/assets/icons/referral.svg" alt="" />
+        <div class="w-full flex justify-between items-center">
+          <div>
+            <h1 class="font-semibold">Streaks & Referrals</h1>
+            <p class="text-sm text-[#667085]">
+              Finished courses, ongoing, saved
+            </p>
+          </div>
+          <img src="/assets/icons/dropdown.svg" alt=" " class="-rotate-90" />
+        </div>
+      </div>
+
+      <div class="flex gap-4 items-center">
+        <img src="/assets/icons/wallet.svg" alt="" />
+        <div class="w-full flex justify-between items-center">
+          <div>
+            <h1 class="font-semibold">Wallet</h1>
+            <p class="text-sm text-[#667085]">Earning, referrals and payout</p>
+          </div>
+          <img src="/assets/icons/dropdown.svg" alt=" " class="-rotate-90" />
+        </div>
+      </div>
+
+      <div
+        class="flex gap-4 items-center"
+        routerLink="/student/profile/account"
+      >
+        <img src="/assets/icons/payment.svg" alt="" />
+        <div class="w-full flex justify-between items-center">
+          <div>
+            <h1 class="font-semibold">Payment</h1>
+            <p class="text-sm text-[#667085]">Added cards, accounts</p>
+          </div>
+          <img src="/assets/icons/dropdown.svg" alt=" " class="-rotate-90" />
+        </div>
+      </div>
+
+      <div
+        class="flex gap-4 items-center"
+        routerLink="/student/profile/notification"
+      >
+        <img src="/assets/icons/notification.svg" alt="" />
+        <div class="w-full flex justify-between items-center">
+          <div>
+            <h1 class="font-semibold">Notifications</h1>
+            <p class="text-sm text-[#667085]">
+              Push notifications, emails and phone
+            </p>
+          </div>
+          <img src="/assets/icons/dropdown.svg" alt=" " class="-rotate-90" />
+        </div>
+      </div>
+
+      <div
+        class="flex gap-4 items-center"
+        routerLink="/student/profile/security"
+      >
+        <img src="/assets/icons/security.svg" alt="" />
+        <div class="w-full flex justify-between items-center">
+          <div>
+            <h1 class="font-semibold">Security</h1>
+            <p class="text-sm text-[#667085]">Change password</p>
+          </div>
+          <img src="/assets/icons/dropdown.svg" alt=" " class="-rotate-90" />
+        </div>
+      </div>
+
+      <div
+        class="flex gap-4 items-center"
+        (click)="deleteAccount = !deleteAccount"
+      >
+        <img src="/assets/icons/delete.svg" alt="" />
+        <div class="w-full flex justify-between items-center">
+          <div>
+            <h1 class="font-semibold">Delete account</h1>
+            <p class="text-sm text-[#667085]">Delete all personal details</p>
+          </div>
+          <img src="/assets/icons/dropdown.svg" alt=" " class="-rotate-90" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h1 class="text-lg font-semibold mb-3">Support</h1>
+    <div class="flex flex-col gap-5">
+      <div class="flex gap-4 items-center">
+        <img src="/assets/icons/about.svg" alt="" />
+        <div class="w-full flex justify-between items-center">
+          <div>
+            <h1 class="font-semibold">About FlexyDemy</h1>
+            <p class="text-sm text-[#667085]">Learn more about us</p>
+          </div>
+          <img src="/assets/icons/dropdown.svg" alt=" " class="-rotate-90" />
+        </div>
+      </div>
+
+      <div class="flex gap-4 items-center">
+        <img src="/assets/icons/document-subject.svg" alt="" />
+        <div class="w-full flex justify-between items-center">
+          <div>
+            <h1 class="font-semibold">Terms of services</h1>
+            <p class="text-sm text-[#667085]">
+              Read our own terms and services
+            </p>
+          </div>
+          <img src="/assets/icons/dropdown.svg" alt=" " class="-rotate-90" />
+        </div>
+      </div>
+
+      <div class="flex gap-4 items-center">
+        <img src="/assets/icons/contact.svg" alt="" />
+        <div class="w-full flex justify-between items-center">
+          <div>
+            <h1 class="font-semibold">Contact us</h1>
+            <p class="text-sm text-[#667085]">Get supports</p>
+          </div>
+          <img src="/assets/icons/dropdown.svg" alt=" " class="-rotate-90" />
+        </div>
+      </div>
+
+      <div class="flex gap-4 items-center">
+        <img src="/assets/icons/phone.svg" alt="" />
+        <div class="w-full flex justify-between items-center">
+          <div>
+            <h1 class="font-semibold">Help center</h1>
+            <p class="text-sm text-[#667085]">Our knowledge base and staffs</p>
+          </div>
+          <img src="/assets/icons/dropdown.svg" alt=" " class="-rotate-90" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div>
+      <app-button label="Logout" size="lg" routerLink="/auth/log-in" />
+    </div>
+  </section>
+</div>
+
+<!-- delete acount pop up -->
+<section *ngIf="deleteAccount">
+  <section
+    class="w-screen h-[93%] absolute top-[70px] left-0 flex justify-center items-center bg-black/30"
+  >
+    <div class="rounded-lg bg-white flex-col flex items-center gap-3 p-3">
+      <p>Are sure you want to Delete your Account</p>
+      <div class="flex gap-5">
+        <app-button label="Yes" variant="danger" />
+        <app-button
+          label="No"
+          variant="primary"
+          (btnClick)="deleteAccount = !deleteAccount"
+        />
+      </div>
+    </div>
+  </section>
+</section>
+
+<!-- new desktop view -->
+<div class="hidden lg:grid">
+  <section>
+    <div
+      class="h-[150px] w-full bg-gradient-to-br from-primary from-20% to-[#EA8E39] to-80% flex justify-between"
+    >
+      <div class="flex pl-[40px] pt-[170px] gap-3 items-center">
+        <img src="" alt="" class="bg-gray-200 size-[160px] rounded-full" />
+        <div class="flex-col flex">
+          <h1 class="text-lg font-bold">Abiodun Adeleke</h1>
+          <p class="capitalize">WAEC Student</p>
+        </div>
+      </div>
+
+      <div class="flex items-center justify-end text-white p-3">
+        <div class="">
+          <h1 class="text-3xl font-bold">
+            Find the Perfect Tutor & Ace <br />
+            Your Exams!
+          </h1>
+          <p class="text-xs">
+            Personalized one-on-one lessons to boost your JAMB, WAEC, and NECO
+            scores.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="flex gap-5 mt-4">
+    <section class="grid gap-5 w-[70%] mt-[100px]">
+      <div class="flex flex-col gap-5 border rounded-lg p-5">
+        <h1 class="font-medium text-xl">Progress Summary</h1>
+        <section class="flex justify-between">
+          <div class="px-5 py-3 bg-[#05CD99]/10 rounded-lg gap-3 w-[170px]">
+            <div class="w-full justify-end flex">
+              <img
+                src="/assets/icons/profile-outline-class.svg"
+                alt=""
+                class="bg-white rounded-full p-2"
+              />
+            </div>
+            <p class="text-sm capitalize gap-2 flex items-center">
+              <span
+                class="rounded-full text-[#05CD99] bg-[#05CD99]/20 px-2 py-1"
+                >3</span
+              >
+              Classes
+            </p>
+          </div>
+          <div class="px-5 py-3 bg-[#9747FF]/10 rounded-lg gap-3 w-[170px]">
+            <div class="w-full justify-end flex">
+              <img
+                src="/assets/icons/profile-progress-bar.svg"
+                alt=""
+                class="bg-white rounded-full p-2"
+              />
+            </div>
+            <p class="text-sm capitalize gap-2 flex items-center">
+              <span
+                class="rounded-full text-[#9747FF] bg-[#9747FF]/20 px-2 py-1"
+                >3</span
+              >
+              in progress
+            </p>
+          </div>
+          <div class="px-5 py-3 bg-[#6DB1FF]/10 rounded-lg gap-3 w-[170px]">
+            <div class="w-full justify-end flex">
+              <img
+                src="/assets/icons/profile-check-correct.svg"
+                alt=""
+                class="bg-white rounded-full p-2"
+              />
+            </div>
+            <p class="text-sm capitalize gap-2 flex items-center">
+              <span
+                class="rounded-full text-[#6DB1FF] bg-[#6DB1FF]/20 px-2 py-1"
+                >3</span
+              >
+              completed
+            </p>
+          </div>
+          <div class="px-5 py-3 bg-[#FFB02E]/10 rounded-lg gap-3 w-[170px]">
+            <div class="w-full justify-end flex">
+              <img
+                src="/assets/icons/emoji-fire.svg"
+                alt=""
+                class="bg-white rounded-full p-2"
+              />
+            </div>
+            <p class="text-sm capitalize gap-2 flex items-center">
+              <span
+                class="rounded-full text-[#FFB02E] bg-[#FFB02E]/20 px-2 py-1"
+                >12</span
+              >
+              daily Streaks
+            </p>
+          </div>
+        </section>
+      </div>
+
+      <div class="p-5 gap-5 flex flex-col border rounded-lg">
+        <div class="flex justify-between items-center">
+          <h1 class="font-medium text-xl">Details</h1>
+          <div
+            (click)="invisible = !invisible"
+            class="border rounded-2xl flex items-center gap-2 px-2 cursor-pointer"
+          >
+            <p>edit</p>
+            <img src="/assets/icons/profile-edit.svg" alt="" />
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-5">
+          <div>
+            <h3 class="text-xs text-[#667085]">Email</h3>
+            <p>Abiodunadeleke23&#64;gmail.com</p>
+          </div>
+          <div>
+            <h3 class="text-xs text-[#667085]">Phone Number</h3>
+            <p>08149648842</p>
+          </div>
+          <div>
+            <h3 class="text-xs text-[#667085]">Address</h3>
+            <p>Ibadan, Nigeria</p>
+          </div>
+          <div>
+            <h3 class="text-xs text-[#667085]">Date of Birth</h3>
+            <p>27 August 2020</p>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-xs text-[#667085]">Bio</h3>
+          <p>
+            Adebusola is a dedicated student preparing for JAMB, striving for
+            academic excellence. Passionate about Biology and is committed to
+            mastering key concepts and improving her performance through
+            consistent study and practice.
+          </p>
+        </div>
+      </div>
+
+      <div class="p-5 gap-5 flex flex-col border rounded-lg">
+        <h1 class="font-medium text-xl">Payment History</h1>
+        <div>
+          <div class="">
+            <div class="overflow-x-auto rounded-lg shadow bg-white">
+              <table class="min-w-full text-left text-base font-normal">
+                <thead class="bg-gray-100 font-normal">
+                  <tr>
+                    <th *ngFor="let column of columns" class="px-6 py-4">
+                      {{ column.header }}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="text-gray-700">
+                  <tr
+                    *ngFor="let row of data"
+                    class="border-b hover:bg-gray-50"
+                  >
+                    <td *ngFor="let column of columns" class="px-6 py-4">
+                      <!-- Status column badge -->
+                      <ng-container *ngIf="column.key === 'status'">
+                        <span
+                          class="px-3 py-1 rounded-full text-sm"
+                          [ngClass]="getStatusClass(row[column.key])"
+                        >
+                          {{ row[column.key] }}
+                        </span>
+                      </ng-container>
+
+                      <!-- Action column (⋮ icon) -->
+                      <ng-container *ngIf="column.key === 'action'">
+                        <div
+                          class="relative inline-block text-left action-menu"
+                        >
+                          <button
+                            (click)="toggleMenu(row['transactionId'])"
+                            class="text-gray-500 hover:text-black text-xl focus:outline-none"
+                          >
+                            <img
+                              src="/assets/icons/profile-3-dots-scale.svg"
+                              alt=""
+                            />
+                          </button>
+
+                          <div
+                            *ngIf="openMenuId === row['transactionId']"
+                            class="absolute right-0 z-10 mt-2 w-36 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                          >
+                            <ul class="py-1 text-sm text-gray-700">
+                              <li class="block px-4 py-2 hover:bg-gray-100">
+                                View
+                              </li>
+                              <li class="block px-4 py-2 hover:bg-gray-100">
+                                Edit
+                              </li>
+                              <li
+                                class="block px-4 py-2 hover:bg-gray-100 text-red-500"
+                              >
+                                Delete
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </ng-container>
+
+                      <!-- Normal columns -->
+                      <ng-container
+                        *ngIf="
+                          column.key !== 'status' && column.key !== 'action'
+                        "
+                      >
+                        {{ row[column.key] }}
+                      </ng-container>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="w-[30%] flex-col flex gap-5">
+      <div class="border rounded-lg p-5 flex-col flex gap-5 h-[400px]">
+        <h1 class="text-xl font-medium">Upcoming Tasks</h1>
+        <section class="overflow-y-scroll h-[350px] grid gap-5">
+          <div class="border rounded-lg p-3 flex-col flex h-[100px] gap-3">
+            <div class="flex gap-3 items-center">
+              <input
+                type="radio"
+                class="accent-primary border-2 border-primary"
+              />
+              <h1>Take mock exams</h1>
+            </div>
+            <div class="flex items-center gap-1 text-xs">
+              <img src="/assets/icons/calendar.svg" alt="" /> May 11, 2025
+              <img src="/assets/icons/time.svg" alt="" /> Due on Saturday
+            </div>
+          </div>
+
+          <div
+            *ngFor="let tasks of tasks"
+            class="border rounded-lg flex flex-col h-[100px] p-3 gap-3"
+          >
+            <div class="flex w-full justify-between">
+              <div>
+                <h1 class="font-medium text-lg capitalize">{{ tasks.task }}</h1>
+                <h2 class="text-xs text-[#667085]">{{ tasks.class }}</h2>
+              </div>
+              <div
+                class="task-action-menu"
+                (click)="toggleTaskMenu(tasks.taskId)"
+              >
+                <img src="/assets/icons/profile-3-dots-scale.svg" alt="" />
+                <div
+                  class="absolute right-0 z-10 mt-2 w-36 rounded-lg bg-white shadow-lg p-3"
+                  *ngIf="taskMenuId === tasks.taskId"
+                >
+                  <ul class="gap-3 flex flex-col text-[#667085]">
+                    <li>Resedule</li>
+                    <li>Cancel</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-1 text-xs">
+              <img src="/assets/icons/calendar.svg" alt="" /> {{ tasks.date }}
+              <img src="/assets/icons/time.svg" alt="" /> {{ tasks.time }}
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="border rounded-lg p-5 flex-col flex gap-5 h-[400px]">
+        <h1 class="font-medium text-xl">In Progress</h1>
+        <section class="overflow-y-scroll h-[350px] grid gap-5">
+          <div
+            *ngFor="let progress of progress"
+            class="border h-[130px] rounded-lg p-3 grid gap-3"
+          >
+            <div>
+              <h1 class="text-lg font-medium capitalize">
+                {{ progress.subject }}
+              </h1>
+              <h2 class="text-xs text-[#667085]">{{ progress.topic }}</h2>
+            </div>
+            <div class="w-full h-[10px] bg-gray-300 rounded-full">
+              <div
+                [class]="
+                  'h-full bg-primary rounded-full w-[' +
+                  progress.progress +
+                  '%]'
+                "
+              ></div>
+            </div>
+            <div>
+              <button
+                class="p-2 rounded-full bg-primary text-white text-[10px]"
+              >
+                Continue Watching
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </div>
+</div>

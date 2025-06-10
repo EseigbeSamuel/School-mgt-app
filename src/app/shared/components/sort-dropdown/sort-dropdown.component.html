@@ -1,0 +1,94 @@
+<div class="relative">
+  <div
+    class="flex items-center justify-between w-40 h-10 px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm cursor-pointer hover:border-gray-400 transition-colors"
+    (click)="toggleDropdown()"
+    [class.border-blue-500]="isOpen"
+  >
+    <div class="flex items-center flex-1">
+      <span class="icon mr-1.5 mt-1 text-gray-500">
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2 6L9.33333 6.00008"
+            stroke="#667085"
+            stroke-width="1.5"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M2 10H6.66667"
+            stroke="#667085"
+            stroke-width="1.5"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M2 2H12.6667"
+            stroke="#667085"
+            stroke-width="1.5"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M12 14V6M12 14L10 12M12 14L14 12"
+            stroke="#667085"
+            stroke-width="1.5"
+          />
+        </svg>
+      </span>
+      <span class="text-gray-700 text-sm truncate max-w-[98px]"
+        >Sort by: {{ selectedOption.label }}</span
+      >
+    </div>
+    <div class="ml-1">
+      <svg
+        width="10"
+        height="6"
+        viewBox="0 0 10 6"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        [class.rotate-180]="isOpen"
+        class="transition-transform duration-200"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M9.47132 0.52827C9.21097 0.267921 8.78886 0.267921 8.52851 0.52827L4.99992 4.05687L1.47132 0.52827C1.21097 0.267921 0.788864 0.267921 0.528514 0.52827C0.268164 0.788619 0.268164 1.21073 0.528514 1.47108L4.76422 5.70678C4.89439 5.83696 5.10545 5.83696 5.23562 5.70678L9.47132 1.47108C9.73167 1.21073 9.73167 0.788619 9.47132 0.52827Z"
+          fill="#858D9D"
+        />
+      </svg>
+    </div>
+  </div>
+
+  <!-- Custom Dropdown Menu -->
+  <div
+    *ngIf="isOpen"
+    class="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-md shadow-lg z-50 py-1 max-h-60 overflow-auto"
+  >
+    <div
+      *ngFor="let option of options; trackBy: trackByValue"
+      class="px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer flex items-center transition-colors"
+      [class.bg-blue-50]="option.value === selectedOption.value"
+      [class.text-blue-700]="option.value === selectedOption.value"
+      (click)="selectOption(option)"
+    >
+      <span class="flex-1">{{ option.label }}</span>
+      <svg
+        *ngIf="option.value === selectedOption.value"
+        class="w-4 h-4 text-blue-600"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 13l4 4L19 7"
+        />
+      </svg>
+    </div>
+  </div>
+</div>

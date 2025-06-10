@@ -1,0 +1,177 @@
+<div class="lesson-page">
+  <!-- Breadcrumb -->
+  <nav
+    class="breadcrumb flex items-center gap-5 text-[16px] font-[500] text-[#667085]"
+  >
+    <a routerLink="/subjects">Biology</a> >
+    <a routerLink="/courses">Course 1</a> >
+    <span>Introductory</span>
+  </nav>
+
+  <!-- Video player -->
+  <div class="video-wrapper">
+    <video controls>
+      <source src="assets/video/test.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- Tabs + Rating -->
+  <div class="info-section">
+    <div class="tabs">
+      <span
+        [class.active]="selectedTab === 'about'"
+        (click)="selectedTab = 'about'"
+        >About</span
+      >
+      <span
+        [class.active]="selectedTab === 'transcript'"
+        (click)="selectedTab = 'transcript'"
+        >Transcript</span
+      >
+      <span
+        [class.active]="selectedTab === 'reviews'"
+        (click)="selectedTab = 'reviews'"
+        >Reviews</span
+      >
+    </div>
+    <div class="flex items-center gap-2 px-4">
+      <span class="font-[500] text-[16px] text-textColor hidden md:block"
+        >Rating</span
+      >
+
+      <div class="hidden md:flex">
+        <ng-container *ngFor="let star of getStars(); let i = index">
+          <svg
+            *ngIf="star"
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="#ffc107"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 
+                  6.765c-.329-.32-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 
+                  0l2.184 4.327 4.898.696c.441.062.612.63.282.95l-3.522 3.356.83 
+                  4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
+            />
+          </svg>
+          <svg
+            *ngIf="!star"
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="#ccc"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 
+                  4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 
+                  3.522-3.356c.33-.32.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 
+                  0 0 0-.927 0L5.354 5.12.456 5.816c-.441.062-.612.63-.283.95l3.522 
+                  3.356-.83 4.73zm4.905-2.767L3.383 15l.787-4.48a.565.565 
+                  0 0 0-.163-.505L1.065 6.856l4.502-.64a.533.533 0 0 
+                  0 .401-.29L8 1.617l2.032 4.31a.533.533 0 0 0 
+                  .401.29l4.502.64-3.243 3.159a.565.565 0 0 
+                  0-.163.505L12.617 15l-4.382-2.917z"
+            />
+          </svg>
+        </ng-container>
+      </div>
+      <div class="flex md:hidden items-center gap-1 text-textColor text-[12px]">
+        {{ getRatingInWords() }}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="#ffc107"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 
+              6.765c-.329-.32-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 
+              0l2.184 4.327 4.898.696c.441.062.612.63.282.95l-3.522 3.356.83 
+              4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content based on tab -->
+  <div class="tab-content">
+    <ng-container *ngIf="selectedTab === 'about'">
+      <p class="py-4">{{ courseTopic.about }}</p>
+    </ng-container>
+    <ng-container *ngIf="selectedTab === 'transcript'">
+      <p class="capitalize">transScript</p>
+    </ng-container>
+    <ng-container *ngIf="selectedTab === 'reviews'">
+      <div class="space-y-6 py-7">
+        <!-- Existing reviews -->
+        <div *ngFor="let review of reviews" class="flex gap-4 items-start">
+          <img
+            [src]="review.avatar"
+            alt="User Avatar"
+            class="w-10 h-10 rounded-full object-cover"
+          />
+          <div>
+            <p class="font-semibold text-gray-800">{{ review.name }}</p>
+            <p class="text-sm text-gray-500">
+              {{ review.role }}, {{ review.time }}
+            </p>
+            <p class="mt-2 text-gray-700">{{ review.comment }}</p>
+            <div class="flex items-center mt-1 gap-1">
+              <span class="text-sm font-medium">{{ review.rating }}</span>
+              <ng-container *ngFor="let star of getReviewStars(review.rating)">
+                <span [innerHTML]="star"></span>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+
+        <!-- Add review form -->
+        <div class="mt-6">
+          <div class="flex gap-4 items-start">
+            <img
+              src="assets/images/student-image-1.png"
+              alt="Your Avatar"
+              class="w-10 h-10 rounded-full object-cover"
+            />
+            <div class="flex-1 space-y-2">
+              <textarea
+                [(ngModel)]="newReview.comment"
+                placeholder="Enter review"
+                class="w-full border border-gray-300 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                rows="3"
+              ></textarea>
+
+              <div class="flex items-center gap-2">
+                <span class="text-gray-600">Rate</span>
+                <ng-container
+                  *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
+                >
+                  <span
+                    (click)="setRating(i + 1)"
+                    class="text-2xl cursor-pointer"
+                    [class.text-yellow-400]="newReview.rating > i"
+                    [class.text-gray-300]="newReview.rating <= i"
+                    >★</span
+                  >
+                </ng-container>
+              </div>
+
+              <button
+                (click)="submitReview()"
+                class="bg-indigo-900 text-white px-6 py-2 rounded-md float-end"
+              >
+                SUBMIT
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

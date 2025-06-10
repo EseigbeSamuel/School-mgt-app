@@ -1,0 +1,197 @@
+@import url("./font.css");
+
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Add this for pull-to-refresh visibility */
+.splash-active body {
+  background-color: #dce8ef;
+  min-height: 100vh;
+  overscroll-behavior-y: contain;
+}
+:root {
+  --auth-background: #dce8ef;
+  --color-white: #ffffff;
+  --color-accent: #667085;
+  --color-accent-2: #161c2db2;
+  --color-white-dark: #f1f2f5;
+  --button: #2c2a73;
+  --color-primary: #2c2a73;
+  --text-color: #161c2d;
+  --text-fade: #161c2d;
+  --side-bar-font-size: 16px;
+  --table-header-color: #f0f1f3;
+  --table-header-font-size: 14px;
+  --dashboard-background: #e9e9e9;
+  --sidebar-width: 18.5rem;
+  --navbar-height: 6rem;
+  --bottom-navbar-height: 5.5rem;
+
+  --sch: calc(100svh - var(--navbar-height));
+}
+
+@media (max-width: 720px) {
+  :root {
+    --navbar-height: 4.5rem;
+    --sch: calc(100svh - var(--navbar-height));
+  }
+}
+
+html,
+body {
+  height: 100%;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.iti__country-list {
+  @apply max-h-48 !important;
+  @apply overflow-y-auto !important;
+  max-height: 12rem !important;
+  overflow-y: auto !important;
+  scrollbar-width: thin;
+  z-index: 999 !important;
+}
+
+.iti__country-list::-webkit-scrollbar {
+  @apply w-1.5;
+  width: 6px;
+}
+
+.iti__country-list::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+  background: #f1f1f1;
+}
+
+.iti__country-list::-webkit-scrollbar-thumb {
+  @apply bg-gray-400 rounded-full;
+  background: #888;
+  border-radius: 10px;
+}
+
+.iti__dropdown-content {
+  @apply shadow-lg border border-gray-200 rounded;
+}
+.iti {
+  @apply w-full;
+  width: 100%;
+}
+
+.iti__tel-input {
+  @apply w-full rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
+}
+
+.wrapper .iti {
+  @apply w-full;
+}
+
+.wrapper {
+  @apply relative;
+  position: relative;
+}
+
+.iti__tel-input {
+  @apply pl-12;
+  padding-left: 3rem;
+}
+
+.iti__flag-container {
+  @apply flex items-center h-full;
+}
+
+.iti--container {
+  @apply fixed top-0 left-0 z-50;
+}
+
+.iti--container .iti__country-list {
+  @apply absolute max-h-48 overflow-y-auto;
+  position: absolute !important;
+  max-height: 10rem !important;
+}
+.input {
+  width: 100%;
+}
+@media screen and (max-width: 640px) {
+  .input {
+    width: 440px;
+  }
+}
+
+.variantClasses-outline {
+  @apply w-full rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
+}
+
+.variantClasses-filled {
+  @apply w-full rounded border border-gray-300 bg-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:bg-white;
+}
+
+.variantClasses-underlined {
+  @apply w-full border-b border-gray-300 rounded-none focus:ring-0 focus:border-blue-500;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  border-radius: 3rem;
+
+  background-color: transparent;
+}
+::-webkit-scrollbar-button {
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--button);
+  border-radius: 3rem;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* // styles */
+
+a.nav-link,
+button.nav-link {
+  color: #161c2d;
+}
+
+a.nav-link .icon,
+button.nav-link .icon {
+  color: #667085;
+}
+
+a.nav-link.active .icon,
+button.nav-link.active .icon {
+  color: white;
+}
+
+.table-container {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  caption-side: bottom;
+}
+
+th {
+  background-color: #f7f7f7;
+  text-align: left;
+  padding: 15px 20px;
+  font-weight: 600;
+}
+td {
+  padding: 15px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  white-space: nowrap;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+.star {
+  color: #ff9800;
+}

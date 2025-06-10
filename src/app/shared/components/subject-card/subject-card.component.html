@@ -1,0 +1,167 @@
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+  <div
+    *ngFor="let subject of subjects"
+    [ngClass]="subject.color"
+    class="text-white rounded-xl p-4 shadow-md flex flex-col gap-2"
+  >
+    <div class="flex justify-between">
+      <div class="flex gap-4 mb-4 items-center">
+        <span
+          [innerHTML]="subject.safeSvg"
+          class="icon"
+          aria-hidden="true"
+        ></span>
+        <h2 class="text-xl font-semibold mb-1">{{ subject.name }}</h2>
+      </div>
+      <div (click)="viewCourse(subject.id)">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5 text-white cursor-pointer"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M12 5.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3zM12 13a1.5 1.5 0 110-3 1.5 1.5 0 010 3zM12 20.5a1.5 1.5 0 110-3 1.5 1.5 0 010 3z"
+          />
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <div class="text-[8.35px] font-[400] flex items-center gap-2">
+        <svg
+          width="8"
+          height="8"
+          viewBox="0 0 8 8"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M4.26167 3.99935C4.26167 4.13775 4.14947 4.24995 4.01107 4.24995C3.87267 4.24995 3.76047 4.13775 3.76047 3.99935C3.76047 3.86095 3.87267 3.74875 4.01107 3.74875C4.14947 3.74875 4.26167 3.86095 4.26167 3.99935Z"
+            fill="white"
+          />
+          <path
+            d="M4.26167 3.99935C4.26167 4.13775 4.14947 4.24995 4.01107 4.24995C3.87267 4.24995 3.76047 4.13775 3.76047 3.99935C3.76047 3.86095 3.87267 3.74875 4.01107 3.74875M4.26167 3.99935C4.26167 3.86095 4.14947 3.74875 4.01107 3.74875M4.26167 3.99935H5.51465M4.01107 3.74875V2.16164M7.01823 3.99935C7.01823 5.66016 5.67188 7.00651 4.01107 7.00651C2.35026 7.00651 1.00391 5.66016 1.00391 3.99935C1.00391 2.33854 2.35026 0.992187 4.01107 0.992188C5.67188 0.992188 7.01823 2.33854 7.01823 3.99935Z"
+            stroke="white"
+            stroke-width="0.501194"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+
+        {{ subject.time }}
+      </div>
+      <div class="text-[8.35px] font-[400] flex items-center gap-2">
+        <svg
+          width="6"
+          height="8"
+          viewBox="0 0 6 8"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M2.75297 2.66283H3.92242M1.58352 3.99935H3.92242M1.58352 5.33587H3.92242M2.21836 7.00651H3.28757C4.03931 7.00651 4.41518 7.00651 4.67867 6.81508C4.76377 6.75325 4.83861 6.67841 4.90043 6.59332C5.09187 6.32982 5.09187 5.95395 5.09187 5.20222V2.79649C5.09187 2.04475 5.09187 1.66888 4.90043 1.40539C4.83861 1.32029 4.76377 1.24545 4.67867 1.18363C4.41518 0.992188 4.03931 0.992188 3.28757 0.992188H2.21836C1.46662 0.992188 1.09075 0.992188 0.827262 1.18363C0.742164 1.24545 0.667328 1.32029 0.605502 1.40539C0.414062 1.66888 0.414062 2.04475 0.414062 2.79649V5.20222C0.414062 5.95395 0.414062 6.32982 0.605502 6.59332C0.667328 6.67841 0.742164 6.75325 0.827262 6.81508C1.09075 7.00651 1.46662 7.00651 2.21836 7.00651Z"
+            stroke="white"
+            stroke-width="0.501194"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+
+        {{ subject.lessons }} Lessons
+      </div>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="flex flex-col w-full">
+      <div
+        class="text-[10px] font-[400] pb-1 flex items-center justify-between w-full"
+      >
+        <span> Progress </span>
+        <span> {{ subject.progress }} </span>
+      </div>
+
+      <div class="w-full h-1 bg-white/30 rounded-full overflow-hidden">
+        <div
+          class="h-full bg-white rounded-full transition-all duration-500"
+          [style.width.%]="subject.progressPercent"
+        ></div>
+      </div>
+    </div>
+
+    <div class="flex items-cener w-full gap-4">
+      <button
+        (click)="viewCourse(subject.id)"
+        class="bg-[#FF4B00] px-3 py-2 my-3 rounded-lg text-white text-[9.5px] font-[500] flex items-center gap-3"
+      >
+        <svg
+          width="10"
+          height="6"
+          viewBox="0 0 10 6"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M5.46745 0.509766H2.75911C1.9537 0.509766 1.30078 1.16268 1.30078 1.9681V4.05143C1.30078 4.85685 1.9537 5.50977 2.75911 5.50977H5.46745C6.27286 5.50977 6.92578 4.85685 6.92578 4.05143V1.9681C6.92578 1.16268 6.27286 0.509766 5.46745 0.509766Z"
+            stroke="white"
+            stroke-width="0.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M6.92578 2.06835L8.40661 1.33085C8.47014 1.29919 8.5407 1.28429 8.6116 1.28755C8.6825 1.29081 8.75139 1.31213 8.81174 1.34948C8.87209 1.38684 8.92189 1.43899 8.95644 1.50099C8.99098 1.56299 9.00911 1.63279 9.00911 1.70376V4.31543C9.00915 4.38646 8.99102 4.45632 8.95646 4.51838C8.92189 4.58043 8.87204 4.63262 8.81163 4.66998C8.75122 4.70735 8.68226 4.72865 8.6113 4.73186C8.54034 4.73508 8.46974 4.7201 8.4062 4.68835L6.92578 3.9496V2.06835Z"
+            stroke="white"
+            stroke-width="0.7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+
+        Start Now
+      </button>
+
+      <div class="flex gap-4 items-center">
+        <button
+          (click)="toggleHeart(subject)"
+          [ngClass]="subject.isHeartActive ? 'text-red-500' : 'text-gray-500'"
+          class="bg-white w-5 h-5 rounded-sm flex justify-center items-center"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            class="w-4 h-4"
+          >
+            <path
+              d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
+             2 6.5 3.5 5 5.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5
+             16.5 5 18.5 5 20 6.5 20 8.5c0 3.78-3.4 6.86-8.55
+             11.54L12 21.35z"
+            />
+          </svg>
+        </button>
+
+        <button
+          (click)="toggleBookmark(subject)"
+          [ngClass]="
+            subject.isBookmarkActive ? 'text-blue-500' : 'text-gray-500'
+          "
+          class="bg-white w-5 h-5 rounded-sm flex justify-center items-center"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            class="w-4 h-4"
+          >
+            <path d="M6 4c-1.1 0-2 .9-2 2v16l8-3.2 8 3.2V6c0-1.1-.9-2-2-2H6z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

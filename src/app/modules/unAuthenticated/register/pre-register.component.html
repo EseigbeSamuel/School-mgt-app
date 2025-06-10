@@ -1,0 +1,295 @@
+<div
+  class="min-h-screen bg-[#DCE8EF] flex flex-col py-8 sm:py-[60px] overflow-hidden relative"
+>
+  <!-- Tabs Header -->
+  <div class="w-full flex justify-center mt-4 mb-6">
+    <div class="flex space-x-6 border-b-2 border-[rgba(44,42,114,0.3)]">
+      <button
+        (click)="activeTab = 'tutor'"
+        [ngClass]="
+          activeTab === 'tutor'
+            ? 'text-[#2C2A72] border-b-2 border-[#2C2A72] mb-[-2px]'
+            : 'text-[#161C2DB2]'
+        "
+        class="text-lg sm:text-2xl font-bold pb-2 transition"
+      >
+        Tutor
+      </button>
+      <button
+        (click)="activeTab = 'student'"
+        [ngClass]="
+          activeTab === 'student'
+            ? 'text-[#2C2A72] border-b-2 border-[#2C2A72] mb-[-2px]'
+            : 'text-[#161C2DB2]'
+        "
+        class="text-lg sm:text-2xl font-bold pb-2 transition"
+      >
+        Student
+      </button>
+    </div>
+  </div>
+
+  <!-- Dynamic Content -->
+  <div class="flex-grow flex items-center justify-center px-4">
+    <div class="text-center max-w-4xl w-full relative z-10">
+      <!-- Tutor Content -->
+      <ng-container *ngIf="activeTab === 'tutor'">
+        <div class="flex flex-col">
+          <h1
+            class="text-2xl sm:text-3xl md:text-4xl lg:text-[50px] font-bold text-[#161C2D] max-w-[90%] mx-auto leading-snug mb-4 sm:mb-6"
+          >
+            Empower The Next Generation: <br class="hidden sm:inline" />
+            <span class="inline sm:block pt-2"
+              >Inspire, Guide, and Transform</span
+            >
+          </h1>
+          <p
+            class="text-gray-600 text-sm sm:text-base md:text-lg max-w-[90%] sm:max-w-[500px] mx-auto mb-6 sm:mb-8"
+          >
+            Become a tutor on our platform and help students achieve academic
+            success through guidance, support, and expertise.
+          </p>
+        </div>
+      </ng-container>
+
+      <!-- Student Content -->
+      <ng-container *ngIf="activeTab === 'student'">
+        <h1
+          class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#161C2D] max-w-[90%] mx-auto leading-snug mb-4 sm:mb-6"
+        >
+          Learn From Expert Tutors,<br class="hidden sm:inline" />
+          <span class="block">Succeed with Confidence!</span>
+        </h1>
+        <p
+          class="text-gray-600 text-sm sm:text-base md:text-lg max-w-[90%] sm:max-w-[500px] mx-auto mb-6 sm:mb-8"
+        >
+          Connect with top educators, get personalized guidance, and ace your
+          exams with ease
+        </p>
+      </ng-container>
+
+      <!-- Buttons -->
+      <div
+        class="flex flex-col sm:flex-row justify-center gap-4 mt-6 w-full mx-auto max-w-[400px] sm:max-w-none"
+      >
+        <button
+          (click)="login()"
+          class="w-full sm:w-48 bg-white rounded-lg px-4 py-3 border border-[#2C2A72] text-[#2C2A72] font-semibold hover:bg-gray-100 transition"
+        >
+          Login
+        </button>
+        <button
+          (click)="signUp()"
+          class="w-full sm:w-56 px-4 py-3 bg-[#2C2A72] text-white font-semibold rounded-lg hover:opacity-90 transition"
+        >
+          Get Started
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div [*ngIf="activeTab ==== 'tutor'"]> helos olrd</div> -->
+
+  <!-- Floating Images (Preserve Original Positioning for Tablet) -->
+  <div
+    class="absolute inset-0 pointer-events-none z-0 overflow-hidden"
+    *ngIf="activeTab === 'tutor'"
+  >
+    <img
+      src="assets/splash-screen&register/scattered-image/image-1.png"
+      alt="Image 1"
+      class="w-12 h-12 xs:w-14 xs:h-14 sm:w-[80px] sm:h-[80px] md:w-[100px] md:h-[100px] lg:w-[120px] lg:h-[120px] rounded-full absolute top-[80px] xs:top-[100px] left-[10px] xs:left-[30px] sm:left-[40px] md:left-[60px]"
+    />
+    <img
+      src="assets/splash-screen&register/scattered-image/image-2.png"
+      alt="Image 2"
+      class="w-12 h-12 xs:w-14 xs:h-14 sm:w-[80px] sm:h-[80px] md:w-[100px] md:h-[100px] lg:w-[120px] lg:h-[120px] rounded-full absolute top-[80px] xs:top-[100px] right-[10px] xs:right-[20px] sm:right-[40px] md:right-[60px]"
+    />
+    <img
+      src="assets/splash-screen&register/scattered-image/image-3.png"
+      alt="Image 3"
+      class="sm:block w-14 h-14 sm:w-[80px] sm:h-[80px] md:w-[100px] md:h-[100px] lg:w-[120px] lg:h-[120px] rounded-full absolute top-1/4 left-1/4 transform -translate-y-1/2"
+    />
+    <img
+      src="assets/splash-screen&register/scattered-image/image-4.png"
+      alt="Image 4"
+      class="sm:block w-14 h-14 sm:w-[80px] sm:h-[80px] md:w-[100px] md:h-[100px] lg:w-[120px] lg:h-[120px] rounded-full absolute top-[23%] right-[30%] transform -translate-y-1/2"
+    />
+    <img
+      src="assets/splash-screen&register/scattered-image/image-5.png"
+      alt="Image 5"
+      class="w-12 h-12 xs:w-14 xs:h-14 sm:w-[80px] sm:h-[80px] md:w-[100px] md:h-[100px] lg:w-[120px] lg:h-[120px] rounded-full absolute bottom-[5%] xs:bottom-[6%] left-[10px] xs:left-[20px] sm:left-[40px] md:left-[60px]"
+    />
+    <img
+      src="assets/splash-screen&register/scattered-image/image-6.png"
+      alt="Image 6"
+      class="hidden md:hidden lg:block w-14 h-14 sm:w-[80px] sm:h-[80px] md:w-[100px] md:h-[100px] lg:w-[120px] lg:h-[120px] rounded-full absolute bottom-[40%] left-1/3 sm:left-[180px] md:left-[220px]"
+    />
+    <img
+      src="assets/splash-screen&register/scattered-image/image-7.png"
+      alt="Image 7"
+      class="w-12 h-12 xs:w-14 xs:h-14 sm:w-[80px] sm:h-[80px] md:w-[100px] md:h-[100px] lg:w-[120px] lg:h-[120px] rounded-full absolute bottom-[15%] xs:bottom-[20%] left-[30%] sm:left-1/4"
+    />
+    <img
+      src="assets/splash-screen&register/scattered-image/image-8.png"
+      alt="Image 8"
+      class="hidden md:hidden lg:block w-14 h-14 sm:w-[80px] sm:h-[80px] md:w-[100px] md:h-[100px] lg:w-[120px] lg:h-[120px] rounded-full absolute bottom-[40%] xs:bottom-[30%] right-[18%]"
+    />
+    <img
+      src="assets/splash-screen&register/scattered-image/image-9.png"
+      alt="Image 9"
+      class="w-10 h-10 xs:w-12 xs:h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-[120px] lg:h-[120px] rounded-full absolute bottom-[5%] xs:bottom-[6%] right-[10px] xs:right-[20px] sm:right-[40px] md:right-[60px]"
+    />
+    <img
+      src="assets/splash-screen&register/scattered-image/image-10.png"
+      alt="Image 10"
+      class="w-10 h-10 xs:w-12 xs:h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-[120px] lg:h-[120px] rounded-full absolute bottom-[15%] xs:bottom-[6%] right-1/4 xs:right-1/4 sm:right-1/4 md:right-[27%]"
+    />
+  </div>
+
+  <!-- Student Cards Grid -->
+  <!-- Scrollable container on mobile -->
+  <div class="sm:overflow-visible overflow-x-auto w-full mt-10">
+    <div
+      class="grid grid-flow-col sm:grid-cols-3 md:grid-cols-5 auto-cols-max gap-3 sm:gap-[24px] px-4 sm:px-[24px] max-w-7xl mx-auto"
+      *ngIf="activeTab === 'student'"
+    >
+      <!-- Student 1 -->
+      <div class="flex flex-col items-center justify-center">
+        <div
+          class="relative w-[120px] h-[140px] sm:w-[185px] sm:h-[210px] rounded-[20px] overflow-hidden shadow-lg"
+        >
+          <img
+            src="assets/images/student-image-1.png"
+            alt="Kevin"
+            class="w-full h-full object-cover"
+          />
+          <div
+            class="absolute bottom-0 w-full bg-gradient-to-t from-black/60 via-black/40 to-transparent px-2 pt-4 sm:pt-6 pb-2 sm:pb-3 text-center"
+          >
+            <p class="text-white text-xs sm:text-[16px] font-medium">Kevin</p>
+            <div class="flex justify-center gap-[2px] mt-1">
+              <ng-container *ngFor="let i of [1, 2, 3, 4, 5]">
+                <img
+                  src="assets/images/students/Star.png"
+                  alt="star"
+                  class="w-3 h-3 sm:w-4 sm:h-4"
+                />
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Student 2 -->
+      <div class="flex flex-col items-center justify-center">
+        <div
+          class="relative w-[140px] h-[170px] sm:w-[210px] sm:h-[260px] rounded-[20px] overflow-hidden shadow-lg"
+        >
+          <img
+            src="assets/images/student-image-2.png"
+            alt="Blessing"
+            class="w-full h-full object-cover"
+          />
+          <div
+            class="absolute bottom-0 w-full bg-gradient-to-t from-black/60 via-black/40 to-transparent px-2 pt-4 sm:pt-6 pb-2 sm:pb-3 text-center"
+          >
+            <p class="text-white text-xs sm:text-[18px] font-medium">
+              Blessing
+            </p>
+            <div class="flex justify-center gap-[2px] mt-1">
+              <ng-container *ngFor="let i of [1, 2, 3, 4, 5]">
+                <img
+                  src="assets/images/Star.png"
+                  alt="star"
+                  class="w-3 h-3 sm:w-4 sm:h-4"
+                />
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Student 3 -->
+      <div class="flex flex-col items-center justify-center">
+        <div
+          class="relative w-[170px] h-[220px] sm:w-[260px] sm:h-[329px] rounded-[20px] overflow-hidden shadow-lg"
+        >
+          <img
+            src="assets/images/student-image-3.png"
+            alt="Ngozi"
+            class="w-full h-full object-cover"
+          />
+          <div
+            class="absolute bottom-0 w-full bg-gradient-to-t from-black/60 via-black/40 to-transparent px-2 pt-4 sm:pt-6 pb-2 sm:pb-3 text-center"
+          >
+            <p class="text-white text-xs sm:text-[18px] font-medium">Ngozi</p>
+            <div class="flex justify-center gap-[2px] mt-1">
+              <ng-container *ngFor="let i of [1, 2, 3, 4, 5]">
+                <img
+                  src="assets/images/Star.png"
+                  alt="star"
+                  class="w-3 h-3 sm:w-4 sm:h-4"
+                />
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Student 4 -->
+      <div class="flex flex-col items-center justify-center">
+        <div
+          class="relative w-[140px] h-[170px] sm:w-[210px] sm:h-[260px] rounded-[20px] overflow-hidden shadow-lg"
+        >
+          <img
+            src="assets/images/student-image-4.png"
+            alt="Romoke"
+            class="w-full h-full object-cover"
+          />
+          <div
+            class="absolute bottom-0 w-full bg-gradient-to-t from-black/60 via-black/40 to-transparent px-2 pt-4 sm:pt-6 pb-2 sm:pb-3 text-center"
+          >
+            <p class="text-white text-xs sm:text-[18px] font-medium">Romoke</p>
+            <div class="flex justify-center gap-[2px] mt-1">
+              <ng-container *ngFor="let i of [1, 2, 3, 4, 5]">
+                <img
+                  src="assets/images/Star.png"
+                  alt="star"
+                  class="w-3 h-3 sm:w-4 sm:h-4"
+                />
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Student 5 -->
+      <div class="flex flex-col items-center justify-center">
+        <div
+          class="relative w-[120px] h-[140px] sm:w-[185px] sm:h-[210px] rounded-[20px] overflow-hidden shadow-lg"
+        >
+          <img
+            src="assets/images/student-image-5.png"
+            alt="Adeleke"
+            class="w-full h-full object-cover"
+          />
+          <div
+            class="absolute bottom-0 w-full bg-gradient-to-t from-black/60 via-black/40 to-transparent px-2 pt-4 sm:pt-6 pb-2 sm:pb-3 text-center"
+          >
+            <p class="text-white text-xs sm:text-[16px] font-medium">Adeleke</p>
+            <div class="flex justify-center gap-[2px] mt-1">
+              <ng-container *ngFor="let i of [1, 2, 3, 4, 5]">
+                <img
+                  src="assets/images/Star.png"
+                  alt="star"
+                  class="w-3 h-3 sm:w-4 sm:h-4"
+                />
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
