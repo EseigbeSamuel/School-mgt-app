@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
+import { RouterOutlet } from '@angular/router';
+
 @Component({
   selector: 'app-messages',
-  imports: [],
+  imports: [RouterOutlet],
   templateUrl: './messages.component.html',
-  styleUrl: './messages.component.css'
+  styleUrl: './messages.component.css',
 })
-export class MessagesComponent {
-
-}
+export class MessagesComponent {}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { SUBJECTS_DATA } from '../data';
 import { SudentCoursesSubjetCardSvgIcons } from '../../../../../utils/icons';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -16,8 +16,14 @@ export class ViewCourseComponent implements OnInit {
   pageData: any = null;
   ratingScore: number = 0;
   expandedIndex: number | null = 0;
+  courseTrack: any;
+  isDisabled: boolean = false;
 
-  constructor(private route: ActivatedRoute, private sanitizer: DomSanitizer) {}
+  constructor(
+    private route: ActivatedRoute,
+    private sanitizer: DomSanitizer,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
@@ -34,13 +40,21 @@ export class ViewCourseComponent implements OnInit {
               SudentCoursesSubjetCardSvgIcons[foundCourse.icon]
             ),
           };
-          console.log('Course Data:', this.pageData);
+
           this.ratingScore = this.pageData.rating;
+
+          if (this.pageData.topics?.length) {
+            this.courseTrack = this.pageData.topics[0].id;
+            localStorage.setItem('courseTrack', this.courseTrack);
+          }
         }
       }
     });
   }
 
+  getRatingInWords(): string {
+    return (this.ratingScore / 20).toFixed(1);
+  }
   getStars(): number[] {
     const fullStars = Math.round(this.ratingScore / 20);
     return Array(5)
@@ -52,5 +66,16 @@ export class ViewCourseComponent implements OnInit {
   }
   getclassBg() {
     return `${this.pageData?.color}`;
+  }
+
+  getDisabledClass() {
+    return this.isDisabled ? 'opacity-10 cursor-not-allowed' : '';
+  }
+  handleCOurseVideoClick(ID: number) {
+    if (this.pageData?.id && this.pageData?.topics?.length) {
+      this.router.navigate([
+        `student/courses/view-course/${this.pageData.id}/lesson/${ID}`,
+      ]);
+    }
   }
 }

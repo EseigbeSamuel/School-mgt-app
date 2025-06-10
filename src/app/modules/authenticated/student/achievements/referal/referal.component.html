@@ -1,0 +1,95 @@
+<div class="flex-col flex gap-5">
+  <section class="flex justify-between w-full p-5 rounded-lg border bg-white">
+    <img src="/assets/icons/social-promotion.svg" alt="" />
+    <div class="flex-col flex gap-5 justify-center">
+      <h1 class="font-bold text-4xl text-center">
+        Invite your friends to Flexi Demi and <br />
+        unlock amazing rewards!
+      </h1>
+      <div class="flex flex-col items-center">
+        <p class="text-sm text-subject-meta font-bold text-center">
+          Invite now using:
+        </p>
+      </div>
+      <div class="flex gap-3 justify-center">
+        <img src="/assets/icons/instagram.svg" alt="" /><img
+          src="/assets/icons/x.com.svg"
+          alt=""
+        /><img src="/assets/icons/facebook.svg" alt="" /><img
+          src="/assets/icons/whatsapp.svg"
+          alt=""
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="flex w-full justify-between">
+    <div class="rounded-lg p-5 bg-white border grid gap-5 w-[48%]">
+      <p class="font-semibold text-lg">Invite your friends through email</p>
+      <app-input-ui />
+      <div class="w-full flex justify-center">
+        <div class="w-[160px]">
+          <app-button label="Invite" (btnClick)="invisible = !invisible" />
+        </div>
+      </div>
+    </div>
+    <div class="rounded-lg p-5 bg-white border grid gap-5 w-[48%]">
+      <p class="font-semibold text-lg">Or copy personal link</p>
+      <div class="flex w-full">
+        <div class="w-full"><app-input-ui /></div>
+        <div class="bg-primary p-2 rounded-r-lg">
+          <img src="/assets/icons/content_copy.svg" alt="" />
+        </div>
+      </div>
+      <div class="w-full flex justify-center">
+        <div class="w-[160px]">
+          <app-button label="Send Link " (btnClick)="invisible = !invisible" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid gap-5 rounded-lg border p-5">
+    <h2 class="font-semibold text-2xl">Criteria for new referals</h2>
+    <ul class="flex-col flex gap-5 list-disc px-5">
+      <li class="text-sm">
+        <span class="text-lg font-medium">New User Requirement</span> – The
+        person you invite must be a new user and should not have previously
+        registered on Flexi Demi.
+      </li>
+      <li class="text-sm">
+        <span class="text-lg font-medium">Successful Sign up </span> – Your
+        friend must sign up using your unique referral link or code.
+      </li>
+      <li class="text-sm">
+        <span class="text-lg font-medium">Profile Completion</span> – They must
+        complete their profile (name, email, and preferred exam type.)
+      </li>
+    </ul>
+    <div class="w-[200px]"><app-button label="Terms and Condition" /></div>
+  </section>
+</div>
+
+<!-- pop up -->
+<div
+  class="w-screen h-screen lg:h-[91%] absolute top-[70px] left-0 flex justify-center items-center z-0 bg-black/30"
+  *ngIf="invisible"
+>
+  <section
+    class="lg:w-[500px] flex-col flex gap-5 z-10 text-center bg-white rounded-lg p-5"
+  >
+    <div class="w-full flex justify-end">
+      <img
+        src="/assets/icons/purple-circle X-mark.svg"
+        alt=""
+        class="size-5"
+        (click)="invisible = !invisible"
+      />
+    </div>
+    <p class="text-primary font-semibold">
+      Thanks for sharing a word about FlexiDemi. Remind your friends to check
+      their emails!
+    </p>
+    <div><app-button label="Refer Now " /></div>
+  </section>
+</div>
