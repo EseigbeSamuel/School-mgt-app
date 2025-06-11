@@ -19,7 +19,12 @@
       <p class="capitalize text-blue-500 font-semibold">{{ subjects }}</p>
     </div>
     <div class="w-full">
-      <app-button variant="primary" label="View Profile" size="sm" />
+      <app-button
+        variant="primary"
+        label="View Profile"
+        (btnClick)="(btnClick)"
+        size="sm"
+      />
     </div>
   </div>
 </div>

@@ -64,7 +64,6 @@ export class Chart2Component implements OnInit {
         bar: {
           horizontal: false,
           columnWidth: this.isDesktop ? '50%' : '60%',
-          borderRadius: 10,
         },
       },
       dataLabels: {

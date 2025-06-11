@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input } from '@angular/core';
 import { SharedModule } from '../../../shared.module';
 
 @Component({
@@ -12,4 +12,5 @@ export class StudentsCardComponent {
   @Input() subjects: string[] = [];
   @Input() type: string = '';
   @Input() image: string = '';
+  @Input() btnClick = new EventEmitter<Event>();
 }
