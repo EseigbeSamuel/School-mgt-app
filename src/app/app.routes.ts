@@ -28,8 +28,6 @@ import { EarningsComponent } from './modules/authenticated/tutor/earnings/earnin
 import { MessagingComponent } from './modules/authenticated/tutor/messaging/messaging.component';
 import { MessagesComponent } from './modules/authenticated/student/messages/messages.component';
 import { ProfileComponent } from './modules/authenticated/student/profile/profile.component';
-import { QuizComponent } from './modules/authenticated/student/assessment-and-quizzes/quiz/quiz.component';
-import { AssessmentComponent } from './modules/authenticated/student/assessment-and-quizzes/assessment/assessment.component';
 import { TutorsComponent } from './modules/authenticated/student/personal-sessions/tutors/tutors.component';
 import { TutorsDescriptionComponent } from './modules/authenticated/student/personal-sessions/tutors-description/tutors-description.component';
 import { GetTutorsComponent } from './modules/authenticated/student/personal-sessions/get-tutors/get-tutors.component';
@@ -126,11 +124,6 @@ export const routes: Routes = [
           {
             path: 'assessments',
             component: AssessmentAndQuizzesComponent,
-            children: [
-              { path: '', component: QuizComponent },
-              { path: 'quiz', component: QuizComponent },
-              { path: 'assessment', component: AssessmentComponent },
-            ],
           },
           { path: 'mock-exams', component: MockExamsComponent },
           {
