@@ -1,1 +1,97 @@
-<p>tutor-earnings works!</p>
+<table>
+  <thead>
+    <tr>
+      <th>
+        <input type="checkbox" name="select-all" id="select-all" />
+        <span class="sr-only">Check All</span>
+      </th>
+      <th class="">ID</th>
+      <th class="">
+        PAYMENT METHOD
+      </th>
+      <th class="">
+        PAYMENT AMOUNT
+      </th>
+      <th class="">
+        DATE
+      </th>
+      <th class="">
+        STATUS
+      </th>
+      <th class="">
+        ACTIONS
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr
+      class=""
+      *ngFor="let transaction of data"
+    >
+      <td>
+        <input type="checkbox" name="select-one" id="select-one" />
+        <span class="sr-only">Check All</span>
+      </td>
+      <td class="py-4 px-4">
+        <span class="text-sm text-gray-900">{{ transaction.id }}</span>
+      </td>
+      <td class="py-4 px-4">
+        <div class="flex items-center gap-2">
+          <div class="">
+            <img
+              [src]="`/${transaction.cardIcon}.png`"
+              width="20"
+              height="1"
+              alt="card"
+            />
+          </div>
+          <span class="text-sm text-gray-900">{{
+            transaction.paymentMethod
+          }}</span>
+        </div>
+      </td>
+      <td class="py-4 px-4">
+        <span class="text-sm text-gray-900">{{
+          transaction.paymentAmount | currency : "NGN" : "symbol" : "1.0-0"
+        }}</span>
+      </td>
+      <td class="py-4 px-4">
+        <span class="text-sm text-gray-600">{{ transaction.date }}</span>
+      </td>
+      <td class="py-4 px-4">
+        <span
+          [ngClass]="{
+            'bg-blue-100 text-blue-700':
+              transaction.status === 'Ready to process',
+            'bg-red-100 text-red-700': transaction.status === 'Canceled'
+          }"
+          class="px-3 py-1 rounded-full text-xs font-medium"
+        >
+          {{ transaction.status }}
+        </span>
+      </td>
+      <td class="py-4 px-4">
+        <button
+          type="button"
+          class="p-1 hover:bg-gray-100 rounded"
+          (click)="onActionClick(transaction)"
+        >
+          <svg
+            width="16"
+            height="4"
+            viewBox="0 0 16 4"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="2" cy="2" r="2" fill="#9CA3AF" />
+            <circle cx="8" cy="2" r="2" fill="#9CA3AF" />
+            <circle cx="14" cy="2" r="2" fill="#9CA3AF" />
+          </svg>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<br />
+<app-paginator [metadata]="paginationMetadata" [showText]="true" />

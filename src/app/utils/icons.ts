@@ -406,7 +406,7 @@ export const SudentDasboardCardSvgIcons: Record<string, string> = {
 <defs>
 <clipPath id="clip0_837_6851">
 <rect width="18" height="18" fill="white" transform="translate(9 9)"/>
-</clipPath> 
+</clipPath>
 </defs>
 </svg>
 

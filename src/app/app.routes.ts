@@ -25,7 +25,7 @@ import { AchievementsComponent } from './modules/authenticated/student/achieveme
 import { ResourcesComponent } from './modules/authenticated/tutor/resources/resources.component';
 import { OneOnOneComponent } from './modules/authenticated/tutor/one-on-one/one-on-one.component';
 import { EarningsComponent } from './modules/authenticated/tutor/earnings/earnings.component';
-import { MessagingComponent } from './modules/authenticated/tutor/messaging/messaging.component';
+import { MessagesComponent as MessagesComponentTutor } from './modules/authenticated/tutor/messages/messages.component';
 import { MessagesComponent } from './modules/authenticated/student/messages/messages.component';
 import { ProfileComponent } from './modules/authenticated/student/profile/profile.component';
 import { QuizComponent } from './modules/authenticated/student/assessment-and-quizzes/quiz/quiz.component';
@@ -185,7 +185,14 @@ export const routes: Routes = [
           { path: 'resources', component: ResourcesComponent },
           { path: 'one-on-one', component: OneOnOneComponent },
           { path: 'earnings', component: EarningsComponent },
-          { path: 'messaging', component: MessagingComponent },
+          {
+            path: 'messages',
+            component: MessagesComponentTutor,
+            children: [
+              { path: '', component: ChatSidebarComponent },
+              { path: 'friends/:id', component: ChatSideComponent },
+            ],
+          },
         ],
       },
     ],

@@ -119,9 +119,9 @@ export const navItems = [
     role: ['tutor'],
   },
   {
-    name: 'messaging',
-    label: 'Messaging',
-    link: '/tutor/messaging',
+    name: 'messages',
+    label: 'Messages',
+    link: '/tutor/messages',
     icon: 'messaging',
     role: ['tutor'],
   },
