@@ -18,6 +18,8 @@
       [subjects]="student.subject"
       [type]="student.type"
       [image]="student.image"
+      [btnClick]="onStudentClick(student.id)"
     />
   </section>
+  <app-modal [show]="showModal" (close)="closeModal()" />
 </div>

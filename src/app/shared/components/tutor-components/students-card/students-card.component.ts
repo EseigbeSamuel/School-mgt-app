@@ -12,5 +12,5 @@ export class StudentsCardComponent {
   @Input() subjects: string[] = [];
   @Input() type: string = '';
   @Input() image: string = '';
-  @Input() btnClick = new EventEmitter<Event>();
+  @Input() btnClick: any;
 }
