@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { TutorEarningsComponentTable } from '../../../../shared/components/tables/tutor-earnings/tutor-earnings.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-earnings',
-  imports: [TutorEarningsComponentTable],
+  imports: [RouterOutlet],
   templateUrl: './earnings.component.html',
   styleUrl: './earnings.component.css',
 })
