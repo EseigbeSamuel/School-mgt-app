@@ -1,72 +1,260 @@
-<div class="xl:grid grid-cols-[1fr_360px] gap-5 space-y-5">
+<div class="grid md:grid-cols-[1fr_360px] gap-5">
   <div class="main-content space-y-5">
-    <div class="grid gap-5 grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))]">
-      <app-card-ui-dashboared
-        *ngFor="let card of data"
-        [title]="card.title"
-        [icon]="card.safeSvg"
-        [value]="card.value"
-        [growthRate]="card.growthRate"
-        [type]="card.type"
-        [variant]="'tutor'"
-      />
-    </div>
-
-    <div class="content-2 space-y-4">
-      <h2 class="text-xl font-semibold">Earnings</h2>
-
-      <div
-        class="graph border shadow-sm md:p-4 size-full border-[#E9E9E9] rounded-lg h-fit md:h-[400px]"
-      >
-        <app-chart1 />
+    <div class="t grid gap-5 grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))]">
+      <div class="nox border shadow-sm size-full p-4 grid gap-0.5">
+        <div class="flex justify-between gap-2">
+          <span class="text-16 text-accent font-semibold">Students</span>
+          <span
+            class="rounded-lg bg-[#8280FF]/20 size-8 min-w-8 grid place-content-center place-items-center"
+          >
+            <svg
+              width="20"
+              height="21"
+              viewBox="0 0 20 21"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.8917 9.17471C11.3979 8.46742 11.6701 7.61947 11.6701 6.74971C11.6701 5.87994 11.3979 5.03199 10.8917 4.32471C11.3657 4.00181 11.9266 3.83037 12.5001 3.83304C13.2736 3.83304 14.0155 4.14033 14.5625 4.68731C15.1095 5.23429 15.4167 5.97616 15.4167 6.74971C15.4167 7.52325 15.1095 8.26512 14.5625 8.8121C14.0155 9.35908 13.2736 9.66637 12.5001 9.66637C11.9266 9.66904 11.3657 9.4976 10.8917 9.17471ZM4.58341 6.74971C4.58341 6.17284 4.75447 5.60894 5.07496 5.12929C5.39545 4.64965 5.85097 4.27581 6.38392 4.05506C6.91687 3.8343 7.50332 3.77654 8.0691 3.88908C8.63487 4.00162 9.15457 4.27941 9.56248 4.68731C9.97038 5.09521 10.2482 5.61491 10.3607 6.18069C10.4732 6.74647 10.4155 7.33291 10.1947 7.86586C9.97397 8.39882 9.60014 8.85434 9.12049 9.17482C8.64085 9.49531 8.07694 9.66637 7.50008 9.66637C6.72653 9.66637 5.98467 9.35908 5.43769 8.8121C4.89071 8.26512 4.58341 7.52325 4.58341 6.74971ZM6.25008 6.74971C6.25008 6.99693 6.32339 7.23861 6.46074 7.44417C6.5981 7.64973 6.79332 7.80994 7.02173 7.90455C7.25013 7.99916 7.50147 8.02392 7.74394 7.97569C7.98642 7.92745 8.20915 7.8084 8.38397 7.63359C8.55878 7.45877 8.67783 7.23604 8.72606 6.99357C8.77429 6.75109 8.74954 6.49976 8.65493 6.27135C8.56032 6.04294 8.4001 5.84772 8.19454 5.71037C7.98898 5.57302 7.74731 5.49971 7.50008 5.49971C7.16856 5.49971 6.85062 5.6314 6.6162 5.86582C6.38178 6.10024 6.25008 6.41818 6.25008 6.74971ZM13.3334 14.6664V16.333H1.66675V14.6664C1.66675 14.6664 1.66675 11.333 7.50008 11.333C13.3334 11.333 13.3334 14.6664 13.3334 14.6664ZM11.6667 14.6664C11.5501 14.0164 10.5584 12.9997 7.50008 12.9997C4.44175 12.9997 3.39175 14.0914 3.33341 14.6664M13.2917 11.333C13.8025 11.7303 14.2201 12.2346 14.5152 12.8104C14.8104 13.3863 14.9758 14.0198 15.0001 14.6664V16.333H18.3334V14.6664C18.3334 14.6664 18.3334 11.6414 13.2834 11.333H13.2917Z"
+                fill="#8280FF"
+              />
+            </svg>
+          </span>
+        </div>
+        <span class="text-[28px] font-bold mb-2">13</span>
+        <span class="flex gap-0.5 text-sm text-accent font-semibold">
+          <span class="flex items-center gap-1 text-[#00B69B]">
+            <svg
+              width="20"
+              height="21"
+              viewBox="0 0 20 21"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M13.3334 5.5L15.2417 7.40833L11.1751 11.475L7.84175 8.14167L1.66675 14.325L2.84175 15.5L7.84175 10.5L11.1751 13.8333L16.4251 8.59167L18.3334 10.5V5.5H13.3334Z"
+                fill="#00B69B"
+              />
+            </svg>
+            8.5%
+          </span>
+          in 24hours
+        </span>
+      </div>
+      <div class="nox border shadow-sm size-full p-4 grid gap-0.5">
+        <div class="flex justify-between gap-2">
+          <span class="text-[16px] text-accent font-semibold"
+            >Completed classes</span
+          >
+          <span
+            class="rounded-lg bg-[#FF9066]/20 size-8 min-w-8 grid place-content-center place-items-center"
+          >
+            <svg
+              width="20"
+              height="21"
+              viewBox="0 0 20 21"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                opacity="0.78"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M9.01073 6.66132C9.03151 6.40146 9.24845 6.20117 9.50914 6.20117H9.54918C9.80531 6.20117 10.02 6.39472 10.0465 6.64948L10.4761 10.7828L13.5579 12.4772C13.713 12.5625 13.8094 12.7255 13.8094 12.9026C13.8094 13.2207 13.5085 13.4529 13.2008 13.3721L8.97619 12.2636C8.74191 12.2021 8.58538 11.9815 8.60469 11.7401L9.01073 6.66132Z"
+                fill="#FF9066"
+              />
+              <path
+                opacity="0.901274"
+                d="M4.11133 0.873914C4.2082 0.483172 4.72551 0.367715 4.99512 0.676648L6.08594 1.92665C7.28813 1.43416 8.6109 1.16102 10 1.16102L10.5146 1.17372C15.7983 1.43144 20 5.63536 20 10.7831C19.9998 16.0967 15.5227 20.4042 10 20.4042C4.47728 20.4042 0.000207608 16.0967 0 10.7831C0 9.88069 0.128684 9.0068 0.370117 8.1786L2.2041 8.67372C2.00598 9.35341 1.9043 10.0611 1.9043 10.7831C1.9045 15.0846 5.52925 18.5712 10 18.5712C14.4707 18.5712 18.0955 15.0846 18.0957 10.7831C18.0957 6.616 14.6941 3.2126 10.417 3.0038L10 2.99403C9.09403 2.99403 8.21194 3.13745 7.37988 3.41102L8.47168 4.662C8.74161 4.97162 8.53183 5.44294 8.11426 5.46571L3.58984 5.71278C3.24831 5.7314 2.98243 5.42647 3.06152 5.10634L4.11133 0.873914Z"
+                fill="#FF9066"
+              />
+            </svg>
+          </span>
+        </div>
+        <span class="text-[28px] font-bold mb-2">4</span>
+        <span class="flex gap-0.5 text-sm text-accent font-semibold">
+          <span class="flex items-center gap-1 text-[#00B69B]">
+            <svg
+              width="20"
+              height="21"
+              viewBox="0 0 20 21"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M13.3334 5.5L15.2417 7.40833L11.1751 11.475L7.84175 8.14167L1.66675 14.325L2.84175 15.5L7.84175 10.5L11.1751 13.8333L16.4251 8.59167L18.3334 10.5V5.5H13.3334Z"
+                fill="#00B69B"
+              />
+            </svg>
+            2.5%
+          </span>
+          in 24hours
+        </span>
+      </div>
+      <div class="nox border shadow-sm size-full p-4 grid gap-0.5">
+        <div class="flex justify-between gap-2">
+          <span class="text-16 text-accent font-semibold">Earnings</span>
+          <span
+            class="rounded-lg bg-[#FEC53D]/20 size-8 min-w-8 grid place-content-center place-items-center"
+          >
+            <svg
+              width="20"
+              height="21"
+              viewBox="0 0 20 21"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M0 7.27974L8.60033 11.7417C8.69293 11.7898 8.79004 11.8245 8.88889 11.8465V20.5003L0.613377 16.0994C0.233189 15.8972 0 15.5297 0 15.1327V7.27974ZM20.0001 7.16113V15.1327C20.0001 15.5297 19.7669 15.8972 19.3867 16.0994L11.1112 20.5003V11.7707C11.1313 11.7617 11.1513 11.752 11.1711 11.7417L20.0001 7.16113Z"
+                fill="#FEC53D"
+              />
+              <path
+                opacity="0.499209"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M0.270264 5.11374C0.375314 4.99454 0.507906 4.89379 0.662492 4.8198L9.41249 0.631856C9.77981 0.456048 10.2204 0.456048 10.5877 0.631856L19.3377 4.8198C19.4569 4.87683 19.563 4.94977 19.6535 5.0348L10.06 10.012C9.99696 10.0448 9.9388 10.0822 9.8858 10.1236C9.83279 10.0822 9.77464 10.0448 9.71155 10.012L0.270264 5.11374Z"
+                fill="#FEC53D"
+              />
+            </svg>
+          </span>
+        </div>
+        <span class="text-[28px] font-bold mb-2">{{
+          "200000"
+            | currencyFormat
+              : { currency: "USD", showSymbol: true, compact: false }
+        }}</span>
+        <span class="flex gap-0.5 text-sm text-accent font-semibold">
+          <span class="flex items-center gap-1 text-[#00B69B]">
+            <svg
+              width="20"
+              height="21"
+              viewBox="0 0 20 21"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M13.3334 5.5L15.2417 7.40833L11.1751 11.475L7.84175 8.14167L1.66675 14.325L2.84175 15.5L7.84175 10.5L11.1751 13.8333L16.4251 8.59167L18.3334 10.5V5.5H13.3334Z"
+                fill="#00B69B"
+              />
+            </svg>
+            4.5%
+          </span>
+          in 24hours
+        </span>
       </div>
     </div>
-
     <div class="content-2 space-y-4">
-      <h2 class="text-xl font-semibold py-4">Ratings</h2>
-      <app-tutor-dash-board [data]="ratingsData" />
+      <h2 class="text-xl font-semibold">Earnings</h2>
+      <div class="graph border shadow-sm p-4 size-full">
+        <div
+          class="w-full size-full flex flex-col justify-center items-center min-h-32"
+        >
+          <p class="text-2xl font-extrabold uppercase">GRAPH</p>
+        </div>
+      </div>
+    </div>
+    <div class="content-2 space-y-4">
+      <h2 class="text-xl font-semibold">Ratings</h2>
+      <div class="overflow-x-auto">
+        <table class="table-auto">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Date</th>
+              <th>Review</th>
+              <th>Ratings</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="text-accent-2">
+              <td class="">Adetokunbo Ademola</td>
+              <td class="">Feb 07, 2025</td>
+              <td class="">I enjoyed every bit of my time on his course</td>
+              <td class=""><span class="star"> ★ </span> 40</td>
+            </tr>
+            <tr class="text-accent-2">
+              <td class="">Oluwaseun Tofunmi</td>
+              <td class="">Feb 07, 2025</td>
+              <td class="">I enjoyed every bit of my time on his course</td>
+              <td class=""><span class="star"> ★ </span> 40</td>
+            </tr>
+            <tr class="text-accent-2">
+              <td class="">Sarah Williams</td>
+              <td class="">Feb 07, 2025</td>
+              <td class="">I enjoyed every bit of my time on his course</td>
+              <td class=""><span class="star"> ★ </span> 40</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-
   <div class="side-content space-y-5">
-    <div class="space-y-4 border p-4 shadow-sm sm:max-w-sm">
+    <div class="space-y-4 border p-4 shadow-sm max-w-sm">
       <h3 class="text-xl font-semibold">Students</h3>
-      <div class="space-y-4 overflow-auto max-h-[400px]">
-        <div
-          *ngFor="let tutor of tutorData"
-          class="box border shadow-sm w-full p-4"
-        >
+      <div class="space-y-4">
+        <div class="box border shadow-sm w-full p-4">
           <div class="flex gap-2 items-center">
             <div class="avatar size-10 min-w-10 bg-gray-200 rounded-full"></div>
             <div class="info">
-              <span class="block text-lg">{{ tutor.name }}</span>
-              <span class="block text-base text-accent">{{ tutor.name }}</span>
+              <span class="block text-lg">Benjamin Adeleke</span>
+              <span class="block text-base text-accent">Benjamin Adeleke</span>
             </div>
           </div>
-
           <div class="tags flex gap-2 flex-wrap my-4">
             <span
-              *ngFor="let subject of tutor.subjects"
-              class="tag text-xs block px-2.5 py-1 rounded-md font-semibold"
-              [ngClass]="{
-                'bg-red-500/20 text-red-500': subject.color === 'red',
-                'bg-blue-500/20 text-blue-500': subject.color === 'blue',
-                'bg-green-500/20 text-green-500': subject.color === 'green'
-              }"
+              class="tag text-xs block px-2.5 py-1 rounded-md font-semibold bg-red-500/20 bg-red-500"
             >
-              {{ subject.name }}
+              Jamb
+            </span>
+            <span
+              class="tag text-xs block px-2.5 py-1 rounded-md font-semibold bg-blue-500/20 bg-blue-500"
+            >
+              Wace
+            </span>
+            <span
+              class="tag text-xs block px-2.5 py-1 rounded-md font-semibold bg-green-500/20 bg-green-500"
+            >
+              Neco
             </span>
           </div>
-
+          <app-button class="py-2! text-sm! font-semibold">Contact</app-button>
+        </div>
+        <div class="box border shadow-sm w-full p-4">
+          <div class="flex gap-2 items-center">
+            <div class="avatar size-10 min-w-10 bg-gray-200 rounded-full"></div>
+            <div class="info">
+              <span class="block text-lg">Benjamin Adeleke</span>
+              <span class="block text-base text-accent">Benjamin Adeleke</span>
+            </div>
+          </div>
+          <div class="tags flex gap-2 flex-wrap my-4">
+            <span
+              class="tag text-xs block px-2.5 py-1 rounded-md font-semibold bg-red-500/20 bg-red-500"
+            >
+              Jamb
+            </span>
+            <span
+              class="tag text-xs block px-2.5 py-1 rounded-md font-semibold bg-blue-500/20 bg-blue-500"
+            >
+              Wace
+            </span>
+            <span
+              class="tag text-xs block px-2.5 py-1 rounded-md font-semibold bg-green-500/20 bg-green-500"
+            >
+              Neco
+            </span>
+          </div>
           <app-button class="py-2! text-sm! font-semibold">Contact</app-button>
         </div>
       </div>
     </div>
-    <div class="space-y-4 border p-4 shadow-sm sm:max-w-sm">
+    <div class="space-y-4 border p-4 shadow-sm max-w-sm">
       <h3 class="text-xl font-semibold">Messages</h3>
       <div class="space-y-1 w-full max-h-[350px] pr-2 overflow-auto">
         <div
-          *ngFor="let chat of chatData"
           class="box w-full flex justify-between gap-4 p-4 hover:bg-purple-100 cursor-pointer"
         >
           <div class="flex gap-3 items-center">
@@ -74,18 +262,117 @@
               class="avatar size-10 min-w-10 bg-gray-200 rounded-full relative"
             >
               <div
-                *ngIf="chat.isOnline"
                 class="active bg-green-500 rounded-full size-3 absolute bottom-0.5 right-0.5 border-2 border-white"
               ></div>
             </div>
             <div class="info space-y-0.5">
-              <span class="block text-base">{{ chat.name }}</span>
-              <span class="block text-sm text-accent font-medium">
-                {{ chat.role }}
-              </span>
+              <span class="block text-base">Benjamin Adeleke</span>
+              <span class="block text-sm text-accent font-medium"
+                >WACE STUDENT</span
+              >
             </div>
           </div>
-          <span class="text-accent text-sm">{{ chat.timestamp }}</span>
+          <span class="text-accent text-sm">just now</span>
+        </div>
+        <div
+          class="box w-full flex justify-between gap-4 p-4 hover:bg-purple-100 cursor-pointer"
+        >
+          <div class="flex gap-3 items-center">
+            <div
+              class="avatar size-10 min-w-10 bg-gray-200 rounded-full relative"
+            >
+              <div
+                class="active bg-green-500 rounded-full size-3 absolute bottom-0.5 right-0.5 border-2 border-white"
+              ></div>
+            </div>
+            <div class="info space-y-0.5">
+              <span class="block text-base">Benjamin Adeleke</span>
+              <span class="block text-sm text-accent font-medium"
+                >WACE STUDENT</span
+              >
+            </div>
+          </div>
+          <span class="text-accent text-sm">just now</span>
+        </div>
+        <div
+          class="box w-full flex justify-between gap-4 p-4 hover:bg-purple-100 cursor-pointer"
+        >
+          <div class="flex gap-3 items-center">
+            <div
+              class="avatar size-10 min-w-10 bg-gray-200 rounded-full relative"
+            >
+              <div
+                class="active bg-green-500 rounded-full size-3 absolute bottom-0.5 right-0.5 border-2 border-white"
+              ></div>
+            </div>
+            <div class="info space-y-0.5">
+              <span class="block text-base">Benjamin Adeleke</span>
+              <span class="block text-sm text-accent font-medium"
+                >WACE STUDENT</span
+              >
+            </div>
+          </div>
+          <span class="text-accent text-sm">just now</span>
+        </div>
+        <div
+          class="box w-full flex justify-between gap-4 p-4 hover:bg-purple-100 cursor-pointer"
+        >
+          <div class="flex gap-3 items-center">
+            <div
+              class="avatar size-10 min-w-10 bg-gray-200 rounded-full relative"
+            >
+              <div
+                class="active bg-green-500 rounded-full size-3 absolute bottom-0.5 right-0.5 border-2 border-white"
+              ></div>
+            </div>
+            <div class="info space-y-0.5">
+              <span class="block text-base">Benjamin Adeleke</span>
+              <span class="block text-sm text-accent font-medium"
+                >WACE STUDENT</span
+              >
+            </div>
+          </div>
+          <span class="text-accent text-sm">just now</span>
+        </div>
+        <div
+          class="box w-full flex justify-between gap-4 p-4 hover:bg-purple-100 cursor-pointer"
+        >
+          <div class="flex gap-3 items-center">
+            <div
+              class="avatar size-10 min-w-10 bg-gray-200 rounded-full relative"
+            >
+              <div
+                class="active bg-green-500 rounded-full size-3 absolute bottom-0.5 right-0.5 border-2 border-white"
+              ></div>
+            </div>
+            <div class="info space-y-0.5">
+              <span class="block text-base">Benjamin Adeleke</span>
+              <span class="block text-sm text-accent font-medium"
+                >WACE STUDENT</span
+              >
+            </div>
+          </div>
+          <span class="text-accent text-sm">just now</span>
+        </div>
+        <div
+          class="box w-full flex justify-between gap-4 p-4 hover:bg-purple-100 cursor-pointer"
+        >
+          <div class="flex gap-3 items-center">
+            <div
+              class="avatar size-10 min-w-10 bg-gray-200 rounded-full relative"
+            >
+              <div
+                class="active bg-green-500 rounded-full size-3 absolute bottom-0.5 right-0.5 border-2 border-white"
+              ></div>
+            </div>
+            <div class="info space-y-0.5">
+              <span class="block text-base">Benjamin Adeleke</span>
+              <span class="block text-sm text-accent font-medium"
+                >WACE STUDENT</span
+              >
+            </div>
+          </div>
+          <span class="text-accent text-sm">just now</span>
         </div>
       </div>
     </div>
