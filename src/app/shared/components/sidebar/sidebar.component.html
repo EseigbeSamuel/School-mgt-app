@@ -35,8 +35,8 @@
     </div>
   </div>
 
-  <div class="more flex h-full items-end gap-2">
-    <ul class="flex flex-col gap-3">
+  <div class="more flex h-full items-end gap-2 w-full">
+    <ul class="flex flex-col gap-3 w-full">
       <li *ngIf="userType !== 'tutor'">
         <a
           routerLink="/students/settings"
@@ -76,6 +76,13 @@
         <a
           routerLink="/tutor/profile"
           (click)="sidebarService.toggle()"
+          routerLinkActive="bg-[#2C2A72] text-white active"
+          [routerLinkActiveOptions]="{
+            paths: 'exact',
+            fragment: 'exact',
+            matrixParams: 'exact',
+            queryParams: 'ignored'
+          }"
           class="flex gap-3 nav-link items-center w-full px-3 text-base py-2.5 rounded-lg hover:opacity-70 cursor-pointer"
         >
           <span class="icon">
