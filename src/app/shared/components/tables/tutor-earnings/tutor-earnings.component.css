@@ -1,0 +1,11 @@
+th {
+  background-color: #fafafa;
+}
+
+.hover\\:bg-gray-50:hover {
+  background-color: #f9fafb;
+}
+
+.hover\\:bg-gray-100:hover {
+  background-color: #f3f4f6;
+}

@@ -1,0 +1,56 @@
+<!-- desktop view -->
+<div class="flex gap-5">
+  <section
+    class="border rounded-lg p-5 bg-white flex-col flex gap-5 w-full h-full lg:w-[35%]"
+  >
+    <div class="flex justify-between items-center">
+      <h1 class="font-semibold text-xl">Message</h1>
+      <div class="flex gap-2 bg-[#EBEAFC] text-primary p-3 rounded-lg">
+        <img src="/assets/icons/Plus-purple.svg" alt="" />
+        <p>Compose</p>
+      </div>
+    </div>
+    <div class="w-full">
+      <input
+        type="text"
+        placeholder="search"
+        class="p-2 w-full h-[50px] border-2 rounded-lg"
+      />
+    </div>
+
+    <div class="h-[450px] flex-col flex gap-3 overflow-y-scroll">
+      <div
+        *ngFor="let friends of friends"
+        class="flex w-full justify-between cursor-pointer"
+        (click)="onSelectFriends(friends)"
+      >
+        <div class="flex gap-3">
+          <div class="">
+            <img
+              src="{{ friends.image }}"
+              alt=""
+              class="object-cover rounded-full size-[50px]"
+            />
+            <div
+              *ngIf="friends.active"
+              class="bg-green-500 rounded-full relative left-[35px] bottom-[15px] size-[10px] z-10"
+            ></div>
+            <div
+              *ngIf="!friends.active"
+              class="bg-red-500 rounded-full relative left-[35px] bottom-[15px] size-[10px] z-10"
+            ></div>
+          </div>
+          <div>
+            <h1 class="font-medium text-sm">{{ friends.name }}</h1>
+            <p class="text-subject-meta text-sm">new message</p>
+          </div>
+        </div>
+        <div class="text-sm text-subject-meta">3 days</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hidden lg:flex">
+    <app-chat-side />
+  </section>
+</div>

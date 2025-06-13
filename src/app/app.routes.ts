@@ -25,9 +25,12 @@ import { AchievementsComponent } from './modules/authenticated/student/achieveme
 import { ResourcesComponent } from './modules/authenticated/tutor/resources/resources.component';
 import { OneOnOneComponent } from './modules/authenticated/tutor/one-on-one/one-on-one.component';
 import { EarningsComponent } from './modules/authenticated/tutor/earnings/earnings.component';
-import { MessagingComponent } from './modules/authenticated/tutor/messaging/messaging.component';
+import { MessagesComponent as MessagesComponentTutor } from './modules/authenticated/tutor/messages/messages.component';
 import { MessagesComponent } from './modules/authenticated/student/messages/messages.component';
 import { ProfileComponent } from './modules/authenticated/student/profile/profile.component';
+import { ProfileComponent as ProfileComponentTutor } from './modules/authenticated/tutor/profile/profile.component';
+import { QuizComponent } from './modules/authenticated/student/assessment-and-quizzes/quiz/quiz.component';
+import { AssessmentComponent } from './modules/authenticated/student/assessment-and-quizzes/assessment/assessment.component';
 import { TutorsComponent } from './modules/authenticated/student/personal-sessions/tutors/tutors.component';
 import { TutorsDescriptionComponent } from './modules/authenticated/student/personal-sessions/tutors-description/tutors-description.component';
 import { GetTutorsComponent } from './modules/authenticated/student/personal-sessions/get-tutors/get-tutors.component';
@@ -44,6 +47,8 @@ import { ReferalComponent } from './modules/authenticated/student/achievements/r
 import { LeaderboardComponent } from './modules/authenticated/student/achievements/leaderboard/leaderboard.component';
 import { StreaksComponent } from './modules/authenticated/student/achievements/streaks/streaks.component';
 import { CourseVideoComponent } from './modules/authenticated/student/my-courses/view-course/course-video/course-video.component';
+import { WithdrawComponent } from './modules/authenticated/tutor/earnings/withdraw/withdraw.component';
+import { TransactionHistoryComponent } from './modules/authenticated/tutor/earnings/transaction-history/transaction-history.component';
 // test
 export const routes: Routes = [
   // {
@@ -177,8 +182,29 @@ export const routes: Routes = [
           { path: 'students', component: StudentsComponent },
           { path: 'resources', component: ResourcesComponent },
           { path: 'one-on-one', component: OneOnOneComponent },
-          { path: 'earnings', component: EarningsComponent },
-          { path: 'messaging', component: MessagingComponent },
+          {
+            path: 'earnings',
+            component: EarningsComponent,
+            children: [
+              {
+                path: '',
+                component: TransactionHistoryComponent,
+              },
+              {
+                path: 'withdraw',
+                component: WithdrawComponent,
+              },
+            ],
+          },
+          { path: 'profile', component: ProfileComponentTutor },
+          {
+            path: 'messages',
+            component: MessagesComponentTutor,
+            children: [
+              { path: '', component: ChatSidebarComponent },
+              { path: 'friends/:id', component: ChatSideComponent },
+            ],
+          },
         ],
       },
     ],

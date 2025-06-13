@@ -1,0 +1,36 @@
+<div *ngIf="friends" class="w-[50vw]">
+  <section class="flex justify-between items-center border bg-white p-3 w-full">
+    <div class="flex gap-3">
+      <div>
+        <img
+          src="{{ friends?.image }}"
+          alt=""
+          class="size-[50px] rounded-full object-cover"
+        />
+        <div
+          *ngIf="friends.active"
+          class="bg-green-500 rounded-full relative left-[35px] bottom-[15px] size-[10px] z-10"
+        ></div>
+        <div
+          *ngIf="!friends.active"
+          class="bg-red-500 rounded-full relative left-[35px] bottom-[15px] size-[10px] z-10"
+        ></div>
+      </div>
+      <div>
+        <h1 class="font-medium text-lg">{{ friends?.name }}</h1>
+        <p>{{ friends?.id }}</p>
+      </div>
+    </div>
+    <div><img src="/assets/icons/More.svg" alt="" /></div>
+  </section>
+  <section class="h-[450px] bg-primary/10 border"></section>
+  <section class="p-5 flex justify-between items-center border-t border-x-2">
+    <div class="flex border-2 p-2 gap-3 w-[60%]">
+      <img src="/assets/icons/PencilLine.svg" alt="" />
+      <input type="text" placeholder="Type your message" class="outline-none" />
+    </div>
+    <div class="w-[150px]">
+      <app-button label="Send" />
+    </div>
+  </section>
+</div>
