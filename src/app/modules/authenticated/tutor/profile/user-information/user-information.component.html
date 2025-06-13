@@ -1,0 +1,216 @@
+<div class="w-full p-4 rounded-xl border grid lg:grid-cols-[280px_1fr] gap-5">
+  <div class="border rounded-xl p-4 h-fit w-fit max-w-[280px]">
+    <div class="space-y-2">
+      <div
+        class="aspect-square border rounded-xl bg-gray-900 relative overflow-hidden"
+      >
+        <div
+          class="flex bg-[#fff]/10 text-white p-4 absolute bottom-0 w-full items-center justify-center gap-2"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5.375 5.12431L8 2.5L10.625 5.12431"
+              stroke="white"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M8 9.50011V2.50195"
+              stroke="white"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M13.5 9.5V13C13.5 13.1326 13.4473 13.2598 13.3536 13.3536C13.2598 13.4473 13.1326 13.5 13 13.5H3C2.86739 13.5 2.74021 13.4473 2.64645 13.3536C2.55268 13.2598 2.5 13.1326 2.5 13V9.5"
+              stroke="white"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <span class="text-sm font-bold">Upload Photo</span>
+        </div>
+      </div>
+      <p class="text-xs text-accent text-center px-4">
+        Image size should be under 1MB and image ration needs to be 1:1
+      </p>
+    </div>
+  </div>
+  <div class="main border rounded-xl p-4">
+    <form class="grid gap-4">
+      <div class="grid md:grid-cols-2 gap-5 gap-y-4 sm:gap-y-6">
+        <div class="space-y-2">
+          <label for="firstName">First name</label>
+          <input
+            type="text"
+            name="firstName"
+            id="firstName"
+            class="w-full h-12 rounded-md border pl-4"
+          />
+        </div>
+        <div class="space-y-2">
+          <label for="otherNames">Other names</label>
+          <input
+            type="text"
+            name="otherNames"
+            id="otherNames"
+            class="w-full h-12 rounded-md border pl-4"
+          />
+        </div>
+        <div class="space-y-2">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            class="w-full h-12 rounded-md border pl-4"
+          />
+        </div>
+        <div class="space-y-2">
+          <label for="phoneNumber">Phone Number</label>
+          <input
+            type="text"
+            name="phoneNumber"
+            id="phoneNumber"
+            class="w-full h-12 rounded-md border pl-4"
+          />
+        </div>
+
+        <div class="space-y-2">
+          <label for="gender">Gender</label>
+          <div class="relative">
+            <select
+              name="gender"
+              id="gender"
+              class="w-full h-12 rounded-md border pl-4 pr-10 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-accent appearance-none"
+            >
+              <option value="" disabled selected class="text-accent2!">
+                Select your gender
+              </option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+              <option value="prefer_not_to_say">Prefer not to say</option>
+            </select>
+            <span
+              class="pointer-events-none absolute inset-y-0 right-3 flex items-center"
+            >
+              <svg
+                class="w-4 h-4 text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+
+        <div class="space-y-2">
+          <label for="address">Address</label>
+          <input
+            type="text"
+            name="address"
+            id="address"
+            class="w-full h-12 rounded-md border pl-4"
+          />
+        </div>
+
+        <div class="space-y-2">
+          <label for="category">Category</label>
+          <div class="relative">
+            <select
+              name="category"
+              id="category"
+              class="w-full h-12 rounded-md border pl-4 pr-10 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-accent appearance-none"
+            >
+              <option value="" disabled selected class="text-accent2!">
+                Select your category
+              </option>
+              <option value="science">Science</option>
+              <option value="arts">Arts</option>
+              <option value="commercial">Commercial</option>
+            </select>
+            <span
+              class="pointer-events-none absolute inset-y-0 right-3 flex items-center"
+            >
+              <svg
+                class="w-4 h-4 text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <label for="subjects">Subjects</label>
+          <div class="relative">
+            <select
+              name="subjects"
+              id="subjects"
+              class="w-full h-12 rounded-md border pl-4 pr-10 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-accent appearance-none"
+            >
+              <option value="" disabled selected class="text-accent2!">
+                Select your category
+              </option>
+              <option value="science">Science</option>
+              <option value="arts">Arts</option>
+              <option value="commercial">Commercial</option>
+            </select>
+            <span
+              class="pointer-events-none absolute inset-y-0 right-3 flex items-center"
+            >
+              <svg
+                class="w-4 h-4 text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="space-y-2">
+        <label for="bio">Bio</label>
+        <textarea
+          type="text"
+          name="bio"
+          id="bio"
+          rows="3"
+          class="w-full h-28 max-h-48 rounded-md border p-3 min-w-full"
+        >
+        </textarea>
+      </div>
+      <app-button>Save Changes</app-button>
+    </form>
+  </div>
+</div>
