@@ -1,6 +1,10 @@
 <div class="space-y-5 relative">
   <div
     class="main-video bg-gray-100 relative h-[calc(100svh_-_14rem)] max-w-full rounded-lg"
+    [ngClass]="{
+      'h-[calc(100svh_-_14rem)]': students < 2,
+      'h-[calc(100svh_-_21rem)]': students >= 2
+    }"
   >
     <button
       class="absolute left-5 bottom-5 rounded-full size-[30px] z-10 grid place-content-center place-items-center bg-gray-100"
@@ -42,26 +46,57 @@
 
     <div
       class="absolute bottom-0 right-0 video aspect-square w-48 sm:w-56 bg-black rounded-lg"
+      *ngIf="students === 1"
     ></div>
   </div>
-  <div class="more-students flex gap-4">
+  <div class="more-students flex gap-4 flex-wrap" *ngIf="students > 1">
     <div
-      class="video aspect-[2/3] shrink-0 w-48 sm:w-56 bg-black rounded-xl"
-    ></div>
-    <div
-      class="video aspect-[2/3] shrink-0 w-48 sm:w-56 bg-black rounded-xl"
-    ></div>
-    <div
-      class="video aspect-[2/3] shrink-0 w-48 sm:w-56 bg-black rounded-xl"
-    ></div>
-    <div
-      class="video aspect-[2/3] shrink-0 w-48 sm:w-56 bg-black rounded-xl"
-    ></div>
-    <div
-      class="video aspect-[2/3] shrink-0 w-48 sm:w-56 bg-black rounded-xl"
-    ></div>
+      class="relative aspect-[4/3] w-48 sm:w-56 flex justify-start items-end p-4 bg-black rounded-xl"
+      *ngFor="let student of [].constructor(students); let i = index"
+    >
+      <button
+        type="button"
+        class="absolute top-5 right-5 size-10 rounded-full grid place-content-center place-items-center bg-primary text-[#667085]s text-white hover:bg-primary hover:text-white hover:opacity-60"
+        title="Mute Audio"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12 2C12.7956 2 13.5587 2.31607 14.1213 2.87868C14.6839 3.44129 15 4.20435 15 5V11C15 11.7956 14.6839 12.5587 14.1213 13.1213C13.5587 13.6839 12.7956 14 12 14C11.2044 14 10.4413 13.6839 9.87868 13.1213C9.31607 12.5587 9 11.7956 9 11V5C9 4.20435 9.31607 3.44129 9.87868 2.87868C10.4413 2.31607 11.2044 2 12 2ZM19 11C19 14.53 16.39 17.44 13 17.93V21H11V17.93C7.61 17.44 5 14.53 5 11H7C7 12.3261 7.52678 13.5979 8.46447 14.5355C9.40215 15.4732 10.6739 16 12 16C13.3261 16 14.5979 15.4732 15.5355 14.5355C16.4732 13.5979 17 12.3261 17 11H19Z"
+            fill="currentColor"
+          />
+        </svg>
+      </button>
+
+      <span
+        class="px-4 py-2 bg-[#fff]/10 font-bold rounded-lg text-white flex items-start gap-1.5 text-sm"
+      >
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9.99951 8C10.4591 8 10.9143 7.90947 11.3389 7.73358C11.7635 7.55769 12.1494 7.29988 12.4744 6.97487C12.7994 6.64987 13.0572 6.26403 13.2331 5.83939C13.409 5.41475 13.4995 4.95963 13.4995 4.5C13.4995 4.04037 13.409 3.58525 13.2331 3.16061C13.0572 2.73597 12.7994 2.35013 12.4744 2.02513C12.1494 1.70012 11.7635 1.44231 11.3389 1.26642C10.9143 1.09053 10.4591 1 9.99951 1C9.07125 1 8.18102 1.36875 7.52464 2.02513C6.86826 2.6815 6.49951 3.57174 6.49951 4.5C6.49951 5.42826 6.86826 6.3185 7.52464 6.97487C8.18102 7.63125 9.07125 8 9.99951 8ZM0.999512 18.4V19H18.9995V18.4C18.9995 16.16 18.9995 15.04 18.5635 14.184C18.18 13.4314 17.5681 12.8195 16.8155 12.436C15.9595 12 14.8395 12 12.5995 12H7.39951C5.15951 12 4.03951 12 3.18351 12.436C2.4309 12.8195 1.819 13.4314 1.43551 14.184C0.999512 15.04 0.999512 16.16 0.999512 18.4Z"
+            fill="#667085"
+            stroke="#667085"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        You
+      </span>
+    </div>
   </div>
-  <div class="options absolute space-y-5 w-full bg-white p-4 sm:p-6 pt-2">
+  <div class="options absolute space-y-5 w-full bg-white px-4 sm:px-6 pt-2 pb-4">
     <div class="flex gap-5 items-center justify-between">
       <div
         class="flex gap-2 sm:gap-4 sm:flex-nowrap flex-wrap items-center group-1"
