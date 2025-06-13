@@ -39,6 +39,7 @@ import { ViewCourseComponent } from './modules/authenticated/student/my-courses/
 import { EditProfileComponent } from './modules/authenticated/student/profile/edit-profile/edit-profile.component';
 import { AccountComponent } from './modules/authenticated/student/profile/account/account.component';
 import { NotificationsComponent } from './modules/authenticated/student/profile/notifications/notifications.component';
+import { NotificationsComponent as NotificationsTutorComponent } from './modules/authenticated/tutor/profile/notifications/notifications.component';
 import { SecurityComponent } from './modules/authenticated/student/profile/security/security.component';
 import { MainProfileComponent } from './modules/authenticated/student/profile/main-profile/main-profile.component';
 import { ChatSideComponent } from './modules/authenticated/student/messages/chat-side/chat-side.component';
@@ -49,6 +50,9 @@ import { StreaksComponent } from './modules/authenticated/student/achievements/s
 import { CourseVideoComponent } from './modules/authenticated/student/my-courses/view-course/course-video/course-video.component';
 import { WithdrawComponent } from './modules/authenticated/tutor/earnings/withdraw/withdraw.component';
 import { TransactionHistoryComponent } from './modules/authenticated/tutor/earnings/transaction-history/transaction-history.component';
+import { UserInformationComponent } from './modules/authenticated/tutor/profile/user-information/user-information.component';
+import { AccountsPaymentsComponent } from './modules/authenticated/tutor/profile/accounts-payments/accounts-payments.component';
+import { SocialsPasswordComponent } from './modules/authenticated/tutor/profile/socials-password/socials-password.component';
 // test
 export const routes: Routes = [
   // {
@@ -196,7 +200,28 @@ export const routes: Routes = [
               },
             ],
           },
-          { path: 'profile', component: ProfileComponentTutor },
+          {
+            path: 'profile',
+            component: ProfileComponentTutor,
+            children: [
+              {
+                path: '',
+                component: UserInformationComponent,
+              },
+              {
+                path: 'accounts-payments',
+                component: AccountsPaymentsComponent,
+              },
+              {
+                path: 'notifications',
+                component: NotificationsTutorComponent,
+              },
+              {
+                path: 'socials-passwords',
+                component: SocialsPasswordComponent,
+              },
+            ],
+          },
           {
             path: 'messages',
             component: MessagesComponentTutor,
