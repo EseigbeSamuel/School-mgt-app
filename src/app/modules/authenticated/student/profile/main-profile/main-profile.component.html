@@ -1,36 +1,5 @@
-<!-- former desktop view -->
-
-<!--edit pop up -->
-<section *ngIf="invisible">
-  <section
-    class="w-screen h-[91%] absolute top-[70px] left-0 flex justify-center items-center bg-black/30"
-  >
-    <div
-      class="flex-col flex items-center w-[500px] gap-3 p-[30px] bg-white rounded-lg border"
-    >
-      <h1 class="font-medium">Profile</h1>
-      <img src="" alt="" class="bg-gray-300 rounded-full size-10" />
-      <form class="w-full flex-col flex gap-3">
-        <app-input-ui label="Full Name" />
-        <app-input-ui label="Email" />
-        <app-input-ui label="Date of Birth" />
-        <app-intl-phone-input />
-        <app-drop-select label="Exam" />
-        <div class="flex gap-5 w-full justify-center items-center">
-          <app-button
-            variant="secondary"
-            label="Cancel"
-            (btnClick)="invisible = !invisible"
-          />
-          <app-button label="Save" />
-        </div>
-      </form>
-    </div>
-  </section>
-</section>
-
 <!-- mobile view -->
-<div class="flex flex-col gap-5 lg:hidden">
+<div class="flex flex-col gap-5 xl:hidden">
   <section
     class="bg-primary rounded-xl flex flex-col items-center p-5 text-white gap-3"
   >
@@ -158,10 +127,7 @@
         </div>
       </div>
 
-      <div
-        class="flex gap-4 items-center"
-        (click)="deleteAccount = !deleteAccount"
-      >
+      <div class="flex gap-4 items-center" (click)="openDeleteModal()">
         <img src="/assets/icons/delete.svg" alt="" />
         <div class="w-full flex justify-between items-center">
           <div>
@@ -233,54 +199,48 @@
 </div>
 
 <!-- delete acount pop up -->
-<section *ngIf="deleteAccount">
-  <section
-    class="w-screen h-[93%] absolute top-[70px] left-0 flex justify-center items-center bg-black/30"
-  >
-    <div class="rounded-lg bg-white flex-col flex items-center gap-3 p-3">
-      <p>Are sure you want to Delete your Account</p>
-      <div class="flex gap-5">
-        <app-button label="Yes" variant="danger" />
-        <app-button
-          label="No"
-          variant="primary"
-          (btnClick)="deleteAccount = !deleteAccount"
-        />
-      </div>
+<app-modal [show]="deleteModal" (close)="closeDeleteModal()" [custom]="true">
+  <div class="rounded-lg bg-white flex-col flex items-center gap-3 p-3">
+    <p>Are sure you want to Delete your Account</p>
+    <div class="flex gap-5">
+      <app-button label="Yes" variant="danger" />
+      <app-button label="No" variant="primary" (click)="closeDeleteModal()" />
     </div>
-  </section>
-</section>
+  </div>
+</app-modal>
 
 <!-- new desktop view -->
-<div class="hidden lg:grid">
+<div class="hidden xl:grid">
   <section>
-    <div
-      class="h-[150px] w-full bg-gradient-to-br from-primary from-20% to-[#EA8E39] to-80% flex justify-between"
-    >
-      <div class="flex pl-[40px] pt-[170px] gap-3 items-center">
-        <img src="" alt="" class="bg-gray-200 size-[160px] rounded-full" />
-        <div class="flex-col flex">
-          <h1 class="text-lg font-bold">Abiodun Adeleke</h1>
-          <p class="capitalize">WAEC Student</p>
-        </div>
+    <div class="w-full h-[160px] bg-[#F79E1B] overflow-hidden">
+      <div
+        class="text-white justify-center w-full h-full items-end flex-col flex p-10"
+      >
+        <h1 class="font-bold text-3xl">
+          Find the Perfect Tutor & Ace Your Exams!
+        </h1>
+        <p>
+          Personalized one-on-one lessons to boost your JAMB, WAEC, and NECO
+          scores.
+        </p>
       </div>
 
-      <div class="flex items-center justify-end text-white p-3">
-        <div class="">
-          <h1 class="text-3xl font-bold">
-            Find the Perfect Tutor & Ace <br />
-            Your Exams!
-          </h1>
-          <p class="text-xs">
-            Personalized one-on-one lessons to boost your JAMB, WAEC, and NECO
-            scores.
-          </p>
-        </div>
+      <div
+        class="w-[250px] h-[450px] bg-primary z-10 relative right-[50px] bottom-[400px] rotate-45"
+      ></div>
+    </div>
+    <div
+      class="flex gap-3 h-[20px] items-center top-[10px] left-[20px] relative z-10"
+    >
+      <img src="" alt="" class="bg-gray-300 size-[150px] rounded-full" />
+      <div>
+        <h1 class="text-lg font-bold">Abiodun Adeleke</h1>
+        <p class="capitalize">WAEC Student</p>
       </div>
     </div>
   </section>
 
-  <div class="flex gap-5 mt-4">
+  <div class="flex gap-5">
     <section class="grid gap-5 w-[70%] mt-[100px]">
       <div class="flex flex-col gap-5 border rounded-lg p-5">
         <h1 class="font-medium text-xl">Progress Summary</h1>
@@ -356,7 +316,7 @@
         <div class="flex justify-between items-center">
           <h1 class="font-medium text-xl">Details</h1>
           <div
-            (click)="invisible = !invisible"
+            (click)="openModal()"
             class="border rounded-2xl flex items-center gap-2 px-2 cursor-pointer"
           >
             <p>edit</p>
@@ -560,3 +520,24 @@
     </section>
   </div>
 </div>
+
+<!--edit pop up -->
+<app-modal [show]="showModal" (close)="closeModal()" [custom]="true">
+  <div
+    class="flex-col flex items-center w-[500px] gap-3 p-[30px] bg-white rounded-lg border"
+  >
+    <h1 class="font-medium">Profile</h1>
+    <img src="" alt="" class="bg-gray-300 rounded-full size-10" />
+    <form class="w-full flex-col flex gap-3">
+      <app-input-ui label="Full Name" />
+      <app-input-ui label="Email" />
+      <app-input-ui label="Date of Birth" />
+      <app-intl-phone-input />
+      <app-drop-select label="Exam" />
+      <div class="flex gap-5 w-full justify-center items-center">
+        <app-button variant="secondary" label="Cancel" (click)="closeModal()" />
+        <app-button label="Save" />
+      </div>
+    </form>
+  </div>
+</app-modal>

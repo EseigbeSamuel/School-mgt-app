@@ -1,1 +1,109 @@
-<p>streaks works!</p>
+<div class="bg-white lg:px-[100px] py-5 grid gap-10">
+  <section>
+    <h1 class="text-2xl lg:text-4xl font-bold text-center">
+      Consistency is key! Stay on track and <br />
+      boost your exam success
+    </h1>
+  </section>
+  <section class="flex justify-center text-center">
+    <div class="p-5 lg:p-10 border-r-2 border-[#161C2D] gap-3 grid">
+      <div class="flex">
+        <img src="/assets/icons/lightning.svg" alt="" />
+        <p class="text-3xl font-semibold">1</p>
+      </div>
+      <p class="text-subject-meta text-sm lg:text-base">App Streak</p>
+      <div class="flex gap-2">
+        <img src="/assets/icons/lightning.svg" alt="" />
+        <p class="text-3xl font-semibold">24</p>
+        <p class="text-subject-meta text-sm lg:text-base">Best</p>
+      </div>
+    </div>
+    <div class=""></div>
+    <div class="p-5 lg:p-10 gap-3 grid">
+      <div class="flex">
+        <img src="/assets/icons/water drop.svg" alt="" />
+        <p class="text-3xl font-semibold">0</p>
+      </div>
+      <p class="text-subject-meta text-sm lg:text-base">Daily Refresh Streak</p>
+      <div class="flex gap-2">
+        <img src="/assets/icons/water drop.svg" alt="" />
+        <p class="text-3xl font-semibold">15</p>
+        <p class="text-subject-meta text-sm lg:text-base">Best</p>
+      </div>
+    </div>
+  </section>
+  <section class="flex flex-col justify-self-center text-center">
+    <h1 class="font-bold text-xl">3 weeks in a row</h1>
+    <p class="text-subject-meta">21 Days on FlexyDemi this year</p>
+  </section>
+  <section>
+    <div
+      class="flex justify-between items-center text-sm font-medium text-gray-500"
+    >
+      <div *ngFor="let day of days" class="text-center w-10">
+        <div>{{ day }}</div>
+      </div>
+    </div>
+
+    <div class="flex justify-between items-center mt-2">
+      <div
+        *ngFor="let d of dates"
+        class="w-10 h-10 flex flex-col items-center justify-center relative"
+      >
+        <div
+          [ngClass]="{
+            'bg-indigo-900 text-white rounded-full w-6 h-6 flex items-center justify-center':
+              d.isToday,
+            'text-black font-semibold': !d.isToday
+          }"
+        >
+          {{ d.date }}
+        </div>
+        <div *ngIf="d.streak" class="size-3 rounded-full absolute top-0 left-4">
+          <svg
+            width="13"
+            height="14"
+            viewBox="0 0 13 14"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g clip-path="url(#clip0_388_4298)">
+              <rect
+                width="10"
+                height="10"
+                transform="translate(0.449219 3.3418) rotate(-13.8538)"
+                fill="white"
+              />
+              <path
+                d="M5.13455 4.1946C5.28277 3.69756 5.35703 3.4488 5.5315 3.37144C5.57699 3.35108 5.62577 3.33905 5.67552 3.33592C5.86595 3.32329 6.04736 3.509 6.40968 3.88012L7.36741 4.861C8.03672 5.54656 8.61639 6.31423 9.09255 7.14563C9.86649 8.4967 9.13231 10.2128 7.62012 10.5858L7.18078 10.6941C5.66899 11.067 4.22065 9.88908 4.27765 8.33308C4.31265 7.37562 4.46892 6.42645 4.74271 5.5083L5.13455 4.1946Z"
+                fill="#2C2A72"
+                stroke="#2C2A72"
+                stroke-width="0.8"
+              />
+              <path
+                d="M6.72632 9.60795C6.54822 9.6519 6.3606 9.63585 6.19256 9.56231C6.02451 9.48876 5.88543 9.36182 5.79688 9.20117"
+                fill="white"
+              />
+              <path
+                d="M6.72632 9.60795C6.54822 9.6519 6.3606 9.63585 6.19256 9.56231C6.02451 9.48876 5.88543 9.36182 5.79688 9.20117"
+                stroke="white"
+                stroke-width="0.8"
+                stroke-linecap="round"
+              />
+            </g>
+            <defs>
+              <clipPath id="clip0_388_4298">
+                <rect
+                  width="10"
+                  height="10"
+                  fill="white"
+                  transform="translate(0.449219 3.3418) rotate(-13.8538)"
+                />
+              </clipPath>
+            </defs>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
