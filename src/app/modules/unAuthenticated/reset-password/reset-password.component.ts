@@ -69,8 +69,8 @@ export class ResetPasswordComponent {
 
   handleNavigate(event: Event) {
     event.preventDefault();
-    this.router.navigate(['/auth/log-in']);
-    console.log('Button clicked!', event);
+    this.router.navigate(['/auth/confirm/profile-set-up']);
+    // console.log('Button clicked!', event);
   }
 
   get rules() {
