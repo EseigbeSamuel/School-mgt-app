@@ -29,8 +29,8 @@ import { MessagesComponent as MessagesComponentTutor } from './modules/authentic
 import { MessagesComponent } from './modules/authenticated/student/messages/messages.component';
 import { ProfileComponent } from './modules/authenticated/student/profile/profile.component';
 import { ProfileComponent as ProfileComponentTutor } from './modules/authenticated/tutor/profile/profile.component';
-import { QuizComponent } from './modules/authenticated/student/assessment-and-quizzes/quiz/quiz.component';
-import { AssessmentComponent } from './modules/authenticated/student/assessment-and-quizzes/assessment/assessment.component';
+// import { QuizComponent } from './modules/authenticated/student/assessment-and-quizzes/quiz/quiz.component';
+// import { AssessmentComponent } from './modules/authenticated/student/assessment-and-quizzes/assessment/assessment.component';
 import { TutorsComponent } from './modules/authenticated/student/personal-sessions/tutors/tutors.component';
 import { TutorsDescriptionComponent } from './modules/authenticated/student/personal-sessions/tutors-description/tutors-description.component';
 import { GetTutorsComponent } from './modules/authenticated/student/personal-sessions/get-tutors/get-tutors.component';
