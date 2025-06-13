@@ -13,12 +13,15 @@
     class="border-[1px] p-4 lg:py-4 py-8 gap-6 grid grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))] place-items-center"
   >
     <app-students-card
-      *ngFor="let student of students"
+      *ngFor="let student of students; trackBy: trackByStudent"
       [name]="student.name"
       [subjects]="student.subject"
       [type]="student.type"
       [image]="student.image"
-      [btnClick]="onStudentClick(student.id)"
+      [rating]="student.rating"
+      [studentId]="student.id"
+      (viewProfile)="onStudentClick($event)"
+      (ratingChange)="onRatingChange($event)"
     />
   </section>
   <app-modal [show]="showModal" (close)="closeModal()" />
