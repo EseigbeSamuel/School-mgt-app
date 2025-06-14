@@ -6,7 +6,7 @@ export type UserType = 'tutor' | 'student' | 'admin';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  currentUserType = signal<UserType | null>(null);
+  currentUserType = signal<UserType | null>("student");
 
   constructor(private router: Router) {
     const storedUserType = localStorage.getItem('userType');
