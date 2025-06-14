@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { MyCoursesComponent } from '../../student/my-courses/my-courses.component';
 import { MyCoursesComponentTutor } from '../../tutor/my-courses/my-courses.component';
 import { AdminCoursesComponent } from '../../admin/admin-courses/admin-courses.component';
 import { RouterOutlet } from '@angular/router';
+import { UserTypeService } from '../../../../services/user-type.service';
 
 @Component({
   selector: 'app-role-students',
@@ -28,9 +28,11 @@ import { RouterOutlet } from '@angular/router';
 export class RoleCoursesComponent implements OnInit {
   userRole: string | null = null;
 
-  constructor(private authService: AuthService) {}
+  constructor(private userTypeService: UserTypeService) {}
 
   ngOnInit() {
-    this.userRole = this.authService.getUserRole();
+    this.userTypeService.userType$.subscribe((role) => {
+      this.userRole = role;
+    });
   }
 }

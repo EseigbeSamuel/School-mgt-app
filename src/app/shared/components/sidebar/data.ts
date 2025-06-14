@@ -79,14 +79,14 @@ export const navItems = [
   {
     name: 'my-sessions',
     label: 'My sessions',
-    link: '/dashboard/my-sessions',
+    link: '/dashboard/sessions',
     icon: 'my-sessions',
     role: ['tutor'],
   },
   {
     name: 'my-courses',
     label: 'My Courses',
-    link: '/dashboard/my-courses',
+    link: '/dashboard/courses',
     icon: 'courses',
     role: ['tutor'],
   },

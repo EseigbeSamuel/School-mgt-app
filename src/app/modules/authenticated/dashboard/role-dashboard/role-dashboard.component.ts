@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { AdminDashboardComponent } from '../../admin/admin-dashboard/dashboard.component';
 import { StudentDashboardComponent } from '../../student/dashboard/dashboard.component';
-import { TutorDashboardComponent } from "../../tutor/dashboard/dashboard.component";
+import { TutorDashboardComponent } from '../../tutor/dashboard/dashboard.component';
+import { UserTypeService } from '../../../../services/user-type.service';
 
 @Component({
   selector: 'app-role-dashboard',
@@ -11,8 +11,8 @@ import { TutorDashboardComponent } from "../../tutor/dashboard/dashboard.compone
     CommonModule,
     AdminDashboardComponent,
     StudentDashboardComponent,
-    TutorDashboardComponent
-],
+    TutorDashboardComponent,
+  ],
   template: `
     <ng-container [ngSwitch]="userRole">
       <app-student-dashboard *ngSwitchCase="'student'"></app-student-dashboard>
@@ -25,9 +25,11 @@ import { TutorDashboardComponent } from "../../tutor/dashboard/dashboard.compone
 export class RoleDashboardComponent implements OnInit {
   userRole: string | null = null;
 
-  constructor(private authService: AuthService) {}
+  constructor(private userTypeService: UserTypeService) {}
 
   ngOnInit() {
-    this.userRole = this.authService.getUserRole();
+    this.userTypeService.userType$.subscribe((role) => {
+      this.userRole = role;
+    });
   }
 }

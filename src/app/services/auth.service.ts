@@ -6,11 +6,15 @@ export type UserType = 'tutor' | 'student' | 'admin';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  currentUserType = signal<UserType | null>("student");
+  currentUserType = signal<UserType | null>('student');
 
   constructor(private router: Router) {
-    const storedUserType = localStorage.getItem('userType');
-    if (storedUserType === 'tutor' || storedUserType === 'student') {
+    const storedUserType =
+      (localStorage.getItem('userType') as UserType) || null;
+    if (
+      storedUserType &&
+      ['tutor', 'student', 'admin'].includes(storedUserType)
+    ) {
       this.currentUserType.set(storedUserType);
     }
   }
@@ -25,15 +29,6 @@ export class AuthService {
     localStorage.removeItem('userType');
     this.currentUserType.set(null);
     this.router.navigate(['/auth/login']);
-  }
-
-  getUserRole() {
-    return this.currentUserType();
-  }
-
-  setUserRole(userType: UserType) {
-    localStorage.setItem('userType', userType);
-    this.currentUserType.set(userType);
   }
 
   isLoggedIn() {
