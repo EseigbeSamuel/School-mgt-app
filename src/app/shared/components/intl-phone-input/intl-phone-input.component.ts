@@ -1,17 +1,23 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, forwardRef } from '@angular/core';
 import {
+  ControlValueAccessor,
+  NG_VALUE_ACCESSOR,
+  NG_VALIDATORS,
+  Validator,
+  AbstractControl,
+  ValidationErrors,
   FormControl,
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { CountryISO, NgxIntlTelInputModule } from 'ngx-intl-tel-input';
-import { PhoneNumberFormat } from 'ngx-intl-tel-input';
-import { SearchCountryField } from 'ngx-intl-tel-input';
+import {
+  CountryISO,
+  NgxIntlTelInputModule,
+  PhoneNumberFormat,
+  SearchCountryField,
+} from 'ngx-intl-tel-input';
 import { SharedModule } from '../../shared.module';
 
 @Component({
@@ -25,8 +31,22 @@ import { SharedModule } from '../../shared.module';
     ReactiveFormsModule,
     NgxIntlTelInputModule,
   ],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => IntlPhoneInputComponent),
+      multi: true,
+    },
+    {
+      provide: NG_VALIDATORS,
+      useExisting: forwardRef(() => IntlPhoneInputComponent),
+      multi: true,
+    },
+  ],
 })
-export class IntlPhoneInputComponent {
+export class IntlPhoneInputComponent
+  implements ControlValueAccessor, Validator
+{
   separateDialCode = false;
   SearchCountryField = SearchCountryField;
   CountryISO = CountryISO;
@@ -35,20 +55,48 @@ export class IntlPhoneInputComponent {
     CountryISO.UnitedStates,
     CountryISO.UnitedKingdom,
   ];
+
   phoneForm = new FormGroup({
     phone: new FormControl(undefined, [Validators.required]),
   });
+
+  onChange = (_: any) => {};
+  onTouched = () => {};
+
+  writeValue(obj: any): void {
+    this.phoneForm.get('phone')?.setValue(obj);
+  }
+
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+    this.phoneForm.get('phone')?.valueChanges.subscribe(fn);
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    if (isDisabled) {
+      this.phoneForm.disable();
+    } else {
+      this.phoneForm.enable();
+    }
+  }
+
+  validate(control: AbstractControl): ValidationErrors | null {
+    return this.phoneForm.valid ? null : { invalidPhone: true };
+  }
+
   changePreferredCountries() {
     this.preferredCountries = [CountryISO.India, CountryISO.Canada];
   }
 
+  // Optional style helpers
   inputValue: string = '';
   isDisabled: boolean = false;
   touched: boolean = false;
   isFocused: boolean = false;
-
-  onChange: any = () => {};
-  onTouched: any = () => {};
 
   onInputBlur(event: FocusEvent): void {
     this.isFocused = false;
@@ -56,13 +104,12 @@ export class IntlPhoneInputComponent {
       this.touched = true;
       this.onTouched();
     }
-    // this.blur.emit(event);
   }
 
   onInputFocus(event: FocusEvent): void {
     this.isFocused = true;
-    // this.focus.emit(event);
   }
+
   variantClasses(): string {
     const baseClasses =
       'w-full rounded focus:outline-none transition duration-200 py-2 px-3 pl-12';
