@@ -9,7 +9,7 @@ import { CardUiDashboaredComponent } from '../../../../shared/components/card-ui
 import { TutorDashBoardComponentTable } from '../../../../shared/components/tables/tutor-dash-board/tutor-dash-board.component';
 import { Chart1Component } from '../../../../shared/components/charts/chart1/chart1.component';
 @Component({
-  selector: 'app-dashboard',
+  selector: 'app-tutor-dashboard',
   imports: [
     SharedModule,
     CardUiDashboaredComponent,

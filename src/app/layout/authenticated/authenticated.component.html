@@ -24,7 +24,7 @@
             type="button"
             class="block w-full px-3 py-1 text-left rounded hover:opacity-70"
             [class]="{ 'bg-primary text-white': userRole === 'tutor' }"
-            (click)="tutorView()"
+            (click)="setRole('tutor')"
           >
             Tutor
           </button>
@@ -32,7 +32,7 @@
             type="button"
             class="block w-full px-3 py-1 text-left rounded hover:opacity-70"
             [class]="{ 'bg-primary text-white': userRole === 'student' }"
-            (click)="studentView()"
+            (click)="setRole('student')"
           >
             Student
           </button>
@@ -40,7 +40,7 @@
             type="button"
             class="block w-full px-3 py-1 text-left rounded hover:opacity-70"
             [class]="{ 'bg-primary text-white': userRole === 'admin' }"
-            (click)="adminView()"
+            (click)="setRole('admin')"
           >
             Admin
           </button>
