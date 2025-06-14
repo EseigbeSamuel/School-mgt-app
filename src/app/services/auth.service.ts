@@ -2,7 +2,7 @@
 import { Injectable, signal } from '@angular/core';
 import { Router } from '@angular/router';
 
-type UserType = 'tutor' | 'student';
+export type UserType = 'tutor' | 'student' | 'admin';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -25,6 +25,15 @@ export class AuthService {
     localStorage.removeItem('userType');
     this.currentUserType.set(null);
     this.router.navigate(['/auth/login']);
+  }
+
+  getUserRole() {
+    return this.currentUserType();
+  }
+
+  setUserRole(userType: UserType) {
+    localStorage.setItem('userType', userType);
+    this.currentUserType.set(userType);
   }
 
   isLoggedIn() {

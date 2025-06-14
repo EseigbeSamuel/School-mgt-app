@@ -4,6 +4,7 @@ import { SidebarComponent } from '../../shared/components/sidebar/sidebar.compon
 import { DashNavbarComponent } from '../../shared/components/dash-navbar/dash-navbar.component';
 import { SharedModule } from '../../shared/shared.module';
 import { UserTypeService } from '../../services/user-type.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-authenticated',
@@ -12,40 +13,31 @@ import { UserTypeService } from '../../services/user-type.service';
   styleUrl: './authenticated.component.css',
 })
 export class AuthenticatedComponent {
+  showSwitcher = false;
+
+  userRole: string | null;
+
   constructor(
     private userTypeService: UserTypeService,
-    private router: Router
-  ) {}
-
-  showSwitcher = false;
+    private router: Router,
+    private authService: AuthService
+  ) {
+    this.userRole = this.authService.currentUserType();
+  }
 
   toggleSwitcher() {
     this.showSwitcher = !this.showSwitcher;
   }
 
   studentView() {
-    this.userTypeService.setUserType('student');
+    this.authService.setUserRole('student');
   }
 
   tutorView() {
-    this.userTypeService.setUserType('tutor');
+    this.authService.setUserRole('tutor');
   }
 
   adminView() {
-    this.userTypeService.setUserType('admin');
-  }
-
-  ngOnInit(): void {
-    this.userTypeService.userType$.subscribe((type) => {
-      if (type === 'student') {
-        this.router.navigate(['/student']);
-      } else if (type === 'tutor') {
-        this.router.navigate(['/tutor']);
-      } else if (type === 'admin') {
-        this.router.navigate(['/admin']);
-      } else {
-        this.router.navigate(['/auth/log-in']);
-      }
-    });
+    this.authService.setUserRole('admin');
   }
 }

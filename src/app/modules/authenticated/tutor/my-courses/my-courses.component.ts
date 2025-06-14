@@ -8,7 +8,7 @@ import {
 } from '../../../../shared/components/sort-dropdown/sort-dropdown.component';
 
 @Component({
-  selector: 'app-my-courses',
+  selector: 'app-my-courses-tutor',
   imports: [CommonModule, SharedModule, SortDropdownComponent],
   templateUrl: './my-courses.component.html',
   styleUrl: './my-courses.component.css',
