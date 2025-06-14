@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { ProfileComponent } from '../../student/profile/profile.component';
 import { TutorProfileComponent } from '../../tutor/profile/profile.component';
@@ -11,6 +10,7 @@ import { EditProfileComponent } from '../../student/profile/edit-profile/edit-pr
 import { AccountComponent } from '../../student/profile/account/account.component';
 import { NotificationsComponent } from '../../student/profile/notifications/notifications.component';
 import { SecurityComponent } from '../../student/profile/security/security.component';
+import { UserTypeService } from '../../../../services/user-type.service';
 
 // Role Profile Component
 @Component({
@@ -35,10 +35,12 @@ import { SecurityComponent } from '../../student/profile/security/security.compo
 export class RoleProfileComponent implements OnInit {
   userRole: string | null = null;
 
-  constructor(private authService: AuthService) {}
+  constructor(private userTypeService: UserTypeService) {}
 
   ngOnInit() {
-    this.userRole = this.authService.getUserRole();
+    this.userTypeService.userType$.subscribe((role) => {
+      this.userRole = role;
+    });
   }
 }
 
@@ -58,10 +60,12 @@ export class RoleProfileComponent implements OnInit {
 export class RoleMainProfileComponent implements OnInit {
   userRole: string | null = null;
 
-  constructor(private authService: AuthService) {}
+  constructor(private userTypeService: UserTypeService) {}
 
   ngOnInit() {
-    this.userRole = this.authService.getUserRole();
+    this.userTypeService.userType$.subscribe((role) => {
+      this.userRole = role;
+    });
   }
 }
 
@@ -81,10 +85,12 @@ export class RoleMainProfileComponent implements OnInit {
 export class RoleEditProfileComponent implements OnInit {
   userRole: string | null = null;
 
-  constructor(private authService: AuthService) {}
+  constructor(private userTypeService: UserTypeService) {}
 
   ngOnInit() {
-    this.userRole = this.authService.getUserRole();
+    this.userTypeService.userType$.subscribe((role) => {
+      this.userRole = role;
+    });
   }
 }
 
@@ -104,10 +110,12 @@ export class RoleEditProfileComponent implements OnInit {
 export class RoleAccountComponent implements OnInit {
   userRole: string | null = null;
 
-  constructor(private authService: AuthService) {}
+  constructor(private userTypeService: UserTypeService) {}
 
   ngOnInit() {
-    this.userRole = this.authService.getUserRole();
+    this.userTypeService.userType$.subscribe((role) => {
+      this.userRole = role;
+    });
   }
 }
 
@@ -129,10 +137,12 @@ export class RoleAccountComponent implements OnInit {
 export class RoleNotificationsComponent implements OnInit {
   userRole: string | null = null;
 
-  constructor(private authService: AuthService) {}
+  constructor(private userTypeService: UserTypeService) {}
 
   ngOnInit() {
-    this.userRole = this.authService.getUserRole();
+    this.userTypeService.userType$.subscribe((role) => {
+      this.userRole = role;
+    });
   }
 }
 
@@ -152,9 +162,11 @@ export class RoleNotificationsComponent implements OnInit {
 export class RoleSecurityComponent implements OnInit {
   userRole: string | null = null;
 
-  constructor(private authService: AuthService) {}
+  constructor(private userTypeService: UserTypeService) {}
 
   ngOnInit() {
-    this.userRole = this.authService.getUserRole();
+    this.userTypeService.userType$.subscribe((role) => {
+      this.userRole = role;
+    });
   }
 }

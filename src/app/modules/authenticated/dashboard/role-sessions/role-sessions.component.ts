@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { MySessionsComponent } from '../../tutor/my-sessions/my-sessions.component';
 import { AdminSessionsComponent } from '../../admin/admin-sessions/admin-sessions.component';
+import { UserTypeService } from '../../../../services/user-type.service';
 
 @Component({
   selector: 'app-role-sessions',
@@ -18,9 +18,11 @@ import { AdminSessionsComponent } from '../../admin/admin-sessions/admin-session
 export class RoleSessionsComponent implements OnInit {
   userRole: string | null = null;
 
-  constructor(private authService: AuthService) {}
+  constructor(private userTypeService: UserTypeService) {}
 
   ngOnInit() {
-    this.userRole = this.authService.getUserRole();
+    this.userTypeService.userType$.subscribe((role) => {
+      this.userRole = role;
+    });
   }
 }

@@ -3,7 +3,8 @@ import { RouterModule } from '@angular/router';
 import { SidebarComponent } from '../../shared/components/sidebar/sidebar.component';
 import { DashNavbarComponent } from '../../shared/components/dash-navbar/dash-navbar.component';
 import { SharedModule } from '../../shared/shared.module';
-import { AuthService, UserType } from '../../services/auth.service';
+import { UserTypeService } from '../../services/user-type.service';
+import { UserType } from '../../services/auth.service';
 
 @Component({
   selector: 'app-authenticated',
@@ -12,20 +13,22 @@ import { AuthService, UserType } from '../../services/auth.service';
   styleUrl: './authenticated.component.css',
 })
 export class AuthenticatedComponent implements OnInit {
-  userRole: string | null = null;
+  userRole: string | null = 'student';
   showSwitcher = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(private userTypeService: UserTypeService) {}
 
   toggleSwitcher() {
     this.showSwitcher = !this.showSwitcher;
   }
 
   setRole(role: UserType) {
-    this.authService.setUserRole(role);
+    this.userTypeService.setUserType(role);
   }
 
   ngOnInit() {
-    this.userRole = this.authService.getUserRole();
+    this.userTypeService.userType$.subscribe((role) => {
+      this.userRole = role;
+    });
   }
 }

@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../../services/auth.service';
 import { MessagesComponent } from '../../student/messages/messages.component';
 import { AdminMessagesComponent } from '../../admin/admin-messages/admin-messages.component';
 import { TutorMessagesComponent } from '../../tutor/messages/messages.component';
 import { RouterOutlet } from '@angular/router';
+import { UserTypeService } from '../../../../services/user-type.service';
 
 @Component({
   selector: 'app-role-messages',
@@ -28,9 +28,11 @@ import { RouterOutlet } from '@angular/router';
 export class RoleMessagesComponent implements OnInit {
   userRole: string | null = null;
 
-  constructor(private authService: AuthService) {}
+  constructor(private userTypeService: UserTypeService) {}
 
   ngOnInit() {
-    this.userRole = this.authService.getUserRole();
+    this.userTypeService.userType$.subscribe((role) => {
+      this.userRole = role;
+    });
   }
 }
