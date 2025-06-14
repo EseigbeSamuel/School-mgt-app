@@ -54,6 +54,14 @@ import { UserInformationComponent } from './modules/authenticated/tutor/profile/
 import { AccountsPaymentsComponent } from './modules/authenticated/tutor/profile/accounts-payments/accounts-payments.component';
 import { SocialsPasswordComponent } from './modules/authenticated/tutor/profile/socials-password/socials-password.component';
 import { AdminDashboardComponent } from './modules/authenticated/admin/dashboard/dashboard.component';
+import { AdminTutorsComponent } from './modules/authenticated/admin/admin-tutors/admin-tutors.component';
+import { AdminStudentsComponent } from './modules/authenticated/admin/admin-students/admin-students.component';
+import { AdminSessionsComponent } from './modules/authenticated/admin/admin-sessions/admin-sessions.component';
+import { AdminCoursesComponent } from './modules/authenticated/admin/admin-courses/admin-courses.component';
+import { AdminProfileComponent } from './modules/authenticated/admin/admin-profile/admin-profile.component';
+import { AdminMessagesComponent } from './modules/authenticated/admin/admin-messages/admin-messages.component';
+import { AdminSettingsComponent } from './modules/authenticated/admin/admin-settings/admin-settings.component';
+import { AdminPaymentsComponent } from './modules/authenticated/admin/admin-payments/admin-payments.component';
 // test
 export const routes: Routes = [
   // {
@@ -248,35 +256,35 @@ export const routes: Routes = [
           },
           {
             path: 'tutors',
-            component: AdminDashboardComponent,
+            component: AdminTutorsComponent,
           },
           {
             path: 'students',
-            component: AdminDashboardComponent,
+            component: AdminStudentsComponent,
           },
           {
             path: 'sessions',
-            component: AdminDashboardComponent,
+            component: AdminSessionsComponent,
           },
           {
             path: 'courses',
-            component: AdminDashboardComponent,
+            component: AdminCoursesComponent,
           },
           {
             path: 'payments',
-            component: AdminDashboardComponent,
+            component: AdminPaymentsComponent,
           },
           {
             path: 'profile',
-            component: AdminDashboardComponent,
+            component: AdminProfileComponent,
           },
           {
             path: 'messages',
-            component: AdminDashboardComponent,
+            component: AdminMessagesComponent,
           },
           {
             path: 'settings',
-            component: AdminDashboardComponent,
+            component: AdminSettingsComponent,
           },
         ],
       },
