@@ -53,6 +53,7 @@ import { TransactionHistoryComponent } from './modules/authenticated/tutor/earni
 import { UserInformationComponent } from './modules/authenticated/tutor/profile/user-information/user-information.component';
 import { AccountsPaymentsComponent } from './modules/authenticated/tutor/profile/accounts-payments/accounts-payments.component';
 import { SocialsPasswordComponent } from './modules/authenticated/tutor/profile/socials-password/socials-password.component';
+import { AdminDashboardComponent } from './modules/authenticated/admin/dashboard/dashboard.component';
 // test
 export const routes: Routes = [
   // {
@@ -234,6 +235,48 @@ export const routes: Routes = [
               { path: '', component: ChatSidebarComponent },
               { path: 'friends/:id', component: ChatSideComponent },
             ],
+          },
+        ],
+      },
+      {
+        path: 'admin',
+        component: RouteEntryComponent,
+        children: [
+          {
+            path: '',
+            component: AdminDashboardComponent,
+          },
+          {
+            path: 'tutors',
+            component: AdminDashboardComponent,
+          },
+          {
+            path: 'students',
+            component: AdminDashboardComponent,
+          },
+          {
+            path: 'sessions',
+            component: AdminDashboardComponent,
+          },
+          {
+            path: 'courses',
+            component: AdminDashboardComponent,
+          },
+          {
+            path: 'payments',
+            component: AdminDashboardComponent,
+          },
+          {
+            path: 'profile',
+            component: AdminDashboardComponent,
+          },
+          {
+            path: 'messages',
+            component: AdminDashboardComponent,
+          },
+          {
+            path: 'settings',
+            component: AdminDashboardComponent,
           },
         ],
       },
