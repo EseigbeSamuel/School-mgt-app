@@ -1,0 +1,12 @@
+.no-underline {
+  text-decoration: none;
+}
+
+.transition-colors {
+  transition-property: color, border-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.duration-200 {
+  transition-duration: 200ms;
+}
