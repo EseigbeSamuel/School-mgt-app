@@ -1,0 +1,59 @@
+<div class="border-b border-[#E9E9E9] flex gap-6 items-center">
+  <a
+    routerLink="/tutor/profile"
+    class="text-xs max-[450px]:text-xs sm:text-[16px] font-[600] pb-1 py-4 text-gray-400 hover:text-primary transition-colors w-fit text-center duration-200"
+    routerLinkActive="text-primary border-b-2 border-primary"
+    [routerLinkActiveOptions]="{
+      paths: 'exact',
+      fragment: 'exact',
+      matrixParams: 'exact',
+      queryParams: 'ignored'
+    }"
+  >
+    Profile
+  </a>
+
+  <a
+    routerLink="/tutor/profile/accounts-payments"
+    class="text-xs max-[450px]:text-xs sm:text-[16px] font-[600] pb-1 py-4 text-gray-400 hover:text-primary transition-colors w-fit text-center duration-200"
+    routerLinkActive="text-primary border-b-2 border-primary"
+    [routerLinkActiveOptions]="{
+      paths: 'exact',
+      fragment: 'exact',
+      matrixParams: 'exact',
+      queryParams: 'ignored'
+    }"
+  >
+    Accounts and Payments
+  </a>
+
+  <a
+    routerLink="/tutor/profile/notifications"
+    class="text-xs max-[450px]:text-xs sm:text-[16px] font-[600] pb-1 py-4 text-gray-400 hover:text-primary transition-colors w-fit text-center duration-200"
+    routerLinkActive="text-primary border-b-2 border-primary"
+    [routerLinkActiveOptions]="{
+      paths: 'exact',
+      fragment: 'exact',
+      matrixParams: 'exact',
+      queryParams: 'ignored'
+    }"
+  >
+    Notifications
+  </a>
+
+  <a
+    routerLink="/tutor/profile/socials-passwords"
+    class="text-xs max-[450px]:text-xs sm:text-[16px] font-[600] pb-1 py-4 text-gray-400 hover:text-primary transition-colors w-fit text-center duration-200"
+    routerLinkActive="text-primary border-b-2 border-primary"
+    [routerLinkActiveOptions]="{
+      paths: 'exact',
+      fragment: 'exact',
+      matrixParams: 'exact',
+      queryParams: 'ignored'
+    }"
+  >
+    Socials and Passwords
+  </a>
+</div>
+<br />
+<router-outlet> </router-outlet>

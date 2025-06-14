@@ -106,9 +106,9 @@ export const navItems = [
   },
   {
     name: 'one-on-one',
-    label: 'One on one',
+    label: 'Live Sessions',
     link: '/tutor/one-on-one',
-    icon: 'one-on-one',
+    icon: 'book-open',
     role: ['tutor'],
   },
   {
@@ -119,10 +119,71 @@ export const navItems = [
     role: ['tutor'],
   },
   {
-    name: 'messaging',
-    label: 'Messaging',
-    link: '/tutor/messaging',
-    icon: 'messaging',
+    name: 'messages',
+    label: 'Messages',
+    link: '/tutor/messages',
+    icon: 'messages',
     role: ['tutor'],
+  },
+
+  // admin section
+
+  {
+    name: 'dashboard',
+    label: 'Home',
+    link: '/admin',
+    icon: 'home',
+    role: ['admin'],
+  },
+  {
+    name: 'tutors',
+    label: 'Tutors',
+    link: '/admin/tutors',
+    icon: 'courses',
+    role: ['admin'],
+  },
+  {
+    name: 'students',
+    label: 'Students',
+    link: '/admin/students',
+    icon: 's-note',
+    role: ['admin'],
+  },
+
+  {
+    name: 'sessions',
+    label: 'Sessions',
+    link: '/admin/sessions',
+    icon: 'students',
+    role: ['admin'],
+  },
+  {
+    name: 'courses',
+    label: 'Courses',
+    link: '/admin/courses',
+    icon: 'resources',
+    role: ['admin'],
+  },
+  {
+    name: 'payments',
+    label: 'Payments',
+    link: '/admin/payments',
+    icon: 'wallet',
+    role: ['admin'],
+  },
+  {
+    name: 'profile',
+    label: 'Profile',
+    link: '/admin/profile',
+    icon: 'profile',
+    role: ['admin'],
+    mobile: 'Profile',
+  },
+  {
+    name: 'messages',
+    label: 'Messages',
+    link: '/admin/messages',
+    icon: 'messages',
+    role: ['admin'],
   },
 ];

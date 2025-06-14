@@ -25,9 +25,11 @@ import { AchievementsComponent } from './modules/authenticated/student/achieveme
 import { ResourcesComponent } from './modules/authenticated/tutor/resources/resources.component';
 import { OneOnOneComponent } from './modules/authenticated/tutor/one-on-one/one-on-one.component';
 import { EarningsComponent } from './modules/authenticated/tutor/earnings/earnings.component';
-import { MessagingComponent } from './modules/authenticated/tutor/messaging/messaging.component';
+import { MessagesComponent as MessagesComponentTutor } from './modules/authenticated/tutor/messages/messages.component';
 import { MessagesComponent } from './modules/authenticated/student/messages/messages.component';
 import { ProfileComponent } from './modules/authenticated/student/profile/profile.component';
+import { ProfileComponent as ProfileComponentTutor } from './modules/authenticated/tutor/profile/profile.component';
+
 import { TutorsComponent } from './modules/authenticated/student/personal-sessions/tutors/tutors.component';
 import { TutorsDescriptionComponent } from './modules/authenticated/student/personal-sessions/tutors-description/tutors-description.component';
 import { GetTutorsComponent } from './modules/authenticated/student/personal-sessions/get-tutors/get-tutors.component';
@@ -36,6 +38,7 @@ import { ViewCourseComponent } from './modules/authenticated/student/my-courses/
 import { EditProfileComponent } from './modules/authenticated/student/profile/edit-profile/edit-profile.component';
 import { AccountComponent } from './modules/authenticated/student/profile/account/account.component';
 import { NotificationsComponent } from './modules/authenticated/student/profile/notifications/notifications.component';
+import { NotificationsComponent as NotificationsTutorComponent } from './modules/authenticated/tutor/profile/notifications/notifications.component';
 import { SecurityComponent } from './modules/authenticated/student/profile/security/security.component';
 import { MainProfileComponent } from './modules/authenticated/student/profile/main-profile/main-profile.component';
 import { ChatSideComponent } from './modules/authenticated/student/messages/chat-side/chat-side.component';
@@ -44,6 +47,20 @@ import { ReferalComponent } from './modules/authenticated/student/achievements/r
 import { LeaderboardComponent } from './modules/authenticated/student/achievements/leaderboard/leaderboard.component';
 import { StreaksComponent } from './modules/authenticated/student/achievements/streaks/streaks.component';
 import { CourseVideoComponent } from './modules/authenticated/student/my-courses/view-course/course-video/course-video.component';
+import { WithdrawComponent } from './modules/authenticated/tutor/earnings/withdraw/withdraw.component';
+import { TransactionHistoryComponent } from './modules/authenticated/tutor/earnings/transaction-history/transaction-history.component';
+import { UserInformationComponent } from './modules/authenticated/tutor/profile/user-information/user-information.component';
+import { AccountsPaymentsComponent } from './modules/authenticated/tutor/profile/accounts-payments/accounts-payments.component';
+import { SocialsPasswordComponent } from './modules/authenticated/tutor/profile/socials-password/socials-password.component';
+import { AdminDashboardComponent } from './modules/authenticated/admin/dashboard/dashboard.component';
+import { AdminTutorsComponent } from './modules/authenticated/admin/admin-tutors/admin-tutors.component';
+import { AdminStudentsComponent } from './modules/authenticated/admin/admin-students/admin-students.component';
+import { AdminSessionsComponent } from './modules/authenticated/admin/admin-sessions/admin-sessions.component';
+import { AdminCoursesComponent } from './modules/authenticated/admin/admin-courses/admin-courses.component';
+import { AdminProfileComponent } from './modules/authenticated/admin/admin-profile/admin-profile.component';
+import { AdminMessagesComponent } from './modules/authenticated/admin/admin-messages/admin-messages.component';
+import { AdminSettingsComponent } from './modules/authenticated/admin/admin-settings/admin-settings.component';
+import { AdminPaymentsComponent } from './modules/authenticated/admin/admin-payments/admin-payments.component';
 // test
 export const routes: Routes = [
   // {
@@ -177,8 +194,92 @@ export const routes: Routes = [
           { path: 'students', component: StudentsComponent },
           { path: 'resources', component: ResourcesComponent },
           { path: 'one-on-one', component: OneOnOneComponent },
-          { path: 'earnings', component: EarningsComponent },
-          { path: 'messaging', component: MessagingComponent },
+          {
+            path: 'earnings',
+            component: EarningsComponent,
+            children: [
+              {
+                path: '',
+                component: TransactionHistoryComponent,
+              },
+              {
+                path: 'withdraw',
+                component: WithdrawComponent,
+              },
+            ],
+          },
+          {
+            path: 'profile',
+            component: ProfileComponentTutor,
+            children: [
+              {
+                path: '',
+                component: UserInformationComponent,
+              },
+              {
+                path: 'accounts-payments',
+                component: AccountsPaymentsComponent,
+              },
+              {
+                path: 'notifications',
+                component: NotificationsTutorComponent,
+              },
+              {
+                path: 'socials-passwords',
+                component: SocialsPasswordComponent,
+              },
+            ],
+          },
+          {
+            path: 'messages',
+            component: MessagesComponentTutor,
+            children: [
+              { path: '', component: ChatSidebarComponent },
+              { path: 'friends/:id', component: ChatSideComponent },
+            ],
+          },
+        ],
+      },
+      {
+        path: 'admin',
+        component: RouteEntryComponent,
+        children: [
+          {
+            path: '',
+            component: AdminDashboardComponent,
+          },
+          {
+            path: 'tutors',
+            component: AdminTutorsComponent,
+          },
+          {
+            path: 'students',
+            component: AdminStudentsComponent,
+          },
+          {
+            path: 'sessions',
+            component: AdminSessionsComponent,
+          },
+          {
+            path: 'courses',
+            component: AdminCoursesComponent,
+          },
+          {
+            path: 'payments',
+            component: AdminPaymentsComponent,
+          },
+          {
+            path: 'profile',
+            component: AdminProfileComponent,
+          },
+          {
+            path: 'messages',
+            component: AdminMessagesComponent,
+          },
+          {
+            path: 'settings',
+            component: AdminSettingsComponent,
+          },
         ],
       },
     ],
