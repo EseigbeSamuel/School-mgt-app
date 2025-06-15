@@ -28,7 +28,7 @@ export class InputUiComponent implements ControlValueAccessor {
   @Input() type: string = 'text';
   @Input() required: boolean = false;
   @Input() disabled: boolean = false;
-  @Input() errorMessage: string = '';
+  @Input() showError: any;
   @Input() helperText: string = '';
   @Input() maxLength: number | null = null;
   @Input() minLength: number | null = null;
@@ -112,9 +112,9 @@ export class InputUiComponent implements ControlValueAccessor {
     this.iconRightClick.emit(event);
   }
 
-  get showErrorMessage(): boolean {
-    return this.touched && !!this.errorMessage;
-  }
+  // get showErrorMessage(): boolean {
+  //   return this.touched;
+  // }
 
   get inputSizeClasses(): string {
     switch (this.size) {
@@ -145,11 +145,17 @@ export class InputUiComponent implements ControlValueAccessor {
 
     switch (this.variant) {
       case 'filled':
-        return `${baseClasses} ${focusClasses} bg-gray-100 border border-[#2C2A724D] focus:bg-white focus:ring-[#2C2A724D] focus:border-[#2C2A724D]`;
+        return `${baseClasses} ${focusClasses} bg-gray-100 border border-[#2C2A724D] focus:bg-white focus:ring-[#2C2A724D] focus:border-[#2C2A724D] ${
+          this.showError ? 'border-2 border-red-500' : ''
+        }`;
       case 'underlined':
-        return `${baseClasses} ${focusClasses} bg-transparent border-b rounded-none focus:ring-0 border-[#2C2A724D] focus:border-[#2C2A724D]`;
+        return `${baseClasses} ${focusClasses} bg-transparent border-b rounded-none focus:ring-0 border-[#2C2A724D] focus:border-[#2C2A724D] ${
+          this.showError ? ' border-2 border-red-500' : ''
+        }`;
       default: // outline
-        return `${baseClasses} ${focusClasses} w-full bg-transparent  border border-[#2C2A724D] focus:ring-[#2C2A724D] focus:border-[#2C2A724D]`;
+        return `${baseClasses} ${focusClasses} w-full bg-transparent  border border-[#2C2A724D] focus:ring-[#2C2A724D] focus:border-[#2C2A724D] ${
+          this.showError ? 'border-2 border-red-500' : ''
+        }`;
     }
   }
 

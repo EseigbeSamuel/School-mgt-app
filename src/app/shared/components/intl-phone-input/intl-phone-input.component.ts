@@ -1,4 +1,4 @@
-import { Component, forwardRef } from '@angular/core';
+import { Component, forwardRef, Input } from '@angular/core';
 import {
   ControlValueAccessor,
   NG_VALUE_ACCESSOR,
@@ -47,6 +47,7 @@ import { SharedModule } from '../../shared.module';
 export class IntlPhoneInputComponent
   implements ControlValueAccessor, Validator
 {
+  @Input() showError: any;
   separateDialCode = false;
   SearchCountryField = SearchCountryField;
   CountryISO = CountryISO;
@@ -115,6 +116,8 @@ export class IntlPhoneInputComponent
       'w-full rounded focus:outline-none transition duration-200 py-2 px-3 pl-12';
     const focusClasses = this.isFocused ? 'ring-2 ' : '';
 
-    return `${baseClasses} ${focusClasses} bg-transparent border border-[#2C2A724D] focus:ring-[#2C2A724D] focus:border-[#2C2A724D]`;
+    return `${baseClasses} ${focusClasses} bg-transparent border border-[#2C2A724D] focus:ring-[#2C2A724D] focus:border-[#2C2A724D] ${
+      this.showError ? ' border-2 border-red-500' : ''
+    }`;
   }
 }

@@ -44,7 +44,17 @@ export class SignUpComponent {
     dob: ['', Validators.required],
   });
 
-  private signupMutation = this.query.createMutation<any, any>(
+  // Option 1: Use a getter (recommended)
+  get buttonDisabled(): boolean {
+    return this.form.invalid;
+  }
+
+  // Option 2: Alternative - use Observable (if you prefer reactive approach)
+  // buttonDisabled$ = this.form.statusChanges.pipe(
+  //   map(status => status === 'INVALID')
+  // );
+
+  private signupMutation = this.query.createMutation(
     `${this.apiUrl}/auth/signup`,
     {
       onSuccess: (data) => {
@@ -71,7 +81,7 @@ export class SignUpComponent {
     console.log('Form Data:', formData);
 
     // Use mutation instead of direct query
-    // this.signupMutation.mutate(formData);
+    this.signupMutation.mutate(formData);
   }
 
   signIn() {
