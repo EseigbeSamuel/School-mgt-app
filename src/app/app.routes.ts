@@ -15,7 +15,6 @@ import { DashboardEntryComponent } from './modules/authenticated/dashboard-entry
 import { RouteEntryComponent } from './modules/authenticated/route-entry/route-entry.component';
 import { AssessmentAndQuizzesComponent } from './modules/authenticated/student/assessment-and-quizzes/assessment-and-quizzes.component';
 import { MockExamsComponent } from './modules/authenticated/student/mock-exams/mock-exams.component';
-import { StudentsComponent } from './modules/authenticated/tutor/students/students.component';
 import { PersonalSessionsComponent } from './modules/authenticated/student/personal-sessions/personal-sessions.component';
 import { AchievementsComponent } from './modules/authenticated/student/achievements/achievements.component';
 import { ResourcesComponent } from './modules/authenticated/tutor/resources/resources.component';
@@ -25,14 +24,8 @@ import { AssessmentComponent } from './modules/authenticated/student/assessment-
 import { TutorsComponent } from './modules/authenticated/student/personal-sessions/tutors/tutors.component';
 import { TutorsDescriptionComponent } from './modules/authenticated/student/personal-sessions/tutors-description/tutors-description.component';
 import { GetTutorsComponent } from './modules/authenticated/student/personal-sessions/get-tutors/get-tutors.component';
-import { MyCoursesComponentTutor } from './modules/authenticated/tutor/my-courses/my-courses.component';
 import { ViewCourseComponent } from './modules/authenticated/student/my-courses/view-course/view-course.component';
-import { EditProfileComponent } from './modules/authenticated/student/profile/edit-profile/edit-profile.component';
-import { AccountComponent } from './modules/authenticated/student/profile/account/account.component';
-import { NotificationsComponent } from './modules/authenticated/student/profile/notifications/notifications.component';
-import { NotificationsComponent as NotificationsTutorComponent } from './modules/authenticated/tutor/profile/notifications/notifications.component';
-import { SecurityComponent } from './modules/authenticated/student/profile/security/security.component';
-import { MainProfileComponent } from './modules/authenticated/student/profile/main-profile/main-profile.component';
+
 import { ChatSideComponent } from './modules/authenticated/student/messages/chat-side/chat-side.component';
 import { ChatSidebarComponent } from './modules/authenticated/student/messages/chat-sidebar/chat-sidebar.component';
 import { ReferalComponent } from './modules/authenticated/student/achievements/referal/referal.component';
@@ -41,16 +34,9 @@ import { StreaksComponent } from './modules/authenticated/student/achievements/s
 import { CourseVideoComponent } from './modules/authenticated/student/my-courses/view-course/course-video/course-video.component';
 import { WithdrawComponent } from './modules/authenticated/tutor/earnings/withdraw/withdraw.component';
 import { TransactionHistoryComponent } from './modules/authenticated/tutor/earnings/transaction-history/transaction-history.component';
-import { UserInformationComponent } from './modules/authenticated/tutor/profile/user-information/user-information.component';
 import { AccountsPaymentsComponent } from './modules/authenticated/tutor/profile/accounts-payments/accounts-payments.component';
 import { SocialsPasswordComponent } from './modules/authenticated/tutor/profile/socials-password/socials-password.component';
-import { AdminDashboardComponent } from './modules/authenticated/admin/admin-dashboard/dashboard.component';
-import { AdminTutorsComponent } from './modules/authenticated/admin/admin-tutors/admin-tutors.component';
-import { AdminStudentsComponent } from './modules/authenticated/admin/admin-students/admin-students.component';
-import { AdminSessionsComponent } from './modules/authenticated/admin/admin-sessions/admin-sessions.component';
-import { AdminCoursesComponent } from './modules/authenticated/admin/admin-courses/admin-courses.component';
-import { AdminProfileComponent } from './modules/authenticated/admin/admin-profile/admin-profile.component';
-import { AdminMessagesComponent } from './modules/authenticated/admin/admin-messages/admin-messages.component';
+
 import { AdminSettingsComponent } from './modules/authenticated/admin/admin-settings/admin-settings.component';
 import { AdminPaymentsComponent } from './modules/authenticated/admin/admin-payments/admin-payments.component';
 import { RoleGuard } from './guard/role-guard';

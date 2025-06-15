@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ProfileComponent } from '../../student/profile/profile.component';
 import { TutorProfileComponent } from '../../tutor/profile/profile.component';
 import { AdminProfileComponent } from '../../admin/admin-profile/admin-profile.component';
-import { RouterOutlet } from '@angular/router';
 import { MainProfileComponent } from '../../student/profile/main-profile/main-profile.component';
 import { UserInformationComponent } from '../../tutor/profile/user-information/user-information.component';
 import { EditProfileComponent } from '../../student/profile/edit-profile/edit-profile.component';
@@ -20,7 +19,6 @@ import { UserTypeService } from '../../../../services/user-type.service';
     ProfileComponent,
     TutorProfileComponent,
     AdminProfileComponent,
-    RouterOutlet,
   ],
   template: `
     <ng-container [ngSwitch]="userRole">
@@ -29,7 +27,6 @@ import { UserTypeService } from '../../../../services/user-type.service';
       <app-admin-profile *ngSwitchCase="'admin'"></app-admin-profile>
       <div *ngSwitchDefault>Access denied</div>
     </ng-container>
-    <router-outlet></router-outlet>
   `,
 })
 export class RoleProfileComponent implements OnInit {
