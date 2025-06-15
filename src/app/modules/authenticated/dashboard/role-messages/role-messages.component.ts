@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { MessagesComponent } from '../../student/messages/messages.component';
 import { AdminMessagesComponent } from '../../admin/admin-messages/admin-messages.component';
 import { TutorMessagesComponent } from '../../tutor/messages/messages.component';
-import { RouterOutlet } from '@angular/router';
 import { UserTypeService } from '../../../../services/user-type.service';
 
 @Component({
@@ -13,7 +12,6 @@ import { UserTypeService } from '../../../../services/user-type.service';
     MessagesComponent,
     AdminMessagesComponent,
     TutorMessagesComponent,
-    RouterOutlet,
   ],
   template: `
     <ng-container [ngSwitch]="userRole">
@@ -22,7 +20,6 @@ import { UserTypeService } from '../../../../services/user-type.service';
       <app-admin-messages *ngSwitchCase="'admin'"></app-admin-messages>
       <div *ngSwitchDefault>Access denied</div>
     </ng-container>
-    <router-outlet></router-outlet>
   `,
 })
 export class RoleMessagesComponent implements OnInit {
