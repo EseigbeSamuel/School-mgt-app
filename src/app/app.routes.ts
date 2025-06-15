@@ -55,6 +55,7 @@ import { RoleMessagesComponent } from './modules/authenticated/dashboard/role-me
 import { RoleDashboardComponent } from './modules/authenticated/dashboard/role-dashboard/role-dashboard.component';
 import { RoleCoursesComponent } from './modules/authenticated/dashboard/role-courses/role-courses.component';
 import { EarningsComponent } from './modules/authenticated/tutor/earnings/earnings.component';
+import { IndexComponent } from './modules/index/index.component';
 // test
 export const routes: Routes = [
   // {
@@ -109,199 +110,196 @@ export const routes: Routes = [
   },
   {
     path: '',
+    component: IndexComponent,
+  },
+  {
+    path: 'dashboard',
     component: AuthenticatedComponent,
     children: [
-      { path: '', component: DashboardEntryComponent },
+      // Main dashboard - shows different component based on role
       {
-        path: 'dashboard',
-        component: RouteEntryComponent,
+        path: '',
+        component: RoleDashboardComponent, // This loads the right dashboard component
+      },
+
+      // Courses route - shows different component based on role
+      {
+        path: 'courses',
+        component: RoleCoursesComponent, // This loads the right courses component
         children: [
-          // Main dashboard - shows different component based on role
+          // Student-only children
           {
-            path: '',
-            component: RoleDashboardComponent, // This loads the right dashboard component
-          },
-
-          // Courses route - shows different component based on role
-          {
-            path: 'courses',
-            component: RoleCoursesComponent, // This loads the right courses component
-            children: [
-              // Student-only children
-              {
-                path: 'view-course/:id',
-                component: ViewCourseComponent,
-                canActivate: [RoleGuard],
-                data: { roles: ['student'] },
-              },
-              {
-                path: 'view-course/:id/lesson/:id',
-                component: CourseVideoComponent,
-                canActivate: [RoleGuard],
-                data: { roles: ['student'] },
-              },
-            ],
-          },
-
-          // Students route - only tutors and admins see this
-          {
-            path: 'students',
-            component: RoleStudentsComponent,
-            canActivate: [RoleGuard],
-            data: { roles: ['tutor', 'admin'] },
-          },
-
-          // Sessions route - only tutors and admins
-          {
-            path: 'sessions',
-            component: RoleSessionsComponent,
-            canActivate: [RoleGuard],
-            data: { roles: ['tutor', 'admin'] },
-          },
-
-          // Tutors route - students and admins see this
-          {
-            path: 'tutors',
-            component: RoleTutorsComponent,
-            canActivate: [RoleGuard],
-            data: { roles: ['student', 'admin'] },
-            children: [
-              {
-                path: ':id',
-                component: TutorsDescriptionComponent,
-                canActivate: [RoleGuard],
-                data: { roles: ['student'] },
-              },
-            ],
-          },
-
-          // Profile route - everyone has this but different components
-          {
-            path: 'profile',
-            component: RoleProfileComponent,
-            children: [
-              { path: '', component: RoleMainProfileComponent },
-              {
-                path: 'edit-profile',
-                component: RoleEditProfileComponent,
-              },
-              { path: 'account', component: RoleAccountComponent },
-              {
-                path: 'notification',
-                component: RoleNotificationsComponent,
-              },
-              { path: 'security', component: RoleSecurityComponent },
-              // Tutor-specific routes
-              {
-                path: 'accounts-payments',
-                component: AccountsPaymentsComponent,
-                canActivate: [RoleGuard],
-                data: { roles: ['tutor'] },
-              },
-              {
-                path: 'socials-passwords',
-                component: SocialsPasswordComponent,
-                canActivate: [RoleGuard],
-                data: { roles: ['tutor'] },
-              },
-            ],
-          },
-
-          // Messages route - everyone has this
-          {
-            path: 'messages',
-            component: RoleMessagesComponent,
-            children: [
-              { path: '', component: ChatSidebarComponent },
-              { path: 'friends/:id', component: ChatSideComponent },
-            ],
-          },
-
-          // Student-only routes
-          {
-            path: 'assessments',
-            component: AssessmentAndQuizzesComponent,
-            canActivate: [RoleGuard],
-            data: { roles: ['student'] },
-            children: [
-              { path: '', component: QuizComponent },
-              { path: 'quiz', component: QuizComponent },
-              { path: 'assessment', component: AssessmentComponent },
-            ],
-          },
-
-          {
-            path: 'mock-exams',
-            component: MockExamsComponent,
+            path: 'view-course/:id',
+            component: ViewCourseComponent,
             canActivate: [RoleGuard],
             data: { roles: ['student'] },
           },
-
           {
-            path: 'personal-sessions',
-            component: PersonalSessionsComponent,
+            path: 'view-course/:id/lesson/:id',
+            component: CourseVideoComponent,
             canActivate: [RoleGuard],
             data: { roles: ['student'] },
-            children: [
-              { path: '', component: GetTutorsComponent },
-              { path: 'tutors', component: TutorsComponent },
-            ],
-          },
-
-          {
-            path: 'achievements',
-            component: AchievementsComponent,
-            canActivate: [RoleGuard],
-            data: { roles: ['student'] },
-            children: [
-              { path: '', component: ReferalComponent },
-              { path: 'referal', component: ReferalComponent },
-              { path: 'leaderboard', component: LeaderboardComponent },
-              { path: 'streaks', component: StreaksComponent },
-            ],
-          },
-
-          // Tutor-only routes
-          {
-            path: 'resources',
-            component: ResourcesComponent,
-            canActivate: [RoleGuard],
-            data: { roles: ['tutor'] },
-          },
-
-          {
-            path: 'one-on-one',
-            component: OneOnOneComponent,
-            canActivate: [RoleGuard],
-            data: { roles: ['tutor'] },
-          },
-
-          {
-            path: 'earnings',
-            component: EarningsComponent,
-            canActivate: [RoleGuard],
-            data: { roles: ['tutor'] },
-            children: [
-              { path: '', component: TransactionHistoryComponent },
-              { path: 'withdraw', component: WithdrawComponent },
-            ],
-          },
-
-          // Admin-only routes
-          {
-            path: 'payments',
-            component: AdminPaymentsComponent,
-            canActivate: [RoleGuard],
-            data: { roles: ['admin'] },
-          },
-
-          {
-            path: 'settings',
-            component: AdminSettingsComponent,
-            canActivate: [RoleGuard],
-            data: { roles: ['admin'] },
           },
         ],
+      },
+
+      // Students route - only tutors and admins see this
+      {
+        path: 'students',
+        component: RoleStudentsComponent,
+        canActivate: [RoleGuard],
+        data: { roles: ['tutor', 'admin'] },
+      },
+
+      // Sessions route - only tutors and admins
+      {
+        path: 'sessions',
+        component: RoleSessionsComponent,
+        canActivate: [RoleGuard],
+        data: { roles: ['tutor', 'admin'] },
+      },
+
+      // Tutors route - students and admins see this
+      {
+        path: 'tutors',
+        component: RoleTutorsComponent,
+        canActivate: [RoleGuard],
+        data: { roles: ['student', 'admin'] },
+        children: [
+          {
+            path: ':id',
+            component: TutorsDescriptionComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['student'] },
+          },
+        ],
+      },
+
+      // Profile route - everyone has this but different components
+      {
+        path: 'profile',
+        component: RoleProfileComponent,
+        children: [
+          { path: '', component: RoleMainProfileComponent },
+          {
+            path: 'edit-profile',
+            component: RoleEditProfileComponent,
+          },
+          { path: 'account', component: RoleAccountComponent },
+          {
+            path: 'notification',
+            component: RoleNotificationsComponent,
+          },
+          { path: 'security', component: RoleSecurityComponent },
+          // Tutor-specific routes
+          {
+            path: 'accounts-payments',
+            component: AccountsPaymentsComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['tutor'] },
+          },
+          {
+            path: 'socials-passwords',
+            component: SocialsPasswordComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['tutor'] },
+          },
+        ],
+      },
+
+      // Messages route - everyone has this
+      {
+        path: 'messages',
+        component: RoleMessagesComponent,
+        children: [
+          { path: '', component: ChatSidebarComponent },
+          { path: 'friends/:id', component: ChatSideComponent },
+        ],
+      },
+
+      // Student-only routes
+      {
+        path: 'assessments',
+        component: AssessmentAndQuizzesComponent,
+        canActivate: [RoleGuard],
+        data: { roles: ['student'] },
+        children: [
+          { path: '', component: QuizComponent },
+          { path: 'quiz', component: QuizComponent },
+          { path: 'assessment', component: AssessmentComponent },
+        ],
+      },
+
+      {
+        path: 'mock-exams',
+        component: MockExamsComponent,
+        canActivate: [RoleGuard],
+        data: { roles: ['student'] },
+      },
+
+      {
+        path: 'personal-sessions',
+        component: PersonalSessionsComponent,
+        canActivate: [RoleGuard],
+        data: { roles: ['student'] },
+        children: [
+          { path: '', component: GetTutorsComponent },
+          { path: 'tutors', component: TutorsComponent },
+        ],
+      },
+
+      {
+        path: 'achievements',
+        component: AchievementsComponent,
+        canActivate: [RoleGuard],
+        data: { roles: ['student'] },
+        children: [
+          { path: '', component: ReferalComponent },
+          { path: 'referal', component: ReferalComponent },
+          { path: 'leaderboard', component: LeaderboardComponent },
+          { path: 'streaks', component: StreaksComponent },
+        ],
+      },
+
+      // Tutor-only routes
+      {
+        path: 'resources',
+        component: ResourcesComponent,
+        canActivate: [RoleGuard],
+        data: { roles: ['tutor'] },
+      },
+
+      {
+        path: 'one-on-one',
+        component: OneOnOneComponent,
+        canActivate: [RoleGuard],
+        data: { roles: ['tutor'] },
+      },
+
+      {
+        path: 'earnings',
+        component: EarningsComponent,
+        canActivate: [RoleGuard],
+        data: { roles: ['tutor'] },
+        children: [
+          { path: '', component: TransactionHistoryComponent },
+          { path: 'withdraw', component: WithdrawComponent },
+        ],
+      },
+
+      // Admin-only routes
+      {
+        path: 'payments',
+        component: AdminPaymentsComponent,
+        canActivate: [RoleGuard],
+        data: { roles: ['admin'] },
+      },
+
+      {
+        path: 'settings',
+        component: AdminSettingsComponent,
+        canActivate: [RoleGuard],
+        data: { roles: ['admin'] },
       },
     ],
   },
