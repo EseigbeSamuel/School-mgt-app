@@ -16,7 +16,6 @@ export class IndexComponent implements OnInit {
       const userType = localStorage.getItem('userType');
 
       if (userType) {
-        console.log('User Type:', userType);
         this.router.navigate(['/dashboard']);
       } else {
         this.router.navigate(['/auth']);
