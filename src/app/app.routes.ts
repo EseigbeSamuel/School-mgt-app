@@ -19,6 +19,8 @@ import { PersonalSessionsComponent } from './modules/authenticated/student/perso
 import { AchievementsComponent } from './modules/authenticated/student/achievements/achievements.component';
 import { ResourcesComponent } from './modules/authenticated/tutor/resources/resources.component';
 import { OneOnOneComponent } from './modules/authenticated/tutor/one-on-one/one-on-one.component';
+// import { QuizComponent } from './modules/authenticated/student/assessment-and-quizzes/quiz/quiz.component';
+// import { AssessmentComponent } from './modules/authenticated/student/assessment-and-quizzes/assessment/assessment.component';
 import { TutorsComponent } from './modules/authenticated/student/personal-sessions/tutors/tutors.component';
 import { TutorsDescriptionComponent } from './modules/authenticated/student/personal-sessions/tutors-description/tutors-description.component';
 import { GetTutorsComponent } from './modules/authenticated/student/personal-sessions/get-tutors/get-tutors.component';
@@ -221,6 +223,11 @@ export const routes: Routes = [
         component: AssessmentAndQuizzesComponent,
         canActivate: [RoleGuard],
         data: { roles: ['student'] },
+        // children: [
+        //   { path: '', component: QuizComponent },
+        //   { path: 'quiz', component: QuizComponent },
+        //   { path: 'assessment', component: AssessmentComponent },
+        // ],
       },
 
       {
