@@ -1,7 +1,7 @@
 <!-- desktop view -->
 <div class="flex gap-5">
   <section
-    class="border rounded-lg p-5 bg-white flex-col flex gap-5 w-full h-full lg:w-[35%]"
+    class="border rounded-lg p-5 bg-white flex-col flex gap-5 w-full h-[90vh] xl:w-[45%]"
   >
     <div class="flex justify-between items-center">
       <h1 class="font-semibold text-xl">Message</h1>
@@ -18,10 +18,10 @@
       />
     </div>
 
-    <div class="h-[450px] flex-col flex gap-3 overflow-y-scroll">
+    <div class="xl:h-full flex-col flex gap-3 overflow-y-scroll">
       <div
         *ngFor="let friends of friends"
-        class="flex w-full justify-between cursor-pointer"
+        class="flex w-full h-[100px] justify-between cursor-pointer hover:bg-[#EBEAFC] px-3 pt-3 items-center"
         (click)="onSelectFriends(friends)"
       >
         <div class="flex gap-3">
@@ -50,7 +50,7 @@
     </div>
   </section>
 
-  <section class="hidden lg:flex">
+  <section class="hidden xl:flex">
     <app-chat-side />
   </section>
 </div>

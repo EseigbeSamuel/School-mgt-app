@@ -4,6 +4,7 @@ import { NgClass, NgFor, NgIf } from '@angular/common';
 import { InputUiComponent } from '../../../../../shared/components/input-ui/input-ui.component';
 import { IntlPhoneInputComponent } from '../../../../../shared/components/intl-phone-input/intl-phone-input.component';
 import { RouterLink } from '@angular/router';
+import { ModalComponent } from '../../../../../shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-main-profile',
@@ -15,6 +16,7 @@ import { RouterLink } from '@angular/router';
     IntlPhoneInputComponent,
     NgIf,
     RouterLink,
+    ModalComponent,
   ],
   templateUrl: './main-profile.component.html',
   styleUrl: './main-profile.component.css',
@@ -135,6 +137,23 @@ export class MainProfileComponent {
     }
   }
 
+  openModal() {
+    this.showModal = true;
+  }
+
+  closeModal() {
+    this.showModal = false;
+  }
+
+  openDeleteModal() {
+    this.deleteModal = true;
+  }
+
+  closeDeleteModal() {
+    this.deleteModal = false;
+  }
+  showModal = false;
+  deleteModal = false;
   invisible = false;
   deleteAccount = false;
 }
