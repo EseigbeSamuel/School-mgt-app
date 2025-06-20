@@ -6,7 +6,7 @@ import { Router, RouterModule } from '@angular/router';
 import { UserTypeService } from '../../../services/user-type.service';
 import { SidebarService } from '../../../services/sidebar.service'; // Add this import
 import { navItems as NAV_LINKS } from './data';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
 import { SvgIcons } from '../../../utils/icons';
 
 @Component({

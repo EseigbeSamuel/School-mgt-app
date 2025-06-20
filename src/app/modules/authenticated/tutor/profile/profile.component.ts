@@ -7,4 +7,4 @@ import { RouterModule, RouterOutlet } from '@angular/router';
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css',
 })
-export class ProfileComponent {}
+export class TutorProfileComponent {}
