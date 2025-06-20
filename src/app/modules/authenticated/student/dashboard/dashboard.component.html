@@ -52,12 +52,12 @@
     <ng-container class="mt-4 table-box">
       <div *ngIf="activeTab === 'category'">
         <div class="table-container">
-          <app-student-dashboard [data]="examBoardData" />
+          <app-student-dashboard-table [data]="examBoardData" />
         </div>
       </div>
       <div *ngIf="activeTab === 'lessons'">
         <div class="overflow-x-auto">
-          <app-student-dashboard [variant]="'progress'" [data]="progressData" />
+          <app-student-dashboard-table [variant]="'progress'" [data]="progressData" />
         </div>
       </div>
 

@@ -39,7 +39,7 @@
     <ul class="flex flex-col gap-3 w-full">
       <li *ngIf="userType !== 'tutor'">
         <a
-          [routerLink]="`/${userType}/settings`"
+          [routerLink]="`/dashboard/settings`"
           (click)="sidebarService.toggle()"
           routerLinkActive="bg-[#2C2A72] text-white active"
           [routerLinkActiveOptions]="{
@@ -81,7 +81,7 @@
       </li>
       <li *ngIf="userType === 'tutor'">
         <a
-          routerLink="/tutor/profile"
+          routerLink="/dashboard/profile"
           (click)="sidebarService.toggle()"
           routerLinkActive="bg-[#2C2A72] text-white active"
           [routerLinkActiveOptions]="{

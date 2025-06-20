@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { SidebarComponent } from '../../shared/components/sidebar/sidebar.component';
 import { DashNavbarComponent } from '../../shared/components/dash-navbar/dash-navbar.component';
 import { SharedModule } from '../../shared/shared.module';
 import { UserTypeService } from '../../services/user-type.service';
+import { UserType } from '../../services/auth.service';
 
 @Component({
   selector: 'app-authenticated',
@@ -11,41 +12,23 @@ import { UserTypeService } from '../../services/user-type.service';
   templateUrl: './authenticated.component.html',
   styleUrl: './authenticated.component.css',
 })
-export class AuthenticatedComponent {
-  constructor(
-    private userTypeService: UserTypeService,
-    private router: Router
-  ) {}
-
+export class AuthenticatedComponent implements OnInit {
+  userRole: string | null = 'student';
   showSwitcher = false;
+
+  constructor(private userTypeService: UserTypeService) {}
 
   toggleSwitcher() {
     this.showSwitcher = !this.showSwitcher;
   }
 
-  studentView() {
-    this.userTypeService.setUserType('student');
+  setRole(role: UserType) {
+    this.userTypeService.setUserType(role);
   }
 
-  tutorView() {
-    this.userTypeService.setUserType('tutor');
-  }
-
-  adminView() {
-    this.userTypeService.setUserType('admin');
-  }
-
-  ngOnInit(): void {
-    this.userTypeService.userType$.subscribe((type) => {
-      if (type === 'student') {
-        this.router.navigate(['/student']);
-      } else if (type === 'tutor') {
-        this.router.navigate(['/tutor']);
-      } else if (type === 'admin') {
-        this.router.navigate(['/admin']);
-      } else {
-        this.router.navigate(['/auth/log-in']);
-      }
+  ngOnInit() {
+    this.userTypeService.userType$.subscribe((role) => {
+      this.userRole = role;
     });
   }
 }

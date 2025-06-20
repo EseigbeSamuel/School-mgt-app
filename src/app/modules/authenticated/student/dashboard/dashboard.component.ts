@@ -13,7 +13,7 @@ import { Chart2Component } from '../../../../shared/components/charts/chart2/cha
 import { PiechartComponent } from '../../../../shared/components/charts/piechart/piechart.component';
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'app-student-dashboard',
   imports: [
     CardUiDashboaredComponent,
     CommonModule,
