@@ -223,11 +223,11 @@ export const routes: Routes = [
         component: AssessmentAndQuizzesComponent,
         canActivate: [RoleGuard],
         data: { roles: ['student'] },
-        children: [
-          { path: '', component: QuizComponent },
-          { path: 'quiz', component: QuizComponent },
-          { path: 'assessment', component: AssessmentComponent },
-        ],
+        // children: [
+        //   { path: '', component: QuizComponent },
+        //   { path: 'quiz', component: QuizComponent },
+        //   { path: 'assessment', component: AssessmentComponent },
+        // ],
       },
 
       {
