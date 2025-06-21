@@ -56,6 +56,11 @@ import { RoleDashboardComponent } from './modules/authenticated/dashboard/role-d
 import { RoleCoursesComponent } from './modules/authenticated/dashboard/role-courses/role-courses.component';
 import { EarningsComponent } from './modules/authenticated/tutor/earnings/earnings.component';
 import { IndexComponent } from './modules/index/index.component';
+import { StudentsProfileComponent } from './modules/authenticated/tutor/students/students-profile/students-profile.component';
+import { StudentDashboardComponent } from './modules/authenticated/student/dashboard/dashboard.component';
+import { StudentsListComponent } from './modules/authenticated/tutor/students/students-list/students-list.component';
+import { AddResourcesComponent } from './modules/authenticated/tutor/resources/add-resources/add-resources.component';
+import { ResourcesListComponent } from './modules/authenticated/tutor/resources/resources-list/resources-list.component';
 // test
 export const routes: Routes = [
   // {
@@ -149,6 +154,10 @@ export const routes: Routes = [
         component: RoleStudentsComponent,
         canActivate: [RoleGuard],
         data: { roles: ['tutor', 'admin'] },
+        children: [
+          { path: '', component: StudentsListComponent },
+          { path: 'student/:id ', component: StudentsProfileComponent },
+        ],
       },
 
       // Sessions route - only tutors and admins
@@ -244,7 +253,8 @@ export const routes: Routes = [
         data: { roles: ['student'] },
         children: [
           { path: '', component: GetTutorsComponent },
-          { path: 'tutors', component: TutorsComponent },
+          { path: 'tutoring', component: TutorsComponent },
+          { path: 'tutoring/:id', component: TutorsDescriptionComponent },
         ],
       },
 
@@ -267,6 +277,10 @@ export const routes: Routes = [
         component: ResourcesComponent,
         canActivate: [RoleGuard],
         data: { roles: ['tutor'] },
+        children: [
+          { path: '', component: ResourcesListComponent },
+          { path: 'add-resources', component: AddResourcesComponent },
+        ],
       },
 
       {

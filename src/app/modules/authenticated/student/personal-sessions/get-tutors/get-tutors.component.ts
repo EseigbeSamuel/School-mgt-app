@@ -15,7 +15,7 @@ export class GetTutorsComponent {
 
   handleNavigate(event: Event) {
     event.preventDefault();
-    this.router.navigate(['/student/personal-sessions/tutors']);
+    this.router.navigate(['/dashboard/personal-sessions/tutoring']);
     console.log('Button clicked!', event);
   }
 }

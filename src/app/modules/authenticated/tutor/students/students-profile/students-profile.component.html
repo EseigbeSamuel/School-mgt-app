@@ -1,0 +1,92 @@
+<div (click)="goBack()" class="mb-5 flex items-center cursor-pointer">
+  <img src="/assets/icons/dropdown.svg" alt="" class="rotate-90" />
+  <h1 class="text-subject-primary hover:text-primary">Back</h1>
+</div>
+
+<div *ngIf="student" class="grid gap-[70px]">
+  <section>
+    <div class="w-full h-[160px] bg-[#F79E1B] overflow-hidden">
+      <div
+        class="text-white justify-center w-full h-full items-end flex-col flex p-10"
+      >
+        <h1 class="font-bold text-3xl">
+          Find the Perfect Tutor & Ace Your Exams!
+        </h1>
+        <p>
+          Personalized one-on-one lessons to boost your JAMB, WAEC, and NECO
+          scores.
+        </p>
+      </div>
+
+      <div
+        class="w-[250px] h-[450px] bg-primary z-10 relative right-[50px] bottom-[400px] rotate-45"
+      ></div>
+    </div>
+    <div
+      class="flex gap-3 h-[20px] items-center top-[10px] left-[20px] relative z-10"
+    >
+      <img src="" alt="" class="bg-gray-300 size-[150px] rounded-full" />
+      <div>
+        <h1 class="text-lg font-bold">{{ student.name }}</h1>
+        <p class="capitalize">WAEC Student</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="flex justify-between items-center mb-5">
+      <h1 class="font-semibold text-xl">Details</h1>
+    </div>
+    <div class="p-5 gap-5 flex flex-col border rounded-lg">
+      <div class="grid grid-cols-2 gap-5">
+        <div>
+          <h3 class="text-xs text-[#667085]">Email</h3>
+          <p>Abiodunadeleke23&#64;gmail.com</p>
+        </div>
+        <div>
+          <h3 class="text-xs text-[#667085]">Phone Number</h3>
+          <p>08149648842</p>
+        </div>
+        <div>
+          <h3 class="text-xs text-[#667085]">Address</h3>
+          <p>Ibadan, Nigeria</p>
+        </div>
+        <div>
+          <h3 class="text-xs text-[#667085]">Date of Birth</h3>
+          <p>27 August 2020</p>
+        </div>
+      </div>
+      <div>
+        <h3 class="text-xs text-[#667085]">Bio</h3>
+        <p>
+          Adebusola is a dedicated student preparing for JAMB, striving for
+          academic excellence. Passionate about Biology and is committed to
+          mastering key concepts and improving her performance through
+          consistent study and practice.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="grid gap-5">
+    <div class="flex justify-between items-center">
+      <h1 class="font-semibold text-xl">Classes</h1>
+    </div>
+    <div class="p-5 gap-5 flex justify-between border rounded-lg">
+      <div>
+        <h1 class="font-semibold">BIOLOGY</h1>
+        <p class="text-subject-meta">JAMB/IJMBE CATEGORY</p>
+      </div>
+      <div>
+        <h1 class="font-semibold">02/06/2024</h1>
+        <p class="text-subject-meta">11:30 am</p>
+      </div>
+    </div>
+    <div class="flex gap-5">
+      <div>
+        <app-button label="Accept" routerLink="/dashboard/one-on-one" />
+      </div>
+      <div><app-button label="Decline" variant="danger" /></div>
+    </div>
+  </section>
+</div>

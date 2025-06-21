@@ -1,0 +1,69 @@
+<div class="flex flex-col gap-3">
+  <section class="flex w-full justify-end">
+    <div class="flex justify-end mb-1">
+      <app-sort-dropdown
+        [customOptions]="customSortOptions"
+        [defaultSort]="'name'"
+        [allowDirectionToggle]="true"
+        (selectionChange)="onSortChange($event)"
+      />
+    </div>
+  </section>
+  <!-- <section
+    class="border-[1px] p-4 lg:py-4 py-8 gap-6 grid grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))] place-items-center"
+  >
+    <app-students-card
+      *ngFor="let student of students"
+      [name]="student.name"
+      [subjects]="student.subject"
+      [type]="student.type"
+      [image]="student.image"
+    />
+  </section> -->
+
+  <section
+    class="border-[1px] p-4 lg:py-4 py-8 gap-6 grid grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))] place-items-center"
+  >
+    <div
+      *ngFor="let student of students"
+      class="w-[330px] flex flex-col gap-4 border border-t-0"
+    >
+      <div class="h-[200px]">
+        <img
+          [src]="student.image"
+          alt="{{ student.name }}"
+          class="w-full h-full object-fill"
+        />
+      </div>
+      <div class="flex flex-col justify-center gap-2 items-center p-3">
+        <div class="flex flex-col gap-2">
+          <h1 class="capitalize font-semibold text-center text-xl">
+            {{ student.name }}
+          </h1>
+          <h2 class="uppercase font-light text-gray-500">{{ student.type }}</h2>
+          <div class="flex justify-center">
+            <img src="../../../../../assets/icons/Star Filled.svg" alt="" />
+            <img src="../../../../../assets/icons/Star Filled.svg" alt="" />
+            <img src="../../../../../assets/icons/Star Filled.svg" alt="" />
+            <img src="../../../../../assets/icons/Star Filled.svg" alt="" />
+            <img src="../../../../../assets/icons/Star Filled.svg" alt="" />
+          </div>
+        </div>
+        <div class="size-[1px] bg-gray-100 w-full"></div>
+        <div class="flex flex-col">
+          <p class="capitalize text-blue-500 font-semibold">
+            {{ student.subject }}
+          </p>
+        </div>
+        <div class="w-full">
+          <app-button
+            variant="primary"
+            label="View Profile"
+            size="sm"
+            (click)="onSelectStudent(student)"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
