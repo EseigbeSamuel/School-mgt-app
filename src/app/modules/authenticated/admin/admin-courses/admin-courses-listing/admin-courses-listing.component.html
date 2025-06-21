@@ -4,7 +4,7 @@
 
     <div class="flex gap-3 gap-x-4 items-center">
       <a
-        [routerLink]="`/dashboard/courses/course-upload`"
+        [routerLink]="`/dashboard/courses/upload-material`"
         type="button"
         class="flex gap-2 items-center justify-center bg-gray-100 text-black rounded-lg px-5 py-2 text-sm"
       >
@@ -23,8 +23,9 @@
 
         <span>Upload Material</span>
       </a>
-      <!-- TODO: Make the button activate the form to create course -->
-      <button
+
+      <a
+        [routerLink]="`/dashboard/courses/add-course`"
         type="button"
         class="flex gap-1 items-center justify-center bg-primary text-white rounded-lg px-4 py-2 text-sm"
       >
@@ -46,7 +47,7 @@
         </svg>
 
         <span>Add Course</span>
-      </button>
+      </a>
     </div>
   </div>
 
