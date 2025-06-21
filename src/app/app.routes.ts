@@ -58,6 +58,7 @@ import { EarningsComponent } from './modules/authenticated/tutor/earnings/earnin
 import { IndexComponent } from './modules/index/index.component';
 import { AdminAddTutorComponent } from './modules/authenticated/admin/admin-tutors/admin-add-tutor/admin-add-tutor.component';
 import { AdminAddStudentComponent } from './modules/authenticated/admin/admin-students/admin-add-student/admin-add-student.component';
+import { AdminSessionCalenderComponent } from './modules/authenticated/admin/admin-sessions/admin-session-calender/admin-session-calender.component';
 // test
 export const routes: Routes = [
   // {
@@ -127,8 +128,14 @@ export const routes: Routes = [
       // Courses route - shows different component based on role
       {
         path: 'courses',
-        component: RoleCoursesComponent, // This loads the right courses component
+        component: RouteEntryComponent, // This loads the right courses component
         children: [
+          {
+            path: '',
+            component: RoleCoursesComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['student', 'admin', 'tutor'] },
+          },
           // Student-only children
           {
             path: 'view-course/:id',
@@ -170,9 +177,23 @@ export const routes: Routes = [
       // Sessions route - only tutors and admins
       {
         path: 'sessions',
-        component: RoleSessionsComponent,
+        component: RouteEntryComponent,
         canActivate: [RoleGuard],
         data: { roles: ['tutor', 'admin'] },
+        children: [
+          {
+            path: '',
+            component: RoleSessionsComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['tutor', 'admin'] },
+          },
+          {
+            path: 'calender',
+            component: AdminSessionCalenderComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['admin'] },
+          },
+        ],
       },
 
       // Tutors route - students and admins see this
