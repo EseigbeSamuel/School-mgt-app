@@ -7,7 +7,7 @@ import {
 } from '../../../../../shared/components/paginator/paginator.component';
 import { AdminCoursesTableComponent } from '../../../../../shared/components/tables/admin-courses-table/admin-courses-table.component';
 
-type TabType = 'all' | 'materials' | 'assessments';
+type TabType = 'courses' | 'materials' | 'assessments';
 type ActiveTabType = 'assessments' | 'mock-exams' | 'quiz' | 'flashcards';
 
 @Component({
@@ -23,7 +23,7 @@ type ActiveTabType = 'assessments' | 'mock-exams' | 'quiz' | 'flashcards';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdminCoursesListingComponent {
-  tab: TabType = 'all';
+  tab: TabType = 'courses';
   activeTab: ActiveTabType = 'assessments';
 
   flashData: Array<any> = [

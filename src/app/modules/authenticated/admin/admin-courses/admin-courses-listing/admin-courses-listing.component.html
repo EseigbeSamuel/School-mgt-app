@@ -1,4 +1,4 @@
-<div class="space-y-8">
+<div class="space-y-5">
   <div class="flex justify-between gap-4 flex-wrap items-center">
     <h1 class="text-3xl font-medium">Courses & Contents</h1>
 
@@ -56,8 +56,8 @@
   >
     <button
       class="px-4 py-2 text-center rounded-md select-none transition-colors"
-      [class]="tab == 'all' ? 'bg-white' : ''"
-      (click)="changeTab('all')"
+      [class]="tab == 'courses' ? 'bg-white' : ''"
+      (click)="changeTab('courses')"
     >
       Courses
     </button>
@@ -76,21 +76,111 @@
       Assessments & Flashcards
     </button>
   </div>
-
+  <br />
   <div
     class="search relative w-full max-w-md rounded-sm overflow-hidden h-12 border border-gray-200"
   >
-    <div
-      class="search-icon absolute left-4 inset-y-1/2 -translate-1/2 border border-gray-200"
-    ></div>
+    <div class="search-icon absolute left-3 top-1/2 -translate-y-1/2">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M13.7847 15.1991C10.6462 17.6416 6.10654 17.4205 3.22181 14.5358C0.0976136 11.4116 0.0976136 6.34625 3.22181 3.22205C6.346 0.0978578 11.4113 0.0978578 14.5355 3.22205C17.4202 6.10677 17.6414 10.6464 15.1989 13.7849L19.4853 18.0713C19.8758 18.4618 19.8758 19.095 19.4853 19.4855C19.0948 19.876 18.4616 19.876 18.0711 19.4855L13.7847 15.1991ZM4.63602 13.1215C6.97917 15.4647 10.7782 15.4647 13.1213 13.1215C15.4644 10.7784 15.4644 6.97941 13.1213 4.63627C10.7782 2.29312 6.97917 2.29312 4.63602 4.63627C2.29288 6.97941 2.29288 10.7784 4.63602 13.1215Z"
+          fill="#667085"
+        />
+      </svg>
+    </div>
     <input
       type="text"
-      class="size-full px-4 pl-8"
-      placeholder="Search Courses"
+      class="size-full px-4 pl-10 placeholder:capitalize"
+      [placeholder]="`Search ${tab}`"
     />
   </div>
 
-  <div class="flex justify-between gap-4 flex-wrap items-center">
+  <div
+    class="grid gap-6 grid-cols-[repeat(auto-fit,_minmax(280px,_1fr))]"
+    *ngIf="tab === 'assessments'"
+  >
+    <div
+      class="rounded-md border border-gray-50 shadow-sm space-y-4 flex flex-col justify-between p-4"
+    >
+      <div class="flex items-center gap-2">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M16.2501 3.33317H13.7501V2.08317C13.7501 1.97266 13.7062 1.86668 13.628 1.78854C13.5499 1.7104 13.4439 1.6665 13.3334 1.6665C13.2229 1.6665 13.1169 1.7104 13.0388 1.78854C12.9606 1.86668 12.9167 1.97266 12.9167 2.08317V3.33317H7.08341V2.08317C7.08341 1.97266 7.03952 1.86668 6.96138 1.78854C6.88324 1.7104 6.77725 1.6665 6.66675 1.6665C6.55624 1.6665 6.45026 1.7104 6.37212 1.78854C6.29398 1.86668 6.25008 1.97266 6.25008 2.08317V3.33317H3.75008C3.19775 3.33383 2.66823 3.55354 2.27767 3.9441C1.88712 4.33465 1.66741 4.86417 1.66675 5.4165V16.2498C1.66741 16.8022 1.88712 17.3317 2.27767 17.7222C2.66823 18.1128 3.19775 18.3325 3.75008 18.3332H16.2501C16.8026 18.3332 17.3325 18.1137 17.7232 17.723C18.1139 17.3323 18.3334 16.8024 18.3334 16.2498V5.4165C18.3334 4.86397 18.1139 4.33407 17.7232 3.94336C17.3325 3.55266 16.8026 3.33317 16.2501 3.33317ZM17.5001 16.2498C17.5001 16.5814 17.3684 16.8993 17.134 17.1337C16.8995 17.3681 16.5816 17.4998 16.2501 17.4998H3.75008C3.41856 17.4998 3.10062 17.3681 2.8662 17.1337C2.63178 16.8993 2.50008 16.5814 2.50008 16.2498V9.1665H17.5001V16.2498ZM17.5001 8.33317H2.50008V5.4165C2.50008 4.7265 3.05841 4.1665 3.75008 4.1665H6.25008V5.4165C6.25008 5.52701 6.29398 5.63299 6.37212 5.71113C6.45026 5.78927 6.55624 5.83317 6.66675 5.83317C6.77725 5.83317 6.88324 5.78927 6.96138 5.71113C7.03952 5.63299 7.08341 5.52701 7.08341 5.4165V4.1665H12.9167V5.4165C12.9167 5.52701 12.9606 5.63299 13.0388 5.71113C13.1169 5.78927 13.2229 5.83317 13.3334 5.83317C13.4439 5.83317 13.5499 5.78927 13.628 5.71113C13.7062 5.63299 13.7501 5.52701 13.7501 5.4165V4.1665H16.2501C16.5816 4.1665 16.8995 4.2982 17.134 4.53262C17.3684 4.76704 17.5001 5.08498 17.5001 5.4165V8.33317Z"
+            fill="#161C2D"
+          />
+        </svg>
+
+        <span class="font-semibold">Total Courses</span>
+      </div>
+
+      <div class="space-y-1">
+        <span class="text-2xl font-bold">150</span>
+        <p class="text-xs text-gray-400 font-semibold">+12% from last month</p>
+      </div>
+    </div>
+    <div
+      class="rounded-md border border-gray-50 shadow-sm space-y-4 flex flex-col justify-between p-4"
+    >
+      <div class="flex items-center gap-2">
+        <span class="font-semibold">Uploaded Materials</span>
+      </div>
+
+      <div class="space-y-1">
+        <span class="text-2xl font-bold">150</span>
+        <p class="text-xs text-gray-400 font-semibold">All Posted Materials</p>
+      </div>
+    </div>
+    <div
+      class="rounded-md border border-gray-50 shadow-sm space-y-4 flex flex-col justify-between p-4"
+    >
+      <div class="flex items-center gap-2">
+        <span class="font-semibold">Total Enrollments</span>
+      </div>
+
+      <div class="space-y-1">
+        <span class="text-2xl font-bold">150</span>
+        <p class="text-xs text-gray-400 font-semibold">Tutors & Students</p>
+      </div>
+    </div>
+    <div
+      class="rounded-md border border-gray-50 shadow-sm space-y-4 flex flex-col justify-between p-4"
+    >
+      <div class="flex items-center gap-2">
+        <span class="font-semibold">Average Ratings</span>
+      </div>
+
+      <div class="space-y-1">
+        <span class="text-2xl font-bold">4.5</span>
+        <div class="flex gap-1 items-center font-semibold">
+          <svg width="16" height="16" fill="#FBBF24" viewBox="0 0 20 20">
+            <polygon
+              points="10,1.5 12.472,7.09 18.541,7.635 13.75,11.91 15.18,17.865 10,14.5 4.82,17.865 6.25,11.91 1.459,7.635 7.528,7.09"
+            />
+          </svg>
+          <span class="text-gray-500 text-sm">Excellent</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="flex justify-between gap-4 flex-wrap items-center"
+    *ngIf="tab !== 'assessments'"
+  >
     <h3 class="text-lg font-medium">Quiz & Assessments</h3>
 
     <div class="flex gap-3 gap-x-4 items-center">
@@ -121,7 +211,7 @@
     </div>
   </div>
 
-  <div class="flex flex-col gap-4 py-4">
+  <div class="flex flex-col gap-4 py-4" *ngIf="tab === 'courses'">
     <div class="border-b border-[#E9E9E9] flex gap-6 items-center">
       <div
         (click)="switchActiveTabs('assessments')"
