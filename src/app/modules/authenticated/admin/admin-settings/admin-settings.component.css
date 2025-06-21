@@ -1,0 +1,74 @@
+/* settings.component.css */
+
+/* Custom toggle switch styles for better consistency */
+.toggle-switch {
+  @apply relative inline-flex items-center cursor-pointer;
+}
+
+.toggle-switch input[type="checkbox"] {
+  @apply sr-only;
+}
+
+.toggle-switch .slider {
+  @apply w-11 h-6 bg-gray-200 rounded-full transition-colors duration-200 ease-in-out;
+  /* @apply peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20; */
+  @apply peer-checked:bg-primary;
+}
+
+.toggle-switch .slider:before {
+  @apply absolute top-0.5 left-0.5 bg-white w-5 h-5 rounded-full transition-transform duration-200 ease-in-out;
+  content: "";
+}
+
+.toggle-switch input:checked + .slider:before {
+  @apply transform translate-x-5;
+}
+
+/* Custom focus states for form elements */
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  @apply outline-none ring-2 ring-primary border-primary;
+}
+
+/* Smooth transitions for interactive elements */
+.form-input,
+.form-select,
+.form-textarea {
+  @apply transition-colors duration-150 ease-in-out;
+}
+
+/* Button hover effects */
+.btn-primary {
+  @apply transition-colors duration-150 ease-in-out;
+}
+
+.btn-primary:hover {
+  /* @apply bg-primary/90; */
+}
+
+.btn-secondary {
+  @apply transition-colors duration-150 ease-in-out;
+}
+
+.btn-secondary:hover {
+  @apply bg-gray-50;
+}
+
+/* Card shadow effects */
+.settings-card {
+  @apply transition-shadow duration-150 ease-in-out;
+}
+
+.settings-card:hover {
+  @apply shadow-md;
+}
+
+/* Custom scrollbar for textareas */
+.form-textarea::-webkit-scrollbar {
+  @apply w-2;
+}
+
+.form-textarea::-webkit-scrollbar-track {
+  @apply bg-gray-100 rounded;
+}
