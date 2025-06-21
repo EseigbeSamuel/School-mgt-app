@@ -1,1 +1,489 @@
-<p>admin-settings works!</p>
+<div class="max-w-4xl">
+  <!-- Header -->
+  <div class="flex items-center justify-between mb-6">
+    <h1 class="text-2xl font-bold text-gray-900">Settings</h1>
+    <div class="flex items-center gap-2 text-sm text-gray-600">
+      <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+      Super Admin Access
+    </div>
+  </div>
+
+  <div class="space-y-8">
+    <!-- Platform Settings -->
+    <div class="bg-white rounded-lg shadow-sm p-6">
+      <h2 class="text-xl font-semibold text-gray-900 mb-6">
+        Platform Settings
+      </h2>
+
+      <div class="grid grid-cols-1 gap-6">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2"
+            >Platform Name</label
+          >
+          <input
+            type="text"
+            [(ngModel)]="platformSettings.platformName"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2"
+            >Platform Url</label
+          >
+          <input
+            type="url"
+            [(ngModel)]="platformSettings.platformUrl"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2"
+            >Support Email</label
+          >
+          <input
+            type="email"
+            [(ngModel)]="platformSettings.supportEmail"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2"
+            >Default Time Zone</label
+          >
+          <select
+            [(ngModel)]="platformSettings.defaultTimeZone"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+          >
+            <option *ngFor="let timezone of timeZones" [value]="timezone">
+              {{ timezone }}
+            </option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2"
+            >Language</label
+          >
+          <select
+            [(ngModel)]="platformSettings.language"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+          >
+            <option *ngFor="let lang of languages" [value]="lang">
+              {{ lang }}
+            </option>
+          </select>
+        </div>
+
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="text-sm font-medium text-gray-700">Maintenance Mode</h3>
+            <p class="text-sm text-gray-500">
+              Enable to restrict platform access
+            </p>
+          </div>
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input
+              type="checkbox"
+              [(ngModel)]="platformSettings.maintenanceMode"
+              class="sr-only peer"
+            />
+            <div
+              class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"
+            ></div>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Security Settings -->
+    <div class="bg-white rounded-lg shadow-sm p-6">
+      <h2 class="text-xl font-semibold text-gray-900 mb-6">
+        Security Settings
+      </h2>
+
+      <div class="grid grid-cols-1 gap-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="text-sm font-medium text-gray-700">
+              Two-factor Authentication
+            </h3>
+            <p class="text-sm text-gray-500">
+              Keep your account secure by enabling 2FA via mail
+            </p>
+          </div>
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input
+              type="checkbox"
+              [(ngModel)]="securitySettings.twoFactorAuth"
+              class="sr-only peer"
+            />
+            <div
+              class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"
+            ></div>
+          </label>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2"
+            >Platform Url</label
+          >
+          <input
+            type="url"
+            [(ngModel)]="securitySettings.platformUrl"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2"
+            >Support Email</label
+          >
+          <input
+            type="email"
+            [(ngModel)]="securitySettings.supportEmail"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2"
+            >Session Timeout</label
+          >
+          <p class="text-sm text-gray-500 mb-2">Auto-logout after inactivity</p>
+          <select
+            [(ngModel)]="securitySettings.sessionTimeout"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+          >
+            <option
+              *ngFor="let timeout of sessionTimeouts"
+              [value]="timeout.value"
+            >
+              {{ timeout.label }}
+            </option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2"
+            >Login attempt</label
+          >
+          <p class="text-sm text-gray-500 mb-2">
+            Max failed attempts before lockout
+          </p>
+          <select
+            [(ngModel)]="securitySettings.maxFailedAttempts"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+          >
+            <option *ngFor="let attempt of maxAttempts" [value]="attempt.value">
+              {{ attempt.label }}
+            </option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2"
+            >Language</label
+          >
+          <select
+            [(ngModel)]="securitySettings.language"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+          >
+            <option *ngFor="let lang of languages" [value]="lang">
+              {{ lang }}
+            </option>
+          </select>
+        </div>
+
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="text-sm font-medium text-gray-700">Auto Logout</h3>
+            <p class="text-sm text-gray-500">Logout same actions</p>
+          </div>
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input
+              type="checkbox"
+              [(ngModel)]="securitySettings.autoLogout"
+              class="sr-only peer"
+            />
+            <div
+              class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"
+            ></div>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notification Settings -->
+    <div class="bg-white rounded-lg shadow-sm p-6">
+      <h2 class="text-xl font-semibold text-gray-900 mb-6">
+        Notification Settings
+      </h2>
+
+      <div class="grid grid-cols-1 gap-6">
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="text-sm font-medium text-gray-700">Email</h3>
+            <p class="text-sm text-gray-500">Receive alerts via emails</p>
+          </div>
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input
+              type="checkbox"
+              [(ngModel)]="notificationSettings.email"
+              class="sr-only peer"
+            />
+            <div
+              class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"
+            ></div>
+          </label>
+        </div>
+
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="text-sm font-medium text-gray-700">Phone</h3>
+            <p class="text-sm text-gray-500">Receive alerts via phones</p>
+          </div>
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input
+              type="checkbox"
+              [(ngModel)]="notificationSettings.phone"
+              class="sr-only peer"
+            />
+            <div
+              class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"
+            ></div>
+          </label>
+        </div>
+
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="text-sm font-medium text-gray-700">
+              New user Registrations
+            </h3>
+            <p class="text-sm text-gray-500">Notify on new signups</p>
+          </div>
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input
+              type="checkbox"
+              [(ngModel)]="notificationSettings.newUserRegistrations"
+              class="sr-only peer"
+            />
+            <div
+              class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"
+            ></div>
+          </label>
+        </div>
+
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="text-sm font-medium text-gray-700">Payment Alerts</h3>
+            <p class="text-sm text-gray-500">Alert on payments and refunds</p>
+          </div>
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input
+              type="checkbox"
+              [(ngModel)]="notificationSettings.paymentAlerts"
+              class="sr-only peer"
+            />
+            <div
+              class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"
+            ></div>
+          </label>
+        </div>
+
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="text-sm font-medium text-gray-700">System alerts</h3>
+            <p class="text-sm text-gray-500">Critical system notifications</p>
+          </div>
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input
+              type="checkbox"
+              [(ngModel)]="notificationSettings.systemAlerts"
+              class="sr-only peer"
+            />
+            <div
+              class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"
+            ></div>
+          </label>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2"
+            >Alert email</label
+          >
+          <input
+            type="email"
+            [(ngModel)]="notificationSettings.alertEmail"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2"
+            >Alert phone</label
+          >
+          <input
+            type="tel"
+            [(ngModel)]="notificationSettings.alertPhone"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Payment Settings -->
+    <div class="bg-white rounded-lg shadow-sm p-6">
+      <h2 class="text-xl font-semibold text-gray-900 mb-6">Payment Settings</h2>
+
+      <div class="grid grid-cols-1 gap-6">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2"
+            >Default currency</label
+          >
+          <select
+            [(ngModel)]="paymentSettings.defaultCurrency"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+          >
+            <option
+              *ngFor="let currency of currencies"
+              [value]="currency.value"
+            >
+              {{ currency.symbol }} {{ currency.label }}
+            </option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2"
+            >Platform commission(%)</label
+          >
+          <input
+            type="number"
+            [(ngModel)]="paymentSettings.platformCommission"
+            min="0"
+            max="100"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+          />
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2"
+            >Minimum withdrawal</label
+          >
+          <input
+            type="number"
+            [(ngModel)]="paymentSettings.minimumWithdrawal"
+            min="0"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+          />
+        </div>
+
+        <div class="flex items-center justify-between">
+          <div>
+            <h3 class="text-sm font-medium text-gray-700">
+              Auto approve withdrawals
+            </h3>
+            <p class="text-sm text-gray-500">Under NGN 50,000</p>
+          </div>
+          <label class="relative inline-flex items-center cursor-pointer">
+            <input
+              type="checkbox"
+              [(ngModel)]="paymentSettings.autoApproveWithdrawals"
+              class="sr-only peer"
+            />
+            <div
+              class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/20 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"
+            ></div>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Email Templates -->
+    <div class="bg-white rounded-lg shadow-sm p-6">
+      <h2 class="text-xl font-semibold text-gray-900 mb-6">Email Templates</h2>
+
+      <div class="space-y-8">
+        <!-- Welcome Email Templates -->
+        <div>
+          <h3 class="text-lg font-medium text-gray-900 mb-4">
+            Welcome Email Templates
+          </h3>
+
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2"
+                >Subject</label
+              >
+              <input
+                type="text"
+                [(ngModel)]="welcomeEmailTemplate.subject"
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+              />
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2"
+                >Content</label
+              >
+              <textarea
+                [(ngModel)]="welcomeEmailTemplate.content"
+                rows="12"
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary resize-none"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- Alert Email Templates -->
+        <div>
+          <h3 class="text-lg font-medium text-gray-900 mb-4">Alert phone</h3>
+
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2"
+                >Subject</label
+              >
+              <input
+                type="text"
+                [(ngModel)]="alertEmailTemplate.subject"
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+              />
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2"
+                >Content</label
+              >
+              <textarea
+                [(ngModel)]="alertEmailTemplate.content"
+                rows="12"
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary resize-none"
+              ></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="flex items-center justify-between pt-6">
+      <button
+        (click)="onResetToDefaults()"
+        class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary"
+      >
+        Reset to defaults
+      </button>
+
+      <button
+        (click)="onSaveChanges()"
+        class="px-6 py-2 text-sm font-medium text-white bg-primary rounded-md hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+      >
+        Save Changes
+      </button>
+    </div>
+  </div>
+</div>
