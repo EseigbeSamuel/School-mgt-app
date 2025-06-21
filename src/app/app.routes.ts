@@ -57,6 +57,7 @@ import { RoleCoursesComponent } from './modules/authenticated/dashboard/role-cou
 import { EarningsComponent } from './modules/authenticated/tutor/earnings/earnings.component';
 import { IndexComponent } from './modules/index/index.component';
 import { AdminAddTutorComponent } from './modules/authenticated/admin/admin-tutors/admin-add-tutor/admin-add-tutor.component';
+import { AdminAddStudentComponent } from './modules/authenticated/admin/admin-students/admin-add-student/admin-add-student.component';
 // test
 export const routes: Routes = [
   // {
@@ -147,9 +148,23 @@ export const routes: Routes = [
       // Students route - only tutors and admins see this
       {
         path: 'students',
-        component: RoleStudentsComponent,
+        component: RouteEntryComponent,
         canActivate: [RoleGuard],
         data: { roles: ['tutor', 'admin'] },
+        children: [
+          {
+            path: '',
+            component: RoleStudentsComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['tutor', 'admin'] },
+          },
+          {
+            path: 'add-student',
+            component: AdminAddStudentComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['admin'] },
+          },
+        ],
       },
 
       // Sessions route - only tutors and admins
