@@ -105,7 +105,7 @@
 
   <div
     class="grid gap-6 grid-cols-[repeat(auto-fit,_minmax(280px,_1fr))]"
-    *ngIf="tab === 'assessments'"
+    *ngIf="tab === 'courses'"
   >
     <div
       class="rounded-md border border-gray-50 shadow-sm space-y-4 flex flex-col justify-between p-4"
@@ -179,7 +179,7 @@
 
   <div
     class="flex justify-between gap-4 flex-wrap items-center"
-    *ngIf="tab === 'courses'"
+    *ngIf="tab === 'assessments'"
   >
     <h3 class="text-lg font-medium">Quiz & Assessments</h3>
 
@@ -211,7 +211,73 @@
     </div>
   </div>
 
-  <div class="flex flex-col gap-4 py-4" *ngIf="tab !== 'materials'">
+  <div class="space-y-5" *ngIf="tab === 'courses'">
+    <div class="md:border-b border-[#E9E9E9] overflow-x-auto">
+      <div
+        class="flex w-max md:w-full gap-2 md:gap-0 items-center pt-4 md:flex-nowrap flex-nowrap"
+      >
+        <div
+          (click)="switchTabs('science')"
+          class="min-w-fit px-4 py-3 md:py-2 rounded-lg md:rounded-none text-sm font-semibold cursor-pointer transition-all duration-200"
+          [ngClass]="{
+            'bg-[#F4EDFF] text-[#8A2BE2]': activeTabC === 'science',
+            'bg-gray-100 text-gray-500 md:bg-white': activeTabC !== 'science',
+            'md:border-b-2 md:border-[#8A2BE2] md:bg-transparent md:text-textColor':
+              activeTabC === 'science' && isDesktop,
+            'md:border-b-0': activeTabC !== 'science' && isDesktop
+          }"
+        >
+          Sciences
+        </div>
+
+        <div
+          (click)="switchTabs('commercial')"
+          class="min-w-fit px-4 py-2 rounded-lg md:rounded-none text-sm font-semibold cursor-pointer transition-all duration-200"
+          [ngClass]="{
+            'bg-[#F4EFF2] text-[#5C1A32]': activeTabC === 'commercial',
+            'bg-gray-100 text-gray-500 md:bg-white':
+              activeTabC !== 'commercial',
+            'md:border-b-2 md:border-[#5C1A32] md:bg-transparent md:text-textColor':
+              activeTabC === 'commercial' && isDesktop,
+            'md:border-b-0': activeTabC !== 'commercial' && isDesktop
+          }"
+        >
+          Commercial
+        </div>
+
+        <div
+          (click)="switchTabs('art')"
+          class="min-w-fit px-4 py-2 rounded-lg md:rounded-none text-sm font-semibold cursor-pointer transition-all duration-200"
+          [ngClass]="{
+            'bg-[#E7F1FF] text-[#1D4ED8]': activeTabC === 'art',
+            'bg-gray-100 text-gray-500 md:bg-white': activeTabC !== 'art',
+            'md:border-b-2 md:border-[#1D4ED8] md:bg-transparent md:text-textColor':
+              activeTabC === 'art' && isDesktop,
+            'md:border-b-0': activeTabC !== 'art' && isDesktop
+          }"
+        >
+          Arts
+        </div>
+
+        <div
+          (click)="switchTabs('vocational')"
+          class="min-w-fit px-4 py-2 rounded-lg md:rounded-none text-sm font-semibold cursor-pointer transition-all duration-200"
+          [ngClass]="{
+            'bg-[#FEF9E6] text-[#C0930A]': activeTabC === 'vocational',
+            'bg-gray-100 text-gray-500 md:bg-white':
+              activeTabC !== 'vocational',
+            'md:border-b-2 md:border-[#C0930A] md:bg-transparent md:text-textColor':
+              activeTabC === 'vocational' && isDesktop,
+            'md:border-b-0': activeTabC !== 'vocational' && isDesktop
+          }"
+        >
+          Vocational
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col gap-4 py-4" *ngIf="tab === 'assessments'">
     <div class="border-b border-[#E9E9E9] flex gap-6 items-center">
       <div
         (click)="switchActiveTabs('assessments')"
