@@ -63,6 +63,7 @@ import { AdminCoursesUploadComponent } from './modules/authenticated/admin/admin
 import { AdminCoursesDetailComponent } from './modules/authenticated/admin/admin-courses/admin-courses-detail/admin-courses-detail.component';
 import { AdminCoursesUploadMaterialsComponent } from './modules/authenticated/admin/admin-courses/admin-courses-upload-materials/admin-courses-upload-materials.component';
 import { StudentsProfileComponent } from './modules/authenticated/tutor/students/students-profile/students-profile.component';
+import { AdminStudentsListingComponent } from './modules/authenticated/admin/admin-students/admin-students-listing/admin-students-listing.component';
 import { StudentDashboardComponent } from './modules/authenticated/student/dashboard/dashboard.component';
 import { StudentsListComponent } from './modules/authenticated/tutor/students/students-list/students-list.component';
 import { AddResourcesComponent } from './modules/authenticated/tutor/resources/add-resources/add-resources.component';
@@ -188,6 +189,12 @@ export const routes: Routes = [
         children: [
           {
             path: '',
+            component: AdminStudentsListingComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['admin'] },
+          },
+          {
+            path: 'student',
             component: StudentsListComponent,
             canActivate: [RoleGuard],
             data: { roles: ['tutor'] },
