@@ -272,6 +272,7 @@ export const routes: Routes = [
       },
 
       // Messages route - everyone has this
+      // TODO: need to confirm if messaging concept is the same for everyone
       {
         path: 'messages',
         component: RoleMessagesComponent,
