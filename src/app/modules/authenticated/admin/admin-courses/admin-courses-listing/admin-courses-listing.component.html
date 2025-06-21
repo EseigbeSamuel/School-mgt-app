@@ -211,7 +211,7 @@
     </div>
   </div>
 
-  <div class="flex flex-col gap-4 py-4" *ngIf="tab === 'courses'">
+  <div class="flex flex-col gap-4 py-4" *ngIf="tab !== 'materials'">
     <div class="border-b border-[#E9E9E9] flex gap-6 items-center">
       <div
         (click)="switchActiveTabs('assessments')"
