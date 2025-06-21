@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { SharedModule } from '../../../shared.module';
+// import { Router } from '@angular/router';
+// import { StudentProfileDataService } from '../../../../services/student-profile-data.service';
 
 @Component({
   selector: 'app-students-card',
@@ -12,4 +14,15 @@ export class StudentsCardComponent {
   @Input() subjects: string[] = [];
   @Input() type: string = '';
   @Input() image: string = '';
+
+  // constructor(
+  //   private router: Router,
+  //   private studentProfileDataService: StudentProfileDataService
+  // ) {}
+
+  // onSelectStudent(student: any) {
+  //   this.studentProfileDataService.selectStudent(student);
+  //   this.router.navigate(['/dashboard/students/student', student.id]);
+  //   console.log('clicked');
+  // }
 }
