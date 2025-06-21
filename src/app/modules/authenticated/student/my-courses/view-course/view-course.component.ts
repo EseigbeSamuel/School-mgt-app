@@ -74,7 +74,7 @@ export class ViewCourseComponent implements OnInit {
   handleCOurseVideoClick(ID: number) {
     if (this.pageData?.id && this.pageData?.topics?.length) {
       this.router.navigate([
-        `student/courses/view-course/${this.pageData.id}/lesson/${ID}`,
+        `dashboard/courses/view-course/${this.pageData.id}/lesson/${ID}`,
       ]);
     }
   }
