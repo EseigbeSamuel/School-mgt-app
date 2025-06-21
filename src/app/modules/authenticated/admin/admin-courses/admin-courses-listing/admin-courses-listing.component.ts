@@ -6,6 +6,10 @@ import {
   PaginatorComponent,
 } from '../../../../../shared/components/paginator/paginator.component';
 import { AdminCoursesTableComponent } from '../../../../../shared/components/tables/admin-courses-table/admin-courses-table.component';
+import { SubjectCardComponent } from '../../../../../shared/components/subject-card/subject-card.component';
+import { SUBJECTS_DATA } from '../../../student/my-courses/data';
+import { SudentCoursesSubjetCardSvgIcons } from '../../../../../utils/icons';
+import { DomSanitizer } from '@angular/platform-browser';
 
 type TabType = 'courses' | 'materials' | 'assessments';
 type ActiveTabType = 'assessments' | 'mock-exams' | 'quiz' | 'flashcards';
@@ -17,6 +21,7 @@ type ActiveTabType = 'assessments' | 'mock-exams' | 'quiz' | 'flashcards';
     CommonModule,
     PaginatorComponent,
     AdminCoursesTableComponent,
+    SubjectCardComponent,
   ],
   templateUrl: './admin-courses-listing.component.html',
   styleUrl: './admin-courses-listing.component.css',
@@ -25,6 +30,10 @@ type ActiveTabType = 'assessments' | 'mock-exams' | 'quiz' | 'flashcards';
 export class AdminCoursesListingComponent {
   tab: TabType = 'courses';
   activeTab: ActiveTabType = 'assessments';
+  activeTabC: 'science' | 'art' | 'commercial' | 'vocational' = 'science';
+  isDesktop = window.innerWidth >= 768;
+  data: Array<any> = [];
+  buttonData: Array<any> = [];
 
   flashData: Array<any> = [
     {
@@ -116,6 +125,8 @@ export class AdminCoursesListingComponent {
     },
   ];
 
+  constructor(private sanitizer: DomSanitizer) {}
+
   changeTab(tab: TabType) {
     this.tab = tab;
   }
@@ -129,5 +140,32 @@ export class AdminCoursesListingComponent {
 
   switchActiveTabs(tab: ActiveTabType) {
     this.activeTab = tab;
+  }
+
+  switchTabs(tab: 'science' | 'art' | 'commercial' | 'vocational') {
+    this.activeTabC = tab;
+  }
+
+  ngOnInit() {
+    window.addEventListener('resize', () => {
+      this.isDesktop = window.innerWidth >= 768;
+    });
+
+    this.data = SUBJECTS_DATA.map((link) => ({
+      ...link,
+      isHeartActive: false,
+      isBookmarkActive: false,
+      safeSvg: this.sanitizer.bypassSecurityTrustHtml(
+        SudentCoursesSubjetCardSvgIcons[link.icon]
+      ),
+    }));
+    this.buttonData = SUBJECTS_DATA.slice(0, 3).map((link) => ({
+      ...link,
+      isHeartActive: false,
+      isBookmarkActive: false,
+      safeSvg: this.sanitizer.bypassSecurityTrustHtml(
+        SudentCoursesSubjetCardSvgIcons[link.icon]
+      ),
+    }));
   }
 }
