@@ -1,0 +1,148 @@
+<div class="add-tutor-container">
+  <div class="header">
+    <h2 class="title">Add New Student</h2>
+    <div class="breadcrumb">
+      <a [routerLink]="`/dashboard/students`" class="breadcrumb-item"
+        >All Students</a
+      >
+      <span class="breadcrumb-separator">></span>
+      <span class="breadcrumb-item active">Add New Student</span>
+    </div>
+  </div>
+
+  <div class="form-container">
+    <!-- Tab Navigation -->
+    <div class="tab-navigation">
+      <button
+        class="tab-button"
+        [class.active]="currentStep === 1"
+        (click)="setStep(1)"
+      >
+        <i class="tab-icon personal"></i>
+        Personal Information
+      </button>
+    </div>
+
+    <!-- Personal Information Tab -->
+    <div class="tab-content" *ngIf="currentStep === 1">
+      <div class="profile-picture-section">
+        <div class="profile-picture-placeholder">
+          <i class="camera-icon"></i>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-input"
+            placeholder="First Name"
+            [(ngModel)]="personalInfo.firstName"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-input"
+            placeholder="Last Name"
+            [(ngModel)]="personalInfo.lastName"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="tel"
+            class="form-input"
+            placeholder="Mobile Number"
+            [(ngModel)]="personalInfo.mobileNumber"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="email"
+            class="form-input"
+            placeholder="Email Address"
+            [(ngModel)]="personalInfo.emailAddress"
+          />
+        </div>
+        <div class="form-group">
+          <div class="date-input-wrapper">
+            <input
+              type="date"
+              class="form-input date-input"
+              placeholder="Date of Birth"
+              [(ngModel)]="personalInfo.dateOfBirth"
+            />
+            <i class="calendar-icon"></i>
+          </div>
+        </div>
+        <div class="form-group">
+          <select class="form-select" [(ngModel)]="personalInfo.maritalStatus">
+            <option value="">Marital Status</option>
+            <option value="single">Single</option>
+            <option value="married">Married</option>
+            <option value="divorced">Divorced</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <select class="form-select" [(ngModel)]="personalInfo.gender">
+            <option value="">Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <select class="form-select" [(ngModel)]="personalInfo.nationality">
+            <option value="">Nationality</option>
+            <option value="american">American</option>
+            <option value="british">British</option>
+            <option value="canadian">Canadian</option>
+          </select>
+        </div>
+        <div class="form-group full-width">
+          <input
+            type="text"
+            class="form-input"
+            placeholder="Address"
+            [(ngModel)]="personalInfo.address"
+          />
+        </div>
+      </div>
+      <br />
+      <div class="grid sm:grid-cols-3 gap-6 w-full">
+        <div class="form-group w-full">
+          <select class="form-select" [(ngModel)]="personalInfo.city">
+            <option value="">City</option>
+            <option value="new-york">New York</option>
+            <option value="los-angeles">Los Angeles</option>
+          </select>
+        </div>
+        <div class="form-group w-full">
+          <select class="form-select" [(ngModel)]="personalInfo.state">
+            <option value="">State</option>
+            <option value="ny">New York</option>
+            <option value="ca">California</option>
+          </select>
+        </div>
+        <div class="form-group w-full">
+          <select class="form-select" [(ngModel)]="personalInfo.zipCode">
+            <option value="">ZIP Code</option>
+            <option value="10001">10001</option>
+            <option value="90210">90210</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="action-buttons">
+      <button class="btn-cancel" (click)="cancel()">Cancel</button>
+      <button
+        class="btn-primary"
+        (click)="currentStep === 3 ? save() : nextStep()"
+      >
+        {{ currentStep === 3 ? "Save" : "Next" }}
+      </button>
+    </div>
+  </div>
+</div>

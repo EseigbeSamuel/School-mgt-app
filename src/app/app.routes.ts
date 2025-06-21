@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { RouterOutlet, Routes } from '@angular/router';
 import { UnAthenticatedComponent } from './layout/un-athenticated/un-athenticated.component';
 import { SplashScreenComponent } from './modules/unAuthenticated/splash-screen/splash-screen.component';
 import { PreRegisterComponent } from './modules/unAuthenticated/register/pre-register.component';
@@ -56,6 +56,8 @@ import { RoleDashboardComponent } from './modules/authenticated/dashboard/role-d
 import { RoleCoursesComponent } from './modules/authenticated/dashboard/role-courses/role-courses.component';
 import { EarningsComponent } from './modules/authenticated/tutor/earnings/earnings.component';
 import { IndexComponent } from './modules/index/index.component';
+import { AdminAddTutorComponent } from './modules/authenticated/admin/admin-tutors/admin-add-tutor/admin-add-tutor.component';
+import { AdminAddStudentComponent } from './modules/authenticated/admin/admin-students/admin-add-student/admin-add-student.component';
 // test
 export const routes: Routes = [
   // {
@@ -146,9 +148,23 @@ export const routes: Routes = [
       // Students route - only tutors and admins see this
       {
         path: 'students',
-        component: RoleStudentsComponent,
+        component: RouteEntryComponent,
         canActivate: [RoleGuard],
         data: { roles: ['tutor', 'admin'] },
+        children: [
+          {
+            path: '',
+            component: RoleStudentsComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['tutor', 'admin'] },
+          },
+          {
+            path: 'add-student',
+            component: AdminAddStudentComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['admin'] },
+          },
+        ],
       },
 
       // Sessions route - only tutors and admins
@@ -162,10 +178,22 @@ export const routes: Routes = [
       // Tutors route - students and admins see this
       {
         path: 'tutors',
-        component: RoleTutorsComponent,
         canActivate: [RoleGuard],
-        data: { roles: ['student', 'admin'] },
+        data: { roles: ['admin', 'student'] },
+        component: RouteEntryComponent,
         children: [
+          {
+            path: '',
+            component: RoleTutorsComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['admin'] },
+          },
+          {
+            path: 'add-tutor',
+            component: AdminAddTutorComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['admin'] },
+          },
           {
             path: ':id',
             component: TutorsDescriptionComponent,
