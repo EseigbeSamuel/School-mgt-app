@@ -61,6 +61,7 @@ import { AdminAddStudentComponent } from './modules/authenticated/admin/admin-st
 import { AdminSessionCalenderComponent } from './modules/authenticated/admin/admin-sessions/admin-session-calender/admin-session-calender.component';
 import { AdminCoursesUploadComponent } from './modules/authenticated/admin/admin-courses/admin-courses-upload/admin-courses-upload.component';
 import { AdminCoursesDetailComponent } from './modules/authenticated/admin/admin-courses/admin-courses-detail/admin-courses-detail.component';
+import { AdminCoursesUploadMaterialsComponent } from './modules/authenticated/admin/admin-courses/admin-courses-upload-materials/admin-courses-upload-materials.component';
 // test
 export const routes: Routes = [
   // {
@@ -139,8 +140,14 @@ export const routes: Routes = [
             data: { roles: ['student', 'admin', 'tutor'] },
           },
           {
-            path: 'course-upload',
+            path: 'add-course',
             component: AdminCoursesUploadComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['admin'] },
+          },
+          {
+            path: 'upload-material',
+            component: AdminCoursesUploadMaterialsComponent,
             canActivate: [RoleGuard],
             data: { roles: ['admin'] },
           },
