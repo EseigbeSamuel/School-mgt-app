@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { RouterOutlet, Routes } from '@angular/router';
 import { UnAthenticatedComponent } from './layout/un-athenticated/un-athenticated.component';
 import { SplashScreenComponent } from './modules/unAuthenticated/splash-screen/splash-screen.component';
 import { PreRegisterComponent } from './modules/unAuthenticated/register/pre-register.component';
@@ -56,6 +56,12 @@ import { RoleDashboardComponent } from './modules/authenticated/dashboard/role-d
 import { RoleCoursesComponent } from './modules/authenticated/dashboard/role-courses/role-courses.component';
 import { EarningsComponent } from './modules/authenticated/tutor/earnings/earnings.component';
 import { IndexComponent } from './modules/index/index.component';
+import { AdminAddTutorComponent } from './modules/authenticated/admin/admin-tutors/admin-add-tutor/admin-add-tutor.component';
+import { AdminAddStudentComponent } from './modules/authenticated/admin/admin-students/admin-add-student/admin-add-student.component';
+import { AdminSessionCalenderComponent } from './modules/authenticated/admin/admin-sessions/admin-session-calender/admin-session-calender.component';
+import { AdminCoursesUploadComponent } from './modules/authenticated/admin/admin-courses/admin-courses-upload/admin-courses-upload.component';
+import { AdminCoursesDetailComponent } from './modules/authenticated/admin/admin-courses/admin-courses-detail/admin-courses-detail.component';
+import { AdminCoursesUploadMaterialsComponent } from './modules/authenticated/admin/admin-courses/admin-courses-upload-materials/admin-courses-upload-materials.component';
 import { StudentsProfileComponent } from './modules/authenticated/tutor/students/students-profile/students-profile.component';
 import { StudentDashboardComponent } from './modules/authenticated/student/dashboard/dashboard.component';
 import { StudentsListComponent } from './modules/authenticated/tutor/students/students-list/students-list.component';
@@ -130,8 +136,33 @@ export const routes: Routes = [
       // Courses route - shows different component based on role
       {
         path: 'courses',
-        component: RoleCoursesComponent, // This loads the right courses component
+        component: RouteEntryComponent, // This loads the right courses component
         children: [
+          {
+            path: '',
+            component: RoleCoursesComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['student', 'admin', 'tutor'] },
+          },
+          {
+            path: 'add-course',
+            component: AdminCoursesUploadComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['admin'] },
+          },
+          {
+            path: 'upload-material',
+            component: AdminCoursesUploadMaterialsComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['admin'] },
+          },
+          {
+            path: 'detail/:id',
+            component: AdminCoursesDetailComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['admin'] },
+          },
+
           // Student-only children
           {
             path: 'view-course/:id',
@@ -151,30 +182,73 @@ export const routes: Routes = [
       // Students route - only tutors and admins see this
       {
         path: 'students',
-        component: RoleStudentsComponent,
+        component: RouteEntryComponent,
         canActivate: [RoleGuard],
         data: { roles: ['tutor', 'admin'] },
         children: [
-          { path: '', component: StudentsListComponent },
+          {
+            path: '',
+            component: StudentsListComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['tutor'] },
+          },
           { path: 'student/:id ', component: StudentsProfileComponent },
+          {
+            path: '',
+            component: RoleStudentsComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['tutor', 'admin'] },
+          },
+          {
+            path: 'add-student',
+            component: AdminAddStudentComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['admin'] },
+          },
         ],
       },
 
       // Sessions route - only tutors and admins
       {
         path: 'sessions',
-        component: RoleSessionsComponent,
+        component: RouteEntryComponent,
         canActivate: [RoleGuard],
         data: { roles: ['tutor', 'admin'] },
+        children: [
+          {
+            path: '',
+            component: RoleSessionsComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['tutor', 'admin'] },
+          },
+          {
+            path: 'calender',
+            component: AdminSessionCalenderComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['admin'] },
+          },
+        ],
       },
 
       // Tutors route - students and admins see this
       {
         path: 'tutors',
-        component: RoleTutorsComponent,
         canActivate: [RoleGuard],
-        data: { roles: ['student', 'admin'] },
+        data: { roles: ['admin', 'student'] },
+        component: RouteEntryComponent,
         children: [
+          {
+            path: '',
+            component: RoleTutorsComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['admin'] },
+          },
+          {
+            path: 'add-tutor',
+            component: AdminAddTutorComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['admin'] },
+          },
           {
             path: ':id',
             component: TutorsDescriptionComponent,
@@ -217,6 +291,7 @@ export const routes: Routes = [
       },
 
       // Messages route - everyone has this
+      // TODO: need to confirm if messaging concept is the same for everyone
       {
         path: 'messages',
         component: RoleMessagesComponent,
