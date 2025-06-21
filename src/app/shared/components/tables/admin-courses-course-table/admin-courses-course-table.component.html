@@ -1,0 +1,91 @@
+<table>
+  <thead>
+    <tr>
+      <th>Course</th>
+      <th>Recourses</th>
+      <th>Duration</th>
+      <th>Upload Date</th>
+      <th>Modules</th>
+      <th>Enrollments</th>
+      <th>Ratings</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="text-accent-2" *ngFor="let row of data">
+      <td>{{ row.course }}</td>
+      <td>
+        <div class="flex gap-3 items-center">
+          <div class="flex gap-1 items-center text-xs">
+            <div class="icon">
+              <!-- TODO: add icon -->
+            </div>
+            {{ row.resources.videos }}
+          </div>
+          <div class="flex gap-1 items-center text-xs">
+            <div class="icon">
+              <!-- TODO: add icon -->
+            </div>
+            {{ row.resources.images }}
+          </div>
+          <div class="flex gap-1 items-center text-xs">
+            <div class="icon">
+              <!-- TODO: add icon -->
+            </div>
+            {{ row.resources.files }}
+          </div>
+        </div>
+      </td>
+      <td>
+        <div class="flex gap-2 items-center">
+          <div class="icon">
+            <!--TODO: add clock icon -->
+          </div>
+          {{ row.duration }}
+        </div>
+      </td>
+      <td>{{ row.created_date }}</td>
+
+      <td>{{ row.modules }} Modules</td>
+
+      <td>
+        <div class="flex items-center gap-2">
+          <div class="icon">
+            <!--TODO: add pips icon -->
+          </div>
+          {{ row.enrollments }}
+        </div>
+      </td>
+
+      <td>
+        <span class="flex items-center gap-1">
+          <svg width="16" height="16" fill="#FBBF24" viewBox="0 0 20 20">
+            <polygon
+              points="10,1.5 12.472,7.09 18.541,7.635 13.75,11.91 15.18,17.865 10,14.5 4.82,17.865 6.25,11.91 1.459,7.635 7.528,7.09"
+            />
+          </svg>
+          {{ row.ratings }}
+        </span>
+      </td>
+
+      <td>
+        <div class="flex gap-2 justify-center">
+          <button type="button">
+            <svg
+              width="16"
+              height="5"
+              viewBox="0 0 16 5"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4 2.5C4 1.4 3.1 0.5 2 0.5C0.9 0.5 0 1.4 0 2.5C0 3.6 0.9 4.5 2 4.5C3.1 4.5 4 3.6 4 2.5ZM6 2.5C6 3.6 6.9 4.5 8 4.5C9.1 4.5 10 3.6 10 2.5C10 1.4 9.1 0.5 8 0.5C6.9 0.5 6 1.4 6 2.5ZM12 2.5C12 3.6 12.9 4.5 14 4.5C15.1 4.5 16 3.6 16 2.5C16 1.4 15.1 0.5 14 0.5C12.9 0.5 12 1.4 12 2.5Z"
+                fill="#667085"
+              />
+            </svg>
+          </button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>

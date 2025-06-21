@@ -275,6 +275,36 @@
         </div>
       </div>
     </div>
+
+    <ng-container class="mt-4 table-box">
+      <div *ngIf="activeTabC === 'art'">
+        <div class="table-container">
+          <app-admin-courses-course-table [data]="coursesData" />
+        </div>
+      </div>
+      <div *ngIf="activeTabC === 'commercial'">
+        <div class="overflow-x-auto">
+          <app-admin-courses-course-table [data]="coursesData" />
+        </div>
+      </div>
+      <div *ngIf="activeTabC === 'science'">
+        <div class="overflow-x-auto">
+          <app-admin-courses-course-table [data]="coursesData" />
+        </div>
+      </div>
+      <div *ngIf="activeTabC === 'vocational'">
+        <div class="overflow-x-auto">
+          <app-admin-courses-course-table [data]="coursesData" />
+        </div>
+      </div>
+
+      <div class="pagination-box *:py-4 sm:py-6">
+        <app-paginator
+          [metadata]="paginationMetadata"
+          [showText]="true"
+        ></app-paginator>
+      </div>
+    </ng-container>
   </div>
 
   <div class="flex flex-col gap-4 py-4" *ngIf="tab === 'assessments'">
