@@ -59,6 +59,8 @@ import { IndexComponent } from './modules/index/index.component';
 import { AdminAddTutorComponent } from './modules/authenticated/admin/admin-tutors/admin-add-tutor/admin-add-tutor.component';
 import { AdminAddStudentComponent } from './modules/authenticated/admin/admin-students/admin-add-student/admin-add-student.component';
 import { AdminSessionCalenderComponent } from './modules/authenticated/admin/admin-sessions/admin-session-calender/admin-session-calender.component';
+import { AdminCoursesUploadComponent } from './modules/authenticated/admin/admin-courses/admin-courses-upload/admin-courses-upload.component';
+import { AdminCoursesDetailComponent } from './modules/authenticated/admin/admin-courses/admin-courses-detail/admin-courses-detail.component';
 // test
 export const routes: Routes = [
   // {
@@ -136,6 +138,19 @@ export const routes: Routes = [
             canActivate: [RoleGuard],
             data: { roles: ['student', 'admin', 'tutor'] },
           },
+          {
+            path: 'course-upload',
+            component: AdminCoursesUploadComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['admin'] },
+          },
+          {
+            path: 'detail/:id',
+            component: AdminCoursesDetailComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['admin'] },
+          },
+
           // Student-only children
           {
             path: 'view-course/:id',
