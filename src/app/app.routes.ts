@@ -68,6 +68,8 @@ import { StudentDashboardComponent } from './modules/authenticated/student/dashb
 import { StudentsListComponent } from './modules/authenticated/tutor/students/students-list/students-list.component';
 import { AddResourcesComponent } from './modules/authenticated/tutor/resources/add-resources/add-resources.component';
 import { ResourcesListComponent } from './modules/authenticated/tutor/resources/resources-list/resources-list.component';
+import { NotificationsComponent } from './modules/authenticated/tutor/profile/notifications/notifications.component';
+import { tutors } from './modules/authenticated/tutor/dashboard/data';
 // test
 export const routes: Routes = [
   // {
@@ -291,6 +293,12 @@ export const routes: Routes = [
           {
             path: 'socials-passwords',
             component: SocialsPasswordComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['tutor'] },
+          },
+          {
+            path: 'notifications',
+            component: NotificationsComponent,
             canActivate: [RoleGuard],
             data: { roles: ['tutor'] },
           },
