@@ -148,7 +148,7 @@
                 >
               </p>
             </div>
-            <app-button label="Book" (click)="invisible = !invisible" />
+            <app-button label="Book" (click)="openModal()" />
           </div>
           <div class="flex w-full justify-between">
             <div>
@@ -161,7 +161,7 @@
                 >
               </p>
             </div>
-            <app-button label="Book" (click)="invisible = !invisible" />
+            <app-button label="Book" (click)="openModal()" />
           </div>
           <div class="flex w-full justify-between">
             <div>
@@ -174,7 +174,7 @@
                 >
               </p>
             </div>
-            <app-button label="Book" (click)="invisible = !invisible" />
+            <app-button label="Book" (click)="openModal()" />
           </div>
           <div class="flex w-full justify-between">
             <div>
@@ -187,7 +187,7 @@
                 >
               </p>
             </div>
-            <app-button label="Book" (click)="invisible = !invisible" />
+            <app-button label="Book" (click)="openModal()" />
           </div>
           <div class="flex w-full justify-between">
             <div>
@@ -200,7 +200,7 @@
                 >
               </p>
             </div>
-            <app-button label="Book" (click)="invisible = !invisible" />
+            <app-button label="Book" (click)="openModal()" />
           </div>
         </div>
       </section>
@@ -233,28 +233,28 @@
   </section>
 </div>
 
-<!-- POP UP -->
-<section
-  class="w-screen h-screen absolute top-[70px] left-0 flex justify-center items-center bg-black/30"
-  *ngIf="invisible"
->
-  <section class="border p-5 rounded-lg grid gap-3 bg-white w-[500px]">
+<!--book now pop up  -->
+<app-modal [show]="showModal" (close)="closeModal()" [custom]="true">
+  <section
+    class="border p-5 rounded-lg grid gap-3 bg-white w-[300px] lg:w-[500px]"
+    *ngIf="tutor"
+  >
     <div class="w-full flex justify-end">
       <img
         src="/assets/icons/purple-circle X-mark.svg"
         alt=""
-        (click)="invisible = !invisible"
+        (click)="closeModal()"
       />
     </div>
     <div class="flex items-center gap-2">
       <img src="" alt="" class="bg-gray-200 size-[100px] rounded-full" />
       <div>
-        <h1 class="text-xl font-semibold">{{ tutor.name }}</h1>
+        <h1 class="text-lg lg:text-xl font-semibold">{{ tutor.name }}</h1>
         <p>Lecturer,The Polytechnic Ibadan.</p>
       </div>
     </div>
     <div>
-      <h1 class="font-semibold text-xl">Quick Revision Session</h1>
+      <h1 class="font-semibold text-lg lg:text-xl">Quick Revision Session</h1>
       <p class="flex gap-1">
         Review of key topics & exam questions
         <span class="flex gap-1 items-center"
@@ -266,7 +266,7 @@
     <div class="text-center flex flex-col items-center">
       <h1 class="font-semibold text-lg">Select date and time</h1>
       <p>In your local timezone (Africa/Lagos)</p>
-      <div class="w-[250px] h-[200px] border rounded-md"></div>
+      <div class="w-[200px] h-[150px] border rounded-md"></div>
     </div>
 
     <div class="flex w-full justify-between items-center">
@@ -280,7 +280,7 @@
       <app-button label="Submit" size="lg" [fullWidth]="true" />
     </div>
   </section>
-</section>
+</app-modal>
 
 <!-- mobile veiw -->
 <div *ngIf="tutor" class="lg:invisible grid gap-5">
@@ -341,13 +341,226 @@
   </section>
 
   <section>
-    <section>
-      <ul class="flex justify-between font-medium text-sm">
-        <li class="hover:text-primary hover:underline">Overveiw</li>
-        <li class="hover:text-primary hover:underline">Background</li>
-        <li class="hover:text-primary hover:underline">Session</li>
-        <li class="hover:text-primary hover:underline">Review</li>
-      </ul>
+    <section class="xl:flex gap-5">
+      <div class="flex-col flex gap-5 xl:w-[60%]">
+        <section>
+          <div class="flex gap-3">
+            <h1 class="font-semibold text-lg">Overview</h1>
+          </div>
+          <div class="border rounded-md flex text-sm flex-col gap-2 p-5">
+            <p>
+              Hi, I’m Sharfa Wazifa BD, a dedicated Mathematics and Physics
+              tutor with over 5 years of experience helping students excel in
+              JAMB, WAEC, and NECO. I break down tough concepts into
+              easy-to-understand steps and tailor my lessons to fit your
+              learning style.
+            </p>
+            <h2>What I Offer</h2>
+            <div class="px-5">
+              <ul class="list-disc">
+                <li>
+                  One-on-One Video Lessons – Personalized learning at your pace.
+                </li>
+                <li>
+                  Exam-Focused Approach – Master key topics & past questions.
+                </li>
+                <li>
+                  Interactive Learning – Whiteboard explanations & practice
+                  exercises.
+                </li>
+              </ul>
+            </div>
+            <div class="flex gap-2">
+              <img src="/assets/icons/facebook.svg" alt="" class="size-6" />
+              <img src="/assets/icons/twitter.svg" alt="" />
+              <img src="/assets/icons/linkedin.svg" alt="" />
+            </div>
+          </div>
+        </section>
+        <section>
+          <h1 class="font-semibold text-lg">Background</h1>
+          <div class="border flex flex-col gap-3 rounded-lg p-5">
+            <div class="justify-between lg:flex">
+              <p>Expertise</p>
+              <div class="flex gap-1 text-xs">
+                <p
+                  class="hidden lg:flex border rounded-md border-[#008AD8] text-[#008AD8] px-1"
+                >
+                  Exam focused question analysis
+                </p>
+                <p
+                  class="lg:hidden border rounded-md border-[#008AD8] text-[#008AD8] px-1"
+                >
+                  Exam focused analysis
+                </p>
+                <p
+                  class="border rounded-md border-[#8F00FF] text-[#8F00FF] px-1"
+                >
+                  Mentorship
+                </p>
+              </div>
+            </div>
+            <div class="justify-between lg:flex">
+              <p>Disipline</p>
+              <div
+                class="grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] gap-1 text-xs"
+              >
+                <!-- <div class="rounded-md border px-2">{{ tutor.subjects }}</div> -->
+                <div class="border rounded-md px-2">Physics</div>
+                <div class="border rounded-md px-2">Mathematics</div>
+                <div class="border rounded-md px-2">Chemistry</div>
+                <div class="border rounded-md px-2">Chemistry</div>
+              </div>
+            </div>
+            <div class="justify-between flex">
+              <p>Location</p>
+              <div class="flex gap-1 text-xs">Abuja</div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h1 class="font-semibold text-lg">
+            Experience
+            <span class="bg-gray-200 rounded-full px-1 text-sm">3</span>
+          </h1>
+          <div class="border grid gap-3 rounded-lg p-5">
+            <div class="flex items-center gap-2">
+              <img src="/assets/icons/tutor-experience-icon.svg" alt="" />
+              <div class="flex gap-5 w-full justify-between items-center">
+                <div>
+                  <h1 class="font-semibold">Mentor/Tutor</h1>
+                  <p class="text-sm">Elevanto University, BDBDGFGF</p>
+                </div>
+                <div class="rounded-md bg-gray-200 text-sm">
+                  Sept 2024-Feb 2025
+                </div>
+              </div>
+            </div>
+            <p class="text-sm">
+              Taught over 500+ students preparing for JAMB, WAEC, and NECO and
+              developed custom lesson plans tailored to individual student
+              needs. Helped students improve their English scores by 30% on
+              average. Conducted mock exams and provided detailed feedback to
+              boost exam performance.
+            </p>
+          </div>
+        </section>
+      </div>
+
+      <div class="flex flex-col gap-5 mt-5 xl:w-[40%]">
+        <section>
+          <h1 class="font-semibold text-lg">
+            Available Session
+            <span class="bg-gray-200 rounded-full px-1 text-sm">5</span>
+          </h1>
+          <div class="border flex-col flex gap-4 rounded-md p-5">
+            <div class="flex w-full justify-between">
+              <div>
+                <h1 class="font-semibold text-sm">Quick Revision Session</h1>
+                <p class="text-xs flex items-center gap-1">
+                  Review of key topics & exam questions
+                  <span class="flex gap-1"
+                    ><img src="/assets/icons/time.svg" alt="" class="size-3" />
+                    25 min</span
+                  >
+                </p>
+              </div>
+              <app-button label="Book" (click)="openModal()" />
+            </div>
+            <div class="flex w-full justify-between">
+              <div>
+                <h1 class="font-semibold text-sm">Standard Lesson</h1>
+                <p class="text-xs flex items-center gap-1">
+                  In-depth tutoring session covering all course
+                  <span class="flex gap-1"
+                    ><img src="/assets/icons/time.svg" alt="" class="size-3" />
+                    25 min</span
+                  >
+                </p>
+              </div>
+              <app-button label="Book" (click)="openModal()" />
+            </div>
+            <div class="flex w-full justify-between">
+              <div>
+                <h1 class="font-semibold text-sm">
+                  Homework & Assignment Help
+                </h1>
+                <p class="text-xs flex items-center gap-1">
+                  Step guidance on school assignments
+                  <span class="flex gap-1"
+                    ><img src="/assets/icons/time.svg" alt="" class="size-3" />
+                    25 min</span
+                  >
+                </p>
+              </div>
+              <app-button label="Book" (click)="openModal()" />
+            </div>
+            <div class="flex w-full justify-between">
+              <div>
+                <h1 class="font-semibold text-sm">
+                  Exam Preparation Crash Course
+                </h1>
+                <p class="text-xs flex items-center gap-1">
+                  Focused session on past questions.
+                  <span class="flex gap-1"
+                    ><img src="/assets/icons/time.svg" alt="" class="size-3" />
+                    25 min</span
+                  >
+                </p>
+              </div>
+              <app-button label="Book" (click)="openModal()" />
+            </div>
+            <div class="flex w-full justify-between">
+              <div>
+                <h1 class="font-semibold text-sm">
+                  Mock Test & Feedback Session
+                </h1>
+                <p class="text-xs flex items-center gap-1">
+                  Practice test with instant review and tips
+                  <span class="flex gap-1"
+                    ><img src="/assets/icons/time.svg" alt="" class="size-3" />
+                    25 min</span
+                  >
+                </p>
+              </div>
+              <app-button label="Book" (click)="openModal()" />
+            </div>
+          </div>
+        </section>
+        <section>
+          <h1 class="font-semibold text-xl">
+            Education
+            <span class="bg-gray-200 rounded-full px-1 text-sm">2</span>
+          </h1>
+          <div class="border grid gap-3 rounded-md p-5">
+            <div class="flex gap-2">
+              <img src="/assets/icons/tutor-education-icon.svg" alt="" />
+              <div>
+                <h2 class="font-semibold text-sm">
+                  Master of Science(Molecular Physics)
+                </h2>
+                <p class="text-sm">
+                  Federal University of Technogy Akure* 2014 - 2019
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <img
+                src="/assets/icons/tutor-education-icon.svg"
+                alt=""
+                class="size-10"
+              />
+              <div>
+                <h2 class="font-semibold text-sm">
+                  Bachelor of Science(Physics)
+                </h2>
+                <p class="text-sm">Ekiti State University Ado* 2009 - 2014</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
     </section>
   </section>
 </div>

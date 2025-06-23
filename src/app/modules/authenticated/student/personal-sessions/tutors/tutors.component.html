@@ -1,7 +1,23 @@
 <section class="grid lg:flex justify-between items-center p-3 mb-5 border-y">
   <h1 class="font-semibold text-xl">Tutors</h1>
   <div class="flex gap-3">
-    <div class="border rounded-lg p-3">Commit to long Term</div>
+    <div class="border rounded-lg p-3 flex gap-3">
+      Commit to long Term
+      <label class="relative inline-flex items-center cursor-pointer">
+        <!-- The hidden checkbox input -->
+        <input type="checkbox" class="sr-only peer" />
+
+        <!-- The background of the switch -->
+        <div
+          class="w-11 h-6 bg-gray-300 peer-checked:bg-primary rounded-full transition-colors duration-300"
+        ></div>
+
+        <!-- The white circle -->
+        <div
+          class="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform duration-300 transform peer-checked:translate-x-5"
+        ></div>
+      </label>
+    </div>
     <div class="border rounded-lg p-3">Filter</div>
   </div>
 </section>
