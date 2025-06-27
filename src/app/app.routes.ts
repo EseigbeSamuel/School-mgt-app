@@ -62,6 +62,14 @@ import { AdminSessionCalenderComponent } from './modules/authenticated/admin/adm
 import { AdminCoursesUploadComponent } from './modules/authenticated/admin/admin-courses/admin-courses-upload/admin-courses-upload.component';
 import { AdminCoursesDetailComponent } from './modules/authenticated/admin/admin-courses/admin-courses-detail/admin-courses-detail.component';
 import { AdminCoursesUploadMaterialsComponent } from './modules/authenticated/admin/admin-courses/admin-courses-upload-materials/admin-courses-upload-materials.component';
+import { StudentsProfileComponent } from './modules/authenticated/tutor/students/students-profile/students-profile.component';
+import { AdminStudentsListingComponent } from './modules/authenticated/admin/admin-students/admin-students-listing/admin-students-listing.component';
+import { StudentDashboardComponent } from './modules/authenticated/student/dashboard/dashboard.component';
+import { StudentsListComponent } from './modules/authenticated/tutor/students/students-list/students-list.component';
+import { AddResourcesComponent } from './modules/authenticated/tutor/resources/add-resources/add-resources.component';
+import { ResourcesListComponent } from './modules/authenticated/tutor/resources/resources-list/resources-list.component';
+import { NotificationsComponent } from './modules/authenticated/tutor/profile/notifications/notifications.component';
+import { tutors } from './modules/authenticated/tutor/dashboard/data';
 // test
 export const routes: Routes = [
   // {
@@ -183,6 +191,19 @@ export const routes: Routes = [
         children: [
           {
             path: '',
+            component: AdminStudentsListingComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['admin'] },
+          },
+          {
+            path: 'student',
+            component: StudentsListComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['tutor'] },
+          },
+          { path: 'student/:id ', component: StudentsProfileComponent },
+          {
+            path: '',
             component: RoleStudentsComponent,
             canActivate: [RoleGuard],
             data: { roles: ['tutor', 'admin'] },
@@ -275,6 +296,12 @@ export const routes: Routes = [
             canActivate: [RoleGuard],
             data: { roles: ['tutor'] },
           },
+          {
+            path: 'notifications',
+            component: NotificationsComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['tutor'] },
+          },
         ],
       },
 
@@ -316,7 +343,8 @@ export const routes: Routes = [
         data: { roles: ['student'] },
         children: [
           { path: '', component: GetTutorsComponent },
-          { path: 'tutors', component: TutorsComponent },
+          { path: 'tutoring', component: TutorsComponent },
+          { path: 'tutoring/:id', component: TutorsDescriptionComponent },
         ],
       },
 
@@ -339,6 +367,10 @@ export const routes: Routes = [
         component: ResourcesComponent,
         canActivate: [RoleGuard],
         data: { roles: ['tutor'] },
+        children: [
+          { path: '', component: ResourcesListComponent },
+          { path: 'add-resources', component: AddResourcesComponent },
+        ],
       },
 
       {

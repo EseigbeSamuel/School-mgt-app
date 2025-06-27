@@ -18,7 +18,7 @@ export class TutorsComponent {
 
   onSelectTutor(tutor: any) {
     this.tutorDataService.setTutor(tutor);
-    this.router.navigate(['/student/personal-sessions/tutors', tutor.id]);
+    this.router.navigate(['/dashboard/personal-sessions/tutoring', tutor.id]);
   }
   tutors = [
     {

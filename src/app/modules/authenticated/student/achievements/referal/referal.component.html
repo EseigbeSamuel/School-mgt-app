@@ -1,3 +1,4 @@
+<!-- desktop view -->
 <div class="flex-col gap-5 hidden xl:flex">
   <section class="flex justify-between w-full p-5 rounded-lg border bg-white">
     <img src="/assets/icons/social-promotion.svg" alt="" />
@@ -87,7 +88,7 @@
       Thanks for sharing a word about FlexiDemi. Remind your friends to check
       their emails!
     </p>
-    <div><app-button label="Refer Now " /></div>
+    <div><app-button label="Refer Now " (click)="closeModal()" /></div>
   </section>
 </app-modal>
 
@@ -107,9 +108,9 @@
     </h1>
     <div><app-button label="Refer Now" /></div>
   </section>
-  <section class="flex gap-3">
+  <section class="flex gap-3 justify-center">
     <div class="flex">
-      <div class=""><app-input-ui /></div>
+      <div class="w-full"><app-input-ui /></div>
       <div class="bg-primary p-2 rounded-r-lg">
         <img src="/assets/icons/content_copy.svg" alt="" />
       </div>
