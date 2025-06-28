@@ -191,23 +191,13 @@ export const routes: Routes = [
         children: [
           {
             path: '',
-            component: AdminStudentsListingComponent,
-            canActivate: [RoleGuard],
-            data: { roles: ['admin'] },
-          },
-          {
-            path: 'student',
-            component: StudentsListComponent,
-            canActivate: [RoleGuard],
-            data: { roles: ['tutor'] },
-          },
-          { path: 'student/:id ', component: StudentsProfileComponent },
-          {
-            path: '',
             component: RoleStudentsComponent,
             canActivate: [RoleGuard],
             data: { roles: ['tutor', 'admin'] },
           },
+
+          { path: 'student/:id ', component: StudentsProfileComponent },
+
           {
             path: 'add-student',
             component: AdminAddStudentComponent,

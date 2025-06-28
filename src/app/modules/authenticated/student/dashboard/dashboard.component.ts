@@ -11,6 +11,7 @@ import {
 } from '../../../../shared/components/paginator/paginator.component';
 import { Chart2Component } from '../../../../shared/components/charts/chart2/chart2.component';
 import { PiechartComponent } from '../../../../shared/components/charts/piechart/piechart.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-student-dashboard',
@@ -21,6 +22,7 @@ import { PiechartComponent } from '../../../../shared/components/charts/piechart
     PaginatorComponent,
     Chart2Component,
     PiechartComponent,
+    RouterLink,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
@@ -50,4 +52,37 @@ export class StudentDashboardComponent {
   switchTabs(tab: 'category' | 'lessons') {
     this.activeTab = tab;
   }
+
+  sessions = [
+    {
+      subject: 'English',
+      teacher: 'mr john smith',
+      time: '1:00 PM',
+      date: 'today',
+    },
+    {
+      subject: 'Mathematics',
+      teacher: 'mr adeleke aju',
+      time: '1:22 PM',
+      date: 'today',
+    },
+    {
+      subject: 'Chemistry',
+      teacher: 'mr benjamin ajibola',
+      time: '3:22 PM',
+      date: 'today',
+    },
+    // {
+    //   subject: 'Physics',
+    //   teacher: 'mr benjamin ajibola',
+    //   time: '4:30 PM',
+    //   date: 'today',
+    // },
+  ];
+
+  progress = [
+    { subject: 'JAMB English', progress: 20 },
+    { subject: 'JAMB English', progress: 75 },
+    { subject: 'JAMB English', progress: 75 },
+  ];
 }

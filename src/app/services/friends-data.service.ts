@@ -5,15 +5,17 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class FriendsDataService {
   private selectedFriends = new BehaviorSubject<any>(null);
+  private friendsList = new BehaviorSubject<any[]>([]);
 
   selectedFriends$ = this.selectedFriends.asObservable();
+  friendsList$ = this.friendsList.asObservable();
   selectFriends(friends: any) {
     this.selectedFriends.next(friends);
   }
 
-  // setFriends(friends: any) {
-  //   this.selectedFriends = friends;
-  // }
+  setFriends(friends: any[]) {
+    this.friendsList.next(friends);
+  }
 
   // getFriends() {
   //   return this.selectedFriends;
