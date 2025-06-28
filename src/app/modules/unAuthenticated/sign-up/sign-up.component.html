@@ -20,17 +20,26 @@
       />
       <app-input-ui label="last name" placeholder="Enter name" class="w-full" />
       <app-input-ui
+        label="Username"
+        placeholder="Enter username"
+        class="w-full"
+      />
+      <app-input-ui
         label="email"
         placeholder="Enter email"
         iconLeft="mailIcon"
         class="w-full"
       />
       <app-intl-phone-input class="w-full" />
-      <app-input-ui
-        label="date of birth"
-        placeholder="DD/MM/YYYY"
+
+      <app-drop-select
+        label="Class category"
+        [options]="classCategory"
         class="w-full"
       />
+      <app-drop-select label="Gender" [options]="gender" class="w-full" />
+
+      <app-date-dob class="w-full" formControlName="dob" />
 
       <div class="w-full py-3">
         <app-button

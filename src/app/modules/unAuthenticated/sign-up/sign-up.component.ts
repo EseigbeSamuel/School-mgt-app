@@ -7,6 +7,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { IntlPhoneInputComponent } from '../../../shared/components/intl-phone-input/intl-phone-input.component';
 
 import { CommonModule } from '@angular/common';
+import { DateDobComponent } from '../../../shared/components/date-dob/date-dob.component';
 
 @Component({
   selector: 'app-sign-up',
@@ -18,9 +19,34 @@ import { CommonModule } from '@angular/common';
     IntlPhoneInputComponent,
     CommonModule,
     SharedModule,
+    DateDobComponent,
   ],
 })
 export class SignUpComponent {
+  public classCategory = [
+    {
+      name: 'Science',
+      vaue: 'SCIENE',
+    },
+    {
+      name: 'Art',
+      vaue: 'ART',
+    },
+    {
+      name: 'Commercial',
+      vaue: 'COMMERCIAL',
+    },
+  ];
+  public gender = [
+    {
+      name: 'Male',
+      vaue: 'Male',
+    },
+    {
+      name: 'Female',
+      vaue: 'Female',
+    },
+  ];
   constructor(private router: Router) {}
 
   signIn() {

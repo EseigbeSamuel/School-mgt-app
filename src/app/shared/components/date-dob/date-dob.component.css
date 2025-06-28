@@ -1,0 +1,30 @@
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  border-color: #2c2a724d !important;
+  border-width: 1px;
+  border-radius: 8px;
+}
+
+::ng-deep
+  .mat-form-field-appearance-outline.mat-focused
+  .mat-form-field-outline-thick {
+  border-color: #2c2a72 !important; /* Indigo ring when focused */
+  border-width: 2px;
+}
+
+::ng-deep
+  .mat-form-field-appearance-outline.mat-form-field-invalid
+  .mat-form-field-outline-thick {
+  border-color: red !important;
+}
+
+::ng-deep .mat-form-field {
+  font-size: 14px;
+  padding: 0px 5px;
+}
+
+::ng-deep .mat-input-element {
+  padding: 10px 0;
+  background-color: transparent;
+  color: #1f2937; /* text-gray-700 */
+  font-family: inherit;
+}
