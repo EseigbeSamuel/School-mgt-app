@@ -1,0 +1,38 @@
+<div class="w-full bg-white">
+  <h3 class="text-lg font-semibold mb-4 text-center">Schedules</h3>
+
+  <div
+    class="grid grid-cols-7 text-xs font-bold border bg-[#F9F9F9] capitalize px-5 py-4 text-center text-gray-500 mb-2"
+  >
+    <div *ngFor="let d of daysOfWeek">{{ d }}</div>
+  </div>
+
+  <div class="grid grid-cols-7 text-xs">
+    <div
+      *ngFor="let day of calendarDays"
+      class="min-h-[70px] w-[60px] p-1 relative border"
+      [class.text-gray-400]="day.date.getMonth() !== month"
+    >
+      <div
+        class="text-[10px] mb-1 text-center"
+        [ngClass]="{ 'text-red-500 font-bold': isToday(day.date) }"
+      >
+        {{ day.dayNumber }}
+      </div>
+
+      <ng-container *ngFor="let event of day.events">
+        <div
+          class="text-[8px] px-1 py-[1px] rounded mb-[2px] text-center whitespace-nowrap overflow-hidden text-ellipsis"
+          [ngClass]="{
+            'bg-pink-100 text-pink-600': event.subject === 'Chemistry',
+            'bg-yellow-100 text-yellow-600': event.subject === 'English',
+            'bg-green-100 text-green-600': event.subject === 'Physics',
+            'bg-blue-100 text-blue-600': event.subject === 'Math'
+          }"
+        >
+          {{ event.subject }}
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
