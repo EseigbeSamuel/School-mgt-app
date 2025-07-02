@@ -70,6 +70,7 @@ import { AddResourcesComponent } from './modules/authenticated/tutor/resources/a
 import { ResourcesListComponent } from './modules/authenticated/tutor/resources/resources-list/resources-list.component';
 import { NotificationsComponent } from './modules/authenticated/tutor/profile/notifications/notifications.component';
 import { tutors } from './modules/authenticated/tutor/dashboard/data';
+import { MainSessionsComponent } from './modules/authenticated/student/personal-sessions/main-sessions/main-sessions.component';
 // test
 export const routes: Routes = [
   // {
@@ -332,7 +333,8 @@ export const routes: Routes = [
         canActivate: [RoleGuard],
         data: { roles: ['student'] },
         children: [
-          { path: '', component: GetTutorsComponent },
+          { path: '', component:MainSessionsComponent },
+          {path:'get-tutors',component:GetTutorsComponent},
           { path: 'tutoring', component: TutorsComponent },
           { path: 'tutoring/:id', component: TutorsDescriptionComponent },
         ],
