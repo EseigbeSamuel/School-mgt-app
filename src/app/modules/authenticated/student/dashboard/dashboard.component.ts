@@ -68,7 +68,7 @@ export class StudentDashboardComponent {
     },
     {
       subject: 'Chemistry',
-      teacher: 'mr benjamin ajibola',
+      teacher: 'mr benjamin bola',
       time: '3:22 PM',
       date: 'today',
     },
