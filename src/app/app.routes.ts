@@ -71,6 +71,9 @@ import { ResourcesListComponent } from './modules/authenticated/tutor/resources/
 import { NotificationsComponent } from './modules/authenticated/tutor/profile/notifications/notifications.component';
 import { tutors } from './modules/authenticated/tutor/dashboard/data';
 import { MainSessionsComponent } from './modules/authenticated/student/personal-sessions/main-sessions/main-sessions.component';
+import { ExamListComponent } from './modules/authenticated/student/mock-exams/exam-list/exam-list.component';
+import { ExamComponent } from './modules/authenticated/student/mock-exams/exam/exam.component';
+import { RoleWalletComponent } from './modules/authenticated/dashboard/role-wallet/role-wallet.component';
 // test
 export const routes: Routes = [
   // {
@@ -257,6 +260,12 @@ export const routes: Routes = [
           },
         ],
       },
+      {
+        path: 'wallet',
+        component: RoleWalletComponent,
+        canActivate: [RoleGuard],
+        data: { roles: ['student', 'tutor'] },
+      },
 
       // Profile route - everyone has this but different components
       {
@@ -325,6 +334,10 @@ export const routes: Routes = [
         component: MockExamsComponent,
         canActivate: [RoleGuard],
         data: { roles: ['student'] },
+        children: [
+          { path: '', component: ExamListComponent },
+          { path: 'exam/:id', component: ExamComponent },
+        ],
       },
 
       {
@@ -333,8 +346,8 @@ export const routes: Routes = [
         canActivate: [RoleGuard],
         data: { roles: ['student'] },
         children: [
-          { path: '', component:MainSessionsComponent },
-          {path:'get-tutors',component:GetTutorsComponent},
+          { path: '', component: MainSessionsComponent },
+          { path: 'get-tutors', component: GetTutorsComponent },
           { path: 'tutoring', component: TutorsComponent },
           { path: 'tutoring/:id', component: TutorsDescriptionComponent },
         ],
