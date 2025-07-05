@@ -62,6 +62,13 @@ export const navItems = [
     mobile: 'Messages',
   },
   {
+    name: 'wallet',
+    label: 'Wallet',
+    link: '/dashboard/wallet',
+    icon: 'wallet',
+    role: ['student'],
+  },
+  {
     name: 'profile',
     label: 'Profile',
     link: '/dashboard/profile',

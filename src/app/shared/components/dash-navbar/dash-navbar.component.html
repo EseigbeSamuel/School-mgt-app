@@ -60,7 +60,7 @@
         </svg>
       </button>
 
-      <button type="button" class="calender">
+      <button type="button" class="calender" (click)="openSchedule()">
         <svg
           width="25"
           height="24"
@@ -77,7 +77,11 @@
         </svg>
       </button>
 
-      <button type="button" class="notification relative">
+      <button
+        type="button"
+        class="notification relative"
+        (click)="openNotification()"
+      >
         <svg
           width="25"
           height="24"
@@ -100,7 +104,7 @@
         </span>
       </button>
 
-      <button type="button" class="message relative">
+      <button type="button" class="message relative" (click)="openMessage()">
         <svg
           width="25"
           height="24"
@@ -126,6 +130,7 @@
       <button
         type="button"
         class="profile size-10 rounded-full bg-gray-100 relative"
+        (click)="openModal()"
       >
         <span
           class="absolute bottom-1 right-1 active size-3 rounded-full bg-green-500"
@@ -189,4 +194,301 @@
       </button>
     </div>
   </nav>
+
+  <!-- profile -->
+  <div
+    class="fixed top-0 left-0 w-[100vw] h-[100vh] bg-black/60 z-[999]"
+    *ngIf="showModal"
+    (click)="closeModal()"
+  >
+    <section
+      class="absolute z-[999] top-[70px] bg-white border rounded-lg w-[300px] left-[70vw] xl:left-[75vw] 2xl:left-[80vw] py-3 px-5"
+      (click)="$event.stopPropagation()"
+    >
+      <div class="flex gap-2 items-center border-b pb-2">
+        <img
+          src="/assets/images/tutor-students-image.png"
+          alt=""
+          class="rounded-full size-[40px] object-cover"
+        />
+        <div>
+          <h1 class="font-semibold text-sm">Bankole Benjamin</h1>
+          <p class="text-xs">Bankole1q&#64;gmail.com</p>
+        </div>
+      </div>
+
+      <div class="py-2 px-3 border-b">
+        <ul
+          class="text-subject-meta text-sm capitalize cursor-pointer grid gap-5"
+        >
+          <li class="flex items-center gap-3" routerLink="/dashboard/messages">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M3.879 5.879C3 6.757 3 8.172 3 11V13C3 15.828 3 17.243 3.879 18.121C4.757 19 6.172 19 9 19H15C17.828 19 19.243 19 20.121 18.121C21 17.243 21 15.828 21 13V11C21 8.172 21 6.757 20.121 5.879C19.243 5 17.828 5 15 5H9C6.172 5 4.757 5 3.879 5.879ZM6.555 8.168C6.33434 8.02081 6.06424 7.9673 5.80413 8.01924C5.54402 8.07119 5.3152 8.22434 5.168 8.445C5.02081 8.66566 4.9673 8.93576 5.01924 9.19587C5.07119 9.45598 5.22434 9.6848 5.445 9.832L10.891 13.462C11.2195 13.6809 11.6053 13.7976 12 13.7976C12.3947 13.7976 12.7805 13.6809 13.109 13.462L18.555 9.832C18.7757 9.6848 18.9288 9.45598 18.9808 9.19587C19.0327 8.93576 18.9792 8.66566 18.832 8.445C18.6848 8.22434 18.456 8.07119 18.1959 8.01924C17.9358 7.9673 17.6657 8.02081 17.445 8.168L12 11.798L6.555 8.168Z"
+                fill="#2C2A72"
+              />
+            </svg>
+
+            Messages
+          </li>
+          <li class="flex items-center gap-3">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M14 10H3V12H14V10ZM14 6H3V8H14V6ZM3 16H10V14H3V16ZM21.5 11.5L23 13L16 20L11.5 15.5L13 14L16 17L21.5 11.5Z"
+                fill="#2C2A72"
+              />
+            </svg>
+            Subscriptions
+          </li>
+          <li class="flex items-center gap-3">
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 22 22"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 11C1 16.523 5.477 21 11 21C16.523 21 21 16.523 21 11C21 5.477 16.523 1 11 1C5.477 1 1 5.477 1 11Z"
+                stroke="#2C2A72"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M11.9989 1.05078C11.9989 1.05078 14.9989 5.00078 14.9989 11.0008C14.9989 17.0008 11.9989 20.9508 11.9989 20.9508M9.99891 20.9508C9.99891 20.9508 6.99891 17.0008 6.99891 11.0008C6.99891 5.00078 9.99891 1.05078 9.99891 1.05078M1.62891 14.5008H20.3689M1.62891 7.50078H20.3689"
+                stroke="#2C2A72"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            Language
+          </li>
+          <li class="flex items-center gap-3">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M7.96075 18C7.72809 18 7.52642 17.9237 7.35575 17.771C7.18442 17.6183 7.07809 17.428 7.03675 17.2L6.77375 15.108C6.45442 15.0113 6.10909 14.86 5.73775 14.654C5.36709 14.4473 5.05142 14.226 4.79075 13.99L2.87575 14.814C2.66442 14.9073 2.44975 14.9173 2.23175 14.844C2.01375 14.7707 1.84575 14.6323 1.72775 14.429L0.648754 12.57C0.530754 12.3667 0.496087 12.154 0.544753 11.932C0.59342 11.71 0.70942 11.528 0.892754 11.386L2.56475 10.136C2.53475 9.95467 2.51042 9.76834 2.49175 9.577C2.47175 9.385 2.46175 9.19867 2.46175 9.018C2.46175 8.85 2.47175 8.67334 2.49175 8.488C2.51042 8.30267 2.53475 8.094 2.56475 7.862L0.892754 6.612C0.70942 6.47 0.596753 6.285 0.554753 6.057C0.512753 5.829 0.55042 5.613 0.667754 5.409L1.72775 3.609C1.84575 3.41767 2.01375 3.28234 2.23175 3.203C2.44975 3.12367 2.66442 3.13067 2.87575 3.224L4.77175 4.028C5.07042 3.77934 5.39375 3.555 5.74175 3.355C6.08842 3.155 6.42609 3.00034 6.75475 2.891L7.03775 0.799004C7.07842 0.571004 7.18442 0.380671 7.35575 0.228004C7.52709 0.0753376 7.72875 -0.000662319 7.96075 4.34783e-06H10.0408C10.2734 4.34783e-06 10.4751 0.0763378 10.6458 0.229004C10.8171 0.381671 10.9234 0.572004 10.9648 0.800004L11.2278 2.912C11.6111 3.04667 11.9498 3.201 12.2438 3.375C12.5378 3.549 12.8408 3.767 13.1528 4.029L15.1448 3.225C15.3568 3.13167 15.5718 3.12467 15.7898 3.204C16.0078 3.28334 16.1754 3.41867 16.2928 3.61L17.3528 5.429C17.4708 5.633 17.5054 5.84567 17.4568 6.067C17.4081 6.28834 17.2921 6.47067 17.1088 6.614L15.3608 7.92C15.4154 8.12667 15.4461 8.31634 15.4528 8.48901C15.4594 8.66167 15.4628 8.83167 15.4628 8.999C15.4628 9.15434 15.4561 9.318 15.4428 9.49C15.4301 9.66267 15.4008 9.87134 15.3548 10.116L17.0448 11.386C17.2281 11.528 17.3474 11.71 17.4028 11.932C17.4581 12.154 17.4268 12.3667 17.3088 12.57L16.2428 14.409C16.1254 14.613 15.9544 14.7513 15.7298 14.824C15.5051 14.8973 15.2871 14.8873 15.0758 14.794L13.1528 13.97C12.8414 14.232 12.5281 14.4563 12.2128 14.643C11.8974 14.8297 11.5691 14.978 11.2278 15.088L10.9638 17.199C10.9231 17.427 10.8171 17.6173 10.6458 17.77C10.4744 17.9227 10.2728 17.9993 10.0408 18H7.96075ZM8.97375 11.5C9.67109 11.5 10.2621 11.2577 10.7468 10.773C11.2314 10.2883 11.4738 9.69734 11.4738 9C11.4738 8.30267 11.2314 7.71167 10.7468 7.227C10.2621 6.74234 9.67109 6.5 8.97375 6.5C8.27242 6.5 7.68042 6.74234 7.19775 7.227C6.71509 7.71167 6.47375 8.30267 6.47375 9C6.47375 9.69734 6.71509 10.2883 7.19775 10.773C7.68042 11.2577 8.27242 11.5 8.97375 11.5Z"
+                fill="#2C2A72"
+              />
+            </svg>
+            account setting
+          </li>
+        </ul>
+      </div>
+      <div class="flex gap-3 py-2 px-3">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M5 3H11C11.7956 3 12.5587 3.31607 13.1213 3.87868C13.6839 4.44129 14 5.20435 14 6V10H13V6C13 5.46957 12.7893 4.96086 12.4142 4.58579C12.0391 4.21071 11.5304 4 11 4H5C4.46957 4 3.96086 4.21071 3.58579 4.58579C3.21071 4.96086 3 5.46957 3 6V19C3 19.5304 3.21071 20.0391 3.58579 20.4142C3.96086 20.7893 4.46957 21 5 21H11C11.5304 21 12.0391 20.7893 12.4142 20.4142C12.7893 20.0391 13 19.5304 13 19V15H14V19C14 19.7956 13.6839 20.5587 13.1213 21.1213C12.5587 21.6839 11.7956 22 11 22H5C4.20435 22 3.44129 21.6839 2.87868 21.1213C2.31607 20.5587 2 19.7956 2 19V6C2 5.20435 2.31607 4.44129 2.87868 3.87868C3.44129 3.31607 4.20435 3 5 3ZM8 12H19.25L16 8.75L16.66 8L21.16 12.5L16.66 17L16 16.25L19.25 13H8V12Z"
+            fill="#F04438"
+          />
+        </svg>
+
+        <p>Logout</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- notfication -->
+  <div
+    class="fixed top-0 left-0 w-[100vw] h-[100vh] bg-black/60 z-[999]"
+    *ngIf="showNotification"
+    (click)="closeNotification()"
+  >
+    <section
+      class="absolute z-[999] top-[70px] bg-white border rounded-lg w-[500px] left-[50vw] xl:left-[60vw] 3xl:left-[80vw] py-3 px-5"
+      (click)="$event.stopPropagation()"
+    >
+      <div
+        class="flex justify-between items-center py-3 border-b"
+        *ngFor="let note of notifications"
+      >
+        <div class="flex items-center gap-3">
+          <div [ngSwitch]="note.type">
+            <svg
+              *ngSwitchCase="'gift'"
+              width="30"
+              height="30"
+              viewBox="0 0 30 30"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="15" cy="15" r="15" fill="#9747FF" />
+              <path
+                d="M8.33203 14.166V20.8327C8.33203 21.2747 8.50763 21.6986 8.82019 22.0112C9.13275 22.3238 9.55667 22.4993 9.9987 22.4993H19.9987C20.4407 22.4993 20.8646 22.3238 21.1772 22.0112C21.4898 21.6986 21.6654 21.2747 21.6654 20.8327V14.166"
+                stroke="white"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M15 9.58268C15 8.80913 14.6927 8.06727 14.1457 7.52029C13.5987 6.97331 12.8569 6.66602 12.0833 6.66602C11.5308 6.66602 11.0009 6.88551 10.6102 7.27621C10.2195 7.66691 10 8.19681 10 8.74935C10 9.30188 10.2195 9.83179 10.6102 10.2225C11.0009 10.6132 11.5308 10.8327 12.0833 10.8327H15M15 9.58268V10.8327M15 9.58268C15 8.80913 15.3073 8.06727 15.8543 7.52029C16.4013 6.97331 17.1431 6.66602 17.9167 6.66602C18.4692 6.66602 18.9991 6.88551 19.3898 7.27621C19.7805 7.66691 20 8.19681 20 8.74935C20 9.02294 19.9461 9.29384 19.8414 9.54661C19.7367 9.79937 19.5833 10.029 19.3898 10.2225C19.1964 10.4159 18.9667 10.5694 18.7139 10.6741C18.4612 10.7788 18.1903 10.8327 17.9167 10.8327H15"
+                stroke="white"
+                stroke-width="1.5"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M15 14.1654V22.4987M7.5 10.832H22.5V14.1654H7.5V10.832Z"
+                stroke="white"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <svg
+              *ngSwitchCase="'chat'"
+              width="30"
+              height="30"
+              viewBox="0 0 30 30"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="15" cy="15" r="15" fill="#C4C4C4" />
+              <path
+                d="M7.65057 20H6.35795L10.0966 9.81818H11.3693L15.108 20H13.8153L10.7727 11.429H10.6932L7.65057 20ZM8.12784 16.0227H13.3381V17.1165H8.12784V16.0227ZM16.5539 20V9.81818H20.1136C20.8228 9.81818 21.4078 9.94081 21.8685 10.1861C22.3292 10.428 22.6723 10.7545 22.8976 11.1655C23.123 11.5732 23.2357 12.0256 23.2357 12.5227C23.2357 12.9602 23.1578 13.3215 23.002 13.6065C22.8496 13.8916 22.6474 14.117 22.3955 14.2827C22.1469 14.4484 21.8768 14.571 21.5851 14.6506V14.75C21.8967 14.7699 22.2099 14.8793 22.5248 15.0781C22.8396 15.277 23.1031 15.562 23.3153 15.9332C23.5274 16.3045 23.6334 16.7585 23.6334 17.2955C23.6334 17.8059 23.5174 18.2649 23.2854 18.6726C23.0534 19.0803 22.6872 19.4034 22.1867 19.642C21.6862 19.8807 21.035 20 20.2329 20H16.5539ZM17.7868 18.9062H20.2329C21.0383 18.9062 21.61 18.7505 21.9481 18.4389C22.2895 18.1241 22.4601 17.7429 22.4601 17.2955C22.4601 16.9508 22.3723 16.6326 22.1966 16.3409C22.021 16.0459 21.7707 15.8106 21.4459 15.6349C21.1211 15.456 20.7367 15.3665 20.2925 15.3665H17.7868V18.9062ZM17.7868 14.2926H20.0738C20.445 14.2926 20.7797 14.2197 21.078 14.0739C21.3796 13.928 21.6183 13.7225 21.7939 13.4574C21.9729 13.1922 22.0624 12.8807 22.0624 12.5227C22.0624 12.0753 21.9066 11.6958 21.5951 11.3842C21.2835 11.0694 20.7897 10.9119 20.1136 10.9119H17.7868V14.2926Z"
+                fill="black"
+              />
+            </svg>
+
+            <svg
+              *ngSwitchCase="'class'"
+              width="30"
+              height="30"
+              viewBox="0 0 30 30"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="15" cy="15" r="15" fill="#EBA352" />
+              <path
+                d="M19 16C17.346 16 16 17.3455 16 19C16 20.6545 17.346 22 19 22C20.654 22 22 20.6545 22 19C22 17.3455 20.654 16 19 16ZM19 21C17.897 21 17 20.103 17 19C17 17.897 17.897 17 19 17V19H21C21 20.103 20.103 21 19 21Z"
+                fill="white"
+              />
+              <path
+                d="M15 21H11.5V11H18.5V14.5H19.5V9C19.5 8.4485 19.0515 8 18.5 8H11.5C10.9485 8 10.5 8.4485 10.5 9V21C10.5 21.5515 10.9485 22 11.5 22H15V21ZM11.5 9H18.5V10H11.5V9Z"
+                fill="white"
+              />
+            </svg>
+            <svg
+              *ngSwitchCase="'sub'"
+              width="30"
+              height="30"
+              viewBox="0 0 30 30"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <circle cx="15" cy="15" r="15" fill="#42ADE2" />
+              <path
+                d="M17.5 17C17.3674 17 17.2402 17.0527 17.1464 17.1464C17.0527 17.2402 17 17.3674 17 17.5C17 17.6326 17.0527 17.7598 17.1464 17.8536C17.2402 17.9473 17.3674 18 17.5 18H19.5C19.6326 18 19.7598 17.9473 19.8536 17.8536C19.9473 17.7598 20 17.6326 20 17.5C20 17.3674 19.9473 17.2402 19.8536 17.1464C19.7598 17.0527 19.6326 17 19.5 17H17.5ZM8 12.5C8 11.837 8.26339 11.2011 8.73223 10.7322C9.20107 10.2634 9.83696 10 10.5 10H19.5C20.163 10 20.7989 10.2634 21.2678 10.7322C21.7366 11.2011 22 11.837 22 12.5V17.5C22 18.163 21.7366 18.7989 21.2678 19.2678C20.7989 19.7366 20.163 20 19.5 20H10.5C9.83696 20 9.20107 19.7366 8.73223 19.2678C8.26339 18.7989 8 18.163 8 17.5V12.5ZM21 13V12.5C21 12.1022 20.842 11.7206 20.5607 11.4393C20.2794 11.158 19.8978 11 19.5 11H10.5C10.1022 11 9.72064 11.158 9.43934 11.4393C9.15804 11.7206 9 12.1022 9 12.5V13H21ZM9 14V17.5C9 17.8978 9.15804 18.2794 9.43934 18.5607C9.72064 18.842 10.1022 19 10.5 19H19.5C19.8978 19 20.2794 18.842 20.5607 18.5607C20.842 18.2794 21 17.8978 21 17.5V14H9Z"
+                fill="white"
+              />
+            </svg>
+          </div>
+          <div>
+            <p class="font-medium">{{ note.text }}</p>
+          </div>
+        </div>
+        <div *ngIf="note.action" class="">
+          <img src="/assets/icons/more vertical.svg" alt="" />
+        </div>
+      </div>
+      <div class="flex py-3 justify-center text-primary cursor-pointer">
+        View All
+      </div>
+    </section>
+  </div>
+
+  <!-- schedule -->
+  <div
+    class="fixed top-0 left-0 w-[100vw] h-[100vh] bg-black/60 z-[999]"
+    *ngIf="showSchedule"
+    (click)="closeSchedule()"
+  >
+    <section
+      class="absolute z-[999] top-[70px] bg-white border rounded-lg w-[450px] left-[50vw] xl:left-[63vw] 2xl:left-[70vw] py-3 px-5"
+      (click)="$event.stopPropagation()"
+    >
+      <app-schedule-calender
+        [year]="2025"
+        [month]="5"
+        [events]="[
+          { date: '2025-06-10', subject: 'Physics' },
+          { date: '2025-06-10', subject: 'Math' },
+          { date: '2025-06-14', subject: 'English' },
+          { date: '2025-06-25', subject: 'Chemistry' }
+        ]"
+      >
+      </app-schedule-calender>
+    </section>
+  </div>
+
+  <!-- message -->
+  <div
+    class="fixed top-0 left-0 w-[100vw] h-[100vh] bg-black/60 z-[999]"
+    *ngIf="showMessage"
+    (click)="closeMessage()"
+  >
+    <section
+      class="absolute z-[999] top-[70px] bg-white border rounded-lg w-[400px] left-[60vw] xl:left-[65vw] 3xl:left-[80vw] py-3 px-5"
+      (click)="$event.stopPropagation()"
+    >
+      <h1 class="font-semibold border-b-2 mb-3 p-3">Messages</h1>
+
+      <div class="h-[300px] overflow-y-auto">
+        <div
+          *ngFor="let friends of friend"
+          class="flex justify-between items-center"
+          routerLink="/dashboard/messages"
+        >
+          <div class="flex gap-3">
+            <div class="">
+              <img
+                src="{{ friends.image }}"
+                alt=""
+                class="object-cover rounded-full size-[50px]"
+              />
+              <div
+                *ngIf="friends.active"
+                class="bg-green-500 rounded-full relative left-[35px] bottom-[15px] size-[10px] z-10"
+              ></div>
+              <div
+                *ngIf="!friends.active"
+                class="bg-red-500 rounded-full relative left-[35px] bottom-[15px] size-[10px] z-10"
+              ></div>
+            </div>
+            <div>
+              <h1 class="font-medium text-sm">{{ friends.name }}</h1>
+              <p class="text-subject-meta text-sm">new message</p>
+            </div>
+          </div>
+          <div class="text-sm text-subject-meta">3 days</div>
+        </div>
+      </div>
+    </section>
+  </div>
 </div>
