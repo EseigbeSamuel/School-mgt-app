@@ -3,9 +3,10 @@ import { CommonModule } from '@angular/common';
 import { StudentsComponent } from '../../tutor/students/students.component';
 import { UserTypeService } from '../../../../services/user-type.service';
 import { AdminStudentsListingComponent } from '../../admin/admin-students/admin-students-listing/admin-students-listing.component';
+
 @Component({
   selector: 'app-role-students',
-  imports: [CommonModule, AdminStudentsListingComponent, StudentsComponent],
+  imports: [CommonModule, StudentsComponent, AdminStudentsListingComponent],
   template: `
     <ng-container [ngSwitch]="userRole">
       <app-students *ngSwitchCase="'tutor'"></app-students>
