@@ -1,22 +1,22 @@
 <div class="relative w-full">
   <label
-    *ngIf="showLabel"
+    *ngIf="label && showLabel"
     class="font-medium text-textColor capitalize text-[16px]"
   >
     {{ label }}
   </label>
 
   <select
-    [ngClass]="variantClasses"
-    [disabled]="disabled"
     [value]="value"
     (change)="onValueChange($event)"
     (focus)="onFocus()"
     (blur)="onBlur()"
+    [disabled]="disabled"
+    [class]="variantClasses"
   >
-    <option value="" disabled selected hidden>{{ computedPlaceholder }}</option>
-    <option *ngFor="let option of options" [value]="option.value">
-      {{ option.name }}
+    <option value="" disabled>{{ computedPlaceholder }}</option>
+    <option *ngFor="let option of normalizedOptions" [value]="option.value">
+      {{ option.label }}
     </option>
   </select>
 

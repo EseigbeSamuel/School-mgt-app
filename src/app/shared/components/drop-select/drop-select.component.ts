@@ -22,23 +22,44 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class DropSelectComponent implements ControlValueAccessor {
   @Input() label: string = '';
-  @Input() options: any[] = [];
+  @Input() options: Array<string | { value: string; label: string }> = [];
   @Input() disabled: boolean = false;
+  @Input() value: string = '';
   @Input() placeholder: string | null = null;
   @Input() showLabel: boolean = true;
-  @Input() error: boolean = false;
-  isFocused: boolean = false;
-  value: string = '';
-
   @Output() valueChange = new EventEmitter<string>();
+  @Input() error: boolean = false;
 
-  // ControlValueAccessor internal methods
-  private onChange: any = () => {};
-  private onTouched: any = () => {};
+  isFocused: boolean = false;
 
-  // Required
-  writeValue(value: string): void {
-    this.value = value;
+  // ControlValueAccessor methods
+  private onChange = (value: any) => {};
+  private onTouched = () => {};
+
+  onValueChange(event: Event) {
+    const target = event.target as HTMLSelectElement;
+    this.value = target.value;
+
+    // Emit the value change for existing functionality
+    this.valueChange.emit(this.value);
+
+    // Call the onChange callback for reactive forms
+    this.onChange(this.value);
+  }
+
+  onFocus() {
+    this.isFocused = true;
+  }
+
+  onBlur() {
+    this.isFocused = false;
+    // Call the onTouched callback for reactive forms
+    this.onTouched();
+  }
+
+  // ControlValueAccessor implementation
+  writeValue(value: any): void {
+    this.value = value || '';
   }
 
   registerOnChange(fn: any): void {
@@ -53,31 +74,19 @@ export class DropSelectComponent implements ControlValueAccessor {
     this.disabled = isDisabled;
   }
 
-  // Handle select change
-  onValueChange(event: Event) {
-    const target = event.target as HTMLSelectElement;
-    this.value = target.value;
-    this.onChange(this.value);
-    this.valueChange.emit(this.value);
-  }
-
-  onFocus() {
-    this.isFocused = true;
-  }
-
-  onBlur() {
-    this.isFocused = false;
-    this.onTouched();
-  }
-
   get computedPlaceholder(): string {
     return this.placeholder || this.label || 'Select an option';
   }
 
+  get normalizedOptions(): { value: string; label: string }[] {
+    return this.options.map((opt) =>
+      typeof opt === 'string' ? { value: opt, label: opt } : opt
+    );
+  }
+
   get variantClasses(): string {
-    const base = `w-full rounded px-2 py-3 bg-transparent border text-sm text-gray-700 focus:outline-none transition duration-200  ${
-      this.error ? 'border-2 border-red-500' : ''
-    }`;
+    const base =
+      'w-full rounded px-2 py-2  bg-transparent border text-[16px] text-gray-600 focus:outline-none transition duration-200';
     const ring =
       this.isFocused && !this.disabled
         ? 'ring-2 ring-[#2C2A724D]'
@@ -87,6 +96,8 @@ export class DropSelectComponent implements ControlValueAccessor {
       ? 'opacity-50 cursor-not-allowed bg-gray-100'
       : '';
 
-    return `${base} ${ring} ${border} ${disabledStyle}`;
+    return `${base} ${ring} ${border} ${disabledStyle}  ${
+      this.error ? 'border-2 border-red-500' : ''
+    }`;
   }
 }

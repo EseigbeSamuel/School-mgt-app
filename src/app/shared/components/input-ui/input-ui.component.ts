@@ -148,7 +148,7 @@ export class InputUiComponent implements ControlValueAccessor {
         }`;
       case 'underlined':
         return `${baseClasses} ${focusClasses} bg-transparent border-b rounded-none focus:ring-0 border-[#2C2A724D] focus:border-[#2C2A724D]`;
-      default: // outline
+      default:
         return `${baseClasses} ${focusClasses} w-full bg-transparent  border border-[#2C2A724D] focus:ring-[#2C2A724D] focus:border-[#2C2A724D]`;
     }
   }

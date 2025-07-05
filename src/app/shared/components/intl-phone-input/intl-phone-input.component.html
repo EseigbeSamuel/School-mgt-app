@@ -1,11 +1,11 @@
 <div>
-  <form #f="ngForm" [formGroup]="phoneForm">
+  <form [formGroup]="phoneForm">
     <label
-      for=""
+      for="phone"
       class="mb-2 font-medium text-textColor capitalize text-[16px]"
     >
-      Phone number</label
-    >
+      {{ label }}
+    </label>
     <div class="wrapper">
       <ngx-intl-tel-input
         [cssClass]="variantClasses()"
@@ -25,6 +25,7 @@
         [numberFormat]="PhoneNumberFormat.National"
         name="phone"
         formControlName="phone"
+        (blur)="onBlur()"
       >
       </ngx-intl-tel-input>
     </div>
