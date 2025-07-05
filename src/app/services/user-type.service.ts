@@ -20,7 +20,7 @@ export class UserTypeService {
 }
 
 export const userTypeGuard = (
-  requiredType: 'tutor' | 'student'
+  requiredType: 'tutor' | 'student' | "admin"
 ): CanActivateFn => {
   return () => {
     const authService = inject(AuthService);

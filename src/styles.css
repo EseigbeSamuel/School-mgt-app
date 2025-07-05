@@ -165,9 +165,16 @@ button.nav-link.active .icon {
   color: white;
 }
 
+.table-container {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
+  caption-side: bottom;
 }
 
 th {
@@ -179,7 +186,9 @@ th {
 td {
   padding: 15px 20px;
   border-bottom: 1px solid #f0f0f0;
+  white-space: nowrap;
 }
+
 tr:last-child td {
   border-bottom: none;
 }

@@ -2,15 +2,19 @@
 import { Injectable, signal } from '@angular/core';
 import { Router } from '@angular/router';
 
-type UserType = 'tutor' | 'student';
+export type UserType = 'tutor' | 'student' | 'admin';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  currentUserType = signal<UserType | null>(null);
+  currentUserType = signal<UserType | null>('student');
 
   constructor(private router: Router) {
-    const storedUserType = localStorage.getItem('userType');
-    if (storedUserType === 'tutor' || storedUserType === 'student') {
+    const storedUserType =
+      (localStorage.getItem('userType') as UserType) || null;
+    if (
+      storedUserType &&
+      ['tutor', 'student', 'admin'].includes(storedUserType)
+    ) {
       this.currentUserType.set(storedUserType);
     }
   }

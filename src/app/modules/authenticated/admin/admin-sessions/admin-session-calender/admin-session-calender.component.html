@@ -1,0 +1,50 @@
+<div class="space-y-4">
+  <hr />
+  <div class="flex gap-4 justify-between items-center flex-wrap">
+    <div class="flex gap-3 items-center">
+      <button class="px-4 py-2.5 rounded-md border border-gray-100">
+        Today
+      </button>
+      <button
+        class="px-4 py-2.5 rounded-md border border-gray-100 flex gap-3 items-center justify-center"
+      >
+        May 1
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 16 16"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M13.28 5.9668L8.9333 10.3135C8.41997 10.8268 7.57997 10.8268 7.06664 10.3135L2.71997 5.9668"
+            stroke="#161C2D"
+            stroke-width="1.5"
+            stroke-miterlimit="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </button>
+
+      <button
+        class="px-4 py-2.5 rounded-md border border-gray-100 flex gap-2 justify-center items-center"
+      >
+        <div class="span size-4 rounded-full min-w-4 bg-red-600 block"></div>
+        <span>8:12PM WAT</span>
+      </button>
+    </div>
+    <div class="w-fit">
+      <app-sort-dropdown />
+    </div>
+  </div>
+  <hr />
+  <div class="min-h-1"></div>
+  <div class="border border-gray-100 rounded-md shadow-sm w-full p-5">
+    <div
+    class="grid place-content-center place-items-center text-center text-2xl font-bold min-h-[calc(100svh_-var(--navbar-height)-_220px)]"
+    >
+      <span>Calender</span>
+    </div>
+  </div>
+</div>

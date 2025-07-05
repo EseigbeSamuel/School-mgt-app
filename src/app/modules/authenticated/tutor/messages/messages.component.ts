@@ -8,4 +8,4 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './messages.component.html',
   styleUrl: './messages.component.css',
 })
-export class MessagesComponent {}
+export class TutorMessagesComponent {}

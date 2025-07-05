@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-student-dashboard',
+  selector: 'app-student-dashboard-table',
   imports: [CommonModule],
   templateUrl: './student-dashboard.component.html',
   styleUrl: './student-dashboard.component.css',

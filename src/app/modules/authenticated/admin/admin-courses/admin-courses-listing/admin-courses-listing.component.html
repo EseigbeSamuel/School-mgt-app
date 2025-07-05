@@ -1,0 +1,655 @@
+<div class="space-y-5">
+  <div class="flex justify-between gap-4 flex-wrap items-center">
+    <h1 class="text-3xl font-medium">Courses & Contents</h1>
+
+    <div class="flex gap-3 gap-x-4 items-center">
+      <a
+        [routerLink]="`/dashboard/courses/upload-material`"
+        type="button"
+        class="flex gap-2 items-center justify-center bg-gray-100 text-black rounded-lg px-5 py-2 text-sm"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6 19.9998C5.45 19.9998 4.97933 19.8042 4.588 19.4128C4.19667 19.0215 4.00067 18.5505 4 17.9998V15.9998C4 15.7165 4.096 15.4792 4.288 15.2878C4.48 15.0965 4.71733 15.0005 5 14.9998C5.28267 14.9992 5.52033 15.0952 5.713 15.2878C5.90567 15.4805 6.00133 15.7178 6 15.9998V17.9998H18V15.9998C18 15.7165 18.096 15.4792 18.288 15.2878C18.48 15.0965 18.7173 15.0005 19 14.9998C19.2827 14.9992 19.5203 15.0952 19.713 15.2878C19.9057 15.4805 20.0013 15.7178 20 15.9998V17.9998C20 18.5498 19.8043 19.0208 19.413 19.4128C19.0217 19.8048 18.5507 20.0005 18 19.9998H6ZM11 7.84982L9.125 9.72482C8.925 9.92482 8.68767 10.0208 8.413 10.0128C8.13833 10.0048 7.90067 9.90049 7.7 9.69982C7.51667 9.49982 7.42067 9.26649 7.412 8.99982C7.40333 8.73315 7.49933 8.49982 7.7 8.29982L11.3 4.69982C11.4 4.59982 11.5083 4.52915 11.625 4.48782C11.7417 4.44649 11.8667 4.42549 12 4.42482C12.1333 4.42415 12.2583 4.44515 12.375 4.48782C12.4917 4.53049 12.6 4.60115 12.7 4.69982L16.3 8.29982C16.5 8.49982 16.596 8.73315 16.588 8.99982C16.58 9.26649 16.484 9.49982 16.3 9.69982C16.1 9.89982 15.8627 10.0042 15.588 10.0128C15.3133 10.0215 15.0757 9.92549 14.875 9.72482L13 7.84982V14.9998C13 15.2832 12.904 15.5208 12.712 15.7128C12.52 15.9048 12.2827 16.0005 12 15.9998C11.7173 15.9992 11.48 15.9032 11.288 15.7118C11.096 15.5205 11 15.2832 11 14.9998V7.84982Z"
+            fill="#161C2D"
+          />
+        </svg>
+
+        <span>Upload Material</span>
+      </a>
+
+      <a
+        [routerLink]="`/dashboard/courses/add-course`"
+        type="button"
+        class="flex gap-1 items-center justify-center bg-primary text-white rounded-lg px-4 py-2 text-sm"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6 12H18M12 18V6"
+            stroke="white"
+            stroke-width="1.5"
+            stroke-miterlimit="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+
+        <span>Add Course</span>
+      </a>
+    </div>
+  </div>
+
+  <div
+    class="flex gap-2 w-fit rounded-md bg-gray-100 p-2 max-h-14 transition-transform"
+  >
+    <button
+      class="px-4 py-2 text-center rounded-md select-none transition-colors"
+      [class]="tab == 'courses' ? 'bg-white' : ''"
+      (click)="changeTab('courses')"
+    >
+      Courses
+    </button>
+    <button
+      class="px-4 py-2 text-center rounded-md select-none transition-colors"
+      [class]="tab == 'materials' ? 'bg-white' : ''"
+      (click)="changeTab('materials')"
+    >
+      Learning Materials
+    </button>
+    <button
+      class="px-4 py-2 text-center rounded-md select-none transition-colors"
+      [class]="tab == 'assessments' ? 'bg-white' : ''"
+      (click)="changeTab('assessments')"
+    >
+      Assessments & Flashcards
+    </button>
+  </div>
+  <br />
+  <div
+    class="search relative w-full max-w-md rounded-sm overflow-hidden h-12 border border-gray-200"
+  >
+    <div class="search-icon absolute left-3 top-1/2 -translate-y-1/2">
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M13.7847 15.1991C10.6462 17.6416 6.10654 17.4205 3.22181 14.5358C0.0976136 11.4116 0.0976136 6.34625 3.22181 3.22205C6.346 0.0978578 11.4113 0.0978578 14.5355 3.22205C17.4202 6.10677 17.6414 10.6464 15.1989 13.7849L19.4853 18.0713C19.8758 18.4618 19.8758 19.095 19.4853 19.4855C19.0948 19.876 18.4616 19.876 18.0711 19.4855L13.7847 15.1991ZM4.63602 13.1215C6.97917 15.4647 10.7782 15.4647 13.1213 13.1215C15.4644 10.7784 15.4644 6.97941 13.1213 4.63627C10.7782 2.29312 6.97917 2.29312 4.63602 4.63627C2.29288 6.97941 2.29288 10.7784 4.63602 13.1215Z"
+          fill="#667085"
+        />
+      </svg>
+    </div>
+    <input
+      type="text"
+      class="size-full px-4 pl-10 placeholder:capitalize"
+      [placeholder]="`Search ${tab}`"
+    />
+  </div>
+
+  <div
+    class="grid gap-6 grid-cols-[repeat(auto-fit,_minmax(280px,_1fr))]"
+    *ngIf="tab === 'courses'"
+  >
+    <div
+      class="rounded-md border border-gray-50 shadow-sm space-y-4 flex flex-col justify-between p-4"
+    >
+      <div class="flex items-center gap-2">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 20 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M16.2501 3.33317H13.7501V2.08317C13.7501 1.97266 13.7062 1.86668 13.628 1.78854C13.5499 1.7104 13.4439 1.6665 13.3334 1.6665C13.2229 1.6665 13.1169 1.7104 13.0388 1.78854C12.9606 1.86668 12.9167 1.97266 12.9167 2.08317V3.33317H7.08341V2.08317C7.08341 1.97266 7.03952 1.86668 6.96138 1.78854C6.88324 1.7104 6.77725 1.6665 6.66675 1.6665C6.55624 1.6665 6.45026 1.7104 6.37212 1.78854C6.29398 1.86668 6.25008 1.97266 6.25008 2.08317V3.33317H3.75008C3.19775 3.33383 2.66823 3.55354 2.27767 3.9441C1.88712 4.33465 1.66741 4.86417 1.66675 5.4165V16.2498C1.66741 16.8022 1.88712 17.3317 2.27767 17.7222C2.66823 18.1128 3.19775 18.3325 3.75008 18.3332H16.2501C16.8026 18.3332 17.3325 18.1137 17.7232 17.723C18.1139 17.3323 18.3334 16.8024 18.3334 16.2498V5.4165C18.3334 4.86397 18.1139 4.33407 17.7232 3.94336C17.3325 3.55266 16.8026 3.33317 16.2501 3.33317ZM17.5001 16.2498C17.5001 16.5814 17.3684 16.8993 17.134 17.1337C16.8995 17.3681 16.5816 17.4998 16.2501 17.4998H3.75008C3.41856 17.4998 3.10062 17.3681 2.8662 17.1337C2.63178 16.8993 2.50008 16.5814 2.50008 16.2498V9.1665H17.5001V16.2498ZM17.5001 8.33317H2.50008V5.4165C2.50008 4.7265 3.05841 4.1665 3.75008 4.1665H6.25008V5.4165C6.25008 5.52701 6.29398 5.63299 6.37212 5.71113C6.45026 5.78927 6.55624 5.83317 6.66675 5.83317C6.77725 5.83317 6.88324 5.78927 6.96138 5.71113C7.03952 5.63299 7.08341 5.52701 7.08341 5.4165V4.1665H12.9167V5.4165C12.9167 5.52701 12.9606 5.63299 13.0388 5.71113C13.1169 5.78927 13.2229 5.83317 13.3334 5.83317C13.4439 5.83317 13.5499 5.78927 13.628 5.71113C13.7062 5.63299 13.7501 5.52701 13.7501 5.4165V4.1665H16.2501C16.5816 4.1665 16.8995 4.2982 17.134 4.53262C17.3684 4.76704 17.5001 5.08498 17.5001 5.4165V8.33317Z"
+            fill="#161C2D"
+          />
+        </svg>
+
+        <span class="font-semibold">Total Courses</span>
+      </div>
+
+      <div class="space-y-1">
+        <span class="text-2xl font-bold">150</span>
+        <p class="text-xs text-gray-400 font-semibold">+12% from last month</p>
+      </div>
+    </div>
+    <div
+      class="rounded-md border border-gray-50 shadow-sm space-y-4 flex flex-col justify-between p-4"
+    >
+      <div class="flex items-center gap-2">
+        <span class="font-semibold">Uploaded Materials</span>
+      </div>
+
+      <div class="space-y-1">
+        <span class="text-2xl font-bold">150</span>
+        <p class="text-xs text-gray-400 font-semibold">All Posted Materials</p>
+      </div>
+    </div>
+    <div
+      class="rounded-md border border-gray-50 shadow-sm space-y-4 flex flex-col justify-between p-4"
+    >
+      <div class="flex items-center gap-2">
+        <span class="font-semibold">Total Enrollments</span>
+      </div>
+
+      <div class="space-y-1">
+        <span class="text-2xl font-bold">150</span>
+        <p class="text-xs text-gray-400 font-semibold">Tutors & Students</p>
+      </div>
+    </div>
+    <div
+      class="rounded-md border border-gray-50 shadow-sm space-y-4 flex flex-col justify-between p-4"
+    >
+      <div class="flex items-center gap-2">
+        <span class="font-semibold">Average Ratings</span>
+      </div>
+
+      <div class="space-y-1">
+        <span class="text-2xl font-bold">4.5</span>
+        <div class="flex gap-1 items-center font-semibold">
+          <svg width="16" height="16" fill="#FBBF24" viewBox="0 0 20 20">
+            <polygon
+              points="10,1.5 12.472,7.09 18.541,7.635 13.75,11.91 15.18,17.865 10,14.5 4.82,17.865 6.25,11.91 1.459,7.635 7.528,7.09"
+            />
+          </svg>
+          <span class="text-gray-500 text-sm">Excellent</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="flex justify-between gap-4 flex-wrap items-center"
+    *ngIf="tab === 'assessments'"
+  >
+    <h3 class="text-lg font-medium">Quiz & Assessments</h3>
+
+    <div class="flex gap-3 gap-x-4 items-center">
+      <!-- TODO: Make the button activate the form to create assessment -->
+      <button
+        type="button"
+        class="flex gap-1 items-center justify-center bg-primary text-white rounded-lg px-4 py-2 text-sm"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6 12H18M12 18V6"
+            stroke="white"
+            stroke-width="1.5"
+            stroke-miterlimit="10"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+
+        <span>Create Assessment</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="space-y-5" *ngIf="tab === 'courses'">
+    <div class="md:border-b border-[#E9E9E9] overflow-x-auto">
+      <div
+        class="flex w-max md:w-full gap-2 md:gap-0 items-center pt-4 md:flex-nowrap flex-nowrap"
+      >
+        <div
+          (click)="switchTabs('science')"
+          class="min-w-fit px-4 py-3 md:py-2 rounded-lg md:rounded-none text-sm font-semibold cursor-pointer transition-all duration-200"
+          [ngClass]="{
+            'bg-[#F4EDFF] text-[#8A2BE2]': activeTabC === 'science',
+            'bg-gray-100 text-gray-500 md:bg-white': activeTabC !== 'science',
+            'md:border-b-2 md:border-[#8A2BE2] md:bg-transparent md:text-textColor':
+              activeTabC === 'science' && isDesktop,
+            'md:border-b-0': activeTabC !== 'science' && isDesktop
+          }"
+        >
+          Sciences
+        </div>
+
+        <div
+          (click)="switchTabs('commercial')"
+          class="min-w-fit px-4 py-2 rounded-lg md:rounded-none text-sm font-semibold cursor-pointer transition-all duration-200"
+          [ngClass]="{
+            'bg-[#F4EFF2] text-[#5C1A32]': activeTabC === 'commercial',
+            'bg-gray-100 text-gray-500 md:bg-white':
+              activeTabC !== 'commercial',
+            'md:border-b-2 md:border-[#5C1A32] md:bg-transparent md:text-textColor':
+              activeTabC === 'commercial' && isDesktop,
+            'md:border-b-0': activeTabC !== 'commercial' && isDesktop
+          }"
+        >
+          Commercial
+        </div>
+
+        <div
+          (click)="switchTabs('art')"
+          class="min-w-fit px-4 py-2 rounded-lg md:rounded-none text-sm font-semibold cursor-pointer transition-all duration-200"
+          [ngClass]="{
+            'bg-[#E7F1FF] text-[#1D4ED8]': activeTabC === 'art',
+            'bg-gray-100 text-gray-500 md:bg-white': activeTabC !== 'art',
+            'md:border-b-2 md:border-[#1D4ED8] md:bg-transparent md:text-textColor':
+              activeTabC === 'art' && isDesktop,
+            'md:border-b-0': activeTabC !== 'art' && isDesktop
+          }"
+        >
+          Arts
+        </div>
+
+        <div
+          (click)="switchTabs('vocational')"
+          class="min-w-fit px-4 py-2 rounded-lg md:rounded-none text-sm font-semibold cursor-pointer transition-all duration-200"
+          [ngClass]="{
+            'bg-[#FEF9E6] text-[#C0930A]': activeTabC === 'vocational',
+            'bg-gray-100 text-gray-500 md:bg-white':
+              activeTabC !== 'vocational',
+            'md:border-b-2 md:border-[#C0930A] md:bg-transparent md:text-textColor':
+              activeTabC === 'vocational' && isDesktop,
+            'md:border-b-0': activeTabC !== 'vocational' && isDesktop
+          }"
+        >
+          Vocational
+        </div>
+      </div>
+    </div>
+
+    <ng-container class="mt-4 table-box">
+      <div *ngIf="activeTabC === 'art'">
+        <div class="table-container">
+          <app-admin-courses-course-table [data]="coursesData" />
+        </div>
+      </div>
+      <div *ngIf="activeTabC === 'commercial'">
+        <div class="overflow-x-auto">
+          <app-admin-courses-course-table [data]="coursesData" />
+        </div>
+      </div>
+      <div *ngIf="activeTabC === 'science'">
+        <div class="overflow-x-auto">
+          <app-admin-courses-course-table [data]="coursesData" />
+        </div>
+      </div>
+      <div *ngIf="activeTabC === 'vocational'">
+        <div class="overflow-x-auto">
+          <app-admin-courses-course-table [data]="coursesData" />
+        </div>
+      </div>
+
+      <div class="pagination-box *:py-4 sm:py-6">
+        <app-paginator
+          [metadata]="paginationMetadata"
+          [showText]="true"
+        ></app-paginator>
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="flex flex-col gap-4 py-4" *ngIf="tab === 'assessments'">
+    <div class="border-b border-[#E9E9E9] flex gap-6 items-center">
+      <div
+        (click)="switchActiveTabs('assessments')"
+        class="text-[16px] font-[600] pb-1 cursor-pointer py-4"
+        [class.text-textColor]="activeTab === 'assessments'"
+        [class.text-gray-400]="activeTab !== 'assessments'"
+        [class.border-b-2]="activeTab === 'assessments'"
+        [class.border-textColor]="activeTab === 'assessments'"
+      >
+        Assessments
+      </div>
+      <div
+        (click)="switchActiveTabs('mock-exams')"
+        class="text-[16px] font-[600] pb-1 cursor-pointer py-4"
+        [class.text-textColor]="activeTab === 'mock-exams'"
+        [class.text-gray-400]="activeTab !== 'mock-exams'"
+        [class.border-b-2]="activeTab === 'mock-exams'"
+        [class.border-textColor]="activeTab === 'mock-exams'"
+      >
+        Mock Exams
+      </div>
+      <div
+        (click)="switchActiveTabs('quiz')"
+        class="text-[16px] font-[600] pb-1 cursor-pointer py-4"
+        [class.text-textColor]="activeTab === 'quiz'"
+        [class.text-gray-400]="activeTab !== 'quiz'"
+        [class.border-b-2]="activeTab === 'quiz'"
+        [class.border-textColor]="activeTab === 'quiz'"
+      >
+        Quiz
+      </div>
+      <div
+        (click)="switchActiveTabs('flashcards')"
+        class="text-[16px] font-[600] pb-1 cursor-pointer py-4"
+        [class.text-textColor]="activeTab === 'flashcards'"
+        [class.text-gray-400]="activeTab !== 'flashcards'"
+        [class.border-b-2]="activeTab === 'flashcards'"
+        [class.border-textColor]="activeTab === 'flashcards'"
+      >
+        Flashcards
+      </div>
+    </div>
+    <ng-container class="mt-4 table-box">
+      <div *ngIf="activeTab === 'assessments'">
+        <div class="table-container">
+          <app-admin-courses-table [data]="assetsData" />
+        </div>
+      </div>
+      <div *ngIf="activeTab === 'mock-exams'">
+        <div class="overflow-x-auto">
+          <app-admin-courses-table [data]="mockData" />
+        </div>
+      </div>
+      <div *ngIf="activeTab === 'quiz'">
+        <div class="overflow-x-auto">
+          <app-admin-courses-table [data]="quizData" />
+        </div>
+      </div>
+      <div *ngIf="activeTab === 'flashcards'">
+        <div class="overflow-x-auto">
+          <app-admin-courses-table [data]="flashData" />
+        </div>
+      </div>
+
+      <div class="pagination-box *:py-4 sm:py-6">
+        <app-paginator
+          [metadata]="paginationMetadata"
+          [showText]="true"
+        ></app-paginator>
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="space-y-6 sm:space-y-8 sm:p-2" *ngIf="tab === 'materials'">
+    <div class="space-y-3">
+      <h3 class="text-lg text-accent font-medium">Lesson Notes</h3>
+      <div
+        class="grid grid-cols-[repeat(auto-fill,_minmax(260px,_1fr))] gap-4 sm:gap-6"
+      >
+        <div
+          *ngFor="let _ of [1, 2, 3, 4]"
+          class="sm:p-5 p-4 rounded-md shadow-sm border border-gray-200 flex flex-col gap-3 text-[15px] items-center justify-center bg-gray-50"
+        >
+          <svg
+            width="50"
+            height="50"
+            viewBox="0 0 50 50"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M42.3168 26.3482L43.3939 22.3232C44.6522 17.6253 45.2835 15.2774 44.8106 13.2441C44.4357 11.6388 43.5933 10.1808 42.3897 9.05447C40.8668 7.62739 38.5168 6.99822 33.8189 5.73989C29.121 4.47947 26.771 3.8503 24.7397 4.32322C23.1345 4.69804 21.6765 5.5405 20.5501 6.74405C19.3272 8.04822 18.6897 9.95864 17.7418 13.4295L17.2335 15.3149L16.1564 19.3399C14.896 24.0378 14.2668 26.3857 14.7397 28.4191C15.1145 30.0243 15.957 31.4823 17.1606 32.6086C18.6835 34.0357 21.0335 34.6649 25.7314 35.9253C29.9647 37.0586 32.2918 37.6816 34.1981 37.4461C34.4064 37.4198 34.6106 37.3836 34.8106 37.3378C36.4153 36.9641 37.8732 36.1232 39.0001 34.9211C40.4272 33.3961 41.0564 31.0461 42.3168 26.3482Z"
+              stroke="#128807"
+              stroke-width="1.5"
+            />
+            <path
+              opacity="0.5"
+              d="M34.198 37.4465C33.7625 38.7805 32.9972 39.983 31.973 40.9423C30.4501 42.3694 28.1001 42.9986 23.4021 44.2569C18.7042 45.5152 16.3542 46.1465 14.323 45.6715C12.718 45.2972 11.26 44.4555 10.1334 43.2527C8.70631 41.7298 8.07506 39.3798 6.81672 34.6819L5.73964 30.6569C4.47922 25.959 3.85006 23.609 4.32297 21.5777C4.69779 19.9725 5.54026 18.5145 6.74381 17.3882C8.26672 15.9611 10.6167 15.3319 15.3146 14.0715C16.2008 13.8326 17.0098 13.618 17.7417 13.4277"
+              stroke="#128807"
+              stroke-width="1.5"
+            />
+            <path
+              d="M24.5354 20.834L34.5979 23.5298"
+              stroke="#128807"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+            <path
+              opacity="0.5"
+              d="M22.9167 26.8711L28.9542 28.4878"
+              stroke="#128807"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+          </svg>
+
+          <div class="flex gap-2 items-center flex-wrap justify-center">
+            <span class="font-semibold">Mathematics</span>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4.41059 12.6667C4.10347 12.6667 3.84725 12.5641 3.64192 12.3587C3.43659 12.1534 3.3337 11.897 3.33325 11.5894V10.3074C3.33325 10.2127 3.36503 10.1336 3.42859 10.0701C3.49214 10.0065 3.57147 9.97451 3.66659 9.97407C3.7617 9.97362 3.84103 10.0056 3.90459 10.0701C3.96814 10.1345 3.99992 10.2136 3.99992 10.3074V11.5894C3.99992 11.6921 4.04259 11.7863 4.12792 11.8721C4.21325 11.9578 4.30725 12.0005 4.40992 12.0001H11.5899C11.6921 12.0001 11.7861 11.9574 11.8719 11.8721C11.9577 11.7867 12.0004 11.6925 11.9999 11.5894V10.3074C11.9999 10.2127 12.0317 10.1336 12.0953 10.0701C12.1588 10.0065 12.2381 9.97451 12.3333 9.97407C12.4284 9.97362 12.5077 10.0056 12.5713 10.0701C12.6348 10.1345 12.6666 10.2136 12.6666 10.3074V11.5894C12.6666 11.8965 12.5639 12.1527 12.3586 12.3581C12.1533 12.5634 11.8968 12.6663 11.5893 12.6667H4.41059ZM7.66659 4.61807L6.35259 5.93207C6.2877 5.99696 6.21059 6.03096 6.12125 6.03407C6.03192 6.03718 5.95059 6.00185 5.87725 5.92807C5.80614 5.85473 5.76992 5.77629 5.76859 5.69273C5.76725 5.60873 5.80347 5.53007 5.87725 5.45673L7.62259 3.71007C7.68125 3.65229 7.74081 3.61162 7.80125 3.58807C7.86214 3.56451 7.92836 3.55273 7.99992 3.55273C8.07147 3.55273 8.1377 3.56451 8.19859 3.58807C8.25947 3.61162 8.31903 3.65251 8.37725 3.71073L10.1226 5.45673C10.1879 5.52162 10.2221 5.59807 10.2253 5.68607C10.2279 5.77407 10.1939 5.85473 10.1233 5.92807C10.0495 6.00185 9.97014 6.0394 9.88525 6.04073C9.80036 6.04207 9.72103 6.00585 9.64725 5.93207L8.33325 4.61807V10.0514C8.33325 10.1465 8.30147 10.2258 8.23792 10.2894C8.17436 10.353 8.09503 10.3847 7.99992 10.3847C7.90481 10.3847 7.82547 10.353 7.76192 10.2894C7.69836 10.2258 7.66659 10.1465 7.66659 10.0514V4.61807Z"
+                fill="#667085"
+              />
+            </svg>
+
+            <span class="font-semibold">34 Feb 2025</span>
+          </div>
+          <div class="flex gap-3 items-center justify-center">
+            <span class="min-w-4">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.66659 11.6667H10.3333V11H5.66659V11.6667ZM5.66659 9H10.3333V8.33333H5.66659V9ZM4.41059 14C4.10347 14 3.84725 13.8973 3.64192 13.692C3.43659 13.4867 3.3337 13.2304 3.33325 12.9233V3.07667C3.33325 2.77 3.43614 2.514 3.64192 2.30867C3.8477 2.10333 4.10392 2.00044 4.41059 2H9.66659L12.6666 5V12.9233C12.6666 13.23 12.5639 13.4862 12.3586 13.692C12.1533 13.8978 11.8968 14.0004 11.5893 14H4.41059ZM9.33325 5.33333V2.66667H4.41059C4.30792 2.66667 4.2137 2.70933 4.12792 2.79467C4.04214 2.88 3.99947 2.974 3.99992 3.07667V12.9233C3.99992 13.0256 4.04259 13.1196 4.12792 13.2053C4.21325 13.2911 4.30725 13.3338 4.40992 13.3333H11.5899C11.6921 13.3333 11.7861 13.2907 11.8719 13.2053C11.9577 13.12 12.0004 13.0258 11.9999 12.9227V5.33333H9.33325Z"
+                  fill="#667085"
+                />
+              </svg>
+            </span>
+            <p class="text-accent-2 text-sm">
+              This images serves as flash cards to update students on the basic
+              of Mathematics.
+            </p>
+          </div>
+          <div class="flex gap-2 items-center justify-center font-semibold">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3.01152 1L1.51152 3H2.51152V5H3.51246V3H4.51246L3.01152 1ZM8.01246 1L6.51246 3H7.51246V5H8.51246V3H9.51246L8.01246 1ZM13.0125 1L11.5125 3H12.5125V5H13.5125V3H14.5125L13.0125 1ZM3.01152 6C2.47402 6 1.9959 6.575 1.9959 7.32812C1.9959 7.71562 2.12402 8.05937 2.31777 8.29688L2.51152 8.54062L2.20215 8.5875C1.9084 8.63437 1.7084 8.775 1.54277 8.99687C1.37715 9.21875 1.25527 9.525 1.18027 9.88437C1.0334 10.5375 1.03027 11.3406 1.03027 12.0406H1.83965L2.03652 15.1031H3.90309L4.12809 12.0406H4.98121C4.97809 11.35 4.94371 10.5562 4.78434 9.90625C4.69684 9.55313 4.57496 9.24375 4.40934 9.01875C4.24996 8.79688 4.05309 8.65625 3.78746 8.60625L3.48434 8.55L3.68434 8.31563C3.88434 8.07188 4.02184 7.725 4.02184 7.32812C4.02184 6.61875 3.59371 6.06563 3.11152 6H3.01152ZM8.01246 6C7.47496 6 6.99684 6.575 6.99684 7.32812C6.99684 7.71562 7.12496 8.05937 7.31871 8.29688L7.51246 8.54062L7.20309 8.5875C6.90934 8.63437 6.70934 8.775 6.54371 8.99687C6.37809 9.21875 6.25621 9.525 6.18121 9.88437C6.03434 10.5375 6.03121 11.3406 6.03121 12.0406H6.84059L7.03746 15.1031H8.90309L9.12809 12.0406H9.98121C9.97809 11.35 9.94371 10.5562 9.78434 9.90625C9.69684 9.55313 9.57496 9.24375 9.40934 9.01875C9.24996 8.79688 9.05309 8.65625 8.78746 8.60625L8.48434 8.55L8.68434 8.31563C8.88434 8.07188 9.02184 7.725 9.02184 7.32812C9.02184 6.61875 8.59371 6.06563 8.11246 6H8.01246ZM13.0125 6C12.4781 6 12 6.575 12 7.32812C12 7.71562 12.1281 8.05937 12.3218 8.29688L12.5156 8.54062L12.2062 8.5875C11.9125 8.63437 11.7093 8.775 11.5437 8.99687C11.3781 9.21875 11.2562 9.525 11.1812 9.88437C11.0343 10.5375 11.0312 11.3406 11.0312 12.0406H11.8406L12.0406 15.1031H13.9031L14.1312 12.0406H14.9812C14.9781 11.35 14.9437 10.5562 14.7875 9.90625C14.7 9.55313 14.575 9.24375 14.4093 9.01875C14.25 8.79688 14.0531 8.65625 13.7906 8.60625L13.4875 8.55L13.6843 8.31563C13.8843 8.07188 14.0218 7.725 14.0218 7.32812C14.0218 6.61875 13.5937 6.06563 13.1125 6H13.0125Z"
+                fill="#667085"
+              />
+            </svg>
+            <span>WACE, NECO, JAMB</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="space-y-3">
+      <h3 class="text-lg text-accent font-medium">Documents</h3>
+      <div
+        class="grid grid-cols-[repeat(auto-fill,_minmax(260px,_1fr))] gap-4 sm:gap-6"
+      >
+        <div
+          *ngFor="let _ of [1, 2, 3, 4]"
+          class="sm:p-5 p-4 rounded-md shadow-sm border border-gray-200 flex flex-col gap-3 text-[15px] items-center justify-center bg-gray-50"
+        >
+          <svg
+            width="50"
+            height="50"
+            viewBox="0 0 50 50"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M27.0833 18.7493H38.5416L27.0833 7.29102V18.7493ZM12.4999 4.16602H29.1666L41.6666 16.666V41.666C41.6666 42.7711 41.2276 43.8309 40.4462 44.6123C39.6648 45.3937 38.605 45.8327 37.4999 45.8327H12.4999C11.3948 45.8327 10.335 45.3937 9.55364 44.6123C8.77224 43.8309 8.33325 42.7711 8.33325 41.666V8.33268C8.33325 7.22761 8.77224 6.16781 9.55364 5.3864C10.335 4.605 11.3948 4.16602 12.4999 4.16602ZM22.7708 25.916C23.6249 27.791 24.7083 29.3327 25.9583 30.3952L26.8124 31.0619C24.9999 31.3952 22.4999 31.9785 19.8541 32.9994L19.6249 33.0827L20.6666 30.916C21.6041 29.1035 22.2916 27.4577 22.7708 25.916ZM36.2708 33.8535C36.6458 33.4785 36.8333 32.9994 36.8541 32.4785C36.9166 32.0619 36.8124 31.666 36.6041 31.3327C35.9999 30.3535 34.4374 29.8952 31.8541 29.8952L29.1666 30.041L27.3541 28.8327C26.0416 27.7494 24.8541 25.8535 24.0208 23.4993L24.1041 23.2077C24.7916 20.4369 25.4374 17.0827 24.0624 15.7077C23.8942 15.5444 23.6953 15.4161 23.4771 15.3302C23.259 15.2444 23.026 15.2028 22.7916 15.2077H22.2916C21.5208 15.2077 20.8333 16.0202 20.6458 16.8118C19.8749 19.5827 20.3333 21.1035 21.1041 23.6244V23.6452C20.5833 25.4785 19.9166 27.6035 18.8541 29.7493L16.8541 33.4994L14.9999 34.5202C12.4999 36.0827 11.3124 37.8327 11.0833 38.9369C10.9999 39.3327 11.0416 39.6869 11.1874 40.0619L11.2499 40.166L12.2499 40.8119L13.1666 41.041C14.8541 41.041 16.7708 39.0619 19.3541 34.6452L19.7291 34.4993C21.8749 33.8118 24.5416 33.3327 28.1249 32.9369C30.2708 33.9994 32.7916 34.4785 34.3749 34.4785C35.2916 34.4785 35.9166 34.2494 36.2708 33.8535ZM35.4166 32.3744L35.6041 32.6035C35.5833 32.8118 35.5208 32.8327 35.4166 32.8744H35.3332L34.9374 32.916C33.9791 32.916 32.4999 32.5202 30.9791 31.8535C31.1666 31.6452 31.2499 31.6452 31.4583 31.6452C34.3749 31.6452 35.2083 32.166 35.4166 32.3744ZM16.3124 35.416C14.9583 37.8952 13.7291 39.2702 12.7916 39.5827C12.8958 38.791 13.8333 37.416 15.3124 36.0618L16.3124 35.416ZM22.6041 21.0202C22.1249 19.1452 22.1041 17.6243 22.4583 16.7493L22.6041 16.4993L22.9166 16.6035C23.2708 17.1035 23.3124 17.7702 23.1041 18.8952L23.0416 19.2285L22.7083 20.9369L22.6041 21.0202Z"
+              fill="#EF5350"
+            />
+          </svg>
+
+          <div class="flex gap-2 items-center flex-wrap justify-center">
+            <span class="font-semibold">Mathematics</span>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4.41059 12.6667C4.10347 12.6667 3.84725 12.5641 3.64192 12.3587C3.43659 12.1534 3.3337 11.897 3.33325 11.5894V10.3074C3.33325 10.2127 3.36503 10.1336 3.42859 10.0701C3.49214 10.0065 3.57147 9.97451 3.66659 9.97407C3.7617 9.97362 3.84103 10.0056 3.90459 10.0701C3.96814 10.1345 3.99992 10.2136 3.99992 10.3074V11.5894C3.99992 11.6921 4.04259 11.7863 4.12792 11.8721C4.21325 11.9578 4.30725 12.0005 4.40992 12.0001H11.5899C11.6921 12.0001 11.7861 11.9574 11.8719 11.8721C11.9577 11.7867 12.0004 11.6925 11.9999 11.5894V10.3074C11.9999 10.2127 12.0317 10.1336 12.0953 10.0701C12.1588 10.0065 12.2381 9.97451 12.3333 9.97407C12.4284 9.97362 12.5077 10.0056 12.5713 10.0701C12.6348 10.1345 12.6666 10.2136 12.6666 10.3074V11.5894C12.6666 11.8965 12.5639 12.1527 12.3586 12.3581C12.1533 12.5634 11.8968 12.6663 11.5893 12.6667H4.41059ZM7.66659 4.61807L6.35259 5.93207C6.2877 5.99696 6.21059 6.03096 6.12125 6.03407C6.03192 6.03718 5.95059 6.00185 5.87725 5.92807C5.80614 5.85473 5.76992 5.77629 5.76859 5.69273C5.76725 5.60873 5.80347 5.53007 5.87725 5.45673L7.62259 3.71007C7.68125 3.65229 7.74081 3.61162 7.80125 3.58807C7.86214 3.56451 7.92836 3.55273 7.99992 3.55273C8.07147 3.55273 8.1377 3.56451 8.19859 3.58807C8.25947 3.61162 8.31903 3.65251 8.37725 3.71073L10.1226 5.45673C10.1879 5.52162 10.2221 5.59807 10.2253 5.68607C10.2279 5.77407 10.1939 5.85473 10.1233 5.92807C10.0495 6.00185 9.97014 6.0394 9.88525 6.04073C9.80036 6.04207 9.72103 6.00585 9.64725 5.93207L8.33325 4.61807V10.0514C8.33325 10.1465 8.30147 10.2258 8.23792 10.2894C8.17436 10.353 8.09503 10.3847 7.99992 10.3847C7.90481 10.3847 7.82547 10.353 7.76192 10.2894C7.69836 10.2258 7.66659 10.1465 7.66659 10.0514V4.61807Z"
+                fill="#667085"
+              />
+            </svg>
+
+            <span class="font-semibold">34 Feb 2025</span>
+          </div>
+          <div class="flex gap-3 items-center justify-center">
+            <span class="min-w-4">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.66659 11.6667H10.3333V11H5.66659V11.6667ZM5.66659 9H10.3333V8.33333H5.66659V9ZM4.41059 14C4.10347 14 3.84725 13.8973 3.64192 13.692C3.43659 13.4867 3.3337 13.2304 3.33325 12.9233V3.07667C3.33325 2.77 3.43614 2.514 3.64192 2.30867C3.8477 2.10333 4.10392 2.00044 4.41059 2H9.66659L12.6666 5V12.9233C12.6666 13.23 12.5639 13.4862 12.3586 13.692C12.1533 13.8978 11.8968 14.0004 11.5893 14H4.41059ZM9.33325 5.33333V2.66667H4.41059C4.30792 2.66667 4.2137 2.70933 4.12792 2.79467C4.04214 2.88 3.99947 2.974 3.99992 3.07667V12.9233C3.99992 13.0256 4.04259 13.1196 4.12792 13.2053C4.21325 13.2911 4.30725 13.3338 4.40992 13.3333H11.5899C11.6921 13.3333 11.7861 13.2907 11.8719 13.2053C11.9577 13.12 12.0004 13.0258 11.9999 12.9227V5.33333H9.33325Z"
+                  fill="#667085"
+                />
+              </svg>
+            </span>
+            <p class="text-accent-2 text-sm">
+              This images serves as flash cards to update students on the basic
+              of Mathematics.
+            </p>
+          </div>
+          <div class="flex gap-2 items-center justify-center font-semibold">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3.01152 1L1.51152 3H2.51152V5H3.51246V3H4.51246L3.01152 1ZM8.01246 1L6.51246 3H7.51246V5H8.51246V3H9.51246L8.01246 1ZM13.0125 1L11.5125 3H12.5125V5H13.5125V3H14.5125L13.0125 1ZM3.01152 6C2.47402 6 1.9959 6.575 1.9959 7.32812C1.9959 7.71562 2.12402 8.05937 2.31777 8.29688L2.51152 8.54062L2.20215 8.5875C1.9084 8.63437 1.7084 8.775 1.54277 8.99687C1.37715 9.21875 1.25527 9.525 1.18027 9.88437C1.0334 10.5375 1.03027 11.3406 1.03027 12.0406H1.83965L2.03652 15.1031H3.90309L4.12809 12.0406H4.98121C4.97809 11.35 4.94371 10.5562 4.78434 9.90625C4.69684 9.55313 4.57496 9.24375 4.40934 9.01875C4.24996 8.79688 4.05309 8.65625 3.78746 8.60625L3.48434 8.55L3.68434 8.31563C3.88434 8.07188 4.02184 7.725 4.02184 7.32812C4.02184 6.61875 3.59371 6.06563 3.11152 6H3.01152ZM8.01246 6C7.47496 6 6.99684 6.575 6.99684 7.32812C6.99684 7.71562 7.12496 8.05937 7.31871 8.29688L7.51246 8.54062L7.20309 8.5875C6.90934 8.63437 6.70934 8.775 6.54371 8.99687C6.37809 9.21875 6.25621 9.525 6.18121 9.88437C6.03434 10.5375 6.03121 11.3406 6.03121 12.0406H6.84059L7.03746 15.1031H8.90309L9.12809 12.0406H9.98121C9.97809 11.35 9.94371 10.5562 9.78434 9.90625C9.69684 9.55313 9.57496 9.24375 9.40934 9.01875C9.24996 8.79688 9.05309 8.65625 8.78746 8.60625L8.48434 8.55L8.68434 8.31563C8.88434 8.07188 9.02184 7.725 9.02184 7.32812C9.02184 6.61875 8.59371 6.06563 8.11246 6H8.01246ZM13.0125 6C12.4781 6 12 6.575 12 7.32812C12 7.71562 12.1281 8.05937 12.3218 8.29688L12.5156 8.54062L12.2062 8.5875C11.9125 8.63437 11.7093 8.775 11.5437 8.99687C11.3781 9.21875 11.2562 9.525 11.1812 9.88437C11.0343 10.5375 11.0312 11.3406 11.0312 12.0406H11.8406L12.0406 15.1031H13.9031L14.1312 12.0406H14.9812C14.9781 11.35 14.9437 10.5562 14.7875 9.90625C14.7 9.55313 14.575 9.24375 14.4093 9.01875C14.25 8.79688 14.0531 8.65625 13.7906 8.60625L13.4875 8.55L13.6843 8.31563C13.8843 8.07188 14.0218 7.725 14.0218 7.32812C14.0218 6.61875 13.5937 6.06563 13.1125 6H13.0125Z"
+                fill="#667085"
+              />
+            </svg>
+            <span>WACE, NECO, JAMB</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="space-y-3">
+      <h3 class="text-lg text-accent font-medium">Videos</h3>
+      <div
+        class="grid grid-cols-[repeat(auto-fill,_minmax(260px,_1fr))] gap-4 sm:gap-6"
+      >
+        <div
+          *ngFor="let _ of [1, 2, 3, 4]"
+          class="sm:p-5 p-4 rounded-md shadow-sm border border-gray-200 flex flex-col gap-3 text-[15px] items-center justify-center bg-gray-50"
+        >
+          <svg
+            width="50"
+            height="50"
+            viewBox="0 0 50 50"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+          >
+            <rect width="50" height="50" fill="url(#pattern0_1225_10727)" />
+            <defs>
+              <pattern
+                id="pattern0_1225_10727"
+                patternContentUnits="objectBoundingBox"
+                width="1"
+                height="1"
+              >
+                <use
+                  xlink:href="#image0_1225_10727"
+                  transform="scale(0.0104167)"
+                />
+              </pattern>
+              <image
+                id="image0_1225_10727"
+                width="96"
+                height="96"
+                preserveAspectRatio="none"
+                xlink:href="data:image/png;base64,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"
+              />
+            </defs>
+          </svg>
+
+          <div class="flex gap-2 items-center flex-wrap justify-center">
+            <span class="font-semibold">Mathematics</span>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M4.41059 12.6667C4.10347 12.6667 3.84725 12.5641 3.64192 12.3587C3.43659 12.1534 3.3337 11.897 3.33325 11.5894V10.3074C3.33325 10.2127 3.36503 10.1336 3.42859 10.0701C3.49214 10.0065 3.57147 9.97451 3.66659 9.97407C3.7617 9.97362 3.84103 10.0056 3.90459 10.0701C3.96814 10.1345 3.99992 10.2136 3.99992 10.3074V11.5894C3.99992 11.6921 4.04259 11.7863 4.12792 11.8721C4.21325 11.9578 4.30725 12.0005 4.40992 12.0001H11.5899C11.6921 12.0001 11.7861 11.9574 11.8719 11.8721C11.9577 11.7867 12.0004 11.6925 11.9999 11.5894V10.3074C11.9999 10.2127 12.0317 10.1336 12.0953 10.0701C12.1588 10.0065 12.2381 9.97451 12.3333 9.97407C12.4284 9.97362 12.5077 10.0056 12.5713 10.0701C12.6348 10.1345 12.6666 10.2136 12.6666 10.3074V11.5894C12.6666 11.8965 12.5639 12.1527 12.3586 12.3581C12.1533 12.5634 11.8968 12.6663 11.5893 12.6667H4.41059ZM7.66659 4.61807L6.35259 5.93207C6.2877 5.99696 6.21059 6.03096 6.12125 6.03407C6.03192 6.03718 5.95059 6.00185 5.87725 5.92807C5.80614 5.85473 5.76992 5.77629 5.76859 5.69273C5.76725 5.60873 5.80347 5.53007 5.87725 5.45673L7.62259 3.71007C7.68125 3.65229 7.74081 3.61162 7.80125 3.58807C7.86214 3.56451 7.92836 3.55273 7.99992 3.55273C8.07147 3.55273 8.1377 3.56451 8.19859 3.58807C8.25947 3.61162 8.31903 3.65251 8.37725 3.71073L10.1226 5.45673C10.1879 5.52162 10.2221 5.59807 10.2253 5.68607C10.2279 5.77407 10.1939 5.85473 10.1233 5.92807C10.0495 6.00185 9.97014 6.0394 9.88525 6.04073C9.80036 6.04207 9.72103 6.00585 9.64725 5.93207L8.33325 4.61807V10.0514C8.33325 10.1465 8.30147 10.2258 8.23792 10.2894C8.17436 10.353 8.09503 10.3847 7.99992 10.3847C7.90481 10.3847 7.82547 10.353 7.76192 10.2894C7.69836 10.2258 7.66659 10.1465 7.66659 10.0514V4.61807Z"
+                fill="#667085"
+              />
+            </svg>
+
+            <span class="font-semibold">34 Feb 2025</span>
+          </div>
+          <div class="flex gap-3 items-center justify-center">
+            <span class="min-w-4">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.66659 11.6667H10.3333V11H5.66659V11.6667ZM5.66659 9H10.3333V8.33333H5.66659V9ZM4.41059 14C4.10347 14 3.84725 13.8973 3.64192 13.692C3.43659 13.4867 3.3337 13.2304 3.33325 12.9233V3.07667C3.33325 2.77 3.43614 2.514 3.64192 2.30867C3.8477 2.10333 4.10392 2.00044 4.41059 2H9.66659L12.6666 5V12.9233C12.6666 13.23 12.5639 13.4862 12.3586 13.692C12.1533 13.8978 11.8968 14.0004 11.5893 14H4.41059ZM9.33325 5.33333V2.66667H4.41059C4.30792 2.66667 4.2137 2.70933 4.12792 2.79467C4.04214 2.88 3.99947 2.974 3.99992 3.07667V12.9233C3.99992 13.0256 4.04259 13.1196 4.12792 13.2053C4.21325 13.2911 4.30725 13.3338 4.40992 13.3333H11.5899C11.6921 13.3333 11.7861 13.2907 11.8719 13.2053C11.9577 13.12 12.0004 13.0258 11.9999 12.9227V5.33333H9.33325Z"
+                  fill="#667085"
+                />
+              </svg>
+            </span>
+            <p class="text-accent-2 text-sm">
+              This videos serves as flash cards to update students on the basic
+              of Mathematics.
+            </p>
+          </div>
+          <div class="flex gap-2 items-center justify-center font-semibold">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M3.01152 1L1.51152 3H2.51152V5H3.51246V3H4.51246L3.01152 1ZM8.01246 1L6.51246 3H7.51246V5H8.51246V3H9.51246L8.01246 1ZM13.0125 1L11.5125 3H12.5125V5H13.5125V3H14.5125L13.0125 1ZM3.01152 6C2.47402 6 1.9959 6.575 1.9959 7.32812C1.9959 7.71562 2.12402 8.05937 2.31777 8.29688L2.51152 8.54062L2.20215 8.5875C1.9084 8.63437 1.7084 8.775 1.54277 8.99687C1.37715 9.21875 1.25527 9.525 1.18027 9.88437C1.0334 10.5375 1.03027 11.3406 1.03027 12.0406H1.83965L2.03652 15.1031H3.90309L4.12809 12.0406H4.98121C4.97809 11.35 4.94371 10.5562 4.78434 9.90625C4.69684 9.55313 4.57496 9.24375 4.40934 9.01875C4.24996 8.79688 4.05309 8.65625 3.78746 8.60625L3.48434 8.55L3.68434 8.31563C3.88434 8.07188 4.02184 7.725 4.02184 7.32812C4.02184 6.61875 3.59371 6.06563 3.11152 6H3.01152ZM8.01246 6C7.47496 6 6.99684 6.575 6.99684 7.32812C6.99684 7.71562 7.12496 8.05937 7.31871 8.29688L7.51246 8.54062L7.20309 8.5875C6.90934 8.63437 6.70934 8.775 6.54371 8.99687C6.37809 9.21875 6.25621 9.525 6.18121 9.88437C6.03434 10.5375 6.03121 11.3406 6.03121 12.0406H6.84059L7.03746 15.1031H8.90309L9.12809 12.0406H9.98121C9.97809 11.35 9.94371 10.5562 9.78434 9.90625C9.69684 9.55313 9.57496 9.24375 9.40934 9.01875C9.24996 8.79688 9.05309 8.65625 8.78746 8.60625L8.48434 8.55L8.68434 8.31563C8.88434 8.07188 9.02184 7.725 9.02184 7.32812C9.02184 6.61875 8.59371 6.06563 8.11246 6H8.01246ZM13.0125 6C12.4781 6 12 6.575 12 7.32812C12 7.71562 12.1281 8.05937 12.3218 8.29688L12.5156 8.54062L12.2062 8.5875C11.9125 8.63437 11.7093 8.775 11.5437 8.99687C11.3781 9.21875 11.2562 9.525 11.1812 9.88437C11.0343 10.5375 11.0312 11.3406 11.0312 12.0406H11.8406L12.0406 15.1031H13.9031L14.1312 12.0406H14.9812C14.9781 11.35 14.9437 10.5562 14.7875 9.90625C14.7 9.55313 14.575 9.24375 14.4093 9.01875C14.25 8.79688 14.0531 8.65625 13.7906 8.60625L13.4875 8.55L13.6843 8.31563C13.8843 8.07188 14.0218 7.725 14.0218 7.32812C14.0218 6.61875 13.5937 6.06563 13.1125 6H13.0125Z"
+                fill="#667085"
+              />
+            </svg>
+            <span>WACE, NECO, JAMB</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

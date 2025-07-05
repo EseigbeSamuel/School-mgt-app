@@ -13,7 +13,7 @@ export class SubjectCardComponent {
   @Input() subjects: any = [];
   constructor(private router: Router) {}
   viewCourse(id: number) {
-    this.router.navigate([`student/courses/view-course/${id}`]);
+    this.router.navigate([`dashboard/courses/view-course/${id}`]);
   }
   isHeartActive = false;
   isBookmarkActive = false;
@@ -28,9 +28,9 @@ export class SubjectCardComponent {
   handleCOurseVideoClick(pageData: any) {
     if (pageData?.id && pageData?.topics?.length) {
       this.router.navigate([
-        `student/courses/view-course/${pageData.id}/lesson/${pageData.topics[0].id}`,
+        `dashboard/courses/view-course/${pageData.id}/lesson/${pageData.topics[0].id}`,
       ]);
-      console.log(pageData.topics[0].id, 'id:', pageData.id);
+      // console.log(pageData.topics[0].id, 'id:', pageData.id);
     }
   }
 }
