@@ -94,10 +94,16 @@
         </div>
       </div>
       <div *ngIf="exam.status === 'available'">
-        <app-button label="Start Exam" />
+        <app-button
+          label="Start Exam"
+          routerLink="/dashboard/mock-exams/exam"
+        />
       </div>
       <div class="grid gap-3" *ngIf="exam.status === 'completed'">
-        <app-button label="Retake Exam" />
+        <app-button
+          label="Retake Exam"
+          routerLink="/dashboard/mock-exams/exam"
+        />
         <app-button variant="secondary" label="View Results" />
       </div>
     </section>

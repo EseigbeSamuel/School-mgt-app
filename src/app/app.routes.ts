@@ -336,7 +336,7 @@ export const routes: Routes = [
         data: { roles: ['student'] },
         children: [
           { path: '', component: ExamListComponent },
-          { path: 'exam/:id', component: ExamComponent },
+          { path: 'exam', component: ExamComponent },
         ],
       },
 

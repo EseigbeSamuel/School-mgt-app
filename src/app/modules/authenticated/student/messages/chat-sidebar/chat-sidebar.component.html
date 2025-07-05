@@ -13,13 +13,16 @@
 
     <div class="rounded-xl p-3 bg-[#EBEAFC] flex items-center justify-center">
       <ul class="flex gap-3 text-center font-semibold w-full justify-between">
-        <li class="py-[10px] px-[14px] w-[100px] hover:bg-[#FBFBFB] rounded-xl">
+        <li (click)="setFilter('all')" [ngClass]="getButtonClasses('all')">
           All
         </li>
-        <li class="py-[10px] px-[14px] w-[100px] hover:bg-[#FBFBFB] rounded-xl">
+        <li (click)="setFilter('tutor')" [ngClass]="getButtonClasses('tutor')">
           Tutor
         </li>
-        <li class="py-[10px] px-[14px] w-[100px] hover:bg-[#FBFBFB] rounded-xl">
+        <li
+          (click)="setFilter('student')"
+          [ngClass]="getButtonClasses('student')"
+        >
           Admin
         </li>
       </ul>
@@ -30,14 +33,18 @@
         type="text"
         placeholder="search"
         class="p-2 w-full h-[50px] border-2 rounded-lg"
+        [(ngModel)]="searchTerm"
       />
     </div>
 
-    <div class="xl:h-full flex-col flex gap-3 overflow-y-scroll">
+    <div class="xl:h-full flex-col flex overflow-y-scroll">
       <div
-        *ngFor="let friends of friends"
-        class="flex w-full h-[100px] justify-between cursor-pointer hover:bg-[#EBEAFC] px-3 pt-3 items-center"
+        *ngFor="let friends of filteredFriends()"
+        class="flex w-full pt-3 px-3 justify-between rounded-xl cursor-pointer hover:bg-[#EBEAFC] items-center"
         (click)="onSelectFriends(friends)"
+        ngClass=" isActiveFriend(friend.id)
+      ? 'bg-blue-600 text-white'
+      : 'bg-gray-100 text-gray-800'"
       >
         <div class="flex gap-3">
           <div class="">

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { SharedModule } from '../../../../../shared/shared.module';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-exam-list',
-  imports: [SharedModule, CommonModule],
+  imports: [SharedModule, CommonModule, RouterLink],
   templateUrl: './exam-list.component.html',
   styleUrl: './exam-list.component.css',
 })
