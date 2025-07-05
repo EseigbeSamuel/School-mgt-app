@@ -15,7 +15,11 @@ import {
   FormGroup,
 } from '@angular/forms';
 import { DropSelectComponent } from '../../../shared/components/drop-select/drop-select.component';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
@@ -44,6 +48,7 @@ interface SignUpPayload {
   role: string[];
   exam: string;
   referralCode?: string;
+  classCategory: string;
 }
 
 interface SignUpResponse {
@@ -130,9 +135,9 @@ export class SignUpComponent implements OnDestroy {
   submitError = signal<string | null>(null);
   isSuccess = this.signUpMutation.isSuccess;
 
-  classCategories = [
-    { value: 'Primary', label: 'Primary' },
-    { value: 'Secondary', label: 'Secondary' },
+  classCategories: ClassCategory[] = [
+    { value: 'Art', label: 'Art' },
+    { value: 'Commercial', label: 'Commercial' },
     { value: 'Science', label: 'Science' },
   ];
 
@@ -151,6 +156,7 @@ export class SignUpComponent implements OnDestroy {
       phone: ['', [Validators.required]],
       gender: ['', [Validators.required]],
       dob: ['', [Validators.required]],
+      classCategory: ['', [Validators.required]],
       acceptTerms: [false, [Validators.requiredTrue]],
     });
   }
@@ -166,10 +172,10 @@ export class SignUpComponent implements OnDestroy {
     const API_URL =
       'http://api.flexydemy.com:4000/dev/auth-service/api/v1/auth/signup';
 
-    const headers = {
+    const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Accept: '*/*',
-    };
+    });
 
     console.log('Making request to:', API_URL);
     console.log('Request payload:', payload);
@@ -294,6 +300,7 @@ export class SignUpComponent implements OnDestroy {
       gender: formValue.gender,
       phoneNumber: phoneComponents.phoneNumber,
       country: phoneComponents.country,
+      classCategory: formValue.classCategory,
       role: userRole,
       referralCode: '',
       exam: 'WAEC', // Default exam - you might want to make this configurable
