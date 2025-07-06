@@ -24,9 +24,8 @@ ARG PROJECT_NAME=flexy-demy-ui
 RUN ng build --configuration=$NODE_ENV --output-path=dist/$PROJECT_NAME/browser
 #RUN ng build --configuration=$NODE_ENV --output-path=dist
 
-RUN ls -al dist/$PROJECT_NAME/browser
 # Optional: Debug - see what's inside the built folder
-RUN ls -al /app/dist/browser
+RUN ls -al /app/dist/$PROJECT_NAME/browser
 
 
 # ================================
