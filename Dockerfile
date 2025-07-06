@@ -18,8 +18,13 @@ RUN npm install -g @angular/cli@19
 
 # Optional: accept NODE_ENV from outside, fallback to production
 ARG NODE_ENV=production
-RUN ng build --configuration=$NODE_ENV --output-path=dist
 
+ARG PROJECT_NAME=flexy-demy-ui
+
+RUN ng build --configuration=$NODE_ENV --output-path=dist/$PROJECT_NAME/browser
+#RUN ng build --configuration=$NODE_ENV --output-path=dist
+
+RUN ls -al dist/$PROJECT_NAME/browser
 # Optional: Debug - see what's inside the built folder
 RUN ls -al /app/dist/browser
 
@@ -33,7 +38,8 @@ FROM nginx:alpine
 RUN rm -rf /usr/share/nginx/html/*
 
 # Copy built Angular app to NGINX's html directory
-COPY --from=build /app/dist/browser /usr/share/nginx/html
+#COPY --from=build /app/dist/browser /usr/share/nginx/html
+COPY --from=build /app/dist/flexy-demy-ui/browser /usr/share/nginx/html
 
 # Use custom nginx.conf if needed (recommended for Angular routes)
 # Create this file in your project root
