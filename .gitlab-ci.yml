@@ -11,12 +11,6 @@ stages:
   - deploy_production
   - deploy_development
 
-#install:
-#  stage: install
-#  script:
-#    - npm install -g @angular/cli
-#    - npm install --force --legacy-peer-deps
-
 build_development:
   stage: build_development
   only:
