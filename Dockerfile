@@ -37,7 +37,7 @@ COPY --from=build /app/dist/browser /usr/share/nginx/html
 
 # Use custom nginx.conf if needed (recommended for Angular routes)
 # Create this file in your project root
-COPY C:/docker/certs/ngix/nginx.conf /etc/nginx/conf.d/nginx.conf
+COPY default.conf /etc/nginx/conf.d/default.conf
 
 # Expose port
 EXPOSE 80
