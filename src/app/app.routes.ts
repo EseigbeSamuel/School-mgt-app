@@ -1,5 +1,5 @@
 import { RouterOutlet, Routes } from '@angular/router';
-import { RouterOutlet, Routes } from '@angular/router';
+// import { RouterOutlet, Routes } from '@angular/router';
 import { UnAthenticatedComponent } from './layout/un-athenticated/un-athenticated.component';
 import { SplashScreenComponent } from './modules/unAuthenticated/splash-screen/splash-screen.component';
 import { PreRegisterComponent } from './modules/unAuthenticated/register/pre-register.component';
