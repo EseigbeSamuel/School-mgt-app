@@ -1,14 +1,13 @@
-# You can choose the appropriate Node.js version
 image: trion/ng-cli
 
 variables:
   BASE_URL: "flexy-demy"
+  PROJECT_NAME: "flexy-demy-ui"
+  BUILD_FOLDER: "/app/dist/flexy-demy-ui/browser"
+  HOST_DEPLOY_PATH: "/c/docker/nginx/html"
 
 stages:
-  - install
   - build_development
-  - build_production
-  - deploy_production
   - deploy_development
 
 build_development:
@@ -16,17 +15,23 @@ build_development:
   only:
     - elsoft
   script:
-    - npm install --force --legacy-peer-deps
-    #    - echo "${BASE_URL}dev"
-    #    - ng build --configuration=development --output-path "${BASE_URL}dev" --base-href='./'
-    - docker build --build-arg NODE_ENV=development --build-arg NODE_PORT=4200 -t flexy-demy-ui:development .
-    - |
-      $CONTAINER_NAMES = docker ps --format '{{.Names}}' | ForEach-Object { $_.Trim() }
-      if ($CONTAINER_NAMES -like "*flexy-demy-ui-dev*") {
-        docker stop flexy-demy-ui-dev
-        docker rm flexy-demy-ui-dev
-      }
-    - docker run -d -p 4200:80 --name flexy-demy-ui-dev flexy-demy-ui:development
+    - docker build --build-arg NODE_ENV=development -t $PROJECT_NAME:development .
+    - docker create --name temp-$PROJECT_NAME $PROJECT_NAME:development
+    - mkdir -p $HOST_DEPLOY_PATH
+    - docker cp temp-$PROJECT_NAME:$BUILD_FOLDER/. $HOST_DEPLOY_PATH/
+    - docker rm temp-$PROJECT_NAME
+
+deploy_development:
+  stage: deploy_development
+  only:
+    - elsoft
+  script:
+    - docker stop $PROJECT_NAME-dev || true
+    - docker rm $PROJECT_NAME-dev || true
+    - docker run -d -p 4200:80 \
+      --name $PROJECT_NAME-dev \
+      -v $HOST_DEPLOY_PATH:/usr/share/nginx/html \
+      nginx:alpine
 
 build_production:
   stage: build_production

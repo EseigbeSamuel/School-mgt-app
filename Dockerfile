@@ -18,34 +18,33 @@ RUN npm install -g @angular/cli@19
 
 # Optional: accept NODE_ENV from outside, fallback to production
 ARG NODE_ENV=production
-
 ARG PROJECT_NAME=flexy-demy-ui
 
+# Build Angular app
 RUN ng build --configuration=$NODE_ENV --output-path=dist/$PROJECT_NAME/browser
-#RUN ng build --configuration=$NODE_ENV --output-path=dist
 
-# Optional: Debug - see what's inside the built folder
-RUN ls -al /app/dist/$PROJECT_NAME/browser
+# Optional: List built files for debug
+RUN ls -al dist/$PROJECT_NAME/browser
 
-
-# ================================
-# Stage 2: Serve Angular via NGINX
-# ================================
-FROM nginx:alpine
-
-# Clean default NGINX content
-RUN rm -rf /usr/share/nginx/html/*
-
-# Copy built Angular app to NGINX's html directory
-#COPY --from=build /app/dist/browser /usr/share/nginx/html
-COPY --from=build /app/dist/flexy-demy-ui/browser /usr/share/nginx/html
-
-# Use custom nginx.conf if needed (recommended for Angular routes)
-# Create this file in your project root
-COPY default.conf /etc/nginx/conf.d/default.conf
-
-# Expose port
-EXPOSE 80
-
-# Run nginx in foreground
-CMD ["nginx", "-g", "daemon off;"]
+#
+## ================================
+## Stage 2: Serve Angular via NGINX
+## ================================
+#FROM nginx:alpine
+#
+## Clean default NGINX content
+#RUN rm -rf /usr/share/nginx/html/*
+#
+## Copy built Angular app to NGINX's html directory
+##COPY --from=build /app/dist/browser /usr/share/nginx/html
+#COPY --from=build /app/dist/flexy-demy-ui/browser /usr/share/nginx/html
+#
+## Use custom nginx.conf if needed (recommended for Angular routes)
+## Create this file in your project root
+#COPY default.conf /etc/nginx/conf.d/default.conf
+#
+## Expose port
+#EXPOSE 80
+#
+## Run nginx in foreground
+#CMD ["nginx", "-g", "daemon off;"]
