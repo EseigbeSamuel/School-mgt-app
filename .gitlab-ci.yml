@@ -30,7 +30,7 @@ build_development:
     - docker create --name temp-${PROJECT_NAME} ${PROJECT_NAME}:development
 
     # Step 6: Copy built app files to host path
-    - docker cp temp-${PROJECT_NAME}:/app/dist/browser/. ${HOST_DEPLOY_PATH}
+    - docker cp temp-${PROJECT_NAME}:/app/dist/flexy-demy/browser/. ${HOST_DEPLOY_PATH}
 
     # Step 7: Remove temp container
     - docker rm temp-${PROJECT_NAME}
