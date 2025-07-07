@@ -35,24 +35,19 @@ COPY --from=build /app/dist/flexy-demy-ui/browser /usr/share/nginx/html
 # Optionally expose (but not needed in production since central nginx is used)
 # EXPOSE 80
 #
-## ================================
-## Stage 2: Serve Angular via NGINX
-## ================================
-#FROM nginx:alpine
-#
-## Clean default NGINX content
-#RUN rm -rf /usr/share/nginx/html/*
-#
-## Copy built Angular app to NGINX's html directory
-##COPY --from=build /app/dist/browser /usr/share/nginx/html
-#COPY --from=build /app/dist/flexy-demy-ui/browser /usr/share/nginx/html
-#
-## Use custom nginx.conf if needed (recommended for Angular routes)
-## Create this file in your project root
-#COPY default.conf /etc/nginx/conf.d/default.conf
-#
-## Expose port
-#EXPOSE 80
-#
-## Run nginx in foreground
-#CMD ["nginx", "-g", "daemon off;"]
+# =============================
+# Stage 2: Serve with NGINX
+# =============================
+FROM nginx:latest
+
+# Clean default nginx static assets
+RUN rm -rf /usr/share/nginx/html/*
+
+# Copy Angular build from previous stage
+COPY --from=build /app/dist/flexy-demy-ui/browser /usr/share/nginx/html
+
+# Optional: expose ports (not used if running behind reverse proxy)
+EXPOSE 80
+EXPOSE 443
+
+CMD ["nginx", "-g", "daemon off;"]
