@@ -1,8 +1,9 @@
-# You can choose the appropriate Node.js version
 image: trion/ng-cli
 
 variables:
   BASE_URL: "flexy-demy"
+  PROJECT_NAME: "flexy-demy-ui"
+  HOST_DEPLOY_PATH: "/c/docker/nginx/html"
 
 stages:
   - install
@@ -16,19 +17,25 @@ build_development:
   only:
     - elsoft
   script:
+    # Step 1: Build Angular app inside Docker
     - npm install --force --legacy-peer-deps
-    #    - echo "${BASE_URL}dev"
-    #    - ng build --configuration=development --output-path "${BASE_URL}dev" --base-href='./'
-    - docker build --build-arg NODE_ENV=development --build-arg NODE_PORT=4200 -t flexy-demy-ui:development .
-    - |
-      $CONTAINER_NAMES = docker ps --format '{{.Names}}' | ForEach-Object { $_.Trim() }
-      if ($CONTAINER_NAMES -like "*flexy-demy-ui-dev*") {
-        docker stop flexy-demy-ui-dev
-        docker rm flexy-demy-ui-dev
-      }
-    - docker stop $PROJECT_NAME-dev || true
-    - docker rm $PROJECT_NAME-dev || true
-    - docker run -d -p 4200:80 --name $PROJECT_NAME-dev -v $HOST_DEPLOY_PATH:/usr/share/nginx/html nginx:alpine
+    - docker build --build-arg NODE_ENV=development --build-arg NODE_PORT=4200 -t ${PROJECT_NAME}:development .
+
+    # Step 2: Cleanup any previous temp container
+    - docker rm -f temp-${PROJECT_NAME} || true
+
+    # Step 3: Run temp container to extract built files
+    - docker create --name temp-${PROJECT_NAME} ${PROJECT_NAME}:development
+    - docker cp temp-${PROJECT_NAME}:/app/dist/${PROJECT_NAME}/browser/. ${HOST_DEPLOY_PATH}
+    - docker rm temp-${PROJECT_NAME}
+
+    # Step 4: Stop and remove existing nginx container if exists
+    - docker stop ${PROJECT_NAME}-dev || true
+    - docker rm ${PROJECT_NAME}-dev || true
+
+    # Step 5: Run nginx container serving the new files
+    - docker run -d -p 4200:80 --name ${PROJECT_NAME}-dev -v ${HOST_DEPLOY_PATH}:/usr/share/nginx/html nginx:alpine
+
 build_production:
   stage: build_production
   only:
