@@ -15,7 +15,7 @@ RUN npm install -g @angular/cli@19
 ARG NODE_ENV=production
 ARG PROJECT_NAME=flexy-demy-ui
 
-RUN ng build --configuration=$NODE_ENV --output-path=dist/$PROJECT_NAME/browser
+RUN ng build --configuration=$NODE_ENV --output-path=dist
 
 # ================================
 # Stage 2: Serve with NGINX
@@ -26,10 +26,9 @@ FROM nginx:alpine AS nginx-server
 RUN rm -rf /usr/share/nginx/html/*
 
 # Copy built Angular app from previous stage
-COPY --from=angular-builder /app/dist/flexy-demy-ui/browser ./browser
+COPY --from=angular-builder /app/dist/browser /usr/share/nginx/html
 
 # Optional: expose if NOT using central nginx
-EXPOSE 80
-EXPOSE 443
+EXPOSE 4200
 
 CMD ["nginx", "-g", "daemon off;"]
