@@ -30,7 +30,7 @@ build_development:
     - docker create --name temp-${PROJECT_NAME} ${PROJECT_NAME}:development
 
     # 5. Ensure host deploy path exists
-    - mkdir -p ${HOST_DEPLOY_PATH}
+    - bash -c "mkdir -p ${HOST_DEPLOY_PATH}"
 
     # Step 6: Copy built app files to host path
     - docker cp temp-${PROJECT_NAME}:/app/browser/. ${HOST_DEPLOY_PATH}
