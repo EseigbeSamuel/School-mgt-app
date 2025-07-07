@@ -33,7 +33,7 @@ build_development:
     - mkdir -p ${HOST_DEPLOY_PATH}
 
     # Step 6: Copy built app files to host path
-    - docker cp temp-${PROJECT_NAME}:/app/dist/${PROJECT_NAME}/browser/. ${HOST_DEPLOY_PATH}
+    - docker cp temp-${PROJECT_NAME}:/app/browser/. ${HOST_DEPLOY_PATH}
 
     # Step 7: Remove temp container
     - docker rm temp-${PROJECT_NAME}

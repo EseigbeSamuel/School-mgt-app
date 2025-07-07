@@ -26,7 +26,7 @@ FROM nginx:alpine AS nginx-server
 RUN rm -rf /usr/share/nginx/html/*
 
 # Copy built Angular app from previous stage
-COPY --from=angular-builder /app/dist/flexy-demy-ui/browser /usr/share/nginx/html
+COPY --from=angular-builder /app/dist/flexy-demy-ui/browser ./browser
 
 # Optional: expose if NOT using central nginx
 EXPOSE 80
