@@ -29,9 +29,6 @@ build_development:
     # Step 4: Create temp container to extract build artifacts
     - docker create --name temp-${PROJECT_NAME} ${PROJECT_NAME}:development
 
-    # Step 5: Ensure HOST_DEPLOY_PATH exists
-    - mkdir -p ${HOST_DEPLOY_PATH}
-
     # Step 6: Copy built app files to host path
     - docker cp temp-${PROJECT_NAME}:/app/browser/. ${HOST_DEPLOY_PATH}
 
