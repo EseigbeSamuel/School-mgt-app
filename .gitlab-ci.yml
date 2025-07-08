@@ -25,11 +25,10 @@ build_development:
     - elsoft
   script:
 
-    # Step 2: Build the Angular app in Docker
     - docker build --build-arg NODE_ENV=development -t ${PROJECT_NAME}-builder .
     - docker rm -f temp-${PROJECT_NAME} || true
     - docker create --name temp-${PROJECT_NAME} ${PROJECT_NAME}-builder
-    - rm -rf ${HOST_DEPLOY_PATH}/*
+    - powershell -Command "Remove-Item -Path '${HOST_DEPLOY_PATH}\*' -Recurse -Force"
     - docker cp temp-${PROJECT_NAME}:/app/dist/browser/. ${HOST_DEPLOY_PATH}
     - docker rm temp-${PROJECT_NAME}
     - docker restart flexy-central-nginx
