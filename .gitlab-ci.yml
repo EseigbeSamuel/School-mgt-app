@@ -12,38 +12,27 @@ stages:
   - deploy_production
   - deploy_development
 
+
+install:
+  stage: install
+  script:
+    - npm install --force --legacy-peer-deps
+
+
 build_development:
   stage: build_development
   only:
     - elsoft
   script:
-    # Step 1: Install frontend dependencies
-    - npm install --force --legacy-peer-deps
 
     # Step 2: Build the Angular app in Docker
-    - docker build --build-arg NODE_ENV=development --build-arg NODE_PORT=4200 -t ${PROJECT_NAME}:development .
-
-    # Step 3: Cleanup previous temp container
+    - docker build --build-arg NODE_ENV=development -t ${PROJECT_NAME}-builder .
     - docker rm -f temp-${PROJECT_NAME} || true
-
-    # Step 4: Create temp container to extract build artifacts
-    - docker create --name temp-${PROJECT_NAME} ${PROJECT_NAME}:development
-
-    - docker start temp-${PROJECT_NAME}
-    - docker exec temp-${PROJECT_NAME} sh -c "ls -R /app/dist/flexy-demy/browser"
-
-    # Step 6: Copy built app files to host path
-    - docker cp temp-${PROJECT_NAME}:/app/dist/flexy-demy/browser/. ${HOST_DEPLOY_PATH}
-
-    # Step 7: Remove temp container
+    - docker create --name temp-${PROJECT_NAME} ${PROJECT_NAME}-builder
+    - rm -rf ${HOST_DEPLOY_PATH}/*
+    - docker cp temp-${PROJECT_NAME}:/app/dist/browser/. ${HOST_DEPLOY_PATH}
     - docker rm temp-${PROJECT_NAME}
-
-    # Step 8: Stop & remove previous dev container if it exists
-    - docker stop ${PROJECT_NAME}-dev || true
-    - docker rm ${PROJECT_NAME}-dev || true
-
-    # Step 9: Start new nginx container with built files
-    - docker run -d -p 4200:80 --name ${PROJECT_NAME}-dev -v ${HOST_DEPLOY_PATH}:/usr/share/nginx/html nginx:alpine
+    - docker restart flexy-central-nginx
 
 build_production:
   stage: build_production
