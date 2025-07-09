@@ -27,66 +27,66 @@ export class AdminStudentsListingComponent {
     {
       name: 'Alice Johnson',
       email: 'alice.johnson@example.com',
-class: 'Science',
-exam: "JAMB",
-course_completion_rate: 50,
-status: 'active'
+      class: 'Science',
+      exam: 'JAMB',
+      course_completion_rate: 50,
+      status: 'active',
     },
     {
       name: 'Brian Smith',
       email: 'brian.smith@example.com',
-class: 'Science',
-exam: "JAMB",
-course_completion_rate: 50,
-status: 'active'
+      class: 'Science',
+      exam: 'JAMB',
+      course_completion_rate: 50,
+      status: 'active',
     },
     {
       name: 'Charlotte Lee',
       email: 'charlotte.lee@example.com',
-class: 'Science',
-exam: "JAMB",
-course_completion_rate: 50,
-status: 'active'
+      class: 'Science',
+      exam: 'JAMB',
+      course_completion_rate: 50,
+      status: 'active',
     },
     {
       name: 'David Kim',
       email: 'david.kim@example.com',
-class: 'Science',
-exam: "JAMB",
-course_completion_rate: 50,
-status: 'active'
+      class: 'Science',
+      exam: 'JAMB',
+      course_completion_rate: 50,
+      status: 'active',
     },
     {
       name: 'Ella Green',
       email: 'ella.green@example.com',
-class: 'Science',
-exam: "JAMB",
-course_completion_rate: 50,
-status: 'active'
+      class: 'Science',
+      exam: 'JAMB',
+      course_completion_rate: 50,
+      status: 'active',
     },
     {
       name: 'Franklin Moore',
       email: 'franklin.moore@example.com',
-class: 'Science',
-exam: "JAMB",
-course_completion_rate: 50,
-status: 'active'
+      class: 'Science',
+      exam: 'JAMB',
+      course_completion_rate: 50,
+      status: 'active',
     },
     {
       name: 'Grace Tan',
       email: 'grace.tan@example.com',
-class: 'Science',
-exam: "JAMB",
-course_completion_rate: 50,
-status: 'active'
+      class: 'Science',
+      exam: 'JAMB',
+      course_completion_rate: 50,
+      status: 'active',
     },
     {
       name: 'Henry Osei',
       email: 'henry.osei@example.com',
-class: 'Science',
-exam: "JAMB",
-course_completion_rate: 50,
-status: 'active'
+      class: 'Science',
+      exam: 'JAMB',
+      course_completion_rate: 50,
+      status: 'active',
     },
   ];
 

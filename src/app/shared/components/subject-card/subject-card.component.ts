@@ -30,7 +30,7 @@ export class SubjectCardComponent {
       this.router.navigate([
         `/dashboard/courses/view-course/${pageData.id}/lesson/${pageData.topics[0].id}`,
       ]);
-      console.log(pageData.topics[0].id, 'id:', pageData.id);
+      // console.log(pageData.topics[0].id, 'id:', pageData.id);
     }
   }
 }

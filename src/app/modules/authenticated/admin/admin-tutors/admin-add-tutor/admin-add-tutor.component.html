@@ -1,4 +1,4 @@
-<div class="add-tutor-container">
+<div class="add-tutor-container w-full">
   <div class="header">
     <h2 class="title">Add New Tutor</h2>
     <div class="breadcrumb">
@@ -38,7 +38,6 @@
         Bank account information
       </button>
     </div>
-
 
     <!-- Personal Information Tab -->
     <div class="tab-content" *ngIf="currentStep === 1">
@@ -151,80 +150,80 @@
       </div>
     </div>
 
-       <!-- Professional Information Tab -->
-       <div class="tab-content" *ngIf="currentStep === 2">
-        <div class="form-grid">
-          <div class="form-group">
+    <!-- Professional Information Tab -->
+    <div class="tab-content" *ngIf="currentStep === 2">
+      <div class="form-grid">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-input"
+            placeholder="University"
+            [(ngModel)]="professionalInfo.university"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-input"
+            placeholder="Year of Graduation"
+            [(ngModel)]="professionalInfo.yearOfGraduation"
+          />
+        </div>
+        <div class="form-group">
+          <select class="form-select" [(ngModel)]="professionalInfo.degree">
+            <option value="">Degree</option>
+            <option value="bachelor">Bachelor's</option>
+            <option value="master">Master's</option>
+            <option value="phd">Ph.D</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <input
+            type="email"
+            class="form-input"
+            placeholder="Email Address"
+            [(ngModel)]="professionalInfo.emailAddress"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-input"
+            placeholder="Enter Department"
+            [(ngModel)]="professionalInfo.department"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-input"
+            placeholder="Enter Designation"
+            [(ngModel)]="professionalInfo.designation"
+          />
+        </div>
+        <div class="form-group">
+          <select
+            class="form-select"
+            [(ngModel)]="professionalInfo.workingDays"
+          >
+            <option value="">Select Working Days</option>
+            <option value="monday-friday">Monday - Friday</option>
+            <option value="all-days">All Days</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <div class="date-input-wrapper">
             <input
-              type="text"
-              class="form-input"
-              placeholder="University"
-              [(ngModel)]="professionalInfo.university"
+              type="date"
+              class="form-input date-input"
+              placeholder="Select Joining Date"
+              [(ngModel)]="professionalInfo.joiningDate"
             />
-          </div>
-          <div class="form-group">
-            <input
-              type="text"
-              class="form-input"
-              placeholder="Year of Graduation"
-              [(ngModel)]="professionalInfo.yearOfGraduation"
-            />
-          </div>
-          <div class="form-group">
-            <select class="form-select" [(ngModel)]="professionalInfo.degree">
-              <option value="">Degree</option>
-              <option value="bachelor">Bachelor's</option>
-              <option value="master">Master's</option>
-              <option value="phd">Ph.D</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <input
-              type="email"
-              class="form-input"
-              placeholder="Email Address"
-              [(ngModel)]="professionalInfo.emailAddress"
-            />
-          </div>
-          <div class="form-group">
-            <input
-              type="text"
-              class="form-input"
-              placeholder="Enter Department"
-              [(ngModel)]="professionalInfo.department"
-            />
-          </div>
-          <div class="form-group">
-            <input
-              type="text"
-              class="form-input"
-              placeholder="Enter Designation"
-              [(ngModel)]="professionalInfo.designation"
-            />
-          </div>
-          <div class="form-group">
-            <select
-              class="form-select"
-              [(ngModel)]="professionalInfo.workingDays"
-            >
-              <option value="">Select Working Days</option>
-              <option value="monday-friday">Monday - Friday</option>
-              <option value="all-days">All Days</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <div class="date-input-wrapper">
-              <input
-                type="date"
-                class="form-input date-input"
-                placeholder="Select Joining Date"
-                [(ngModel)]="professionalInfo.joiningDate"
-              />
-              <i class="calendar-icon"></i>
-            </div>
+            <i class="calendar-icon"></i>
           </div>
         </div>
       </div>
+    </div>
 
     <!-- Bank Information Tab -->
     <div class="tab-content" *ngIf="currentStep === 3">

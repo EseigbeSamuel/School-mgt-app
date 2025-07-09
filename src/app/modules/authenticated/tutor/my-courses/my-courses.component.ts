@@ -6,10 +6,16 @@ import {
   SortDropdownComponent,
   SortOption,
 } from '../../../../shared/components/sort-dropdown/sort-dropdown.component';
+import { CalenderComponent } from '../../../../shared/components/calender/calender.component';
 
 @Component({
   selector: 'app-my-courses-tutor',
-  imports: [CommonModule, SharedModule, SortDropdownComponent],
+  imports: [
+    CommonModule,
+    SharedModule,
+    SortDropdownComponent,
+    CalenderComponent,
+  ],
   templateUrl: './my-courses.component.html',
   styleUrl: './my-courses.component.css',
 })

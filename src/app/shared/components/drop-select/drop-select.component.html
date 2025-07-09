@@ -7,22 +7,21 @@
   </label>
 
   <select
-    [disabled]="disabled"
-    [class]="variantClasses"
     [value]="value"
     (change)="onValueChange($event)"
     (focus)="onFocus()"
     (blur)="onBlur()"
-    class="appearance-none"
+    [disabled]="disabled"
+    [class]="variantClasses"
   >
-    <option disabled value="">{{ computedPlaceholder }}</option>
-    <option *ngFor="let option of options" [value]="option">
-      {{ option }}
+    <option value="" disabled>{{ computedPlaceholder }}</option>
+    <option *ngFor="let option of normalizedOptions" [value]="option.value">
+      {{ option.label }}
     </option>
   </select>
 
   <svg
-    class="absolute right-3 top-2 pointer-events-none w-6 h-6 text-gray-400"
+    class="absolute right-3 top-8 pointer-events-none w-6 h-6 text-gray-400"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"

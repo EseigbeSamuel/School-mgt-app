@@ -1,4 +1,5 @@
 import { RouterOutlet, Routes } from '@angular/router';
+// import { RouterOutlet, Routes } from '@angular/router';
 import { UnAthenticatedComponent } from './layout/un-athenticated/un-athenticated.component';
 import { SplashScreenComponent } from './modules/unAuthenticated/splash-screen/splash-screen.component';
 import { PreRegisterComponent } from './modules/unAuthenticated/register/pre-register.component';
@@ -140,6 +141,13 @@ export const routes: Routes = [
     path: 'dashboard',
     component: AuthenticatedComponent,
     children: [
+      // Main dashboard - shows different component based on role
+      {
+        path: '',
+        component: RoleDashboardComponent, // This loads the right dashboard component
+      },
+
+      // Courses route - shows different component based on role
       // Main dashboard - shows different component based on role
       {
         path: '',
@@ -350,10 +358,6 @@ export const routes: Routes = [
         component: MockExamsComponent,
         canActivate: [RoleGuard],
         data: { roles: ['student'] },
-        children: [
-          { path: '', component: ExamListComponent },
-          { path: 'exam', component: ExamComponent },
-        ],
       },
 
       {

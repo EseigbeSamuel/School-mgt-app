@@ -52,6 +52,9 @@ export class ViewCourseComponent implements OnInit {
     });
   }
 
+  goBack() {
+    this.router.navigate(['/dashboard/courses']);
+  }
   getRatingInWords(): string {
     return (this.ratingScore / 20).toFixed(1);
   }
@@ -74,7 +77,7 @@ export class ViewCourseComponent implements OnInit {
   handleCOurseVideoClick(ID: number) {
     if (this.pageData?.id && this.pageData?.topics?.length) {
       this.router.navigate([
-        `student/courses/view-course/${this.pageData.id}/lesson/${ID}`,
+        `dashboard/courses/view-course/${this.pageData.id}/lesson/${ID}`,
       ]);
     }
   }

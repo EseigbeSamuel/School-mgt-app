@@ -71,6 +71,7 @@ export class ButtonComponent {
       variantClasses[this.variant],
       sizeClasses[this.size],
       ...stateClasses,
+      this.class,
     ]
       .filter(Boolean)
       .join(' ');

@@ -1,6 +1,6 @@
 <div class="flex gap-3 flex-col">
   <div
-    class="grid gap-5 grid-cols-2 md:grid-cols-[repeat(auto-fill,_minmax(250px,_1fr))]"
+    class="grid gap-5 grid-cols-2 w-full md:grid-cols-[repeat(auto-fill,_minmax(20%,_1fr))]"
   >
     <app-card-ui-dashboared
       *ngFor="let card of data"
@@ -36,14 +36,17 @@
       <h1 class="font-semibold text-xl text-[#045325]">Continue Course</h1>
       <p class="font-medium text-[#13BA59]">Pick up where you left from</p>
       <div>
-        <button class="text-white text-sm bg-[#13BA59] rounded-full py-2 px-4" routerLink="/dashboard/courses">
+        <button
+          class="text-white text-sm bg-[#13BA59] rounded-full py-2 px-4"
+          routerLink="/dashboard/courses"
+        >
           Continue Learning
         </button>
       </div>
     </section>
 
     <section
-      class="lg:w-[33.3%] border rounded-xl border-[#FAA29B] bg-[#FDE5E3] xl:gap-3 py-4  h-[220px] flex flex-col items-center justify-center"
+      class="lg:w-[33.3%] border rounded-xl border-[#FAA29B] bg-[#FDE5E3] xl:gap-3 py-4 h-[220px] flex flex-col items-center justify-center"
     >
       <div>
         <svg
@@ -72,14 +75,17 @@
       <h1 class="font-semibold text-xl text-[#8B170F]">Take a Quiz</h1>
       <p class="font-medium text-[#F04438]">Test your knowlegde</p>
       <div>
-        <button class="text-white text-sm bg-[#F04438] rounded-full py-2 px-4" routerLink="/dashboard/assessments">
+        <button
+          class="text-white text-sm bg-[#F04438] rounded-full py-2 px-4"
+          routerLink="/dashboard/assessments"
+        >
           Start Quiz
         </button>
       </div>
     </section>
 
     <section
-      class="lg:w-[33.3%] border rounded-xl border-[#A967FF] bg-[#E5D9F4] xl:gap-3 py-4  h-[220px] flex flex-col items-center justify-center"
+      class="lg:w-[33.3%] border rounded-xl border-[#A967FF] bg-[#E5D9F4] xl:gap-3 py-4 h-[220px] flex flex-col items-center justify-center"
     >
       <div>
         <svg
@@ -98,14 +104,17 @@
       <h1 class="font-semibold text-xl text-[#3D1374]">Continue Course</h1>
       <p class="font-medium text-[#A967FF]">Pick up where you left from</p>
       <div>
-        <button class="text-white text-sm bg-[#A967FF] rounded-full py-2 px-4" routerLink="/dashboard/personal-sessions">
+        <button
+          class="text-white text-sm bg-[#A967FF] rounded-full py-2 px-4"
+          routerLink="/dashboard/personal-sessions"
+        >
           Book Session
         </button>
       </div>
     </section>
   </div>
 
-  <div class=" grid lg:flex gap-5 w-full">
+  <div class="grid lg:flex gap-5 w-full">
     <section class="lg:w-[50%] border rounded-xl p-5 grid gap-5">
       <div>
         <h1 class="text-lg font-semibold flex gap-2">
@@ -214,13 +223,13 @@
 
   <div class="flex gap-3">
     <div
-      class="w-full md:w-[70%] md:p-4 border rounded-lg border-[#E9E9E9] h-fit md:h-[420px]"
+      class="w-full md:w-[70%] md:p-4 border rounded-lg border-[#E9E9E9] h-fit md:h-[450px]"
     >
       <app-chart2 />
     </div>
 
     <div
-      class="border w-[30%] hidden border-[#E9E9E9] rounded-lg h-fit md:h-[420px] md:flex justify-center items-center"
+      class="border w-[30%] hidden border-[#E9E9E9] rounded-lg h-fit md:h-[450px] md:flex justify-center items-center"
     >
       <app-piechart />
     </div>
@@ -273,8 +282,8 @@
     </ng-container>
   </div>
 
-  <div class=" grid lg:flex gap-5 w-full">
-    <section class=" lg:w-[50%] border rounded-xl p-5 grid gap-5">
+  <div class="grid lg:flex gap-5 w-full">
+    <section class="lg:w-[50%] border rounded-xl p-5 grid gap-5">
       <div>
         <h1 class="text-lg font-semibold flex gap-2">
           <svg
@@ -354,7 +363,7 @@
       </div>
     </section>
 
-    <section class=" lg:w-[50%] border rounded-xl p-5 grid gap-5">
+    <section class="lg:w-[50%] border rounded-xl p-5 grid gap-5">
       <div>
         <h1 class="text-lg font-semibold flex gap-2">
           <svg

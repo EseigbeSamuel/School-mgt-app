@@ -1,11 +1,12 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SharedModule } from '../../../shared.module';
+import { CommonModule } from '@angular/common';
 // import { Router } from '@angular/router';
 // import { StudentProfileDataService } from '../../../../services/student-profile-data.service';
 
 @Component({
   selector: 'app-students-card',
-  imports: [SharedModule],
+  imports: [SharedModule, CommonModule],
   templateUrl: './students-card.component.html',
   styleUrl: './students-card.component.css',
 })
