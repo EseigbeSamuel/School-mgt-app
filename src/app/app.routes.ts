@@ -358,6 +358,10 @@ export const routes: Routes = [
         component: MockExamsComponent,
         canActivate: [RoleGuard],
         data: { roles: ['student'] },
+        children: [
+          { path: '', component: ExamListComponent },
+          { path: 'exam', component: ExamComponent },
+        ],
       },
 
       {
