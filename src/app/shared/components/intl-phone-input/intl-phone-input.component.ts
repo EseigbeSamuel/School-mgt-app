@@ -28,18 +28,6 @@ import {
       multi: true,
     },
   ],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => IntlPhoneInputComponent),
-      multi: true,
-    },
-    {
-      provide: NG_VALIDATORS,
-      useExisting: forwardRef(() => IntlPhoneInputComponent),
-      multi: true,
-    },
-  ],
 })
 export class IntlPhoneInputComponent implements ControlValueAccessor {
   @Input() error: boolean = false;
@@ -91,6 +79,7 @@ export class IntlPhoneInputComponent implements ControlValueAccessor {
   }
   onInputFocus(event: FocusEvent): void {
     this.isFocused = true;
+    // this.focus.emit(event);
   }
   // Method to determine CSS classes based on error state
   variantClasses(): string {
@@ -98,9 +87,7 @@ export class IntlPhoneInputComponent implements ControlValueAccessor {
       'w-full rounded focus:outline-none transition duration-200 py-2 px-3 pl-12';
     const focusClasses = this.isFocused ? 'ring-2 ' : '';
 
-    return `${baseClasses} ${focusClasses} bg-transparent border border-[#2C2A724D] focus:ring-[#2C2A724D] focus:border-[#2C2A724D] ${
-      this.showError ? ' border-2 border-red-500' : ''
-    }`;
+    return `${baseClasses} ${focusClasses} bg-transparent border border-[#2C2A724D] focus:ring-[#2C2A724D] focus:border-[#2C2A724D]`;
   }
 
   // Handle touch events

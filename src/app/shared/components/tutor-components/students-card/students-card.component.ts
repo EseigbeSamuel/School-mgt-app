@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SharedModule } from '../../../shared.module';
+import { CommonModule } from '@angular/common';
 // import { Router } from '@angular/router';
 // import { StudentProfileDataService } from '../../../../services/student-profile-data.service';
 
