@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SharedModule } from '../../../../../shared/shared.module';
 import { CommonModule } from '@angular/common';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-exam-list',
@@ -9,8 +10,10 @@ import { CommonModule } from '@angular/common';
   styleUrl: './exam-list.component.css',
 })
 export class ExamListComponent {
+  constructor(private router: Router) {}
   exams = [
     {
+      id: 1,
       type: 'JAMB 2025 Mock Exams',
       subjects: ['english', 'mathematics', 'physics', 'chemistry'],
       desc: 'Full JAMB simulation with real exam conditions',
@@ -21,6 +24,7 @@ export class ExamListComponent {
       attempts: 1,
     },
     {
+      id: 2,
       type: 'WAEC Mathematics Mock Exams',
       subjects: ['mathematics'],
       desc: 'WAEC Mathematics paper simulation',
@@ -31,6 +35,7 @@ export class ExamListComponent {
       attempts: 2,
     },
     {
+      id: 3,
       type: 'NECO English Mock Exams',
       subjects: ['english'],
       desc: 'NECO comprehensive English paper simulation',
@@ -42,6 +47,9 @@ export class ExamListComponent {
     },
   ];
 
+  handleNavigate(id: number) {
+    this.router.navigate([`/dashboard/mock-exams/exam/${id}`]);
+  }
   getStatusClass(status: string): string {
     switch (status.toLowerCase()) {
       case 'completed':

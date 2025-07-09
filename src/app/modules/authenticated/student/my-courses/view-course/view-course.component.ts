@@ -52,6 +52,9 @@ export class ViewCourseComponent implements OnInit {
     });
   }
 
+  goBack() {
+    this.router.navigate(['/dashboard/courses']);
+  }
   getRatingInWords(): string {
     return (this.ratingScore / 20).toFixed(1);
   }
