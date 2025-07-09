@@ -1,6 +1,17 @@
 <div class="flex flex-col gap-6">
   <div class="flex flex-col gap-3">
-    <div class="text-textColor text-[30px] font-[500] border-b">Lessons</div>
+    <div
+      class="text-textColor flex justify-between items-center text-[30px] font-[500] border-b"
+    >
+      <span>Lesson</span>
+      <div
+        (click)="goBack()"
+        class="flex items-center text-sm flex-end cursor-pointer px-2"
+      >
+        <img src="/assets/icons/dropdown.svg" alt="" class="rotate-90" />
+        <h1 class="text-subject-primary hover:text-primary">Back</h1>
+      </div>
+    </div>
     <div
       class="{{
         getclassBg()

@@ -72,27 +72,29 @@
 
 <!-- pop up -->
 <app-modal [show]="showModal" (close)="closeModal()" [custom]="true">
-  <section
-    class="lg:w-[500px] flex-col flex gap-5 z-10 text-center bg-white rounded-lg p-5"
-  >
-    <div class="w-full flex justify-end">
-      <img
-        src="/assets/icons/purple-circle X-mark.svg"
-        alt=""
-        class="size-5"
-        (click)="closeModal()"
-      />
-    </div>
-    <p class="text-primary font-semibold">
-      Thanks for sharing a word about FlexiDemi. Remind your friends to check
-      their emails!
-    </p>
-    <div><app-button label="Refer Now " /></div>
-  </section>
-</app-modal>
+  <app-modal [show]="showModal" (close)="closeModal()" [custom]="true">
+    <section
+      class="lg:w-[500px] flex-col flex gap-5 z-10 text-center bg-white rounded-lg p-5"
+    >
+      <div class="w-full flex justify-end">
+        <img
+          src="/assets/icons/purple-circle X-mark.svg"
+          alt=""
+          class="size-5"
+          (click)="closeModal()"
+          (click)="closeModal()"
+        />
+      </div>
+      <p class="text-primary font-semibold">
+        Thanks for sharing a word about FlexiDemi. Remind your friends to check
+        their emails!
+      </p>
+      <div><app-button label="Refer Now " (click)="closeModal()" /></div>
+    </section>
+  </app-modal>
 
-<!-- mobile view -->
-<div class="xl:hidden grid gap-5">
+  <!-- mobile view -->
+  <!-- <div class="xl:hidden grid gap-5">
   <section class="grid gap-3">
     <div class="flex justify-center">
       <img
@@ -107,9 +109,9 @@
     </h1>
     <div><app-button label="Refer Now" /></div>
   </section>
-  <section class="flex gap-3">
+  <section class="flex gap-3 justify-center">
     <div class="flex">
-      <div class=""><app-input-ui /></div>
+      <div class="w-full"><app-input-ui /></div>
       <div class="bg-primary p-2 rounded-r-lg">
         <img src="/assets/icons/content_copy.svg" alt="" />
       </div>
@@ -142,4 +144,58 @@
     </p>
     <div><app-button label="Check Progress" variant="secondary" /></div>
   </section>
-</div>
+</app-modal>
+ -->
+  <!-- mobile view -->
+  <div class="xl:hidden grid gap-5">
+    <section class="grid gap-3">
+      <div class="flex justify-center">
+        <img
+          src="/assets/icons/social-promotion.svg"
+          alt=""
+          class="size-[200px]"
+        />
+      </div>
+      <h1 class="font-bold text-center">
+        Invite your friends to <br />
+        Flexi Demi and unlock amazing rewards!
+      </h1>
+      <div><app-button label="Refer Now" /></div>
+    </section>
+    <section class="flex gap-3">
+      <div class="flex">
+        <div class=""><app-input-ui /></div>
+        <div class="bg-primary p-2 rounded-r-lg">
+          <img src="/assets/icons/content_copy.svg" alt="" />
+        </div>
+      </div>
+      <div class="flex gap-3">
+        <img src="/assets/icons/whatsapp.svg" alt="" />
+        <img src="/assets/icons/share.svg" alt="" />
+      </div>
+    </section>
+    <section class="rounded-lg bg-[#D96C63] text-white p-5 grid gap-3">
+      <div class="flex justify-between items-center">
+        <h1 class="font-semibold">Reward system</h1>
+        <img src="/assets/icons/More.svg" alt="" />
+      </div>
+      <div class="flex justify-between items-center">
+        <p>Referal</p>
+        <p class="font-semibold">5 Points</p>
+      </div>
+      <div class="flex justify-between items-center">
+        <p>Sign-up</p>
+        <p class="font-semibold">5 Points</p>
+      </div>
+      <div class="flex justify-between items-center">
+        <p>Payment</p>
+        <p class="font-semibold">5 Points</p>
+      </div>
+      <p>
+        Keep referring & earning! The more friends you bring, the more rewards
+        you unlock!
+      </p>
+      <div><app-button label="Check Progress" variant="secondary" /></div>
+    </section>
+  </div>
+</app-modal>

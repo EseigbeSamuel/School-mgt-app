@@ -7,6 +7,9 @@ import { IntlPhoneInputComponent } from './components/intl-phone-input/intl-phon
 import { ReactiveFormsModule } from '@angular/forms';
 import { DropSelectComponent } from './components/drop-select/drop-select.component';
 import { CardUiDashboaredComponent } from './components/card-ui-dashboared/card-ui-dashboared.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [ButtonComponent, DropSelectComponent],
@@ -15,6 +18,8 @@ import { CardUiDashboaredComponent } from './components/card-ui-dashboared/card-
     MatIconModule,
     MatCheckboxModule,
     ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   exports: [ButtonComponent, DropSelectComponent],
   providers: [],

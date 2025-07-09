@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SharedModule } from '../../../shared.module';
-import { CommonModule } from '@angular/common';
+// import { Router } from '@angular/router';
+// import { StudentProfileDataService } from '../../../../services/student-profile-data.service';
 
 @Component({
   selector: 'app-students-card',
@@ -13,39 +14,15 @@ export class StudentsCardComponent {
   @Input() subjects: string[] = [];
   @Input() type: string = '';
   @Input() image: string = '';
-  @Input() rating: number = 0; // Add rating input
-  @Input() studentId: number = 0; // Add student ID
 
-  @Output() viewProfile = new EventEmitter<number>();
-  @Output() ratingChange = new EventEmitter<{
-    studentId: number;
-    rating: number;
-  }>();
+  // constructor(
+  //   private router: Router,
+  //   private studentProfileDataService: StudentProfileDataService
+  // ) {}
 
-  // Create array for star rendering
-  stars = Array(5).fill(0);
-
-  get formattedSubjects(): string {
-    if (Array.isArray(this.subjects)) {
-      return this.subjects.join(', ');
-    }
-    return this.subjects || '';
-  }
-
-  setRating(newRating: number): void {
-    this.rating = newRating;
-    this.ratingChange.emit({
-      studentId: this.studentId,
-      rating: newRating,
-    });
-  }
-
-  onViewProfile(): void {
-    this.viewProfile.emit(this.studentId);
-  }
-
-  onImageError(event: any): void {
-    // Fallback image if the original fails to load
-    event.target.src = 'assets/images/default-student.png';
-  }
+  // onSelectStudent(student: any) {
+  //   this.studentProfileDataService.selectStudent(student);
+  //   this.router.navigate(['/dashboard/students/student', student.id]);
+  //   console.log('clicked');
+  // }
 }

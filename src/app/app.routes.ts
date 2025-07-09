@@ -1,4 +1,5 @@
 import { RouterOutlet, Routes } from '@angular/router';
+// import { RouterOutlet, Routes } from '@angular/router';
 import { UnAthenticatedComponent } from './layout/un-athenticated/un-athenticated.component';
 import { SplashScreenComponent } from './modules/unAuthenticated/splash-screen/splash-screen.component';
 import { PreRegisterComponent } from './modules/unAuthenticated/register/pre-register.component';
@@ -62,6 +63,18 @@ import { AdminSessionCalenderComponent } from './modules/authenticated/admin/adm
 import { AdminCoursesUploadComponent } from './modules/authenticated/admin/admin-courses/admin-courses-upload/admin-courses-upload.component';
 import { AdminCoursesDetailComponent } from './modules/authenticated/admin/admin-courses/admin-courses-detail/admin-courses-detail.component';
 import { AdminCoursesUploadMaterialsComponent } from './modules/authenticated/admin/admin-courses/admin-courses-upload-materials/admin-courses-upload-materials.component';
+import { StudentsProfileComponent } from './modules/authenticated/tutor/students/students-profile/students-profile.component';
+import { AdminStudentsListingComponent } from './modules/authenticated/admin/admin-students/admin-students-listing/admin-students-listing.component';
+import { StudentDashboardComponent } from './modules/authenticated/student/dashboard/dashboard.component';
+import { StudentsListComponent } from './modules/authenticated/tutor/students/students-list/students-list.component';
+import { AddResourcesComponent } from './modules/authenticated/tutor/resources/add-resources/add-resources.component';
+import { ResourcesListComponent } from './modules/authenticated/tutor/resources/resources-list/resources-list.component';
+import { NotificationsComponent } from './modules/authenticated/tutor/profile/notifications/notifications.component';
+import { tutors } from './modules/authenticated/tutor/dashboard/data';
+import { MainSessionsComponent } from './modules/authenticated/student/personal-sessions/main-sessions/main-sessions.component';
+import { ExamListComponent } from './modules/authenticated/student/mock-exams/exam-list/exam-list.component';
+import { ExamComponent } from './modules/authenticated/student/mock-exams/exam/exam.component';
+import { RoleWalletComponent } from './modules/authenticated/dashboard/role-wallet/role-wallet.component';
 // test
 export const routes: Routes = [
   // {
@@ -129,6 +142,13 @@ export const routes: Routes = [
       },
 
       // Courses route - shows different component based on role
+      // Main dashboard - shows different component based on role
+      {
+        path: '',
+        component: RoleDashboardComponent, // This loads the right dashboard component
+      },
+
+      // Courses route - shows different component based on role
       {
         path: 'courses',
         component: RouteEntryComponent, // This loads the right courses component
@@ -187,6 +207,9 @@ export const routes: Routes = [
             canActivate: [RoleGuard],
             data: { roles: ['tutor', 'admin'] },
           },
+
+          { path: 'student/:id ', component: StudentsProfileComponent },
+
           {
             path: 'add-student',
             component: AdminAddStudentComponent,
@@ -245,6 +268,12 @@ export const routes: Routes = [
           },
         ],
       },
+      {
+        path: 'wallet',
+        component: RoleWalletComponent,
+        canActivate: [RoleGuard],
+        data: { roles: ['student', 'tutor'] },
+      },
 
       // Profile route - everyone has this but different components
       {
@@ -272,6 +301,12 @@ export const routes: Routes = [
           {
             path: 'socials-passwords',
             component: SocialsPasswordComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['tutor'] },
+          },
+          {
+            path: 'notifications',
+            component: NotificationsComponent,
             canActivate: [RoleGuard],
             data: { roles: ['tutor'] },
           },
@@ -307,6 +342,10 @@ export const routes: Routes = [
         component: MockExamsComponent,
         canActivate: [RoleGuard],
         data: { roles: ['student'] },
+        children: [
+          { path: '', component: ExamListComponent },
+          { path: 'exam/:id', component: ExamComponent },
+        ],
       },
 
       {
@@ -315,8 +354,10 @@ export const routes: Routes = [
         canActivate: [RoleGuard],
         data: { roles: ['student'] },
         children: [
-          { path: '', component: GetTutorsComponent },
-          { path: 'tutors', component: TutorsComponent },
+          { path: '', component: MainSessionsComponent },
+          { path: 'get-tutors', component: GetTutorsComponent },
+          { path: 'tutoring', component: TutorsComponent },
+          { path: 'tutoring/:id', component: TutorsDescriptionComponent },
         ],
       },
 
@@ -339,6 +380,10 @@ export const routes: Routes = [
         component: ResourcesComponent,
         canActivate: [RoleGuard],
         data: { roles: ['tutor'] },
+        children: [
+          { path: '', component: ResourcesListComponent },
+          { path: 'add-resources', component: AddResourcesComponent },
+        ],
       },
 
       {

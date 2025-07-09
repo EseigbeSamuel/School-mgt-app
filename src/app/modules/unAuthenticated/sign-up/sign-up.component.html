@@ -12,49 +12,59 @@
   </div>
 
   <div class="w-full px-4 md:w-fit justify-center mx-auto">
-    <form [formGroup]="form" class="flex flex-col items-center gap-4">
+    <form
+      [formGroup]="signupForm"
+      class="flex flex-col items-center gap-4"
+      (ngSubmit)="signUp()"
+      class="flex flex-col items-center gap-4"
+    >
       <app-input-ui
-        [showError]="
-          form.get('firstName')?.invalid && form.get('firstName')?.touched
-        "
         formControlName="firstName"
-        label="first name"
+        label="First name"
         placeholder="Enter name"
         class="w-full"
       />
 
       <app-input-ui
-        [showError]="
-          form.get('lastName')?.invalid && form.get('lastName')?.touched
-        "
         formControlName="lastName"
-        label="last name"
+        label="Last name"
         placeholder="Enter name"
         class="w-full"
       />
 
       <app-input-ui
-        [showError]="form.get('email')?.invalid && form.get('email')?.touched"
+        formControlName="userName"
+        label="Username"
+        placeholder="Enter username"
+        class="w-full"
+      />
+
+      <app-input-ui
         formControlName="email"
-        label="email"
+        label="Email"
         placeholder="Enter email"
         iconLeft="mailIcon"
         class="w-full"
       />
 
-      <app-intl-phone-input
-        [showError]="form.get('phone')?.invalid && form.get('phone')?.touched"
-        formControlName="phone"
+      <app-intl-phone-input formControlName="phone" class="w-full" />
+
+      <app-drop-select
+        formControlName="classCategory"
+        label="Class category"
+        [options]="classCategories"
         class="w-full"
       />
 
-      <app-input-ui
-        [showError]="form.get('dob')?.invalid && form.get('dob')?.touched"
-        label="date of birth"
-        placeholder="DD/MM/YYYY"
+      <app-drop-select
+        formControlName="gender"
+        label="Gender"
+        [options]="genders"
         class="w-full"
         formControlName="dob"
       />
+
+      <app-date-dob class="w-full" formControlName="dob" />
 
       <div *ngIf="signupState$ | async as state" class="w-full">
         <div *ngIf="state.isError" class="text-red-500 text-sm mb-2">
@@ -65,7 +75,9 @@
         <app-button
           [disabled]="buttonDisabled"
           variant="primary"
+          [disabled]="!canSubmit"
           label="Sign up"
+          [isLoading]="isSubmitting()"
           (btnClick)="signUp()"
         />
       </div>

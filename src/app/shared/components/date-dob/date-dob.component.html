@@ -1,0 +1,18 @@
+<div class="w-full">
+  <label class="font-medium text-textColor capitalize text-[16px]">
+    {{ label }}
+  </label>
+
+  <input
+    class="w-full"
+    type="date"
+    [ngClass]="variantClasses"
+    [placeholder]="placeholder"
+    [max]="maxDate"
+    [value]="value"
+    [disabled]="disabled"
+    (input)="onInput($event)"
+    (focus)="onFocus()"
+    (blur)="onBlur()"
+  />
+</div>

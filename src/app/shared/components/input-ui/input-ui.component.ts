@@ -28,7 +28,7 @@ export class InputUiComponent implements ControlValueAccessor {
   @Input() type: string = 'text';
   @Input() required: boolean = false;
   @Input() disabled: boolean = false;
-  @Input() showError: any;
+  @Input() error: boolean = false;
   @Input() helperText: string = '';
   @Input() maxLength: number | null = null;
   @Input() minLength: number | null = null;
@@ -43,13 +43,14 @@ export class InputUiComponent implements ControlValueAccessor {
   @Output() focus = new EventEmitter<FocusEvent>();
   @Output() iconLeftClick = new EventEmitter<MouseEvent>();
   @Output() iconRightClick = new EventEmitter<MouseEvent>();
+  @Input() maxDate: string | null = null;
+  @Input() minDate: string | null = null;
 
   inputValue: string = '';
   isDisabled: boolean = false;
   touched: boolean = false;
   isFocused: boolean = false;
 
-  // ControlValueAccessor methods
   onChange: any = () => {};
   onTouched: any = () => {};
   isPasswordVisible: boolean = false;
@@ -87,9 +88,6 @@ export class InputUiComponent implements ControlValueAccessor {
     this.isDisabled = isDisabled;
   }
 
-  // Input events
-  // Removed duplicate implementation of onInputChange
-
   onInputBlur(event: FocusEvent): void {
     this.isFocused = false;
     if (!this.touched) {
@@ -112,9 +110,9 @@ export class InputUiComponent implements ControlValueAccessor {
     this.iconRightClick.emit(event);
   }
 
-  // get showErrorMessage(): boolean {
-  //   return this.touched;
-  // }
+  get showError(): boolean {
+    return this.touched && !!this.error;
+  }
 
   get inputSizeClasses(): string {
     switch (this.size) {
@@ -146,16 +144,12 @@ export class InputUiComponent implements ControlValueAccessor {
     switch (this.variant) {
       case 'filled':
         return `${baseClasses} ${focusClasses} bg-gray-100 border border-[#2C2A724D] focus:bg-white focus:ring-[#2C2A724D] focus:border-[#2C2A724D] ${
-          this.showError ? 'border-2 border-red-500' : ''
+          this.error ? 'border-2 border-red-500' : ''
         }`;
       case 'underlined':
-        return `${baseClasses} ${focusClasses} bg-transparent border-b rounded-none focus:ring-0 border-[#2C2A724D] focus:border-[#2C2A724D] ${
-          this.showError ? ' border-2 border-red-500' : ''
-        }`;
-      default: // outline
-        return `${baseClasses} ${focusClasses} w-full bg-transparent  border border-[#2C2A724D] focus:ring-[#2C2A724D] focus:border-[#2C2A724D] ${
-          this.showError ? 'border-2 border-red-500' : ''
-        }`;
+        return `${baseClasses} ${focusClasses} bg-transparent border-b rounded-none focus:ring-0 border-[#2C2A724D] focus:border-[#2C2A724D]`;
+      default:
+        return `${baseClasses} ${focusClasses} w-full bg-transparent  border border-[#2C2A724D] focus:ring-[#2C2A724D] focus:border-[#2C2A724D]`;
     }
   }
 
