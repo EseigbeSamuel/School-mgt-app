@@ -44,12 +44,12 @@ import { RoleStudentsComponent } from './modules/authenticated/dashboard/role-st
 import { RoleSessionsComponent } from './modules/authenticated/dashboard/role-sessions/role-sessions.component';
 import { RoleTutorsComponent } from './modules/authenticated/dashboard/role-tutors/role-tutors.component';
 import {
-  RoleAccountComponent,
-  RoleEditProfileComponent,
+  // RoleAccountComponent,
+  // RoleEditProfileComponent,
   RoleMainProfileComponent,
   RoleNotificationsComponent,
   RoleProfileComponent,
-  RoleSecurityComponent,
+  // RoleSecurityComponent,
 } from './modules/authenticated/dashboard/role-profile/role-profile.component';
 import { RoleMessagesComponent } from './modules/authenticated/dashboard/role-messages/role-messages.component';
 import { RoleDashboardComponent } from './modules/authenticated/dashboard/role-dashboard/role-dashboard.component';
@@ -74,6 +74,12 @@ import { MainSessionsComponent } from './modules/authenticated/student/personal-
 import { ExamListComponent } from './modules/authenticated/student/mock-exams/exam-list/exam-list.component';
 import { ExamComponent } from './modules/authenticated/student/mock-exams/exam/exam.component';
 import { RoleWalletComponent } from './modules/authenticated/dashboard/role-wallet/role-wallet.component';
+import { RoleSettingComponent } from './modules/authenticated/dashboard/role-setting/role-setting.component';
+import { EditProfileComponent } from './modules/authenticated/student/setting/edit-profile/edit-profile.component';
+import { NotificationComponent } from './modules/authenticated/student/setting/notification/notification.component';
+import { AccountsAndPaymentsComponent } from './modules/authenticated/student/setting/accounts-and-payments/accounts-and-payments.component';
+import { LoginsComponent } from './modules/authenticated/student/setting/logins/logins.component';
+import { LearningGoalsComponent } from './modules/authenticated/student/setting/learning-goals/learning-goals.component';
 // test
 export const routes: Routes = [
   // {
@@ -273,16 +279,16 @@ export const routes: Routes = [
         component: RoleProfileComponent,
         children: [
           { path: '', component: RoleMainProfileComponent },
-          {
-            path: 'edit-profile',
-            component: RoleEditProfileComponent,
-          },
-          { path: 'account', component: RoleAccountComponent },
+          // {
+          //   path: 'edit-profile',
+          //   component: RoleEditProfileComponent,
+          // },
+          // { path: 'account', component: RoleAccountComponent },
           {
             path: 'notification',
             component: RoleNotificationsComponent,
           },
-          { path: 'security', component: RoleSecurityComponent },
+          // { path: 'security', component: RoleSecurityComponent },
           // Tutor-specific routes
           {
             path: 'accounts-payments',
@@ -316,17 +322,27 @@ export const routes: Routes = [
         ],
       },
 
+      // settings route - student and admin only
+      {
+        path: 'settings',
+        component: RoleSettingComponent,
+        canActivate: [RoleGuard],
+        data: { roles: ['admin', 'student'] },
+        children: [
+          { path: '', component: EditProfileComponent },
+          { path: 'notification', component: NotificationComponent },
+          { path: 'account-payments', component: AccountsAndPaymentsComponent },
+          { path: 'logins', component: LoginsComponent },
+          { path: 'learning-goals', component: LearningGoalsComponent },
+        ],
+      },
+
       // Student-only routes
       {
         path: 'assessments',
         component: AssessmentAndQuizzesComponent,
         canActivate: [RoleGuard],
         data: { roles: ['student'] },
-        // children: [
-        //   { path: '', component: QuizComponent },
-        //   { path: 'quiz', component: QuizComponent },
-        //   { path: 'assessment', component: AssessmentComponent },
-        // ],
       },
 
       {
@@ -400,13 +416,6 @@ export const routes: Routes = [
       {
         path: 'payments',
         component: AdminPaymentsComponent,
-        canActivate: [RoleGuard],
-        data: { roles: ['admin'] },
-      },
-
-      {
-        path: 'settings',
-        component: AdminSettingsComponent,
         canActivate: [RoleGuard],
         data: { roles: ['admin'] },
       },

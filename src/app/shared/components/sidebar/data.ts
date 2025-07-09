@@ -76,6 +76,8 @@ export const navItems = [
     role: ['student'],
     mobile: 'Profile',
   },
+
+  // tutor section
   {
     name: 'dashboard',
     label: 'Home',
@@ -123,6 +125,13 @@ export const navItems = [
     label: 'Earnings',
     link: '/dashboard/earnings',
     icon: 'earnings',
+    role: ['tutor'],
+  },
+  {
+    name: 'wallet',
+    label: 'Wallet',
+    link: '/dashboard/wallet',
+    icon: 'wallet',
     role: ['tutor'],
   },
   {

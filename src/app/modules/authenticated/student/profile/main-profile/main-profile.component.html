@@ -1,203 +1,3 @@
-<!-- mobile view -->
-<div class="flex flex-col gap-5 xl:hidden">
-  <section
-    class="bg-primary rounded-xl flex flex-col items-center p-5 text-white gap-3"
-  >
-    <img
-      src="/assets/images/tutor-students-image.png"
-      alt=""
-      class="rounded-full border size-[100px] object-fill"
-    />
-    <div class="text-white text-center">
-      <h1 class="text-lg font-medium">Adeoluwa Adegbuyi</h1>
-      <p class="text-sm">Deoluwa11&#64;gmail.com</p>
-      <p class="text-sm">08149648842</p>
-    </div>
-    <div class="flex justify-center gap-3">
-      <div class="rounded-lg p-2 bg-[#262547] flex flex-col items-center">
-        <img src="/assets/icons/course-light.svg" alt="" />
-        <p class="text-sm">0 Courses</p>
-      </div>
-      <div class="rounded-lg p-2 bg-[#262547] flex flex-col items-center">
-        <img src="/assets/icons/time-light.svg" alt="" />
-        <p class="text-sm">15 Hours</p>
-      </div>
-      <div class="rounded-lg p-2 bg-[#262547] flex flex-col items-center">
-        <img src="/assets/icons/classes-light.svg" alt="" />
-        <p class="text-sm">18 Classes</p>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <h1 class="text-lg font-semibold mb-3">Account Setting</h1>
-    <div class="flex flex-col gap-5">
-      <div
-        class="flex gap-4 items-center"
-        routerLink="/dashboard/profile/edit-profile"
-      >
-        <img src="/assets/icons/profile.svg" alt="" />
-        <div class="w-full flex justify-between items-center">
-          <div>
-            <h1 class="font-semibold">Profile</h1>
-            <p class="text-sm text-[#667085]">Account Information</p>
-          </div>
-          <img src="/assets/icons/dropdown.svg" alt=" " class="-rotate-90" />
-        </div>
-      </div>
-
-      <div class="flex gap-4 items-center">
-        <img src="/assets/icons/classes.svg" alt="" />
-        <div class="w-full flex justify-between items-center">
-          <div>
-            <h1 class="font-semibold">My courses</h1>
-            <p class="text-sm text-[#667085]">
-              Finished courses, ongoing, saved
-            </p>
-          </div>
-          <img src="/assets/icons/dropdown.svg" alt=" " class="-rotate-90" />
-        </div>
-      </div>
-
-      <div class="flex gap-4 items-center">
-        <img src="/assets/icons/referral.svg" alt="" />
-        <div class="w-full flex justify-between items-center">
-          <div>
-            <h1 class="font-semibold">Streaks & Referrals</h1>
-            <p class="text-sm text-[#667085]">
-              Finished courses, ongoing, saved
-            </p>
-          </div>
-          <img src="/assets/icons/dropdown.svg" alt=" " class="-rotate-90" />
-        </div>
-      </div>
-
-      <div class="flex gap-4 items-center">
-        <img src="/assets/icons/wallet.svg" alt="" />
-        <div class="w-full flex justify-between items-center">
-          <div>
-            <h1 class="font-semibold">Wallet</h1>
-            <p class="text-sm text-[#667085]">Earning, referrals and payout</p>
-          </div>
-          <img src="/assets/icons/dropdown.svg" alt=" " class="-rotate-90" />
-        </div>
-      </div>
-
-      <div
-        class="flex gap-4 items-center"
-        routerLink="/dashboard/profile/account"
-      >
-        <img src="/assets/icons/payment.svg" alt="" />
-        <div class="w-full flex justify-between items-center">
-          <div>
-            <h1 class="font-semibold">Payment</h1>
-            <p class="text-sm text-[#667085]">Added cards, accounts</p>
-          </div>
-          <img src="/assets/icons/dropdown.svg" alt=" " class="-rotate-90" />
-        </div>
-      </div>
-
-      <div
-        class="flex gap-4 items-center"
-        routerLink="/dashboard/profile/notification"
-      >
-        <img src="/assets/icons/notification.svg" alt="" />
-        <div class="w-full flex justify-between items-center">
-          <div>
-            <h1 class="font-semibold">Notifications</h1>
-            <p class="text-sm text-[#667085]">
-              Push notifications, emails and phone
-            </p>
-          </div>
-          <img src="/assets/icons/dropdown.svg" alt=" " class="-rotate-90" />
-        </div>
-      </div>
-
-      <div
-        class="flex gap-4 items-center"
-        routerLink="/dashboard/profile/security"
-      >
-        <img src="/assets/icons/security.svg" alt="" />
-        <div class="w-full flex justify-between items-center">
-          <div>
-            <h1 class="font-semibold">Security</h1>
-            <p class="text-sm text-[#667085]">Change password</p>
-          </div>
-          <img src="/assets/icons/dropdown.svg" alt=" " class="-rotate-90" />
-        </div>
-      </div>
-
-      <div class="flex gap-4 items-center" (click)="openDeleteModal()">
-        <img src="/assets/icons/delete.svg" alt="" />
-        <div class="w-full flex justify-between items-center">
-          <div>
-            <h1 class="font-semibold">Delete account</h1>
-            <p class="text-sm text-[#667085]">Delete all personal details</p>
-          </div>
-          <img src="/assets/icons/dropdown.svg" alt=" " class="-rotate-90" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <h1 class="text-lg font-semibold mb-3">Support</h1>
-    <div class="flex flex-col gap-5">
-      <div class="flex gap-4 items-center">
-        <img src="/assets/icons/about.svg" alt="" />
-        <div class="w-full flex justify-between items-center">
-          <div>
-            <h1 class="font-semibold">About FlexyDemy</h1>
-            <p class="text-sm text-[#667085]">Learn more about us</p>
-          </div>
-          <img src="/assets/icons/dropdown.svg" alt=" " class="-rotate-90" />
-        </div>
-      </div>
-
-      <div class="flex gap-4 items-center">
-        <img src="/assets/icons/document-subject.svg" alt="" />
-        <div class="w-full flex justify-between items-center">
-          <div>
-            <h1 class="font-semibold">Terms of services</h1>
-            <p class="text-sm text-[#667085]">
-              Read our own terms and services
-            </p>
-          </div>
-          <img src="/assets/icons/dropdown.svg" alt=" " class="-rotate-90" />
-        </div>
-      </div>
-
-      <div class="flex gap-4 items-center">
-        <img src="/assets/icons/contact.svg" alt="" />
-        <div class="w-full flex justify-between items-center">
-          <div>
-            <h1 class="font-semibold">Contact us</h1>
-            <p class="text-sm text-[#667085]">Get supports</p>
-          </div>
-          <img src="/assets/icons/dropdown.svg" alt=" " class="-rotate-90" />
-        </div>
-      </div>
-
-      <div class="flex gap-4 items-center">
-        <img src="/assets/icons/phone.svg" alt="" />
-        <div class="w-full flex justify-between items-center">
-          <div>
-            <h1 class="font-semibold">Help center</h1>
-            <p class="text-sm text-[#667085]">Our knowledge base and staffs</p>
-          </div>
-          <img src="/assets/icons/dropdown.svg" alt=" " class="-rotate-90" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div>
-      <app-button label="Logout" size="lg" routerLink="/auth/log-in" />
-    </div>
-  </section>
-</div>
-
 <!-- delete acount pop up -->
 <app-modal [show]="deleteModal" (close)="closeDeleteModal()" [custom]="true">
   <div class="rounded-lg bg-white flex-col flex items-center gap-3 p-3">
@@ -210,23 +10,23 @@
 </app-modal>
 
 <!-- new desktop view -->
-<div class="hidden xl:grid">
-  <section>
+<div class="">
+  <section class="hidden lg:grid">
     <div class="w-full h-[160px] bg-[#F79E1B] overflow-hidden">
       <div
-        class="text-white justify-center w-full h-full items-end flex-col flex p-10"
+        class="text-white justify-center w-full h-full items-end flex-col flex p-5 lg:p-10"
       >
-        <h1 class="font-bold text-3xl">
+        <h1 class="font-bold text-lg relative z-50 lg:text-xl xl:text-3xl">
           Find the Perfect Tutor & Ace Your Exams!
         </h1>
-        <p>
+        <p class="text-xs lg:text-sm xl:text-base relative z-50">
           Personalized one-on-one lessons to boost your JAMB, WAEC, and NECO
           scores.
         </p>
       </div>
 
       <div
-        class="w-[250px] h-[450px] bg-primary z-10 relative right-[50px] bottom-[400px] rotate-45"
+        class="w-[150px] h-[350px] lg:w-[250px] lg:h-[450px] bg-primary z-10 relative right-[40px] lg:right-[50px] bottom-[300px] lg:bottom-[400px] rotate-45"
       ></div>
     </div>
     <div
@@ -240,12 +40,39 @@
     </div>
   </section>
 
-  <div class="w-full flex gap-5">
-    <section class="grid gap-5 w-[70%] mt-[100px]">
+  <section class="lg:hidden mb-5 grid gap-5">
+    <div class="w-full h-[120px] bg-[#F79E1B] overflow-hidden">
+      <div
+        class="text-white justify-center w-full h-full items-end flex-col flex p-5 lg:p-10"
+      >
+        <h1 class="font-bold text-lg relative z-50 lg:text-xl xl:text-3xl">
+          Find the Perfect Tutor & Ace Your Exams!
+        </h1>
+        <p class="text-xs lg:text-sm xl:text-base relative z-50">
+          Personalized one-on-one lessons to boost your JAMB, WAEC, and NECO
+          scores.
+        </p>
+      </div>
+
+      <div
+        class="w-[150px] h-[350px] bg-primary z-10 relative right-[40px] lg:right-[50px] bottom-[300px] lg:bottom-[400px] rotate-45"
+      ></div>
+    </div>
+    <div class="flex items-center gap-3">
+      <img src="" alt="" class="bg-gray-300 size-[150px] rounded-full" />
+      <div>
+        <h1 class="text-lg font-bold">Abiodun Adeleke</h1>
+        <p class="capitalize">WAEC Student</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="w-full grid xl:flex gap-5">
+    <section class="grid gap-5 lg:w-[65%] lg:mt-[100px]">
       <div class="flex flex-col gap-5 border rounded-lg p-5">
         <h1 class="font-medium text-xl">Progress Summary</h1>
-        <section class="flex justify-between">
-          <div class="px-5 py-3 bg-[#05CD99]/10 rounded-lg gap-3">
+        <section class="grid grid-cols-2 gap-3 lg:flex justify-between">
+          <div class="px-3 py-3 bg-[#05CD99]/10 rounded-lg gap-3">
             <div class="w-full justify-end flex">
               <img
                 src="/assets/icons/profile-outline-class.svg"
@@ -261,7 +88,7 @@
               Classes
             </p>
           </div>
-          <div class="px-5 py-3 bg-[#9747FF]/10 rounded-lg gap-3">
+          <div class="px-3 py-3 bg-[#9747FF]/10 rounded-lg gap-3">
             <div class="w-full justify-end flex">
               <img
                 src="/assets/icons/profile-progress-bar.svg"
@@ -277,7 +104,7 @@
               in progress
             </p>
           </div>
-          <div class="px-5 py-3 bg-[#6DB1FF]/10 rounded-lg gap-3">
+          <div class="px-3 py-3 bg-[#6DB1FF]/10 rounded-lg gap-3">
             <div class="w-full justify-end flex">
               <img
                 src="/assets/icons/profile-check-correct.svg"
@@ -323,7 +150,7 @@
             <img src="/assets/icons/profile-edit.svg" alt="" />
           </div>
         </div>
-        <div class="grid grid-cols-2 gap-5">
+        <div class="grid lg:grid-cols-2 gap-5">
           <div>
             <h3 class="text-xs text-[#667085]">Email</h3>
             <p>Abiodunadeleke23&#64;gmail.com</p>
@@ -352,15 +179,15 @@
         </div>
       </div>
 
-      <div class="p-5 gap-5 flex flex-col border rounded-lg">
+      <div class="py-5 px-2 gap-5 flex flex-col border rounded-lg">
         <h1 class="font-medium text-xl">Payment History</h1>
-        <div>
-          <div class="">
+        <div class="flex w-full justify-center">
+          <div class="w-[350px] xl:w-[560px] 2xl:w-full">
             <div class="overflow-x-auto rounded-lg shadow bg-white">
               <table class="w-full text-left text-base font-normal">
                 <thead class="bg-gray-100 font-normal">
                   <tr>
-                    <th *ngFor="let column of columns" class="px-6 py-4">
+                    <th *ngFor="let column of columns" class="py-4">
                       {{ column.header }}
                     </th>
                   </tr>
@@ -370,7 +197,7 @@
                     *ngFor="let row of data"
                     class="border-b hover:bg-gray-50"
                   >
-                    <td *ngFor="let column of columns" class="px-6 py-4">
+                    <td *ngFor="let column of columns" class="py-4">
                       <!-- Status column badge -->
                       <ng-container *ngIf="column.key === 'status'">
                         <span
@@ -435,7 +262,7 @@
       </div>
     </section>
 
-    <section class="w-[30%] flex-col flex gap-5">
+    <section class="xl:w-[35%] flex-col flex gap-5">
       <div class="border rounded-lg p-5 flex-col flex gap-5 h-[400px]">
         <h1 class="text-xl font-medium">Upcoming Tasks</h1>
         <section class="overflow-y-scroll h-[350px] grid gap-5">

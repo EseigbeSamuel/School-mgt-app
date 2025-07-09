@@ -1,0 +1,72 @@
+<div class="border-b border-[#E9E9E9] flex gap-6 items-center">
+  <a
+    routerLink="/dashboard/settings"
+    class="text-xs max-[450px]:text-xs sm:text-[16px] font-[600] pb-1 py-4 text-gray-400 hover:text-primary transition-colors w-fit text-center duration-200"
+    routerLinkActive="text-primary border-b-2 border-primary"
+    [routerLinkActiveOptions]="{
+      paths: 'exact',
+      fragment: 'exact',
+      matrixParams: 'exact',
+      queryParams: 'ignored'
+    }"
+  >
+    Profile
+  </a>
+
+  <a
+    routerLink="/dashboard/settings/account-payments"
+    class="text-xs max-[450px]:text-xs sm:text-[16px] font-[600] pb-1 py-4 text-gray-400 hover:text-primary transition-colors w-fit text-center duration-200"
+    routerLinkActive="text-primary border-b-2 border-primary"
+    [routerLinkActiveOptions]="{
+      paths: 'exact',
+      fragment: 'exact',
+      matrixParams: 'exact',
+      queryParams: 'ignored'
+    }"
+  >
+    Accounts and Payments
+  </a>
+
+  <a
+    routerLink="/dashboard/settings/notification"
+    class="text-xs max-[450px]:text-xs sm:text-[16px] font-[600] pb-1 py-4 text-gray-400 hover:text-primary transition-colors w-fit text-center duration-200"
+    routerLinkActive="text-primary border-b-2 border-primary"
+    [routerLinkActiveOptions]="{
+      paths: 'exact',
+      fragment: 'exact',
+      matrixParams: 'exact',
+      queryParams: 'ignored'
+    }"
+  >
+    Notifications
+  </a>
+
+  <a
+    routerLink="/dashboard/settings/logins"
+    class="text-xs max-[450px]:text-xs sm:text-[16px] font-[600] pb-1 py-4 text-gray-400 hover:text-primary transition-colors w-fit text-center duration-200"
+    routerLinkActive="text-primary border-b-2 border-primary"
+    [routerLinkActiveOptions]="{
+      paths: 'exact',
+      fragment: 'exact',
+      matrixParams: 'exact',
+      queryParams: 'ignored'
+    }"
+  >
+    Logins
+  </a>
+  <a
+    routerLink="/dashboard/settings/learning-goals"
+    class="text-xs max-[450px]:text-xs sm:text-[16px] font-[600] pb-1 py-4 text-gray-400 hover:text-primary transition-colors w-fit text-center duration-200"
+    routerLinkActive="text-primary border-b-2 border-primary"
+    [routerLinkActiveOptions]="{
+      paths: 'exact',
+      fragment: 'exact',
+      matrixParams: 'exact',
+      queryParams: 'ignored'
+    }"
+  >
+    Learning Goals
+  </a>
+</div>
+<br />
+<router-outlet> </router-outlet>

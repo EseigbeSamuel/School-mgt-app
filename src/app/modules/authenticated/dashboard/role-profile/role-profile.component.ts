@@ -5,10 +5,10 @@ import { TutorProfileComponent } from '../../tutor/profile/profile.component';
 import { AdminProfileComponent } from '../../admin/admin-profile/admin-profile.component';
 import { MainProfileComponent } from '../../student/profile/main-profile/main-profile.component';
 import { UserInformationComponent } from '../../tutor/profile/user-information/user-information.component';
-import { EditProfileComponent } from '../../student/profile/edit-profile/edit-profile.component';
-import { AccountComponent } from '../../student/profile/account/account.component';
+// import { EditProfileComponent } from '../../student/profile/edit-profile/edit-profile.component';
+// import { AccountComponent } from '../../student/profile/account/account.component';
 import { NotificationsComponent } from '../../student/profile/notifications/notifications.component';
-import { SecurityComponent } from '../../student/profile/security/security.component';
+// import { SecurityComponent } from '../../student/profile/security/security.component';
 import { UserTypeService } from '../../../../services/user-type.service';
 
 // Role Profile Component
@@ -67,54 +67,54 @@ export class RoleMainProfileComponent implements OnInit {
 }
 
 // Role Edit Profile Component
-@Component({
-  selector: 'app-role-edit-profile',
-  imports: [CommonModule, EditProfileComponent],
-  template: `
-    <ng-container [ngSwitch]="userRole">
-      <app-edit-profile *ngSwitchCase="'student'"></app-edit-profile>
-      <!-- <app-edit-profile-tutor *ngSwitchCase="'tutor'"></app-edit-profile> -->
-      <!-- <app-edit-profile *ngSwitchCase="'admin'"></app-edit-profile> -->
-      <div *ngSwitchDefault>Access denied</div>
-    </ng-container>
-  `,
-})
-export class RoleEditProfileComponent implements OnInit {
-  userRole: string | null = null;
+// @Component({
+//   selector: 'app-role-edit-profile',
+//   imports: [CommonModule, EditProfileComponent],
+//   template: `
+//     <ng-container [ngSwitch]="userRole">
+//       <app-edit-profile *ngSwitchCase="'student'"></app-edit-profile>
+//       <!-- <app-edit-profile-tutor *ngSwitchCase="'tutor'"></app-edit-profile> -->
+//       <!-- <app-edit-profile *ngSwitchCase="'admin'"></app-edit-profile> -->
+//       <div *ngSwitchDefault>Access denied</div>
+//     </ng-container>
+//   `,
+// })
+// export class RoleEditProfileComponent implements OnInit {
+//   userRole: string | null = null;
 
-  constructor(private userTypeService: UserTypeService) {}
+//   constructor(private userTypeService: UserTypeService) {}
 
-  ngOnInit() {
-    this.userTypeService.userType$.subscribe((role) => {
-      this.userRole = role;
-    });
-  }
-}
+//   ngOnInit() {
+//     this.userTypeService.userType$.subscribe((role) => {
+//       this.userRole = role;
+//     });
+//   }
+// }
 
 // Role Account Component
-@Component({
-  selector: 'app-role-account',
-  imports: [CommonModule, AccountComponent],
-  template: `
-    <ng-container [ngSwitch]="userRole">
-      <app-account *ngSwitchCase="'student'"></app-account>
-      <!-- <app-account *ngSwitchCase="'tutor'"></app-account> -->
-      <!-- <app-account *ngSwitchCase="'admin'"></app-account> -->
-      <div *ngSwitchDefault>Access denied</div>
-    </ng-container>
-  `,
-})
-export class RoleAccountComponent implements OnInit {
-  userRole: string | null = null;
+// @Component({
+//   selector: 'app-role-account',
+//   imports: [CommonModule, AccountComponent],
+//   template: `
+//     <ng-container [ngSwitch]="userRole">
+//       <app-account *ngSwitchCase="'student'"></app-account>
+//       <!-- <app-account *ngSwitchCase="'tutor'"></app-account> -->
+//       <!-- <app-account *ngSwitchCase="'admin'"></app-account> -->
+//       <div *ngSwitchDefault>Access denied</div>
+//     </ng-container>
+//   `,
+// })
+// export class RoleAccountComponent implements OnInit {
+//   userRole: string | null = null;
 
-  constructor(private userTypeService: UserTypeService) {}
+//   constructor(private userTypeService: UserTypeService) {}
 
-  ngOnInit() {
-    this.userTypeService.userType$.subscribe((role) => {
-      this.userRole = role;
-    });
-  }
-}
+//   ngOnInit() {
+//     this.userTypeService.userType$.subscribe((role) => {
+//       this.userRole = role;
+//     });
+//   }
+// }
 
 // Role Notifications Component
 @Component({
@@ -144,26 +144,26 @@ export class RoleNotificationsComponent implements OnInit {
 }
 
 // Role Security Component
-@Component({
-  selector: 'app-role-security',
-  imports: [CommonModule, SecurityComponent],
-  template: `
-    <ng-container [ngSwitch]="userRole">
-      <app-security *ngSwitchCase="'student'"></app-security>
-      <app-security *ngSwitchCase="'tutor'"></app-security>
-      <app-security *ngSwitchCase="'admin'"></app-security>
-      <div *ngSwitchDefault>Access denied</div>
-    </ng-container>
-  `,
-})
-export class RoleSecurityComponent implements OnInit {
-  userRole: string | null = null;
+// @Component({
+//   selector: 'app-role-security',
+//   imports: [CommonModule, SecurityComponent],
+//   template: `
+//     <ng-container [ngSwitch]="userRole">
+//       <app-security *ngSwitchCase="'student'"></app-security>
+//       <app-security *ngSwitchCase="'tutor'"></app-security>
+//       <app-security *ngSwitchCase="'admin'"></app-security>
+//       <div *ngSwitchDefault>Access denied</div>
+//     </ng-container>
+//   `,
+// })
+// export class RoleSecurityComponent implements OnInit {
+//   userRole: string | null = null;
 
-  constructor(private userTypeService: UserTypeService) {}
+//   constructor(private userTypeService: UserTypeService) {}
 
-  ngOnInit() {
-    this.userTypeService.userType$.subscribe((role) => {
-      this.userRole = role;
-    });
-  }
-}
+//   ngOnInit() {
+//     this.userTypeService.userType$.subscribe((role) => {
+//       this.userRole = role;
+//     });
+//   }
+// }
