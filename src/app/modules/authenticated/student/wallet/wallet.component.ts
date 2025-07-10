@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { SharedModule } from '../../../../shared/shared.module';
 import { CommonModule } from '@angular/common';
+import { CurrencyFormatPipe } from '../../../../pipe/currency-format.pipe';
 
 @Component({
   selector: 'app-wallet',
-  imports: [SharedModule, CommonModule],
+  imports: [SharedModule, CommonModule, CurrencyFormatPipe],
   templateUrl: './wallet.component.html',
   styleUrl: './wallet.component.css',
 })

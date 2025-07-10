@@ -10,6 +10,7 @@ import { SharedModule } from '../../../../../shared/shared.module';
 })
 export class AccountsAndPaymentsComponent {
   selectedAccount = 'opay';
+  newCardPayment = false;
 
   accounts = [
     {
@@ -30,5 +31,9 @@ export class AccountsAndPaymentsComponent {
 
   selectAccount(id: string) {
     this.selectedAccount = id;
+  }
+
+  toggleNewCardPayment() {
+    this.newCardPayment = !this.newCardPayment;
   }
 }

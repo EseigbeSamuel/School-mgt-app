@@ -43,22 +43,16 @@
           Wallet Balance
         </h1>
         <h2 class="flex items-center font-semibold text-2xl text-[#13BA59]">
-          <svg
-            width="23"
-            height="27"
-            viewBox="0 0 23 27"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M4.71429 25V4.01633C4.71419 3.57037 4.81898 3.137 5.01221 2.78427C5.20543 2.43155 5.47613 2.17945 5.78181 2.06758C6.08749 1.9557 6.41082 1.99039 6.70102 2.16619C6.99122 2.34198 7.23186 2.64894 7.38514 3.03883L15.6149 23.9612C15.7681 24.3511 16.0088 24.658 16.299 24.8338C16.5892 25.0096 16.9125 25.0443 17.2182 24.9324C17.5239 24.8205 17.7946 24.5685 17.9878 24.2157C18.181 23.863 18.2858 23.4296 18.2857 22.9837V2M2 9.66667H21M2 17.3333H21"
-              stroke="#13BA59"
-              stroke-width="2.2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-          15,000.00
+          {{
+            15000
+              | currencyFormat
+                : {
+                    currency: "NGN",
+                    showSymbol: true,
+                    showCode: false,
+                    compact: false
+                  }
+          }}
         </h2>
         <p class="font-medium">Available for use</p>
       </div>
@@ -337,21 +331,17 @@
             <div class="grid gap-2">
               <p class="text-xs flex items-center gap-[2px]">
                 From
-                <svg
-                  width="12"
-                  height="11"
-                  viewBox="0 0 12 11"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M2.42857 10.5V1.37667C2.42852 1.18277 2.48368 0.994347 2.58537 0.840988C2.68707 0.687629 2.82954 0.578022 2.99043 0.529381C3.15131 0.48074 3.32148 0.495821 3.47422 0.572255C3.62696 0.648689 3.75361 0.782146 3.83429 0.951667L8.16571 10.0483C8.24639 10.2179 8.37304 10.3513 8.52578 10.4277C8.67852 10.5042 8.84869 10.5193 9.00957 10.4706C9.17046 10.422 9.31293 10.3124 9.41463 10.159C9.51633 10.0057 9.57148 9.81723 9.57143 9.62333V0.5M1 3.83333H11M1 7.16667H11"
-                    stroke="#161C2D"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                {{ service.price | number }}
+
+                {{
+                  service.price
+                    | currencyFormat
+                      : {
+                          currency: "NGN",
+                          showSymbol: true,
+                          showCode: false,
+                          compact: false
+                        }
+                }}
               </p>
               <button class="rounded-full py-1 px-3 border text-sm">
                 Use Wallet
@@ -467,42 +457,19 @@
                 class="text-sm font-medium flex items-center"
                 [ngClass]="getTypeClass(trans.type)"
               >
-                <svg
-                  *ngIf="trans.type === 'in'"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 14 14"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M2.67132 13V2.052C2.67126 1.81932 2.73744 1.59322 2.85948 1.40919C2.98151 1.22515 3.15248 1.09363 3.34554 1.03526C3.5386 0.976888 3.74281 0.994986 3.9261 1.08671C4.10938 1.17843 4.26137 1.33858 4.35817 1.542L9.55589 12.458C9.6527 12.6614 9.80468 12.8216 9.98797 12.9133C10.1713 13.005 10.3755 13.0231 10.5685 12.9647C10.7616 12.9064 10.9326 12.7748 11.0546 12.5908C11.1766 12.4068 11.2428 12.1807 11.2427 11.948V1M0.957031 5H12.957M0.957031 9H12.957"
-                    stroke="#4169E1"
-                    stroke-width="1.4"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                <svg
-                  *ngIf="trans.type === 'out'"
-                  width="14"
-                  height="14"
-                  viewBox="0 0 14 14"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M2.71429 13V2.052C2.71423 1.81932 2.78041 1.59322 2.90245 1.40919C3.02448 1.22515 3.19545 1.09363 3.38851 1.03526C3.58157 0.976888 3.78578 0.994986 3.96907 1.08671C4.15235 1.17843 4.30433 1.33858 4.40114 1.542L9.59886 12.458C9.69567 12.6614 9.84765 12.8216 10.0309 12.9133C10.2142 13.005 10.4184 13.0231 10.6115 12.9647C10.8045 12.9064 10.9755 12.7748 11.0976 12.5908C11.2196 12.4068 11.2858 12.1807 11.2857 11.948V1M1 5H13M1 9H13"
-                    stroke="#F04438"
-                    stroke-width="1.4"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-                {{ trans.money | number }}
+                {{
+                  trans.money
+                    | currencyFormat
+                      : {
+                          currency: "NGN",
+                          showSymbol: true,
+                          showCode: false,
+                          compact: false
+                        }
+                }}
               </p>
               <p
-                class="rounded-full text-xs px-2 py-1"
+                class="rounded-full text-xs text-center px-2 py-1"
                 [ngClass]="getStatusClass(trans.status)"
               >
                 {{ trans.status }}

@@ -1,4 +1,4 @@
-<div class="max-w-xl p-4 space-y-4 border rounded-lg">
+<div class="w-full p-4 space-y-4 border rounded-lg">
   <!-- Account Cards -->
   <div class="space-y-4">
     <div
@@ -76,6 +76,144 @@
     </label>
   </div>
   <br />
+
+  <div
+    class="border py-3 px-5 rounded-lg flex gap-3 items-center"
+    (click)="toggleNewCardPayment()"
+    [ngClass]="newCardPayment ? 'border-primary' : ''"
+  >
+    <svg
+      width="32"
+      height="32"
+      viewBox="0 0 32 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M28 7H4C3.44772 7 3 7.44772 3 8V24C3 24.5523 3.44772 25 4 25H28C28.5523 25 29 24.5523 29 24V8C29 7.44772 28.5523 7 28 7Z"
+        stroke="#2C2A72"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M21 21H25"
+        stroke="#2C2A72"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M15 21H17"
+        stroke="#2C2A72"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path
+        d="M3 12.1055H29"
+        stroke="#2C2A72"
+        stroke-width="1.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </svg>
+    <p class="flex items-center justify-between w-full">
+      New Card Payment
+      <svg
+        *ngIf="newCardPayment"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z"
+          fill="#23BD33"
+          stroke="#23BD33"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M16.125 9.75L10.625 15L7.875 12.375"
+          stroke="white"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </p>
+  </div>
+
+  <div class="space-y-2">
+    <label for="" class="text-sm">Name</label>
+    <input type="text" class="border rounded-xl h-[50px] py-3 px-3 w-full" />
+  </div>
+  <div class="space-y-2">
+    <label for="" class="text-sm">Card Number</label>
+    <div
+      class="border rounded-xl h-[50px] py-3 px-3 gap-3 flex w-full items-center"
+    >
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M17.5 4.375H2.5C2.15482 4.375 1.875 4.65482 1.875 5V15C1.875 15.3452 2.15482 15.625 2.5 15.625H17.5C17.8452 15.625 18.125 15.3452 18.125 15V5C18.125 4.65482 17.8452 4.375 17.5 4.375Z"
+          stroke="#2C2A72"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M13.125 13.125H15.625"
+          stroke="#2C2A72"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M9.375 13.125H10.625"
+          stroke="#2C2A72"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+        <path
+          d="M1.875 7.56641H18.125"
+          stroke="#2C2A72"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <div class="h-full bg-gray-300 w-[1px]"></div>
+      <input type="text" class="outline-none" />
+    </div>
+  </div>
+  <div class="flex w-full gap-5">
+    <div class="space-y-2 w-full">
+      <label for="" class="text-sm">MM/YY</label>
+      <input
+        type="text"
+        class="border rounded-xl h-[50px] py-3 px-3 w-full"
+        placeholder="MM/YY"
+      />
+    </div>
+    <div class="space-y-2 w-full">
+      <label for="" class="text-sm">CVC</label>
+      <input
+        type="text"
+        class="border rounded-xl h-[50px] py-3 px-3 w-full"
+        placeholder="Security Code "
+      />
+    </div>
+  </div>
 
   <div class="max-auto">
     <app-button> Save changes </app-button>
