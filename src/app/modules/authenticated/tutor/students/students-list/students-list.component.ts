@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SharedModule } from '../../../../../shared/shared.module';
-import { NgForOf } from '@angular/common';
+import { CommonModule, NgForOf } from '@angular/common';
 import {
   SortConfig,
   SortDropdownComponent,
@@ -11,7 +11,7 @@ import { StudentProfileDataService } from '../../../../../services/student-profi
 
 @Component({
   selector: 'app-students-list',
-  imports: [SharedModule, NgForOf, SortDropdownComponent],
+  imports: [SharedModule, SortDropdownComponent, CommonModule],
   templateUrl: './students-list.component.html',
   styleUrl: './students-list.component.css',
 })
@@ -20,26 +20,54 @@ export class StudentsListComponent {
     {
       id: 1,
       name: 'bello jomiloju',
-      subject: ['physics, mathematics'],
+      subject: ['physics', 'mathematics'],
       type: 'waec/jamb student',
       image: '../../../../../assets/images/tutor-students-image.png',
+      session: 12,
+      email: 'bellojomiloju@gmail.com',
+      progress: 'excellent',
+      rating: 5,
+      exam: 'JAMB',
     },
     {
       id: 2,
       name: 'adeyija adewole',
-      subject: ['chemistry, english'],
+      subject: ['chemistry', 'english'],
       type: 'waec/jamb student',
       image: '../../../../../assets/images/tutor-students-image.png',
+      session: 12,
+      email: 'bellojomiloju@gmail.com',
+      progress: 'good',
+      rating: 5,
+      exam: 'JAMB',
     },
     {
       id: 3,
       name: 'okafor chioma',
-      subject: ['physics, mathematics'],
+      subject: ['physics', 'mathematics'],
       type: 'waec/jamb student',
       image: '../../../../../assets/images/tutor-students-image.png',
+      session: 12,
+      email: 'bellojomiloju@gmail.com',
+      progress: 'weak',
+      rating: 5,
+      exam: 'JAMB',
     },
     // { name: '', subject: '', type: 'waec/jamb student', image: '' },
   ];
+
+  getProgressStyle(progress: string): string {
+    switch (progress.toLowerCase()) {
+      case 'excellent':
+        return 'bg-[#42ADE2]';
+      case 'good':
+        return 'bg-[#05CD99]';
+      case 'mid':
+        return 'bg-[#444444]';
+      default:
+        return 'bg-[#444444]';
+    }
+  }
 
   customSortOptions: SortOption[] = [
     { value: 'class', label: 'Class', direction: 'desc' },

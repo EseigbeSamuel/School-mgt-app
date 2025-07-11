@@ -35,4 +35,40 @@ export class TutorDashboardComponent {
       ),
     }));
   }
+
+  sessions = [
+    // { subject: '', type: '', exam: '', time: '' },
+    { subject: 'mathematics', type: '1-on-1', exam: 'WAEC', time: '2:00pm' },
+    { subject: 'physics', type: '1-on-1', exam: 'JAMB', time: '2:00pm' },
+    { subject: 'english', type: 'group', exam: 'JAMB', time: '2:00pm' },
+    { subject: 'chemistry', type: '1-on-1', exam: 'WAEC', time: '2:00pm' },
+  ];
+  perfomance = [
+    { subject: 'mathematics', session: 10, demand: 'high' },
+    { subject: 'mathematics', session: 10, demand: 'medium' },
+    { subject: 'mathematics', session: 10, demand: 'low' },
+  ];
+
+  getTypeColor(type: string): string {
+    switch (type.toLowerCase()) {
+      case '1-on-1':
+        return 'bg-black text-white';
+      case 'group':
+        return 'bg-subject-meta text-white';
+      default:
+        return 'bg-black';
+    }
+  }
+  getDemandColor(demand: string): string {
+    switch (demand.toLowerCase()) {
+      case 'high':
+        return 'bg-[#3DA17233] text-[#3DA172]';
+      case 'medium':
+        return 'bg-[#44444433] text-[#444444] ';
+      case 'low':
+        return 'bg-[#F0443833] text-[#F04438] ';
+      default:
+        return 'bg-black';
+    }
+  }
 }

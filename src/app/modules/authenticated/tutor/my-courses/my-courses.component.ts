@@ -10,12 +10,7 @@ import { CalenderComponent } from '../../../../shared/components/calender/calend
 
 @Component({
   selector: 'app-my-courses-tutor',
-  imports: [
-    CommonModule,
-    SharedModule,
-    SortDropdownComponent,
-    CalenderComponent,
-  ],
+  imports: [CommonModule, SharedModule, SortDropdownComponent],
   templateUrl: './my-courses.component.html',
   styleUrl: './my-courses.component.css',
 })

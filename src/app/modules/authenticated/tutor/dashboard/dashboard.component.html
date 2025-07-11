@@ -22,6 +22,91 @@
       </div>
     </div>
 
+    <section class="space-y-5 rounded-xl border p-3 md:p-5">
+      <div>
+        <h1 class="font-semibold text-lg">Upcoming Sessions</h1>
+        <p class="text-subject-meta">Yours schedule sessions for today</p>
+      </div>
+      <div class="grid gap-5 overflow-y-auto">
+        <div
+          *ngFor="let session of sessions"
+          class="rounded-xl border flex items-center justify-between py-3 px-3 md:px-4"
+        >
+          <div>
+            <div class="text-sm md:text-base font-medium">
+              {{ session.exam }} {{ session.subject }}
+            </div>
+            <div class="flex gap-1 text-subject-meta items-center text-sm">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8.00016 1.33301C11.6822 1.33301 14.6668 4.31767 14.6668 7.99967C14.6668 11.6817 11.6822 14.6663 8.00016 14.6663C4.31816 14.6663 1.3335 11.6817 1.3335 7.99967C1.3335 4.31767 4.31816 1.33301 8.00016 1.33301ZM8.00016 2.66634C6.58567 2.66634 5.22912 3.22824 4.22893 4.22844C3.22873 5.22863 2.66683 6.58519 2.66683 7.99967C2.66683 9.41416 3.22873 10.7707 4.22893 11.7709C5.22912 12.7711 6.58567 13.333 8.00016 13.333C9.41465 13.333 10.7712 12.7711 11.7714 11.7709C12.7716 10.7707 13.3335 9.41416 13.3335 7.99967C13.3335 6.58519 12.7716 5.22863 11.7714 4.22844C10.7712 3.22824 9.41465 2.66634 8.00016 2.66634ZM8.00016 3.99967C8.16345 3.9997 8.32105 4.05964 8.44308 4.16815C8.5651 4.27666 8.64306 4.42617 8.66216 4.58834L8.66683 4.66634V7.72367L10.4715 9.52834C10.5911 9.64831 10.6605 9.8093 10.6656 9.9786C10.6708 10.1479 10.6114 10.3128 10.4993 10.4399C10.3873 10.5669 10.2311 10.6465 10.0625 10.6626C9.8939 10.6787 9.72549 10.6299 9.5915 10.5263L9.52883 10.471L7.52883 8.47101C7.42522 8.36731 7.35867 8.23234 7.3395 8.08701L7.3335 7.99967V4.66634C7.3335 4.48953 7.40373 4.31996 7.52876 4.19494C7.65378 4.06991 7.82335 3.99967 8.00016 3.99967Z"
+                  fill="#667085"
+                />
+              </svg>
+              {{ session.time }}
+            </div>
+          </div>
+          <div
+            class="px-2 rounded-full hidden md:flex"
+            [ngClass]="getTypeColor(session.type)"
+          >
+            {{ session.type }}
+          </div>
+          <div class="flex gap-1 md:gap-3 items-center">
+            <button
+              class="rounded-xl px-2 py-1 border border-primary text-xs md:text-base"
+            >
+              <svg
+                width="20"
+                height="21"
+                viewBox="0 0 20 21"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M5.06417 14.6667L3.64417 16.0867C3.43361 16.2972 3.19028 16.3456 2.91417 16.2317C2.63806 16.1178 2.5 15.9108 2.5 15.6108V4.34667C2.5 3.96278 2.62861 3.6425 2.88583 3.38583C3.14306 3.12917 3.46333 3.00056 3.84667 3H16.1542C16.5375 3 16.8578 3.12861 17.115 3.38583C17.3722 3.64306 17.5006 3.96333 17.5 4.34667V13.3208C17.5 13.7042 17.3717 14.0244 17.115 14.2817C16.8583 14.5389 16.5381 14.6672 16.1542 14.6667H5.06417ZM4.70833 13.8333H16.1542C16.2819 13.8333 16.3994 13.78 16.5067 13.6733C16.6139 13.5667 16.6672 13.4492 16.6667 13.3208V4.34583C16.6667 4.21806 16.6133 4.10056 16.5067 3.99333C16.4 3.88611 16.2825 3.83278 16.1542 3.83333H3.84583C3.71806 3.83333 3.60056 3.88667 3.49333 3.99333C3.38611 4.1 3.33278 4.2175 3.33333 4.34583V15.2042L4.70833 13.8333ZM5.83333 11.75H10.8333C10.9522 11.75 11.0514 11.7103 11.1308 11.6308C11.2103 11.5514 11.25 11.4522 11.25 11.3333C11.25 11.2144 11.2103 11.1153 11.1308 11.0358C11.0514 10.9564 10.9522 10.9167 10.8333 10.9167H5.83333C5.715 10.9167 5.61583 10.9564 5.53583 11.0358C5.45583 11.1153 5.41611 11.2144 5.41667 11.3333C5.41722 11.4522 5.45694 11.5514 5.53583 11.6308C5.61472 11.7103 5.71389 11.75 5.83333 11.75ZM5.83333 9.25H14.1667C14.2856 9.25 14.3847 9.21028 14.4642 9.13083C14.5436 9.05139 14.5833 8.95222 14.5833 8.83333C14.5833 8.71444 14.5436 8.61528 14.4642 8.53583C14.3847 8.45639 14.2856 8.41667 14.1667 8.41667H5.83333C5.715 8.41667 5.61583 8.45639 5.53583 8.53583C5.45583 8.61528 5.41611 8.71444 5.41667 8.83333C5.41722 8.95222 5.45694 9.05139 5.53583 9.13083C5.61472 9.21028 5.71389 9.25 5.83333 9.25ZM5.83333 6.75H14.1667C14.2856 6.75 14.3847 6.71028 14.4642 6.63083C14.5436 6.55139 14.5833 6.45222 14.5833 6.33333C14.5833 6.21444 14.5436 6.11528 14.4642 6.03583C14.3847 5.95639 14.2856 5.91667 14.1667 5.91667H5.83333C5.715 5.91667 5.61583 5.95639 5.53583 6.03583C5.45583 6.11528 5.41611 6.21444 5.41667 6.33333C5.41722 6.45222 5.45694 6.55139 5.53583 6.63083C5.61472 6.71028 5.71389 6.75 5.83333 6.75Z"
+                  fill="#667085"
+                />
+              </svg>
+            </button>
+            <button
+              class="px-2 py-1 bg-primary rounded-xl flex gap-2 items-center text-white text-xs md:text-base border"
+            >
+              <svg
+                width="20"
+                height="21"
+                viewBox="0 0 20 21"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.6253 5.5H5.20866C3.59783 5.5 2.29199 6.80584 2.29199 8.41667V12.5833C2.29199 14.1942 3.59783 15.5 5.20866 15.5H10.6253C12.2362 15.5 13.542 14.1942 13.542 12.5833V8.41667C13.542 6.80584 12.2362 5.5 10.6253 5.5Z"
+                  stroke="white"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M13.542 8.61618L16.5037 7.14118C16.6307 7.07787 16.7718 7.04807 16.9136 7.05459C17.0554 7.06111 17.1932 7.10375 17.3139 7.17846C17.4346 7.25317 17.5342 7.35747 17.6033 7.48147C17.6724 7.60547 17.7087 7.74507 17.7087 7.88702V13.1104C17.7087 13.2524 17.6725 13.3921 17.6033 13.5162C17.5342 13.6404 17.4345 13.7447 17.3137 13.8195C17.1929 13.8942 17.0549 13.9368 16.913 13.9432C16.7711 13.9496 16.6299 13.9197 16.5028 13.8562L13.542 12.3787V8.61618Z"
+                  stroke="white"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+              Start
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <div class="content-2 space-y-4">
       <h2 class="text-xl font-semibold py-4">Ratings</h2>
       <app-tutor-dash-board [data]="ratingsData" />
@@ -62,6 +147,7 @@
         </div>
       </div>
     </div>
+
     <div class="space-y-4 border p-4 shadow-sm sm:max-w-sm">
       <h3 class="text-xl font-semibold">Messages</h3>
       <div class="space-y-1 w-full max-h-[350px] pr-2 overflow-auto">
@@ -89,5 +175,69 @@
         </div>
       </div>
     </div>
+
+    <div class="space-y-4 p-4 border shadow-sm sm:max-w-sm">
+      <h1 class="font-semibold text-lg">Subject Performance</h1>
+      <section class="grid gap-5 overflow-y-auto">
+        <div
+          class="border rounded-xl p-3 capitalize space-y-1 hover:bg-[#EBEAFC]"
+          *ngFor="let perf of perfomance"
+        >
+          <h1 class="text-sm font-medium">{{ perf.subject }}</h1>
+          <p class="text-subject-meta text-xs flex items-center gap-1">
+            Sessions <span class="size-1 rounded-full bg-accent"></span>
+            {{ perf.session }} Sessions
+          </p>
+
+          <p
+            class="rounded-full py-1 text-[10px] text-center w-[100px]"
+            [ngClass]="getDemandColor(perf.demand)"
+          >
+            {{ perf.demand }} demand
+          </p>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<div class="rounded-xl border mt-5 p-5 space-y-2 w-full">
+  <h1 class="font-semibold text-lg">Teaching Performance Insights</h1>
+  <div class="grid lg:flex gap-5">
+    <section
+      class="border rounded-xl w-full py-3 px-4 flex flex-col items-center gap-3"
+    >
+      <h1 class="text-[#3DA172] font-bold text-2xl">4.8</h1>
+      <h2 class="font-medium">Average Ratings</h2>
+      <div class="flex gap-2">
+        <svg
+          *ngFor="let star of [1, 2, 3, 4, 5]"
+          width="12"
+          height="12"
+          viewBox="0 0 12 12"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6.45874 1.30107C6.37948 1.11828 6.19926 1 6.00002 1C5.80079 1 5.62056 1.11828 5.5413 1.30107L4.37983 3.97936L1.45416 4.24882C1.25494 4.26717 1.08583 4.40251 1.02428 4.59287C0.962719 4.78324 1.02057 4.99197 1.17133 5.12349L3.37634 7.04709L2.73127 9.88934C2.6871 10.0839 2.76288 10.2862 2.92405 10.4038C3.08523 10.5215 3.30094 10.5321 3.47283 10.4307L6.00002 8.94053L8.52721 10.4307C8.69911 10.5321 8.91481 10.5215 9.07599 10.4038C9.23716 10.2862 9.31294 10.0839 9.26877 9.88934L8.6237 7.04709L10.8287 5.12349C10.9795 4.99197 11.0373 4.78324 10.9758 4.59287C10.9142 4.40251 10.7451 4.26717 10.5459 4.24882L7.62021 3.97936L6.45874 1.30107Z"
+            fill="#F69133"
+          />
+        </svg>
+      </div>
+    </section>
+    <section
+      class="border rounded-xl w-full py-3 px-4 flex flex-col items-center gap-3"
+    >
+      <h1 class="text-[#42ADE2] font-bold text-2xl">12</h1>
+      <h2 class="font-medium">Sessions This Month</h2>
+      <p class="text-[#3DA172] text-xs">+12% vs last month</p>
+    </section>
+    <section
+      class="border rounded-xl w-full py-3 px-4 flex flex-col items-center gap-3"
+    >
+      <h1 class="text-[#8133F1] font-bold text-2xl">Mathematics</h1>
+      <h2 class="font-medium">Top Subject</h2>
+      <p class="text-accent text-xs">5 sessions</p>
+    </section>
   </div>
 </div>
