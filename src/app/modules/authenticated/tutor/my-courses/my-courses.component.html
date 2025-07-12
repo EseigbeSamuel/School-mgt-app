@@ -155,7 +155,10 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="text-accent-2" *ngFor="let row of data">
+              <tr
+                class="text-accent-2 hover:bg-[#EBEAFC]"
+                *ngFor="let row of data"
+              >
                 <td>{{ row.name }}</td>
                 <td>{{ row.request }} Students</td>
                 <td>

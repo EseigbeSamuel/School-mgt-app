@@ -1,10 +1,33 @@
-<div>
-  <section class="grid xl:grid-cols-2 gap-6 mb-6">
-    <div>
+<div class="grid gap-7">
+  <div class="space-y-5">
+    <section class="space-y-2">
+      <h1 class="text-lg lg:text-xl font-semibold">Course Title</h1>
+      <div class="border p-3 rounded-md">
+        <input type="text" placeholder="e.g biology" />
+      </div>
+    </section>
+    <section class="grid lg:flex gap-5">
+      <div class="w-full">
+        <h1 class="text-lg lg:text-xl font-semibold">Course Title</h1>
+        <div class="border p-3 rounded-md">
+          <input type="text" placeholder="e.g biology" />
+        </div>
+      </div>
+      <div class="w-full">
+        <h1 class="text-lg lg:text-xl font-semibold">Exam</h1>
+        <div class="border p-3 rounded-md">
+          <input type="text" placeholder="e.g biology" />
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <section class="grid w-full xl:grid-cols-2 gap-6 mb-7">
+    <div class="w-[350px] md:w-full">
       <h1 class="text-lg lg:text-xl font-semibold mb-2">Course Thumbnail</h1>
       <div class="flex gap-3">
         <div
-          class="bg-[#F5F7FA] h-[160px] w-[200px] flex items-center py-5 px-3"
+          class="bg-[#F5F7FA] h-[160px] w-[250px] md:w-[300px] flex items-center py-5 px-5"
         >
           <img src="/assets/icons/Image.svg" alt="" />
         </div>
@@ -53,11 +76,11 @@
       </div>
     </div>
 
-    <div>
+    <div class="w-[350px] md:w-full">
       <h1 class="text-lg lg:text-xl font-semibold mb-2">Course Thumbnail</h1>
       <div class="flex gap-3">
         <div
-          class="bg-[#F5F7FA] h-[160px] w-[200px] flex items-center py-5 px-3"
+          class="bg-[#F5F7FA] h-[160px] w-[250px] md:w-[300px] flex items-center py-5 px-5"
         >
           <img src="/assets/icons/PlayCircle.svg" alt="" />
         </div>
@@ -106,11 +129,11 @@
       </div>
     </div>
 
-    <div>
+    <div class="w-[350px] md:w-full">
       <h1 class="text-lg lg:text-xl font-semibold mb-2">Course Thumbnail</h1>
       <div class="flex gap-3">
         <div
-          class="bg-[#F5F7FA] h-[160px] w-[200px] flex items-center py-5 px-4"
+          class="bg-[#F5F7FA] h-[160px] w-[250px] md:w-[300px] flex items-center justify-center py-5 px-5"
         >
           <img src="/assets/icons/pdf.svg" alt="" />
         </div>
@@ -380,7 +403,7 @@
         <h1 class="font-semibold text-lg lg:text-xl">
           What you will teach in this course
         </h1>
-        <p class="text-primary">+ Add New</p>
+        <p class="text-primary text-sm md:text-base">+ Add New</p>
       </div>
       <div class="p-3 border">
         <input
@@ -393,7 +416,7 @@
     <div class="grid gap-5 border-t-2 p-2">
       <div class="flex justify-between w-full">
         <h1 class="font-semibold text-lg lg:text-xl">Target Audience (4/8)</h1>
-        <p class="text-primary">+ Add New</p>
+        <p class="text-primary text-sm md:text-base">+ Add New</p>
       </div>
       <div class="p-3 border">
         <input type="text" placeholder="Who this course is for..." />
@@ -405,7 +428,7 @@
         <h1 class="font-semibold text-lg lg:text-xl">
           Course requirements (4/8)
         </h1>
-        <p class="text-primary">+ Add New</p>
+        <p class="text-primary text-sm md:text-base">+ Add New</p>
       </div>
       <div class="p-3 border">
         <input type="text" placeholder="What is you course requirements..." />
