@@ -1,0 +1,85 @@
+<!-- otp.component.html - Updated with countdown timer -->
+<div
+  class="w-full min-h-screen bg-auth flex flex-col items-center justify-center py-4 md:py-6 gap-3"
+>
+  <div
+    class="flex flex-col justify-center items-center gap-3 mb-6 md:mb-8 px-4 text-center"
+  >
+    <h1 class="font-bold text-2xl md:text-[30px] text-primary">
+      OTP Verification
+    </h1>
+    <p class="font-normal text-gray-600 text-base md:text-[18px]">
+      A code has been sent to {{ userEmail }}.
+    </p>
+  </div>
+
+  <!-- OTP Input using ng-otp-input -->
+  <div class="flex justify-center mb-6 px-4">
+    <ng-otp-input
+      (onInputChange)="onOtpChange($event)"
+      [config]="{
+        allowNumbersOnly: true,
+        length: 6,
+        isPasswordInput: false,
+        disableAutoFocus: false,
+        placeholder: '',
+        inputStyles: {
+          width: '48px',
+          height: '56px',
+          border: '2px solid #e5e7eb',
+          'border-radius': '8px',
+          'text-align': 'center',
+          'font-size': '20px',
+          'font-weight': '600',
+          outline: 'none',
+          margin: '0 6px',
+          background: 'white'
+        },
+        inputClass: 'otp-input-custom',
+        containerClass: 'otp-container-custom'
+      }"
+    >
+    </ng-otp-input>
+  </div>
+
+  <!-- Error Messages -->
+  <!-- <div class="px-4 text-center min-h-[20px]">
+    @if (submitError()) {
+    <p class="text-red-500 text-sm">{{ submitError() }}</p>
+    } @if (resendError()) {
+    <p class="text-red-500 text-sm">{{ resendError() }}</p>
+    } @if (resendSuccess()) {
+    <p class="text-green-500 text-sm">{{ resendSuccess() }}</p>
+    }
+  </div> -->
+
+  <!-- Resend Code Section -->
+  <div
+    class="py-3 text-center flex items-center justify-between w-full md:w-[400px] gap-3"
+  >
+    <p class="text-gray-600 text-sm">Didn't get the code?</p>
+
+    <!-- Countdown Message -->
+
+    <button
+      type="button"
+      class="text-primary text-[12px] font-medium hover:underline disabled:text-gray-400 disabled:cursor-not-allowed disabled:no-underline transition-colors duration-200"
+      [disabled]="!canResend"
+      (click)="resendCode()"
+    >
+      {{ resendButtonText }}
+    </button>
+    <!-- Resend Button -->
+  </div>
+
+  <!-- Submit Button -->
+  <div class="w-full md:w-[440px] px-4">
+    <app-button
+      variant="primary"
+      [label]="submitButtonText"
+      class="w-full"
+      [disabled]="!canSubmit"
+      (click)="onSubmit()"
+    />
+  </div>
+</div>

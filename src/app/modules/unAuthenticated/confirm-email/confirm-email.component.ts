@@ -63,7 +63,7 @@ export class ConfirmEmailComponent {
 
   handleNavigate(event: Event) {
     event.preventDefault();
-    this.router.navigate(['/auth/new-password']);
+    this.router.navigate(['/auth/reset-password']);
     console.log('Button clicked!', event);
   }
 

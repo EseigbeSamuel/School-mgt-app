@@ -81,6 +81,7 @@ import { NotificationComponent } from './modules/authenticated/student/setting/n
 import { AccountsAndPaymentsComponent } from './modules/authenticated/student/setting/accounts-and-payments/accounts-and-payments.component';
 import { LoginsComponent } from './modules/authenticated/student/setting/logins/logins.component';
 import { LearningGoalsComponent } from './modules/authenticated/student/setting/learning-goals/learning-goals.component';
+import { OtpComponent } from './modules/unAuthenticated/otp/otp.component';
 // test
 export const routes: Routes = [
   // {
@@ -94,12 +95,12 @@ export const routes: Routes = [
     children: [
       { path: '', component: SplashScreenComponent },
       {
-        path: 'reset-password',
+        path: 'confirm-mail',
         component: ConfirmEmailComponent,
       },
       {
-        path: 'new-password',
-        component: NewPasswordComponent,
+        path: 'reset-password',
+        component: ResetPasswordComponent,
       },
       {
         path: 'register',
@@ -114,6 +115,10 @@ export const routes: Routes = [
         component: SignUpComponent,
       },
       {
+        path: 'mail-activation',
+        component: OtpComponent,
+      },
+      {
         path: 'confirm',
         component: ConfirmationComponent,
         children: [
@@ -123,7 +128,7 @@ export const routes: Routes = [
           },
           {
             path: 'set-password',
-            component: ResetPasswordComponent,
+            component: NewPasswordComponent,
           },
           {
             path: 'profile-set-up',
