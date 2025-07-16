@@ -6,7 +6,7 @@ import {
 } from '../../../../shared/components/paginator/paginator.component';
 import { CommonModule } from '@angular/common';
 import { TutorSesionComponentTable } from '../../../../shared/components/tables/tutor-sesion/tutor-sesion.component';
-import { students } from './data';
+import { sessions, students } from './data';
 import {
   SortConfig,
   SortDropdownComponent,
@@ -19,13 +19,13 @@ import {
     PaginatorComponent,
     CommonModule,
     TutorSesionComponentTable,
-    SortDropdownComponent,
   ],
   templateUrl: './my-sessions.component.html',
   styleUrl: './my-sessions.component.css',
 })
 export class MySessionsComponent {
   studentData = students;
+  sessionData = sessions;
 
   paginationMetadata: PaginationMetadata = {
     currentPage: 1,
@@ -39,5 +39,18 @@ export class MySessionsComponent {
       `Sorting by ${sortConfig.field} in ${sortConfig.direction} order`
     );
     // Apply sorting logic here
+  }
+
+  currentView: string = 'all sessions';
+
+  setView(view: string) {
+    this.currentView = view;
+  }
+  getButtonStyle(view: string) {
+    const base = 'py-[10px] px-[14px] w-full hover:bg-[#FBFBFB] rounded-xl';
+    const isActive = this.currentView === view;
+    return isActive
+      ? `${base} bg-[#FBFBFB] rounded-xl`
+      : `${base} hover:bg-[#FBFBFB] rounded-xl`;
   }
 }

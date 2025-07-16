@@ -19,7 +19,7 @@ export class ChatSidebarComponent {
 
   onSelectFriends(friends: any) {
     this.friendsDataService.selectFriends(friends);
-    if (window.innerWidth < 768) {
+    if (window.innerWidth < 1025) {
       this.router.navigate(['/dashboard/messages/friends', friends.id]);
     }
   }

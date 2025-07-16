@@ -81,6 +81,7 @@ import { NotificationComponent } from './modules/authenticated/student/setting/n
 import { AccountsAndPaymentsComponent } from './modules/authenticated/student/setting/accounts-and-payments/accounts-and-payments.component';
 import { LoginsComponent } from './modules/authenticated/student/setting/logins/logins.component';
 import { LearningGoalsComponent } from './modules/authenticated/student/setting/learning-goals/learning-goals.component';
+import { MainWalletComponent } from './modules/authenticated/tutor/wallet/main-wallet/main-wallet.component';
 // test
 export const routes: Routes = [
   // {
@@ -279,6 +280,10 @@ export const routes: Routes = [
         component: RoleWalletComponent,
         canActivate: [RoleGuard],
         data: { roles: ['student', 'tutor'] },
+        children: [
+          { path: '', component: MainWalletComponent },
+          { path: 'withdraw', component: WithdrawComponent },
+        ],
       },
 
       // Profile route - everyone has this but different components

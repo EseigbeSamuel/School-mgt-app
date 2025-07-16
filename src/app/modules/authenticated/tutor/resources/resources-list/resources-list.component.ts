@@ -51,19 +51,6 @@ export class ResourcesListComponent {
     this.currentFilter = filter;
   }
 
-  // filteredFriends() {
-  //   return this.friends.filter((friends) => {
-  //     const matchesType =
-  //       this.currentFilter === 'all' || friends.type === this.currentFilter;
-
-  //     const matchesSearch = friends.name
-  //       .toLowerCase()
-  //       .includes(this.searchTerm.toLowerCase());
-
-  //     return matchesType && matchesSearch;
-  //   });
-  // }
-
   getButtonClasses(filter: string) {
     const base = 'py-[10px] px-[14px] w-full hover:bg-[#FBFBFB] rounded-xl';
     const isActive = this.currentFilter === filter;

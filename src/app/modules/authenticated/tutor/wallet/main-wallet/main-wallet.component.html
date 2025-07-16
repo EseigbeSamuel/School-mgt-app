@@ -1,0 +1,357 @@
+<div class="space-y-7">
+  <section class="lg:flex space-y-2 justify-between items-center">
+    <h1 class="font-semibold text-3xl">My Wallet</h1>
+    <div class="flex gap-3">
+      <div class="text-sm flex gap-2 border rounded-md px-3 py-2">
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6 20.0008C5.45 20.0008 4.97933 19.8051 4.588 19.4138C4.19667 19.0225 4.00067 18.5515 4 18.0008V16.0008C4 15.7175 4.096 15.4801 4.288 15.2888C4.48 15.0975 4.71733 15.0015 5 15.0008C5.28267 15.0001 5.52033 15.0961 5.713 15.2888C5.90567 15.4815 6.00133 15.7188 6 16.0008V18.0008H18V16.0008C18 15.7175 18.096 15.4801 18.288 15.2888C18.48 15.0975 18.7173 15.0015 19 15.0008C19.2827 15.0001 19.5203 15.0961 19.713 15.2888C19.9057 15.4815 20.0013 15.7188 20 16.0008V18.0008C20 18.5508 19.8043 19.0218 19.413 19.4138C19.0217 19.8058 18.5507 20.0015 18 20.0008H6ZM11 7.8508L9.125 9.7258C8.925 9.9258 8.68767 10.0218 8.413 10.0138C8.13833 10.0058 7.90067 9.90146 7.7 9.7008C7.51667 9.5008 7.42067 9.26746 7.412 9.0008C7.40333 8.73413 7.49933 8.5008 7.7 8.3008L11.3 4.7008C11.4 4.6008 11.5083 4.53013 11.625 4.4888C11.7417 4.44746 11.8667 4.42646 12 4.4258C12.1333 4.42513 12.2583 4.44613 12.375 4.4888C12.4917 4.53146 12.6 4.60213 12.7 4.7008L16.3 8.3008C16.5 8.5008 16.596 8.73413 16.588 9.0008C16.58 9.26746 16.484 9.5008 16.3 9.7008C16.1 9.9008 15.8627 10.0051 15.588 10.0138C15.3133 10.0225 15.0757 9.92646 14.875 9.7258L13 7.8508V15.0008C13 15.2841 12.904 15.5218 12.712 15.7138C12.52 15.9058 12.2827 16.0015 12 16.0008C11.7173 16.0001 11.48 15.9041 11.288 15.7128C11.096 15.5215 11 15.2841 11 15.0008V7.8508Z"
+            fill="#161C2D"
+          />
+        </svg>
+        Export Statement
+      </div>
+      <div
+        class="text-sm flex gap-2 border bg-primary rounded-md px-3 py-2 text-white"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M12 16.993C13.105 16.993 14 16.322 14 15.495C14 14.667 13.105 13.996 12 13.996C10.895 13.996 10 13.325 10 12.498C10 11.669 10.895 10.999 12 10.999V10M12 16.993C11.13 16.993 10.388 16.576 10.114 15.994M12 16.993L12.003 18M12 11C12.87 11 13.612 11.417 13.886 11.999"
+            stroke="white"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M21 11C21.1545 10.9229 21.2946 10.8197 21.414 10.695C22 10.089 22 9.11 22 7.152C22 5.194 22 4.216 21.414 3.608C20.828 3 19.886 3 18 3H6C4.114 3 3.172 3 2.586 3.608C2 4.216 2 5.195 2 7.152C2 9.109 2 10.088 2.586 10.695C2.706 10.8203 2.844 10.922 3 11M5 7H19"
+            stroke="white"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        withdraw Funds
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="grid w-full gap-5 md:grid-cols-[repeat(auto-fill,_minmax(20%,_1fr))]"
+  >
+    <div class="rounded-xl border p-3 space-y-3" *ngFor="let data of analytics">
+      <div class="flex justify-between text-sm font-medium">
+        <h2>{{ data.name }}</h2>
+        <ng-container>
+          <svg
+            *ngIf="data.type === 'balance'"
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5.83317 15V5.87667C5.83311 5.68277 5.89746 5.49435 6.0161 5.34099C6.13475 5.18763 6.30097 5.07802 6.48867 5.02938C6.67636 4.98074 6.8749 4.99582 7.0531 5.07226C7.23129 5.14869 7.37905 5.28215 7.47317 5.45167L12.5265 14.5483C12.6206 14.7179 12.7684 14.8513 12.9466 14.9277C13.1248 15.0042 13.3233 15.0193 13.511 14.9706C13.6987 14.922 13.8649 14.8124 13.9836 14.659C14.1022 14.5057 14.1666 14.3172 14.1665 14.1233V5M4.1665 8.33333H15.8332M4.1665 11.6667H15.8332"
+              stroke="#667085"
+              stroke-width="1.4"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <svg
+            *ngIf="data.type === 'pending'"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M2 12C2 8.229 2 6.343 3.172 5.172C4.344 4.001 6.229 4 10 4H14C17.771 4 19.657 4 20.828 5.172C21.999 6.344 22 8.229 22 12C22 15.771 22 17.657 20.828 18.828C19.656 19.999 17.771 20 14 20H10C6.229 20 4.343 20 3.172 18.828C2.001 17.656 2 15.771 2 12Z"
+              stroke="#667085"
+              stroke-width="1.5"
+            />
+            <path
+              opacity="0.5"
+              d="M10 16H6M14 16H12.5M2 10H22"
+              stroke="#667085"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />
+          </svg>
+          <svg
+            *ngIf="data.type === 'date'"
+            width="25"
+            height="24"
+            viewBox="0 0 25 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M19.1504 4H17.1504V3C17.1504 2.73478 17.045 2.48043 16.8575 2.29289C16.67 2.10536 16.4156 2 16.1504 2C15.8852 2 15.6308 2.10536 15.4433 2.29289C15.2557 2.48043 15.1504 2.73478 15.1504 3V4H9.15039V3C9.15039 2.73478 9.04503 2.48043 8.8575 2.29289C8.66996 2.10536 8.41561 2 8.15039 2C7.88517 2 7.63082 2.10536 7.44328 2.29289C7.25575 2.48043 7.15039 2.73478 7.15039 3V4H5.15039C4.35474 4 3.59168 4.31607 3.02907 4.87868C2.46646 5.44129 2.15039 6.20435 2.15039 7V19C2.15039 19.7956 2.46646 20.5587 3.02907 21.1213C3.59168 21.6839 4.35474 22 5.15039 22H19.1504C19.946 22 20.7091 21.6839 21.2717 21.1213C21.8343 20.5587 22.1504 19.7956 22.1504 19V7C22.1504 6.20435 21.8343 5.44129 21.2717 4.87868C20.7091 4.31607 19.946 4 19.1504 4ZM20.1504 19C20.1504 19.2652 20.045 19.5196 19.8575 19.7071C19.67 19.8946 19.4156 20 19.1504 20H5.15039C4.88517 20 4.63082 19.8946 4.44328 19.7071C4.25575 19.5196 4.15039 19.2652 4.15039 19V12H20.1504V19ZM20.1504 10H4.15039V7C4.15039 6.73478 4.25575 6.48043 4.44328 6.29289C4.63082 6.10536 4.88517 6 5.15039 6H7.15039V7C7.15039 7.26522 7.25575 7.51957 7.44328 7.70711C7.63082 7.89464 7.88517 8 8.15039 8C8.41561 8 8.66996 7.89464 8.8575 7.70711C9.04503 7.51957 9.15039 7.26522 9.15039 7V6H15.1504V7C15.1504 7.26522 15.2557 7.51957 15.4433 7.70711C15.6308 7.89464 15.8852 8 16.1504 8C16.4156 8 16.67 7.89464 16.8575 7.70711C17.045 7.51957 17.1504 7.26522 17.1504 7V6H19.1504C19.4156 6 19.67 6.10536 19.8575 6.29289C20.045 6.48043 20.1504 6.73478 20.1504 7V10Z"
+              fill="#667085"
+            />
+          </svg>
+          <svg
+            *ngIf="data.type === 'total'"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M3.5 4V17.5C3.5 18.2956 3.81607 19.0587 4.37868 19.6213C4.94129 20.1839 5.70435 20.5 6.5 20.5H20"
+              stroke="#667085"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M6.5 15L11 10.5L14.5 14L20 8.5"
+              stroke="#667085"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </ng-container>
+      </div>
+      <h1 class="font-bold text-2xl">
+        {{
+          data.amount
+            | currencyFormat
+              : {
+                  currency: "NGN",
+                  showSymbol: true,
+                  showCode: false,
+                  compact: false
+                }
+        }}
+      </h1>
+      <p
+        class="text-xs"
+        [ngClass]="
+          data.type === 'date' ? 'text-green-600' : 'text-subject-meta'
+        "
+      >
+        {{ data.info }}
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div class="lg:w-[60%]">
+      <section
+        class="rounded-2xl p-3 bg-[#EBEAFC] flex items-center justify-center overflow-y-scroll"
+      >
+        <ul
+          class="text-sm lg:text-base flex gap-3 text-center font-semibold w-full"
+        >
+          <li
+            (click)="setView('history')"
+            [ngClass]="getButtonStyle('history')"
+          >
+            Transaction History
+          </li>
+          <li
+            (click)="setView('methods')"
+            [ngClass]="getButtonStyle('methods')"
+          >
+            Payment Methods
+          </li>
+          <li
+            (click)="setView('analytics')"
+            [ngClass]="getButtonStyle('analytics')"
+          >
+            Earning Analytics
+          </li>
+        </ul>
+      </section>
+    </div>
+  </section>
+
+  <section *ngIf="currentView === 'history'">
+    <h1 class="font-semibold">Recent Session Earnings</h1>
+    <div class="overflow-y-scroll">
+      <table>
+        <thead>
+          <tr class="capitalize font-semibold bg-gray-100">
+            <td>type</td>
+            <td>description</td>
+            <td>amount</td>
+            <td>date</td>
+            <td>status</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-xs" *ngFor="let row of transaction">
+            <td>
+              <div class="flex gap-1 items-center capitalize">
+                <svg
+                  *ngIf="row.type === 'earning'"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M4.5835 15.4173V7.50065H5.41683V14.584H12.5002V15.4173H4.5835ZM8.75016 11.2507V3.33398H9.5835V10.4173H16.6668V11.2507H8.75016Z"
+                    fill="#3DA172"
+                  />
+                </svg>
+                <svg
+                  *ngIf="row.type === 'withdraw'"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M15.4165 4.58268L15.4165 12.4993H14.5832L14.5832 5.41602L7.49984 5.41602L7.49984 4.58268L15.4165 4.58268ZM11.2498 8.74935V16.666H10.4165V9.58268L3.33317 9.58268L3.33317 8.74935L11.2498 8.74935Z"
+                    fill="#F04438"
+                  />
+                </svg>
+
+                {{ row.type }}
+              </div>
+            </td>
+            <td>{{ row.description }}</td>
+            <td>
+              <p
+                [ngClass]="
+                  row.type === 'earning' ? 'text-green-500' : 'text-red-500'
+                "
+              >
+                {{
+                  row.amount
+                    | currencyFormat
+                      : {
+                          currency: "NGN",
+                          showSymbol: true,
+                          showCode: false,
+                          compact: false
+                        }
+                }}
+              </p>
+            </td>
+            <td>{{ row.date }}</td>
+            <td>
+              <div class="flex items-center">
+                <p
+                  class="rounded px-2 py-1"
+                  [ngClass]="statusStyle(row.status)"
+                >
+                  {{ row.status }}
+                </p>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section *ngIf="currentView === 'methods'" class="space-y-5">
+    <h1 class="font-semibold">Payment Method</h1>
+    <div class="px-4 py-6 rounded-xl border space-y-5">
+      <section
+        class="rounded-xl border px-4 py-3 flex justify-between w-full"
+        *ngFor="let bank of accounts"
+      >
+        <div class="flex items-center gap-3">
+          <img src="{{ bank.logo }}" alt="" />
+          <div>
+            <h1 class="font-medium">{{ bank.owner }}</h1>
+            <p class="text-xs text-subject-meta">
+              {{ bank.name }}-{{ bank.masked }}
+            </p>
+          </div>
+        </div>
+        <div class="flex gap-2 items-center">
+          <p
+            *ngIf="selectedAccount === bank.id"
+            class="bg-primary text-white rounded-full px-3 py-1 text-xs font-medium"
+          >
+            Default
+          </p>
+          <svg
+            width="24"
+            height="25"
+            viewBox="0 0 24 25"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g clip-path="url(#clip0_5296_22153)">
+              <path
+                d="M8 12.5C8 11.4 7.1 10.5 6 10.5C4.9 10.5 4 11.4 4 12.5C4 13.6 4.9 14.5 6 14.5C7.1 14.5 8 13.6 8 12.5ZM10 12.5C10 13.6 10.9 14.5 12 14.5C13.1 14.5 14 13.6 14 12.5C14 11.4 13.1 10.5 12 10.5C10.9 10.5 10 11.4 10 12.5ZM16 12.5C16 13.6 16.9 14.5 18 14.5C19.1 14.5 20 13.6 20 12.5C20 11.4 19.1 10.5 18 10.5C16.9 10.5 16 11.4 16 12.5Z"
+                fill="#667085"
+              />
+            </g>
+            <defs>
+              <clipPath id="clip0_5296_22153">
+                <rect
+                  width="24"
+                  height="24"
+                  fill="white"
+                  transform="matrix(0 -1 1 0 0 24.5)"
+                />
+              </clipPath>
+            </defs>
+          </svg>
+        </div>
+      </section>
+    </div>
+    <div>
+      <app-button label="Add Payment Method" />
+    </div>
+  </section>
+
+  <section *ngIf="currentView === 'analytics'">
+    <div class="border rounded-xl p-5 space-y-3">
+      <h1 class="font-semibold text-lg">Earning Breakdown</h1>
+      <div class="grid lg:flex gap-5">
+        <section
+          *ngFor="let item of earning"
+          class="rounded-xl border flex p-4 capitalize w-full justify-between items-center"
+        >
+          <h2 class="font-medium">{{ item.name }}</h2>
+          <div class="grid gap-2 w-[50%]">
+            <div
+              class="flex justify-between text-sm gap-3"
+              *ngFor="let int of item.income"
+            >
+              <p>{{ int.subject }}</p>
+              <p>
+                {{
+                  int.amount
+                    | currencyFormat
+                      : {
+                          currency: "NGN",
+                          showSymbol: true,
+                          showCode: false,
+                          compact: false
+                        }
+                }}
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+</div>

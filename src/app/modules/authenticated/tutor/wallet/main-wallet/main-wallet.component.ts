@@ -1,17 +1,16 @@
 import { Component } from '@angular/core';
-import { TutorEarningsComponentTable } from '../../../../../shared/components/tables/tutor-earnings/tutor-earnings.component';
-import { RouterModule } from '@angular/router';
 import { SharedModule } from '../../../../../shared/shared.module';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { CurrencyFormatPipe } from '../../../../../pipe/currency-format.pipe';
 
 @Component({
-  selector: 'app-transaction-history',
-  imports: [SharedModule, RouterModule, CommonModule, CurrencyFormatPipe],
-  templateUrl: './transaction-history.component.html',
-  styleUrl: './transaction-history.component.css',
+  selector: 'app-tutor-main-wallet',
+  imports: [SharedModule, CommonModule, RouterModule, CurrencyFormatPipe],
+  templateUrl: './main-wallet.component.html',
+  styleUrl: './main-wallet.component.css',
 })
-export class TransactionHistoryComponent {
+export class MainWalletComponent {
   analytics = [
     {
       name: 'Available Balance',
@@ -40,10 +39,6 @@ export class TransactionHistoryComponent {
       amount: 4500,
       date: '17-8-2025',
       status: 'pending',
-      rating: '5',
-      duration: '2 Hrs 12 Mins',
-      Subject: 'mathematics',
-      student: 'Adebayo Samuel',
     },
     {
       type: 'withdraw',
@@ -51,10 +46,6 @@ export class TransactionHistoryComponent {
       amount: 14500,
       date: '17-8-2025',
       status: 'completed',
-      rating: '5',
-      duration: '2 Hrs 12 Mins',
-      Subject: 'mathematics',
-      student: 'Adebayo Samuel',
     },
     {
       type: 'earning',
@@ -63,10 +54,6 @@ export class TransactionHistoryComponent {
       amount: 4500,
       date: '17-8-2025',
       status: 'cancelled',
-      rating: '5',
-      duration: '2 Hrs 12 Mins',
-      Subject: 'mathematics',
-      student: 'Adebayo Samuel',
     },
     {
       type: 'withdraw',
@@ -74,10 +61,6 @@ export class TransactionHistoryComponent {
       amount: 14500,
       date: '17-8-2025',
       status: 'completed',
-      rating: '5',
-      duration: '2 Hrs 12 Mins',
-      Subject: 'mathematics',
-      student: 'Adebayo Samuel',
     },
   ];
 
@@ -121,7 +104,7 @@ export class TransactionHistoryComponent {
     this.selectedAccount = id;
   }
 
-  currentView: string = 'earning';
+  currentView: string = 'history';
 
   setView(view: string) {
     this.currentView = view;
