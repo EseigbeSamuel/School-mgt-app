@@ -25,6 +25,11 @@ import { catchError, tap } from 'rxjs/operators';
 
 import { AuthService } from '../../../services/auth.service';
 import { AngularQueryService } from '../../../services/quary-client.service';
+import {
+  SecureStorageService,
+  TempSession,
+} from '../../../services/secure-storage.service';
+import { AlertService } from '../../../services/alert.service';
 
 interface ClassCategory {
   label: string;
@@ -52,12 +57,14 @@ interface SignUpPayload {
 }
 
 interface SignUpResponse {
-  success: boolean;
+  success?: boolean;
   message: string;
+  userId?: string;
+  token?: string;
+  refreshToken?: string;
   data?: {
-    userId: 'generated-uuid';
-    message: 'User registered successfully';
-
+    userId: string;
+    message: string;
     token?: string;
     refreshToken?: string;
   };
@@ -85,6 +92,8 @@ export class SignUpComponent implements OnDestroy {
   private fb = inject(FormBuilder);
   private http = inject(HttpClient);
   private queryService = inject(AngularQueryService);
+  private secureStorage = inject(SecureStorageService);
+  private alertService = inject(AlertService);
 
   signupForm: FormGroup;
 
@@ -93,36 +102,10 @@ export class SignUpComponent implements OnDestroy {
     SignUpPayload
   >((payload: SignUpPayload) => this.performSignUpRequest(payload), {
     onSuccess: (data: SignUpResponse, variables: SignUpPayload) => {
-      console.log('Sign up successful:', data);
-
-      if (data.success && data.data) {
-        if (data.data.token) {
-          // this.authService.setToken(data.data.token);
-        }
-        if (data.data.refreshToken) {
-          // this.authService.setRefreshToken(data.data.refreshToken);
-        }
-
-        localStorage.removeItem('referralCode');
-        localStorage.setItem('userId', data.data.userId);
-
-        this.router.navigate(['/auth/confirm']);
-      }
+      this.handleSignUpSuccess(data, variables);
     },
     onError: (error: HttpErrorResponse, variables: SignUpPayload) => {
-      console.error('Sign up failed:', error);
-
-      if (error.status === 400) {
-        this.submitError.set('Invalid form data. Please check your inputs.');
-      } else if (error.status === 409) {
-        this.submitError.set('Email or username already exists.');
-      } else if (error.status === 422) {
-        this.submitError.set('Please check all required fields.');
-      } else {
-        this.submitError.set(
-          error.error?.message || 'Registration failed. Please try again.'
-        );
-      }
+      this.handleSignUpError(error, variables);
     },
     onMutate: (variables: SignUpPayload) => {
       this.submitError.set(null);
@@ -165,10 +148,118 @@ export class SignUpComponent implements OnDestroy {
     this.signUpMutation.cleanup();
   }
 
+  private handleSignUpSuccess(
+    data: SignUpResponse,
+    variables: SignUpPayload
+  ): void {
+    console.log('Sign up successful:', data);
+
+    try {
+      // Extract userId from either direct property or nested data
+      const userId = data.userId || data.data?.userId;
+
+      if (userId) {
+        // Create a temporary session for OTP verification
+        const tempSession: TempSession = {
+          userId: userId,
+          email: variables.email,
+          sessionId: `signup_${Date.now()}`,
+          purpose: 'email-verification',
+        };
+
+        // Store temp session (expires in 10 minutes by default)
+        this.secureStorage.setTempSession(tempSession);
+
+        // Also store user ID and email separately as sensitive data for fallback
+        this.secureStorage.setSensitiveData('userId', userId, 10 * 60 * 1000); // 10 minutes
+        this.secureStorage.setSensitiveData(
+          'userEmail',
+          variables.email,
+          10 * 60 * 1000
+        ); // 10 minutes
+
+        this.alertService.success('successfull!', 'Welcome!');
+      }
+
+      // Handle tokens if provided during signup
+      const token = data.token || data.data?.token;
+      const refreshToken = data.refreshToken || data.data?.refreshToken;
+
+      if (token) {
+        this.secureStorage.setSensitiveData(
+          'preAuthToken',
+          token,
+          10 * 60 * 1000
+        );
+      }
+      if (refreshToken) {
+        this.secureStorage.setSensitiveData(
+          'preAuthRefreshToken',
+          refreshToken,
+          10 * 60 * 1000
+        );
+      }
+
+      // Clear referral code from localStorage
+      localStorage.removeItem('referralCode');
+
+      // Navigate to OTP confirmation
+      this.router.navigate(['/auth/confirm']);
+    } catch (error) {
+      console.error('Error storing user data:', error);
+      // Even if storage fails, we should still navigate to OTP
+      // The user can try again if needed
+      this.router.navigate(['/auth/confirm']);
+    }
+  }
+  private isValidSignUpResponse(response: any): response is SignUpResponse {
+    return (
+      response &&
+      typeof response.message === 'string' &&
+      (response.userId || response.data?.userId)
+    );
+  }
+
+  private handleSignUpError(
+    error: HttpErrorResponse,
+    variables: SignUpPayload
+  ): void {
+    console.error('Sign up failed:', error);
+
+    // Handle different error scenarios
+    if (error.status === 400) {
+      const msg = 'Invalid form data. Please check your inputs.';
+      this.submitError.set(msg);
+      this.alertService.error(msg, 'Invalid Data');
+    } else if (error.status === 409) {
+      const msg = 'Email or username already exists.';
+      this.submitError.set(msg);
+      this.alertService.error(msg, 'Duplicate Entry');
+    } else if (error.status === 422) {
+      const msg = 'Please check all required fields.';
+      this.submitError.set(msg);
+      this.alertService.warning(msg, 'Validation Failed');
+    } else if (error.status === 403) {
+      const msg = 'Access denied. Please check your credentials.';
+      this.submitError.set(msg);
+      this.alertService.error(msg, 'Access Denied');
+    } else if (error.status === 500) {
+      const msg = 'Server error. Please try again later.';
+      this.submitError.set(msg);
+      this.alertService.error(msg, 'Server Error');
+    } else {
+      const errorMessage =
+        error.error?.message ||
+        error.error?.error ||
+        error.message ||
+        'Registration failed. Please try again.';
+      this.submitError.set(errorMessage);
+      this.alertService.error(errorMessage, 'Sign Up Failed');
+    }
+  }
   private performSignUpRequest(
     payload: SignUpPayload
   ): Observable<SignUpResponse> {
-    // With pathRewrite, this will become: http://api.flexydemy.com:4000/dev/auth-service/api/v1/auth/signup
     const API_URL =
       'http://api.flexydemy.com:4000/dev/auth-service/api/v1/auth/signup';
 
@@ -179,11 +270,15 @@ export class SignUpComponent implements OnDestroy {
 
     console.log('Making request to:', API_URL);
     console.log('Request payload:', payload);
-    console.log('Request headers:', headers);
 
     return this.http.post<SignUpResponse>(API_URL, payload, { headers }).pipe(
       tap((response) => {
         console.log('API Response:', response);
+
+        // Validate response structure
+        if (!this.isValidSignUpResponse(response)) {
+          console.warn('Unexpected response structure:', response);
+        }
       }),
       catchError((error: HttpErrorResponse) => {
         console.error('API Error Details:', {
@@ -192,17 +287,20 @@ export class SignUpComponent implements OnDestroy {
           error: error.error,
           message: error.message,
           url: error.url,
+          headers: error.headers,
         });
 
-        // Handle specific 403 error
-        if (error.status === 403) {
-          console.error(
-            '403 Forbidden - Check API authentication/authorization'
-          );
-          this.submitError.set('Access denied. Please check your credentials.');
-        }
+        // Transform error for better handling
+        const transformedError = {
+          ...error,
+          error: {
+            ...error.error,
+            message:
+              error.error?.message || error.message || 'Network error occurred',
+          },
+        };
 
-        throw error;
+        throw transformedError;
       })
     );
   }
@@ -320,7 +418,9 @@ export class SignUpComponent implements OnDestroy {
 
     if (this.signupForm.invalid) {
       this.signupForm.markAllAsTouched();
-      this.submitError.set('Please fill in all required fields correctly.');
+      const errorMsg = 'Please fill in all required fields correctly.';
+      this.submitError.set(errorMsg);
+      this.alertService.warning(errorMsg, 'Validation Error');
       return;
     }
 

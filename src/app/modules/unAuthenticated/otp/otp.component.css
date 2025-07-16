@@ -1,0 +1,36 @@
+/* otp.component.css - Styles for ng-otp-input */
+.otp-container-custom {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.otp-input-custom:focus {
+  border-color: var(--primary-color, #3b82f6) !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1) !important;
+}
+
+.otp-input-custom:not(:placeholder-shown) {
+  border-color: var(--primary-color, #3b82f6) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .otp-container-custom .otp-input-custom {
+    width: 40px !important;
+    height: 48px !important;
+    font-size: 18px !important;
+    margin: 0 3px !important;
+  }
+}
+
+/* Remove spinner buttons */
+.otp-input-custom::-webkit-outer-spin-button,
+.otp-input-custom::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* .otp-input-custom[type="number"] {
+  -moz-appearance: textfield;
+} */

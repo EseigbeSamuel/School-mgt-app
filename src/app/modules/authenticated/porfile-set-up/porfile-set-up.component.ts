@@ -23,11 +23,15 @@ export class PorfileSetUpComponent {
     this.userType = localStorage.getItem('userType');
   }
 
+  ngOnInit() {
+    localStorage.setItem('userType', 'student');
+  }
+
   save(event: Event) {
     this.router.navigate(['']);
   }
 
   cancel(event: Event) {
-    this.router.navigate(['/auth/register']);
+    this.router.navigate(['/auth/login']);
   }
 }

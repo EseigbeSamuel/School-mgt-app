@@ -51,7 +51,11 @@ export class ResetPasswordComponent {
     this.resetForm = this.fb.group({
       password: ['', Validators.required],
       confirmPassword: ['', Validators.required],
+      verificationCode: ['', Validators.required],
     });
+  }
+  get verificationCode(): any {
+    return this.resetForm.get('verificationCode')?.value || '';
   }
 
   get password(): string {
@@ -61,7 +65,8 @@ export class ResetPasswordComponent {
   get isDisabled(): boolean {
     return (
       this.resetForm.invalid ||
-      this.password !== this.resetForm.get('confirmPassword')?.value
+      this.password !== this.resetForm.get('confirmPassword')?.value ||
+      this.verificationCode === null
     );
   }
 
@@ -69,7 +74,7 @@ export class ResetPasswordComponent {
 
   handleNavigate(event: Event) {
     event.preventDefault();
-    this.router.navigate(['/auth/confirm/profile-set-up']);
+    this.router.navigate(['/auth/log-in']);
     console.log('Button clicked!', event);
   }
 

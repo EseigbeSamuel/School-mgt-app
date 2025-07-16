@@ -11,6 +11,6 @@ import { Router } from '@angular/router';
 export class ActivationUiComponent {
   constructor(private router: Router) {}
   handleNavigate(event: Event) {
-    this.router.navigate(['/auth/confirm/set-password']);
+    this.router.navigate(['/auth/mail-reg']);
   }
 }
