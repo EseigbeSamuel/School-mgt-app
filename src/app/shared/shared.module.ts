@@ -10,9 +10,10 @@ import { CardUiDashboaredComponent } from './components/card-ui-dashboared/card-
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { SwitchButtonComponent } from './components/switch-button/switch-button.component';
 
 @NgModule({
-  declarations: [ButtonComponent, DropSelectComponent],
+  declarations: [ButtonComponent, DropSelectComponent, SwitchButtonComponent],
   imports: [
     CommonModule,
     MatIconModule,
@@ -21,7 +22,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatDatepickerModule,
     MatNativeDateModule,
   ],
-  exports: [ButtonComponent, DropSelectComponent],
+  exports: [ButtonComponent, DropSelectComponent, SwitchButtonComponent],
   providers: [],
 })
 export class SharedModule {}

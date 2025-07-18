@@ -2,11 +2,11 @@ import { Component, NgModule } from '@angular/core';
 import { SharedModule } from '../../../../../shared/shared.module';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-notifications',
-  imports: [SharedModule, CommonModule, FormsModule, RouterLink],
+  imports: [SharedModule, CommonModule, FormsModule, RouterModule],
   templateUrl: './notifications.component.html',
   styleUrl: './notifications.component.css',
 })

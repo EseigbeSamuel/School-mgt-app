@@ -54,6 +54,32 @@
   >
     Socials and Passwords
   </a>
+  <a
+    routerLink="/dashboard/profile/availability"
+    class="text-xs max-[450px]:text-xs sm:text-[16px] font-[600] pb-1 py-4 text-gray-400 hover:text-primary transition-colors w-fit text-center duration-200"
+    routerLinkActive="text-primary border-b-2 border-primary"
+    [routerLinkActiveOptions]="{
+      paths: 'exact',
+      fragment: 'exact',
+      matrixParams: 'exact',
+      queryParams: 'ignored'
+    }"
+  >
+    Availability
+  </a>
+  <a
+    routerLink="/dashboard/profile/profile-verification"
+    class="text-xs max-[450px]:text-xs sm:text-[16px] font-[600] pb-1 py-4 text-gray-400 hover:text-primary transition-colors w-fit text-center duration-200"
+    routerLinkActive="text-primary border-b-2 border-primary"
+    [routerLinkActiveOptions]="{
+      paths: 'exact',
+      fragment: 'exact',
+      matrixParams: 'exact',
+      queryParams: 'ignored'
+    }"
+  >
+    Verification
+  </a>
 </div>
 <br />
 <router-outlet> </router-outlet>

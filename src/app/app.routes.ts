@@ -83,6 +83,8 @@ import { LoginsComponent } from './modules/authenticated/student/setting/logins/
 import { LearningGoalsComponent } from './modules/authenticated/student/setting/learning-goals/learning-goals.component';
 import { OtpComponent } from './modules/unAuthenticated/otp/otp.component';
 import { MainWalletComponent } from './modules/authenticated/tutor/wallet/main-wallet/main-wallet.component';
+import { AvailabilityComponent } from './modules/authenticated/tutor/profile/availability/availability.component';
+import { ProfileVerificationComponent } from './modules/authenticated/tutor/profile/profile-verification/profile-verification.component';
 // test
 export const routes: Routes = [
   // {
@@ -323,6 +325,18 @@ export const routes: Routes = [
           {
             path: 'notifications',
             component: NotificationsComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['tutor'] },
+          },
+          {
+            path: 'availability',
+            component: AvailabilityComponent,
+            canActivate: [RoleGuard],
+            data: { roles: ['tutor'] },
+          },
+          {
+            path: 'profile-verification',
+            component: ProfileVerificationComponent,
             canActivate: [RoleGuard],
             data: { roles: ['tutor'] },
           },
