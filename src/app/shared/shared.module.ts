@@ -11,6 +11,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { SwitchButtonComponent } from './components/switch-button/switch-button.component';
+import { QuillModule } from 'ngx-quill';
 
 @NgModule({
   declarations: [ButtonComponent, DropSelectComponent, SwitchButtonComponent],
@@ -21,6 +22,7 @@ import { SwitchButtonComponent } from './components/switch-button/switch-button.
     ReactiveFormsModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    QuillModule.forRoot(),
   ],
   exports: [ButtonComponent, DropSelectComponent, SwitchButtonComponent],
   providers: [],

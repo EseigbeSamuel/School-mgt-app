@@ -10,11 +10,11 @@ import {
 } from '@angular/router';
 import { filter, flatMap } from 'rxjs';
 import { FriendsDataService } from '../../../services/friends-data.service';
-import { ScheduleCalenderComponent } from '../schedule-calender/schedule-calender.component';
+import { CalenderComponent } from '../calender/calender.component';
 
 @Component({
   selector: 'app-dash-navbar',
-  imports: [SharedModule, CommonModule, ScheduleCalenderComponent, RouterLink],
+  imports: [SharedModule, CommonModule, RouterLink, CalenderComponent],
   templateUrl: './dash-navbar.component.html',
   styleUrl: './dash-navbar.component.css',
 })
