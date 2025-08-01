@@ -244,7 +244,7 @@
         <tbody>
           <tr class="text-xs" *ngFor="let row of sessionData">
             <td>
-              <div class="flex items-center gap-2">
+              <div class="flex items-center gap-2 pr-5">
                 <img
                   src="/assets/images/tutor-students-image.png"
                   alt=""
@@ -328,10 +328,10 @@
   </div>
 
   <div class="" *ngIf="currentView === 'missed'">
-    <section>
+    <section class="overflow-y-scroll">
       <table>
         <thead>
-          <tr class="capitalize font-semibold">
+          <tr class="capitalize font-semibold w-full">
             <th>student</th>
             <th>subject</th>
             <th>exam</th>
@@ -341,9 +341,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="text-xs capitalize" *ngFor="let row of sessionData">
+          <tr class="text-xs capitalize w-full" *ngFor="let row of sessionData">
             <td>
-              <div class="flex items-center gap-2">
+              <div class="flex items-center gap-2 pr-5">
                 <img
                   src="/assets/images/tutor-students-image.png"
                   alt=""
