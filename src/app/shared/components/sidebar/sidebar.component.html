@@ -35,7 +35,9 @@
     </div>
   </div>
 
-  <div class="more flex h-full items-end gap-2 w-full">
+  <div
+    class="more flex h-full items-end gap-2 w-full overflow-y-auto lg:overflow-hidden"
+  >
     <ul class="flex flex-col gap-3 w-full">
       <li *ngIf="userType !== 'tutor'">
         <a
