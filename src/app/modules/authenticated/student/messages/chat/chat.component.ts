@@ -5,12 +5,12 @@ import { SharedModule } from '../../../../../shared/shared.module';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-chat-side',
+  selector: 'app-chat',
   imports: [NgIf, SharedModule],
-  templateUrl: './chat-side.component.html',
-  styleUrl: './chat-side.component.css',
+  templateUrl: './chat.component.html',
+  styleUrl: './chat.component.css',
 })
-export class ChatSideComponent implements OnInit {
+export class ChatComponent implements OnInit {
   friends: any;
   constructor(
     private friendsDataService: FriendsDataService,

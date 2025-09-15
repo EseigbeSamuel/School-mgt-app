@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FriendsDataService } from '../../../../../services/friends-data.service';
-import { ChatSideComponent } from '../chat-side/chat-side.component';
+import { ChatComponent } from '../chat/chat.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-chat-sidebar',
-  imports: [ChatSideComponent, CommonModule, FormsModule],
+  imports: [ChatComponent, CommonModule, FormsModule],
   templateUrl: './chat-sidebar.component.html',
   styleUrl: './chat-sidebar.component.css',
 })
@@ -135,7 +135,8 @@ export class ChatSidebarComponent {
   }
 
   getButtonClasses(filter: string) {
-    const base = 'py-[10px] px-[14px] w-[100px] hover:bg-[#FBFBFB] rounded-xl';
+    const base =
+      'py-[5px] px-[10px] md:py-[10px] md:px-[14px] w-[100px] hover:bg-[#FBFBFB] rounded-xl';
     const isActive = this.currentFilter === filter;
     return isActive
       ? `${base} bg-[#FBFBFB] rounded-xl`

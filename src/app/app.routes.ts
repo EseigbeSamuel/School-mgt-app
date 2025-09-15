@@ -27,7 +27,7 @@ import { TutorsDescriptionComponent } from './modules/authenticated/student/pers
 import { GetTutorsComponent } from './modules/authenticated/student/personal-sessions/get-tutors/get-tutors.component';
 import { ViewCourseComponent } from './modules/authenticated/student/my-courses/view-course/view-course.component';
 
-import { ChatSideComponent } from './modules/authenticated/student/messages/chat-side/chat-side.component';
+import { ChatComponent } from './modules/authenticated/student/messages/chat/chat.component';
 import { ChatSidebarComponent } from './modules/authenticated/student/messages/chat-sidebar/chat-sidebar.component';
 import { ReferalComponent } from './modules/authenticated/student/achievements/referal/referal.component';
 import { LeaderboardComponent } from './modules/authenticated/student/achievements/leaderboard/leaderboard.component';
@@ -350,7 +350,7 @@ export const routes: Routes = [
         component: RoleMessagesComponent,
         children: [
           { path: '', component: ChatSidebarComponent },
-          { path: 'friends/:id', component: ChatSideComponent },
+          { path: 'friends/:id', component: ChatComponent },
         ],
       },
 

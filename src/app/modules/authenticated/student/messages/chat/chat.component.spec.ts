@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChatSideComponent } from './chat-side.component';
+import { ChatSideComponent } from './chat.component';
 
 describe('ChatSideComponent', () => {
   let component: ChatSideComponent;
@@ -8,9 +8,8 @@ describe('ChatSideComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ChatSideComponent]
-    })
-    .compileComponents();
+      imports: [ChatSideComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ChatSideComponent);
     component = fixture.componentInstance;

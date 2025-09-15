@@ -1,17 +1,21 @@
 <!-- desktop view -->
 <div class="flex gap-5">
   <section
-    class="border rounded-lg p-5 bg-white flex-col flex gap-5 w-full h-[85vh] md:h-[85vh] lg:h-[82vh] xl:w-[40%]"
+    class="border rounded-lg p-3 md:p-5 bg-white flex-col flex gap-5 w-full h-[85vh] md:h-[85vh] lg:h-[82vh] xl:w-[40%]"
   >
     <div class="flex justify-between items-center">
       <h1 class="font-semibold text-[20px]">Message</h1>
-      <div class="flex gap-2 bg-[#EBEAFC] text-primary p-3 rounded-lg">
+      <div
+        class="flex gap-2 bg-[#EBEAFC] text-primary px-3 py-1 md:p-3 rounded-lg"
+      >
         <img src="/assets/icons/Plus-purple.svg" alt="" />
         <p>Compose</p>
       </div>
     </div>
 
-    <div class="rounded-xl p-3 bg-[#EBEAFC] flex items-center justify-center">
+    <div
+      class="rounded-xl px-3 py-1 md:p-3 bg-[#EBEAFC] flex items-center justify-center"
+    >
       <ul class="flex gap-3 text-center font-semibold w-full justify-between">
         <li (click)="setFilter('all')" [ngClass]="getButtonClasses('all')">
           All
@@ -32,7 +36,7 @@
       <input
         type="text"
         placeholder="search"
-        class="p-2 w-full h-[50px] border-2 rounded-lg"
+        class="p-2 w-full md:h-[50px] border-2 rounded-lg"
         [(ngModel)]="searchTerm"
       />
     </div>
@@ -73,6 +77,6 @@
   </section>
 
   <section class="hidden xl:flex w-[60vw]">
-    <app-chat-side />
+    <app-chat />
   </section>
 </div>
